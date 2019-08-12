@@ -1,0 +1,39 @@
+{
+  "name": "discord-bakery",
+  "version": "1.0.0",
+  "description": "mystic has planckpenis",
+  "main": "./src/bot.js",
+  "scripts": {
+    "test": "echo yeet"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shadow6060/DiscordBakery.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shadow6060/DiscordBakery/issues"
+  },
+  "homepage": "https://github.com/shadow6060/DiscordBakery#readme",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "cron": "^1.7.1",
+    "discord.js": "^11.5.1",
+    "dom-parser": "^0.1.6",
+    "express": "^4.17.1",
+    "fs-extra": "^8.1.0",
+    "glob": "^7.1.4",
+    "hbs": "^4.0.4",
+    "json5": "^2.1.0",
+    "lodash": "^4.17.15",
+    "moment-timezone": "^0.5.26",
+    "mysql2": "^1.6.5",
+    "parse-duration": "^0.1.1",
+    "pretty-bytes": "^5.3.0",
+    "pretty-ms": "^5.0.0",
+    "r2": "^2.0.1",
+    "sequelize": "^5.13.1",
+    "string-similarity": "^3.0.0"
+  }
+}
