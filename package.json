@@ -6,11 +6,8 @@
   "scripts": {
     "test": "echo yeet"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/shadow6060/DiscordBakery.git"
-  },
-  "author": "",
+  "repository": "git+https://github.com/shadow6060/DiscordBakery.git",
+  "author": "Your Name",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/shadow6060/DiscordBakery/issues"
@@ -22,6 +19,7 @@
     "discord.js": "^11.5.1",
     "dom-parser": "^0.1.6",
     "express": "^4.17.1",
+    "extends-classes": "^1.0.5",
     "fs-extra": "^8.1.0",
     "glob": "^7.1.4",
     "hbs": "^4.0.4",
