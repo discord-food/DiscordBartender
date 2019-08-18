@@ -2,9 +2,12 @@
   "name": "discord-bakery",
   "version": "1.0.0",
   "description": "mystic has planckpenis",
-  "main": "./src/bot.js",
+  "main": "./dist/bot.js",
   "scripts": {
-    "test": "echo yeet"
+    "test": "echo yeet",
+    "start": "node dist/bot",
+    "compile": "npx tsc",
+    "dist": "yarn run compile && yarn start"
   },
   "repository": "git+https://github.com/shadow6060/DiscordBakery.git",
   "author": "Your Name",
@@ -14,9 +17,16 @@
   },
   "homepage": "https://github.com/shadow6060/DiscordBakery#readme",
   "dependencies": {
+    "@types/bluebird": "^3.5.27",
+    "@types/glob": "^7.1.1",
+    "@types/lodash": "^4.14.137",
+    "@types/node": "^12.7.2",
+    "@types/string-similarity": "^3.0.0",
+    "@types/validator": "^10.11.2",
+    "@types/ws": "^6.0.2",
     "chalk": "^2.4.2",
     "cron": "^1.7.1",
-    "discord.js": "^11.5.1",
+    "discord.js": "https://github.com/discordjs/discord.js",
     "dom-parser": "^0.1.6",
     "express": "^4.17.1",
     "extends-classes": "^1.0.5",
@@ -28,10 +38,14 @@
     "moment-timezone": "^0.5.26",
     "mysql2": "^1.6.5",
     "parse-duration": "^0.1.1",
+    "pg": "^7.12.1",
     "pretty-bytes": "^5.3.0",
     "pretty-ms": "^5.0.0",
     "r2": "^2.0.1",
     "sequelize": "^5.13.1",
     "string-similarity": "^3.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^3.5.3"
   }
 }

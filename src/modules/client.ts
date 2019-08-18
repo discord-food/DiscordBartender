@@ -1,2 +1,2 @@
-import client from "../structures/client.struct"
-module.exports = new client(3);
+import { BakeryClient } from "../structures/client.struct";
+export const client = new BakeryClient(3);
