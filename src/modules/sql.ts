@@ -1,4 +1,4 @@
-export { Op, DataTypes, Model } from "Sequelize";
+export { Op, DataTypes, Model } from "sequelize";
 import { database } from "../auth.json";
 import { prefix } from "./constants";
 import { Sequelize, DataTypes, Op, Model } from "sequelize";
