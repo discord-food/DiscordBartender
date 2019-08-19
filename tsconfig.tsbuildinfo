@@ -1,0 +1,2580 @@
+{
+  "program": {
+    "fileInfos": {
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es5.d.ts": {
+        "version": "1f753cee573dea40df8a9dc873fef5566957b19ad513874f6643d8dfb14842d0",
+        "signature": "1f753cee573dea40df8a9dc873fef5566957b19ad513874f6643d8dfb14842d0"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.d.ts": {
+        "version": "7994d44005046d1413ea31d046577cdda33b8b2470f30281fd9c8b3c99fe2d96",
+        "signature": "7994d44005046d1413ea31d046577cdda33b8b2470f30281fd9c8b3c99fe2d96"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2016.d.ts": {
+        "version": "5f217838d25704474d9ef93774f04164889169ca31475fe423a9de6758f058d1",
+        "signature": "5f217838d25704474d9ef93774f04164889169ca31475fe423a9de6758f058d1"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2017.d.ts": {
+        "version": "459097c7bdd88fc5731367e56591e4f465f2c9de81a35427a7bd473165c34743",
+        "signature": "459097c7bdd88fc5731367e56591e4f465f2c9de81a35427a7bd473165c34743"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2018.d.ts": {
+        "version": "2edd3ddf436ef8e12df876dcae4ecd6a8748577944c477bf4b20d5596e0c9843",
+        "signature": "2edd3ddf436ef8e12df876dcae4ecd6a8748577944c477bf4b20d5596e0c9843"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2019.d.ts": {
+        "version": "0fc0f68d3f4d94aa65fab955592e4a9f2066e6f8ee2f66fcc45adf4037fc167b",
+        "signature": "0fc0f68d3f4d94aa65fab955592e4a9f2066e6f8ee2f66fcc45adf4037fc167b"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.esnext.d.ts": {
+        "version": "1c05c805f62c1c06a60b7812cd8de2dff7a5bda2218ce5edda5d9d298b1c48e1",
+        "signature": "1c05c805f62c1c06a60b7812cd8de2dff7a5bda2218ce5edda5d9d298b1c48e1"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.dom.d.ts": {
+        "version": "973df4e41aea3780ce77073777d37dd5896f684124f4c42409f3a832133837a4",
+        "signature": "973df4e41aea3780ce77073777d37dd5896f684124f4c42409f3a832133837a4"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.dom.iterable.d.ts": {
+        "version": "eb843da29336c7d5840bb439b24cf68a4a1652fd01c6e4e66ec74d8b136e944a",
+        "signature": "eb843da29336c7d5840bb439b24cf68a4a1652fd01c6e4e66ec74d8b136e944a"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.webworker.importscripts.d.ts": {
+        "version": "fe4e59403e34c7ff747abe4ff6abbc7718229556d7c1a5b93473fb53156c913b",
+        "signature": "fe4e59403e34c7ff747abe4ff6abbc7718229556d7c1a5b93473fb53156c913b"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.scripthost.d.ts": {
+        "version": "b9faa17292f17d2ad75e34fac77dd63a6403af1dba02d39cd0cbb9ffdf3de8b9",
+        "signature": "b9faa17292f17d2ad75e34fac77dd63a6403af1dba02d39cd0cbb9ffdf3de8b9"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.core.d.ts": {
+        "version": "2a0390a665763bcc90f0670e43c587928d8fefe2a94a11209c1e22cba7b09f52",
+        "signature": "2a0390a665763bcc90f0670e43c587928d8fefe2a94a11209c1e22cba7b09f52"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.collection.d.ts": {
+        "version": "dd94d8ef48c562389eb58af8df3a3a34d11367f7c818192aa5f16470d469e3f0",
+        "signature": "dd94d8ef48c562389eb58af8df3a3a34d11367f7c818192aa5f16470d469e3f0"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.generator.d.ts": {
+        "version": "828413486bdcaa342558e8e4570b1b287b776cb61b4b70b0214bd10c5d9a94c3",
+        "signature": "828413486bdcaa342558e8e4570b1b287b776cb61b4b70b0214bd10c5d9a94c3"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.iterable.d.ts": {
+        "version": "6c9f73334f8bf47aea685ca5b46a8f7e992a223e96fbceb030f26a4d2324ba21",
+        "signature": "6c9f73334f8bf47aea685ca5b46a8f7e992a223e96fbceb030f26a4d2324ba21"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.promise.d.ts": {
+        "version": "e6b8ff2798f8ebd7a1c7afd8671f2cb67ee1901c422f5964d74b0b34c6574ea2",
+        "signature": "e6b8ff2798f8ebd7a1c7afd8671f2cb67ee1901c422f5964d74b0b34c6574ea2"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.proxy.d.ts": {
+        "version": "5e72f949a89717db444e3bd9433468890068bb21a5638d8ab15a1359e05e54fe",
+        "signature": "5e72f949a89717db444e3bd9433468890068bb21a5638d8ab15a1359e05e54fe"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.reflect.d.ts": {
+        "version": "f5b242136ae9bfb1cc99a5971cccc44e99947ae6b5ef6fd8aa54b5ade553b976",
+        "signature": "f5b242136ae9bfb1cc99a5971cccc44e99947ae6b5ef6fd8aa54b5ade553b976"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.symbol.d.ts": {
+        "version": "9ae2860252d6b5f16e2026d8a2c2069db7b2a3295e98b6031d01337b96437230",
+        "signature": "9ae2860252d6b5f16e2026d8a2c2069db7b2a3295e98b6031d01337b96437230"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts": {
+        "version": "3e0a459888f32b42138d5a39f706ff2d55d500ab1031e0988b5568b0f67c2303",
+        "signature": "3e0a459888f32b42138d5a39f706ff2d55d500ab1031e0988b5568b0f67c2303"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2016.array.include.d.ts": {
+        "version": "3f96f1e570aedbd97bf818c246727151e873125d0512e4ae904330286c721bc0",
+        "signature": "3f96f1e570aedbd97bf818c246727151e873125d0512e4ae904330286c721bc0"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2017.object.d.ts": {
+        "version": "ff8ad203e83338289b0f5defc1a5b5c253fb7d251b464db497383f915a0df3f4",
+        "signature": "ff8ad203e83338289b0f5defc1a5b5c253fb7d251b464db497383f915a0df3f4"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts": {
+        "version": "b8667586a618c5cf64523d4e500ae39e781428abfb28f3de441fc66b56144b6f",
+        "signature": "b8667586a618c5cf64523d4e500ae39e781428abfb28f3de441fc66b56144b6f"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2017.string.d.ts": {
+        "version": "21df2e0059f14dcb4c3a0e125859f6b6ff01332ee24b0065a741d121250bc71c",
+        "signature": "21df2e0059f14dcb4c3a0e125859f6b6ff01332ee24b0065a741d121250bc71c"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2017.intl.d.ts": {
+        "version": "c1759cb171c7619af0d2234f2f8fb2a871ee88e956e2ed91bb61778e41f272c6",
+        "signature": "c1759cb171c7619af0d2234f2f8fb2a871ee88e956e2ed91bb61778e41f272c6"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2017.typedarrays.d.ts": {
+        "version": "28569d59e07d4378cb3d54979c4c60f9f06305c9bb6999ffe6cab758957adc46",
+        "signature": "28569d59e07d4378cb3d54979c4c60f9f06305c9bb6999ffe6cab758957adc46"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2018.asynciterable.d.ts": {
+        "version": "42102aaeb1bfec213be1e9777466a6d551eeba8567fed18c0cdbca8c35e3c6e4",
+        "signature": "42102aaeb1bfec213be1e9777466a6d551eeba8567fed18c0cdbca8c35e3c6e4"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2018.intl.d.ts": {
+        "version": "1b820b57379c726f94af50cd60053674af53ff9d079c1563cc70071e8b757dd0",
+        "signature": "1b820b57379c726f94af50cd60053674af53ff9d079c1563cc70071e8b757dd0"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2018.promise.d.ts": {
+        "version": "efe049114bad1035b0aa9a4a0359f50ab776e3897c411521e51d3013079cbd62",
+        "signature": "efe049114bad1035b0aa9a4a0359f50ab776e3897c411521e51d3013079cbd62"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2018.regexp.d.ts": {
+        "version": "e7780d04cd4120ee554c665829db2bbdd6b947cbaa3c150b7d9ea74df3beb2e8",
+        "signature": "e7780d04cd4120ee554c665829db2bbdd6b947cbaa3c150b7d9ea74df3beb2e8"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2019.array.d.ts": {
+        "version": "fc7c02b980e7dda0ed14d57ee71705c09efc51ec6286a10b971a25a3bb29262b",
+        "signature": "fc7c02b980e7dda0ed14d57ee71705c09efc51ec6286a10b971a25a3bb29262b"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2019.object.d.ts": {
+        "version": "989b95205f1189943fab0ce12a39c80570edf8f200aca60e0fdc500afc4d5859",
+        "signature": "989b95205f1189943fab0ce12a39c80570edf8f200aca60e0fdc500afc4d5859"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2019.string.d.ts": {
+        "version": "669427ac10ef9f52b6a7a502a66670eaabba675e0a660eb971041bd73c9894e3",
+        "signature": "669427ac10ef9f52b6a7a502a66670eaabba675e0a660eb971041bd73c9894e3"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2019.symbol.d.ts": {
+        "version": "7a842c21e0fe143eb3ad4d689a1470bab5ed9bc7fd7223fe8b56cbae27038d62",
+        "signature": "7a842c21e0fe143eb3ad4d689a1470bab5ed9bc7fd7223fe8b56cbae27038d62"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.esnext.intl.d.ts": {
+        "version": "f6e0c89daaf72eac38dfb1d5ef0972183f7f26a68da15bfe5bcb7cfccf0c7db8",
+        "signature": "f6e0c89daaf72eac38dfb1d5ef0972183f7f26a68da15bfe5bcb7cfccf0c7db8"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.esnext.bigint.d.ts": {
+        "version": "63b66918290d794f73832a6d0325be5026236674fe8c0cb0b68d162000d7bbe8",
+        "signature": "63b66918290d794f73832a6d0325be5026236674fe8c0cb0b68d162000d7bbe8"
+      },
+      "d:/projects/bakery/node_modules/typescript/lib/lib.esnext.full.d.ts": {
+        "version": "b209a815904a485328677714ef8c4ddd2dcf4040154fa204d25cbf31cd4ff0f3",
+        "signature": "b209a815904a485328677714ef8c4ddd2dcf4040154fa204d25cbf31cd4ff0f3"
+      },
+      "d:/projects/bakery/node_modules/@types/events/index.d.ts": {
+        "version": "400db42c3a46984118bff14260d60cec580057dc1ab4c2d7310beb643e4f5935",
+        "signature": "400db42c3a46984118bff14260d60cec580057dc1ab4c2d7310beb643e4f5935"
+      },
+      "d:/projects/bakery/node_modules/@types/node/globals.d.ts": {
+        "version": "e4461b72726848da76a31153b6b01af5e0be3b08dbfa2ec5741ad302eb20f2ed",
+        "signature": "e4461b72726848da76a31153b6b01af5e0be3b08dbfa2ec5741ad302eb20f2ed"
+      },
+      "d:/projects/bakery/node_modules/@types/node/assert.d.ts": {
+        "version": "58a52f282f1dad18179023804c1f3a7536bf875748a0a314abd43f60fd5b244f",
+        "signature": "58a52f282f1dad18179023804c1f3a7536bf875748a0a314abd43f60fd5b244f"
+      },
+      "d:/projects/bakery/node_modules/@types/node/async_hooks.d.ts": {
+        "version": "1305b079a057355f496bdde048716189178877a6b4fe0e9267a46af67f8c7561",
+        "signature": "1305b079a057355f496bdde048716189178877a6b4fe0e9267a46af67f8c7561"
+      },
+      "d:/projects/bakery/node_modules/@types/node/buffer.d.ts": {
+        "version": "61215c1a376bbe8f51cab4cc4ddbf3746387015113c37a84d981d4738c21b878",
+        "signature": "61215c1a376bbe8f51cab4cc4ddbf3746387015113c37a84d981d4738c21b878"
+      },
+      "d:/projects/bakery/node_modules/@types/node/child_process.d.ts": {
+        "version": "123366127434e33eade36f3d06653dbc7457397fc93cfdd100776cfc12b6734c",
+        "signature": "123366127434e33eade36f3d06653dbc7457397fc93cfdd100776cfc12b6734c"
+      },
+      "d:/projects/bakery/node_modules/@types/node/cluster.d.ts": {
+        "version": "ce629710e5e58724902b753212e97861fd73e2aa09f5d88cb6d55dc763cf8c8a",
+        "signature": "ce629710e5e58724902b753212e97861fd73e2aa09f5d88cb6d55dc763cf8c8a"
+      },
+      "d:/projects/bakery/node_modules/@types/node/console.d.ts": {
+        "version": "525c8fc510d9632d2a0a9de2d41c3ac1cdd79ff44d3b45c6d81cacabb683528d",
+        "signature": "525c8fc510d9632d2a0a9de2d41c3ac1cdd79ff44d3b45c6d81cacabb683528d"
+      },
+      "d:/projects/bakery/node_modules/@types/node/constants.d.ts": {
+        "version": "8ce9418c78d3c1fb703ddbe38c936d34a989ba278666979826590dfa0772a424",
+        "signature": "8ce9418c78d3c1fb703ddbe38c936d34a989ba278666979826590dfa0772a424"
+      },
+      "d:/projects/bakery/node_modules/@types/node/crypto.d.ts": {
+        "version": "77c1fb6a190212f87a5edb26351d419c31dff1992c48707540cdcf812e4655f1",
+        "signature": "77c1fb6a190212f87a5edb26351d419c31dff1992c48707540cdcf812e4655f1"
+      },
+      "d:/projects/bakery/node_modules/@types/node/dgram.d.ts": {
+        "version": "7954df44c35d39b851b996fdc1af0a252e4e23f862abfef388a058203bb94c30",
+        "signature": "7954df44c35d39b851b996fdc1af0a252e4e23f862abfef388a058203bb94c30"
+      },
+      "d:/projects/bakery/node_modules/@types/node/dns.d.ts": {
+        "version": "ef226a42de7022eacdfa0f15aabf73b46c47af93044c8ebfab8aa8e3cf6c330c",
+        "signature": "ef226a42de7022eacdfa0f15aabf73b46c47af93044c8ebfab8aa8e3cf6c330c"
+      },
+      "d:/projects/bakery/node_modules/@types/node/domain.d.ts": {
+        "version": "d5b7c8819ce1bd31a45f7675309e145ec28e3aa1b60a8e0637fd0e8916255baa",
+        "signature": "d5b7c8819ce1bd31a45f7675309e145ec28e3aa1b60a8e0637fd0e8916255baa"
+      },
+      "d:/projects/bakery/node_modules/@types/node/events.d.ts": {
+        "version": "0be551fde848d5adde38731272ee980bda2bde0f8bf2a76ce99e01b86985546c",
+        "signature": "0be551fde848d5adde38731272ee980bda2bde0f8bf2a76ce99e01b86985546c"
+      },
+      "d:/projects/bakery/node_modules/@types/node/fs.d.ts": {
+        "version": "6bd120d96313412155ae7d4766d586a38576a058b3e269be2152db7030fbc882",
+        "signature": "6bd120d96313412155ae7d4766d586a38576a058b3e269be2152db7030fbc882"
+      },
+      "d:/projects/bakery/node_modules/@types/node/http.d.ts": {
+        "version": "db6de49919cf11a300f9203371d8e251d58558c509b3b92cee3badadfdb34d36",
+        "signature": "db6de49919cf11a300f9203371d8e251d58558c509b3b92cee3badadfdb34d36"
+      },
+      "d:/projects/bakery/node_modules/@types/node/http2.d.ts": {
+        "version": "745494f14a9e133beee622ca51cdc59c8896ff77c9f3cd017a4ce735b30dac2d",
+        "signature": "745494f14a9e133beee622ca51cdc59c8896ff77c9f3cd017a4ce735b30dac2d"
+      },
+      "d:/projects/bakery/node_modules/@types/node/https.d.ts": {
+        "version": "dacbe08610729f6343ea9880ea8e737c6d7a6efa4a318d8f6acaf85db4aceed6",
+        "signature": "dacbe08610729f6343ea9880ea8e737c6d7a6efa4a318d8f6acaf85db4aceed6"
+      },
+      "d:/projects/bakery/node_modules/@types/node/inspector.d.ts": {
+        "version": "4218ced3933a31eed1278d350dd63c5900df0f0904f57d61c054d7a4b83dbe4c",
+        "signature": "4218ced3933a31eed1278d350dd63c5900df0f0904f57d61c054d7a4b83dbe4c"
+      },
+      "d:/projects/bakery/node_modules/@types/node/module.d.ts": {
+        "version": "03394bf8deb8781b490ae9266a843fbdf00647947d79e25fcbf1d89a9e9c8a66",
+        "signature": "03394bf8deb8781b490ae9266a843fbdf00647947d79e25fcbf1d89a9e9c8a66"
+      },
+      "d:/projects/bakery/node_modules/@types/node/net.d.ts": {
+        "version": "1224b49e2c8f3b4ed618969d2989412d1282536d2a6a31c30c84d5da01d8b8e4",
+        "signature": "1224b49e2c8f3b4ed618969d2989412d1282536d2a6a31c30c84d5da01d8b8e4"
+      },
+      "d:/projects/bakery/node_modules/@types/node/os.d.ts": {
+        "version": "1a6016bd905855b2b45881e9edbd7ab8c7175f8bcbb711ff06989c4bcdc75486",
+        "signature": "1a6016bd905855b2b45881e9edbd7ab8c7175f8bcbb711ff06989c4bcdc75486"
+      },
+      "d:/projects/bakery/node_modules/@types/node/path.d.ts": {
+        "version": "5fb30076f0e0e5744db8993648bfb67aadd895f439edad5cce039127a87a8a36",
+        "signature": "5fb30076f0e0e5744db8993648bfb67aadd895f439edad5cce039127a87a8a36"
+      },
+      "d:/projects/bakery/node_modules/@types/node/perf_hooks.d.ts": {
+        "version": "27ef4001526ee9d8afa57687a60bb3b59c52b32d29db0a2260094ab64726164f",
+        "signature": "27ef4001526ee9d8afa57687a60bb3b59c52b32d29db0a2260094ab64726164f"
+      },
+      "d:/projects/bakery/node_modules/@types/node/process.d.ts": {
+        "version": "3a8848a9c307429b861402cc69bc472ffe0c05b86474fc158723169161e16389",
+        "signature": "3a8848a9c307429b861402cc69bc472ffe0c05b86474fc158723169161e16389"
+      },
+      "d:/projects/bakery/node_modules/@types/node/punycode.d.ts": {
+        "version": "30ec6f9c683b988c3cfaa0c4690692049c4e7ed7dc6f6e94f56194c06b86f5e1",
+        "signature": "30ec6f9c683b988c3cfaa0c4690692049c4e7ed7dc6f6e94f56194c06b86f5e1"
+      },
+      "d:/projects/bakery/node_modules/@types/node/querystring.d.ts": {
+        "version": "e0070c45bf15b872f58eee948f71ad6f4f424f36330b2477753fc1aed3ece36e",
+        "signature": "e0070c45bf15b872f58eee948f71ad6f4f424f36330b2477753fc1aed3ece36e"
+      },
+      "d:/projects/bakery/node_modules/@types/node/readline.d.ts": {
+        "version": "b0bc3b2fd4113d182da1af2442ac532b987401579b291669859b60a261b7ee24",
+        "signature": "b0bc3b2fd4113d182da1af2442ac532b987401579b291669859b60a261b7ee24"
+      },
+      "d:/projects/bakery/node_modules/@types/node/repl.d.ts": {
+        "version": "65dbe15ed8a8ed5d4707a63868178dc38111cfc06de28a2e50713ca017a9c157",
+        "signature": "65dbe15ed8a8ed5d4707a63868178dc38111cfc06de28a2e50713ca017a9c157"
+      },
+      "d:/projects/bakery/node_modules/@types/node/stream.d.ts": {
+        "version": "2350c09d0121a0b22c386a7bb8436d521b444c6b4b3e6ee37197d08a23f3b9dd",
+        "signature": "2350c09d0121a0b22c386a7bb8436d521b444c6b4b3e6ee37197d08a23f3b9dd"
+      },
+      "d:/projects/bakery/node_modules/@types/node/string_decoder.d.ts": {
+        "version": "7e62aac2cc9c0710d772047ad89e8d7117f52592c791eb995ce1f865fedab432",
+        "signature": "7e62aac2cc9c0710d772047ad89e8d7117f52592c791eb995ce1f865fedab432"
+      },
+      "d:/projects/bakery/node_modules/@types/node/timers.d.ts": {
+        "version": "b40652bf8ce4a18133b31349086523b219724dca8df3448c1a0742528e7ad5b9",
+        "signature": "b40652bf8ce4a18133b31349086523b219724dca8df3448c1a0742528e7ad5b9"
+      },
+      "d:/projects/bakery/node_modules/@types/node/tls.d.ts": {
+        "version": "af5f07deb33b2fb92ef67ea5ebb69670b81c74908b646e7cd4361a331d2a558a",
+        "signature": "af5f07deb33b2fb92ef67ea5ebb69670b81c74908b646e7cd4361a331d2a558a"
+      },
+      "d:/projects/bakery/node_modules/@types/node/trace_events.d.ts": {
+        "version": "978aecd2e6bc2ac094e9a35eda98ff8586713857b3655e7c98ca5ed8f7d50662",
+        "signature": "978aecd2e6bc2ac094e9a35eda98ff8586713857b3655e7c98ca5ed8f7d50662"
+      },
+      "d:/projects/bakery/node_modules/@types/node/tty.d.ts": {
+        "version": "08261bfa763b8cd7fa74c06debf70ee22268c299a18e5dc7c48736bc352be007",
+        "signature": "08261bfa763b8cd7fa74c06debf70ee22268c299a18e5dc7c48736bc352be007"
+      },
+      "d:/projects/bakery/node_modules/@types/node/url.d.ts": {
+        "version": "1e3da92862604b1f7a32265169f9aa712c4567742d42597704e04ae3e07019e7",
+        "signature": "1e3da92862604b1f7a32265169f9aa712c4567742d42597704e04ae3e07019e7"
+      },
+      "d:/projects/bakery/node_modules/@types/node/util.d.ts": {
+        "version": "0f6382d5032e45eec50b8f6c1e18c77544bc4db2ef8f854d196b254ec16add12",
+        "signature": "0f6382d5032e45eec50b8f6c1e18c77544bc4db2ef8f854d196b254ec16add12"
+      },
+      "d:/projects/bakery/node_modules/@types/node/v8.d.ts": {
+        "version": "e98d697adf809fc14dc88ed4e00e4f0e0e381ca23d6d9320cf01af87e801f725",
+        "signature": "e98d697adf809fc14dc88ed4e00e4f0e0e381ca23d6d9320cf01af87e801f725"
+      },
+      "d:/projects/bakery/node_modules/@types/node/vm.d.ts": {
+        "version": "ad20b1311e55187f8eeefdd282a02dbc70e5ac0cf8ab4cabae99c142b32cc562",
+        "signature": "ad20b1311e55187f8eeefdd282a02dbc70e5ac0cf8ab4cabae99c142b32cc562"
+      },
+      "d:/projects/bakery/node_modules/@types/node/worker_threads.d.ts": {
+        "version": "7780573ed8387aaadcc61d87f3d60d77dabf1e060da252dc72ab1d73401988bb",
+        "signature": "7780573ed8387aaadcc61d87f3d60d77dabf1e060da252dc72ab1d73401988bb"
+      },
+      "d:/projects/bakery/node_modules/@types/node/zlib.d.ts": {
+        "version": "2ffd50644d73fc1fa59c69d48859b6c843d3604609d7353725b6d2b001f05a2b",
+        "signature": "2ffd50644d73fc1fa59c69d48859b6c843d3604609d7353725b6d2b001f05a2b"
+      },
+      "d:/projects/bakery/node_modules/@types/node/base.d.ts": {
+        "version": "6622f76993bdfeaacb947ba7c4cf26f2e5c5194194d02d792c3cba4174cd8fce",
+        "signature": "6622f76993bdfeaacb947ba7c4cf26f2e5c5194194d02d792c3cba4174cd8fce"
+      },
+      "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts": {
+        "version": "4f54f0a9dd3b644c99ec32b32f8804d5978bc854799b228ae9c467bf3c84c64c",
+        "signature": "4f54f0a9dd3b644c99ec32b32f8804d5978bc854799b228ae9c467bf3c84c64c"
+      },
+      "d:/projects/bakery/node_modules/@types/node/ts3.2/globals.d.ts": {
+        "version": "4926e99d2ad39c0bbd36f2d37cc8f52756bc7a5661ad7b12815df871a4b07ba1",
+        "signature": "4926e99d2ad39c0bbd36f2d37cc8f52756bc7a5661ad7b12815df871a4b07ba1"
+      },
+      "d:/projects/bakery/node_modules/@types/node/ts3.2/index.d.ts": {
+        "version": "765fc34423b93c2ab763670d8d11d99e5f47387c13c161d6f1640dd6d91b7d1c",
+        "signature": "765fc34423b93c2ab763670d8d11d99e5f47387c13c161d6f1640dd6d91b7d1c"
+      },
+      "d:/projects/bakery/node_modules/@types/ws/index.d.ts": {
+        "version": "2412f764f3a1f9ad6229beba713c4f9b7e78da605d4881a5324f65312a49070f",
+        "signature": "2412f764f3a1f9ad6229beba713c4f9b7e78da605d4881a5324f65312a49070f"
+      },
+      "d:/projects/bakery/node_modules/discord.js/typings/index.d.ts": {
+        "version": "63a9ed0f5846a2a06571df89c0957a1d3b03bbc27b8d350e9bf789ce1604a5e0",
+        "signature": "63a9ed0f5846a2a06571df89c0957a1d3b03bbc27b8d350e9bf789ce1604a5e0"
+      },
+      "d:/projects/bakery/node_modules/sequelize/types/lib/data-types.d.ts": {
+        "version": "90f0eb36d6cca7e856726c478d061c40c869d184012e2912098269ffc904417f",
+        "signature": "90f0eb36d6cca7e856726c478d061c40c869d184012e2912098269ffc904417f"
+      },
+      "d:/projects/bakery/node_modules/sequelize/types/lib/deferrable.d.ts": {
+        "version": "c0f575e9f7005738c3470854fa23817120457d870b1a58eadb3b3212d38aaa80",
+        "signature": "c0f575e9f7005738c3470854fa23817120457d870b1a58eadb3b3212d38aaa80"
+      },
+      "d:/projects/bakery/node_modules/sequelize/types/lib/operators.d.ts": {
+        "version": "a7818a1e2dd61f3679bbdd0d7eaf2a27293f982f4d6f63ea5494bc8af307f80e",
+        "signature": "a7818a1e2dd61f3679bbdd0d7eaf2a27293f982f4d6f63ea5494bc8af307f80e"
+      },
+      "d:/projects/bakery/node_modules/sequelize/types/lib/query-types.d.ts": {
+        "version": "0c098f6d249616469e6d9e2c584145c8e9299297b472d77ca348d293fe3ffd80",
+        "signature": "0c098f6d249616469e6d9e2c584145c8e9299297b472d77ca348d293fe3ffd80"
+      },
+      "d:/projects/bakery/node_modules/sequelize/types/lib/table-hints.d.ts": {
+        "version": "fd7d0017b5f33a8a58e07d0c15a93387250ae1d627170ecec68f0a93960cc02b",
+        "signature": "fd7d0017b5f33a8a58e07d0c15a93387250ae1d627170ecec68f0a93960cc02b"
+      },
+      "d:/projects/bakery/node_modules/sequelize/types/lib/index-hints.d.ts": {
+        "version": "334236475f89849f4373639c9053809ec3ee48f20f859f96e3cd3f0eff770921",
+        "signature": "334236475f89849f4373639c9053809ec3ee48f20f859f96e3cd3f0eff770921"
+      },
+      "d:/projects/bakery/node_modules/sequelize/types/lib/associations/base.d.ts": {
+        "version": "0172ff182c1f2ae6ee5860ddfd78604dbf614479ee956fc2c2a36afa3b5cdf0e",
+        "signature": "0172ff182c1f2ae6ee5860ddfd78604dbf614479ee956fc2c2a36afa3b5cdf0e"
+      },
+      "d:/projects/bakery/node_modules/@types/bluebird/index.d.ts": {
+        "version": "3c10804e3bd90aa404eefbc300c362b0ebbd23b34eb03ae592717ac111889f34",
+        "signature": "3c10804e3bd90aa404eefbc300c362b0ebbd23b34eb03ae592717ac111889f34"
+      },
+      "d:/projects/bakery/node_modules/sequelize/types/lib/promise.d.ts": {
+        "version": "862aa0da286f46c1086c70219041443734b736a95354f6093c8de69ff11ece0d",
+        "signature": "862aa0da286f46c1086c70219041443734b736a95354f6093c8de69ff11ece0d"
+      },
+      "d:/projects/bakery/node_modules/sequelize/types/lib/associations/belongs-to.d.ts": {
+        "version": "568bb132f3579ed42352a9be5cf665cb96eb24482469c6168c9e6f4f7e55317f",
+        "signature": "568bb132f3579ed42352a9be5cf665cb96eb24482469c6168c9e6f4f7e55317f"
+      },
+      "d:/projects/bakery/node_modules/sequelize/types/lib/associations/has-one.d.ts": {
+        "version": "440e67038df2ba260de32578f314624eeb3ec5e73df4129fcee7df4e58511440",
+        "signature": "440e67038df2ba260de32578f314624eeb3ec5e73df4129fcee7df4e58511440"
+      },
+      "d:/projects/bakery/node_modules/sequelize/types/lib/associations/has-many.d.ts": {
+        "version": "1f9fccfe2edb2aa718114c7491b12d4c6edfc9ff4d0510d0ccdd48941d5770a0",
+        "signature": "1f9fccfe2edb2aa718114c7491b12d4c6edfc9ff4d0510d0ccdd48941d5770a0"
+      },
+      "d:/projects/bakery/node_modules/sequelize/types/lib/instance-validator.d.ts": {
+        "version": "60acbc6cb20f43833c5fe4eb204bfe9ea5dcc4eff54c3cffbb9c8850a5c0b7cf",
+        "signature": "60acbc6cb20f43833c5fe4eb204bfe9ea5dcc4eff54c3cffbb9c8850a5c0b7cf"
+      },
+      "d:/projects/bakery/node_modules/sequelize/types/lib/hooks.d.ts": {
+        "version": "1d5de882d78a0cb5aaa1da6b94936ea449cf5924fa47d6cded9221edba80069c",
+        "signature": "1d5de882d78a0cb5aaa1da6b94936ea449cf5924fa47d6cded9221edba80069c"
+      },
+      "d:/projects/bakery/node_modules/sequelize/types/lib/model-manager.d.ts": {
+        "version": "6b41e2c79936d58d2cc9749264df7e9f5e93866d450a89cb5d880ca4c9ff9e5e",
+        "signature": "6b41e2c79936d58d2cc9749264df7e9f5e93866d450a89cb5d880ca4c9ff9e5e"
+      },
+      "d:/projects/bakery/node_modules/sequelize/types/lib/query-interface.d.ts": {
+        "version": "224b0a36c1f02a0a37ba98aabeca608ef212aba78abbc3d14e0cb7ec51585569",
+        "signature": "224b0a36c1f02a0a37ba98aabeca608ef212aba78abbc3d14e0cb7ec51585569"
+      },
+      "d:/projects/bakery/node_modules/@types/validator/index.d.ts": {
+        "version": "aec25267628c2fb3b1435d4c370379b06324300c4f716b315559b8b74d610abc",
+        "signature": "aec25267628c2fb3b1435d4c370379b06324300c4f716b315559b8b74d610abc"
+      },
+      "d:/projects/bakery/node_modules/sequelize/types/lib/utils/validator-extras.d.ts": {
+        "version": "3b9e650cf228a1d63f90e018be93b4e77e2250c563006559a77a617a3d5bae2e",
+        "signature": "3b9e650cf228a1d63f90e018be93b4e77e2250c563006559a77a617a3d5bae2e"
+      },
+      "d:/projects/bakery/node_modules/sequelize/types/lib/connection-manager.d.ts": {
+        "version": "a945a2e45ea5ea22941d21aa7b92dc7b587cec6a7588fd04480c9db11c964c2f",
+        "signature": "a945a2e45ea5ea22941d21aa7b92dc7b587cec6a7588fd04480c9db11c964c2f"
+      },
+      "d:/projects/bakery/node_modules/sequelize/types/lib/sequelize.d.ts": {
+        "version": "b4a1fd966b751cd796b5a875c9d35c913d1318988b4559cf35b5d4792b0c05fc",
+        "signature": "b4a1fd966b751cd796b5a875c9d35c913d1318988b4559cf35b5d4792b0c05fc"
+      },
+      "d:/projects/bakery/node_modules/sequelize/types/lib/transaction.d.ts": {
+        "version": "b4d5e6a16f526390bafd1a59393ff9998ada5a379664e8ab60a4f90e31d70a3c",
+        "signature": "b4d5e6a16f526390bafd1a59393ff9998ada5a379664e8ab60a4f90e31d70a3c"
+      },
+      "d:/projects/bakery/node_modules/sequelize/types/lib/associations/belongs-to-many.d.ts": {
+        "version": "5894d46bd482730aff62c0811ca2df714320ffae6052dffbc2f2643910983c8b",
+        "signature": "5894d46bd482730aff62c0811ca2df714320ffae6052dffbc2f2643910983c8b"
+      },
+      "d:/projects/bakery/node_modules/sequelize/types/lib/associations/index.d.ts": {
+        "version": "47d01ed73d26a694589ea1e020f8edf31cb0640d82096203672bb603d82e7166",
+        "signature": "47d01ed73d26a694589ea1e020f8edf31cb0640d82096203672bb603d82e7166"
+      },
+      "d:/projects/bakery/node_modules/sequelize/types/lib/model.d.ts": {
+        "version": "a6de3c2de74d72f13d0a76d37d6c1a1f0f08aa967623a7c1729fe67e7bf20e87",
+        "signature": "a6de3c2de74d72f13d0a76d37d6c1a1f0f08aa967623a7c1729fe67e7bf20e87"
+      },
+      "d:/projects/bakery/node_modules/sequelize/types/lib/utils.d.ts": {
+        "version": "70219c091b0f30dea9d812db26d249a949385cd6027a8daf237415835ebdac35",
+        "signature": "70219c091b0f30dea9d812db26d249a949385cd6027a8daf237415835ebdac35"
+      },
+      "d:/projects/bakery/node_modules/sequelize/types/lib/errors.d.ts": {
+        "version": "b7054e4b1292a6edfc445b85a180cba40a2ebd0c5ea09a0247456abe7e0cfb67",
+        "signature": "b7054e4b1292a6edfc445b85a180cba40a2ebd0c5ea09a0247456abe7e0cfb67"
+      },
+      "d:/projects/bakery/node_modules/sequelize/types/index.d.ts": {
+        "version": "3fc2a338f78db7f9a154421ff69b0ddc374141625e5fedc5f5ea8048648b0a36",
+        "signature": "3fc2a338f78db7f9a154421ff69b0ddc374141625e5fedc5f5ea8048648b0a36"
+      },
+      "d:/projects/bakery/src/auth.json": {
+        "version": "a09255343bad7cd8491ae5329baab3b838b479413b37151c78d5e20345e9343e"
+      },
+      "d:/projects/bakery/src/modules/constants.ts": {
+        "version": "9b4cc6b234491a5eb36390cd6a80477913ab230a9268e78fa8df4da92b7c7fa2",
+        "signature": "fda82149ee503437c21147d678b9b2e3dc166ad8ad1464aa9a40d5a6fe63dda5"
+      },
+      "d:/projects/bakery/src/modules/sql.ts": {
+        "version": "085fca86c2ff51c1e776273dc2506bc68a0bb5546dbb33a3ba7a1d0a4897359a",
+        "signature": "8e3b03bc45853584347b0aeedd58f5791f9686cb5c48f199d7ad9de256e19010"
+      },
+      "d:/projects/bakery/src/modules/utils.ts": {
+        "version": "08df16f6808cc2ffa0a4818d037c0ae1a3f0f4e2ffc5d3a9aa77e8eaf04873b2",
+        "signature": "597df48f842d721af82bcecad73cee5ea975211de036d55cb298701966d2a93b"
+      },
+      "d:/projects/bakery/node_modules/@types/minimatch/index.d.ts": {
+        "version": "1d1e6bd176eee5970968423d7e215bfd66828b6db8d54d17afec05a831322633",
+        "signature": "1d1e6bd176eee5970968423d7e215bfd66828b6db8d54d17afec05a831322633"
+      },
+      "d:/projects/bakery/node_modules/@types/glob/index.d.ts": {
+        "version": "d852d6282c8dc8156d26d6bda83ab4bde51fee05ba2fe0ecdc165ddda009d3ee",
+        "signature": "d852d6282c8dc8156d26d6bda83ab4bde51fee05ba2fe0ecdc165ddda009d3ee"
+      },
+      "d:/projects/bakery/src/modules/permissions.ts": {
+        "version": "660226c6bd21771121dc5f696ad9f5019f5482c5b2ea5347d0ca3344045ca932",
+        "signature": "59d4817a8b31a676433b894a2e8b4530153ff8123f33890dfa57702d1a92d546"
+      },
+      "d:/projects/bakery/node_modules/chalk/types/index.d.ts": {
+        "version": "091f417275a51ab3c47b949723e9e8a193012157ecc64a96e2d7b1505e82f395",
+        "signature": "091f417275a51ab3c47b949723e9e8a193012157ecc64a96e2d7b1505e82f395"
+      },
+      "d:/projects/bakery/src/structures/command.struct.ts": {
+        "version": "0bb0864166db3ca9ec73c8f0ba6e7229e3d0ede088d0117903ebff7a091d7942",
+        "signature": "62e073e4980303249c041350275d710e1eead8c16ea7e224cd5acc9b297361e9"
+      },
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/common.d.ts": {
+        "version": "4025cf62742c5bb3d383c8a62342481622c87e3397ea5e7b7baab18b9efd5798",
+        "signature": "4025cf62742c5bb3d383c8a62342481622c87e3397ea5e7b7baab18b9efd5798"
+      },
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/array.d.ts": {
+        "version": "80bcf7af2e82d675144a547960b4fbc72d145af19a961fed3573323703d7d2ec",
+        "signature": "80bcf7af2e82d675144a547960b4fbc72d145af19a961fed3573323703d7d2ec"
+      },
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/collection.d.ts": {
+        "version": "0c75b204aed9cf6ff1c7b4bed87a3ece0d9d6fc857a6350c0c95ed0c38c814e8",
+        "signature": "0c75b204aed9cf6ff1c7b4bed87a3ece0d9d6fc857a6350c0c95ed0c38c814e8"
+      },
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/date.d.ts": {
+        "version": "187119ff4f9553676a884e296089e131e8cc01691c546273b1d0089c3533ce42",
+        "signature": "187119ff4f9553676a884e296089e131e8cc01691c546273b1d0089c3533ce42"
+      },
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/function.d.ts": {
+        "version": "45bf6da7cede8211b7d0579deabfa227490dfe8b932a56a962599efc48356e68",
+        "signature": "45bf6da7cede8211b7d0579deabfa227490dfe8b932a56a962599efc48356e68"
+      },
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/lang.d.ts": {
+        "version": "c2d47e5668f89ed8768d306919c42bb88d50d4029d68f58343141360895cfcc0",
+        "signature": "c2d47e5668f89ed8768d306919c42bb88d50d4029d68f58343141360895cfcc0"
+      },
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/math.d.ts": {
+        "version": "65648639567d214f62c1b21d200c852807e68bdb08311f95ab6f526ef5b98995",
+        "signature": "65648639567d214f62c1b21d200c852807e68bdb08311f95ab6f526ef5b98995"
+      },
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/number.d.ts": {
+        "version": "00baffbe8a2f2e4875367479489b5d43b5fc1429ecb4a4cc98cfc3009095f52a",
+        "signature": "00baffbe8a2f2e4875367479489b5d43b5fc1429ecb4a4cc98cfc3009095f52a"
+      },
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/object.d.ts": {
+        "version": "a46a28781991cd761431784ea72cb7772f4a9155a7ee78f0b040088e856ed9a2",
+        "signature": "a46a28781991cd761431784ea72cb7772f4a9155a7ee78f0b040088e856ed9a2"
+      },
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/seq.d.ts": {
+        "version": "3c92b6dfd43cc1c2485d9eba5ff0b74a19bb8725b692773ef1d66dac48cda4bd",
+        "signature": "3c92b6dfd43cc1c2485d9eba5ff0b74a19bb8725b692773ef1d66dac48cda4bd"
+      },
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/string.d.ts": {
+        "version": "e34f3f6159b1e23de9bb5521382795aaa5aaed6f53b4702e70a2ec45bc76ddb5",
+        "signature": "e34f3f6159b1e23de9bb5521382795aaa5aaed6f53b4702e70a2ec45bc76ddb5"
+      },
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/util.d.ts": {
+        "version": "c84107ce3522799b7a821463b1743ef230669093b2746afd1e817fcbb5885e67",
+        "signature": "c84107ce3522799b7a821463b1743ef230669093b2746afd1e817fcbb5885e67"
+      },
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/index.d.ts": {
+        "version": "bbf144d4354e2aaa6439f32761f3ee798cc68d1600adab6e2a596f25269f106d",
+        "signature": "bbf144d4354e2aaa6439f32761f3ee798cc68d1600adab6e2a596f25269f106d"
+      },
+      "d:/projects/bakery/src/modules/interfaces.ts": {
+        "version": "47d761ee95676cad220ca57d16a88a42d52a145b14f4942acb84321bb89df5ef",
+        "signature": "8df320a9d744b5e15400f6a3dbe148b409289f0a3df1a1bcb980d1b9471121e5"
+      },
+      "d:/projects/bakery/node_modules/@types/string-similarity/index.d.ts": {
+        "version": "c68dc28062d585a5cff878dd85d499f0490c055c438e68cbaa55ed4290b5658c",
+        "signature": "c68dc28062d585a5cff878dd85d499f0490c055c438e68cbaa55ed4290b5658c"
+      },
+      "d:/projects/bakery/src/structures/client.struct.ts": {
+        "version": "b5e85bde3698bf601a70709991ce65543794153fd77b34060a773c8037c69e63",
+        "signature": "8e7ea638a2b4a8abac2494187fe3b472271d2601d74974c144450e5728f7d5ce"
+      },
+      "d:/projects/bakery/src/modules/client.ts": {
+        "version": "2717b86a06c6bf5edbcaec8df9b6d8cd9e133063fa3d922f0159408d599aa115",
+        "signature": "729cf8fb26c3cdcfb9920e3fdfacc3dfe9d0868e59e351a24efea7b28016cc57"
+      },
+      "d:/projects/bakery/src/bot.ts": {
+        "version": "7b5ffb4dce055f44a91764d4ae4dde2dbbef42d321cfc40813a5b38af2c0eebb",
+        "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6"
+      },
+      "d:/projects/bakery/src/commands/test.cmd.ts": {
+        "version": "ae5eabc38e6c9ad77f6fc169b63d6527b3903ded97854f971a9751c9ca0f4737",
+        "signature": "717cddd68e3c05542ce33ba4422f8ef982abe46e3def54b04686b3f6951b549b"
+      },
+      "d:/projects/bakery/src/events/message.event.ts": {
+        "version": "339c996695fa7e1fa58a21cf7c9e65c6b215fce54206c98632b229435524f657",
+        "signature": "d4cf757c49a989262b31a8c94fbe1da63cf189ed15409088089f65e88041475c"
+      },
+      "d:/projects/bakery/src/events/modelsloaded.event.ts": {
+        "version": "425a024154c8ffed8f7bc936285138ff4b54e09b8a5415be8c9991876532df1a",
+        "signature": "3b74cdde716b656dcbf218528e1d7e66ccca7741778345b05dc00398bf3a1d7e"
+      },
+      "d:/projects/bakery/src/events/ready.event.ts": {
+        "version": "9daa9800a7963c4f518f6a1edb95bd458e08dcf05847f34a208e053dbb9c2b74",
+        "signature": "3b74cdde716b656dcbf218528e1d7e66ccca7741778345b05dc00398bf3a1d7e"
+      },
+      "d:/projects/bakery/src/modules/extensions.ts": {
+        "version": "75efe6aaad55e9254e5b51758e6e946c6be77cf175e85fb2df5737e22fd8b271",
+        "signature": "1a9f631964187a5f196fc803649f341c9827e383e2ee29549a0050b4ec8b75af"
+      }
+    },
+    "options": {
+      "resolveJsonModule": true,
+      "incremental": true,
+      "target": 8,
+      "module": 1,
+      "outDir": "D:/projects/bakery/dist/",
+      "rootDir": "D:/projects/bakery/src/",
+      "strict": true,
+      "esModuleInterop": true,
+      "configFilePath": "D:/projects/bakery/tsconfig.json"
+    },
+    "referencedMap": {
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es5.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2016.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2017.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2018.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2019.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.esnext.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.dom.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.dom.iterable.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.webworker.importscripts.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.scripthost.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.core.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.collection.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.generator.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.iterable.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.promise.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.proxy.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.reflect.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.symbol.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2016.array.include.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2017.object.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2017.string.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2017.intl.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2017.typedarrays.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2018.asynciterable.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2018.intl.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2018.promise.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2018.regexp.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2019.array.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2019.object.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2019.string.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2019.symbol.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.esnext.intl.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.esnext.bigint.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.esnext.full.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/events/index.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/globals.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/assert.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/async_hooks.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/buffer.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/child_process.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/net.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/stream.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/cluster.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/child_process.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/net.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/console.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/constants.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/crypto.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/stream.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/dgram.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/net.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/dns.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/dns.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/domain.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/events.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/fs.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/stream.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/url.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/http.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/stream.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/url.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/net.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/http2.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/fs.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/net.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/stream.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/tls.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/url.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/http.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/https.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/tls.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/http.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/url.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/inspector.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/module.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/net.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/stream.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/dns.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/os.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/path.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/perf_hooks.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/async_hooks.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/process.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/punycode.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/querystring.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/readline.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/stream.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/repl.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/readline.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/vm.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/stream.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/string_decoder.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/timers.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/tls.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/crypto.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/dns.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/net.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/stream.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/trace_events.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/tty.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/net.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/url.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/querystring.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/util.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/v8.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/stream.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/vm.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/worker_threads.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/vm.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/stream.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/zlib.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/stream.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/base.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/globals.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/assert.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/async_hooks.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/buffer.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/child_process.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/cluster.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/console.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/constants.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/crypto.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/dgram.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/dns.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/domain.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/fs.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/http.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/http2.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/https.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/inspector.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/module.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/net.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/os.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/path.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/perf_hooks.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/process.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/punycode.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/querystring.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/readline.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/repl.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/stream.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/string_decoder.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/timers.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/tls.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/trace_events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/tty.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/url.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/v8.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/vm.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/worker_threads.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/zlib.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/ts3.2/globals.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/globals.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/ts3.2/index.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/base.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/globals.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/ws/index.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/http.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/https.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/net.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/discord.js/typings/index.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/stream.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/child_process.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/fs.d.ts",
+        "d:/projects/bakery/node_modules/@types/ws/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/data-types.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/deferrable.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/operators.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/query-types.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/table-hints.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/index-hints.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/associations/base.d.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/lib/model.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/bluebird/index.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/promise.d.ts": [
+        "d:/projects/bakery/node_modules/@types/bluebird/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/associations/belongs-to.d.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/lib/data-types.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/model.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/promise.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/associations/base.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/associations/has-one.d.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/lib/data-types.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/model.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/promise.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/associations/base.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/associations/has-many.d.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/lib/data-types.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/model.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/promise.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/associations/base.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/instance-validator.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/hooks.d.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/lib/instance-validator.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/model.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/sequelize.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/model-manager.d.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/lib/model.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/sequelize.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/query-interface.d.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/lib/data-types.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/model.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/promise.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/query-types.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/sequelize.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/transaction.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/validator/index.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/utils/validator-extras.d.ts": [
+        "d:/projects/bakery/node_modules/@types/validator/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/connection-manager.d.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/lib/promise.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/sequelize.d.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/lib/data-types.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/deferrable.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/hooks.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/instance-validator.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/model.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/model-manager.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/operators.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/promise.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/query-interface.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/query-types.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/transaction.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/utils.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/utils/validator-extras.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/connection-manager.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/transaction.d.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/lib/deferrable.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/model.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/promise.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/sequelize.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/associations/belongs-to-many.d.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/lib/model.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/promise.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/transaction.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/associations/base.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/associations/index.d.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/lib/associations/base.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/associations/belongs-to.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/associations/has-one.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/associations/has-many.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/associations/belongs-to-many.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/model.d.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/lib/associations/index.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/data-types.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/deferrable.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/hooks.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/instance-validator.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/model-manager.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/operators.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/promise.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/query-interface.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/sequelize.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/transaction.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/utils.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/utils.d.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/lib/data-types.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/model.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/promise.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/errors.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/index.d.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/lib/data-types.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/deferrable.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/operators.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/query-types.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/table-hints.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/index-hints.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/utils.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/sequelize.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/query-interface.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/model.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/transaction.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/associations/index.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/errors.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/promise.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/utils/validator-extras.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/src/auth.json": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/src/modules/constants.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/src/modules/sql.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/index.d.ts",
+        "d:/projects/bakery/src/auth.json",
+        "d:/projects/bakery/src/modules/constants.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/src/modules/utils.ts": [
+        "d:/projects/bakery/node_modules/discord.js/typings/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/minimatch/index.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/glob/index.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/minimatch/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/src/modules/permissions.ts": [
+        "d:/projects/bakery/node_modules/discord.js/typings/index.d.ts",
+        "d:/projects/bakery/src/structures/client.struct.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/chalk/types/index.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/src/structures/command.struct.ts": [
+        "d:/projects/bakery/src/modules/permissions.ts",
+        "d:/projects/bakery/src/structures/client.struct.ts",
+        "d:/projects/bakery/node_modules/discord.js/typings/index.d.ts",
+        "d:/projects/bakery/node_modules/chalk/types/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/common.d.ts": [
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/array.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/collection.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/date.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/function.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/lang.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/math.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/number.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/object.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/seq.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/string.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/array.d.ts": [
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/common.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/collection.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/date.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/function.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/lang.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/math.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/number.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/object.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/seq.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/string.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/collection.d.ts": [
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/common.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/array.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/date.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/function.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/lang.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/math.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/number.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/object.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/seq.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/string.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/date.d.ts": [
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/common.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/array.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/collection.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/function.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/lang.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/math.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/number.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/object.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/seq.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/string.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/function.d.ts": [
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/common.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/array.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/collection.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/date.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/lang.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/math.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/number.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/object.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/seq.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/string.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/lang.d.ts": [
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/common.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/array.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/collection.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/date.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/function.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/math.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/number.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/object.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/seq.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/string.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/math.d.ts": [
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/common.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/array.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/collection.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/date.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/function.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/lang.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/number.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/object.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/seq.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/string.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/number.d.ts": [
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/common.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/array.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/collection.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/date.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/function.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/lang.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/math.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/object.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/seq.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/string.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/object.d.ts": [
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/common.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/array.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/collection.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/date.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/function.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/lang.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/math.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/number.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/seq.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/string.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/seq.d.ts": [
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/common.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/array.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/collection.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/date.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/function.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/lang.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/math.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/number.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/object.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/string.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/string.d.ts": [
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/common.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/array.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/collection.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/date.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/function.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/lang.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/math.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/number.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/object.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/seq.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/util.d.ts": [
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/common.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/array.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/collection.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/date.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/function.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/lang.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/math.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/number.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/object.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/seq.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/string.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/index.d.ts": [
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/common.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/array.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/collection.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/date.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/function.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/lang.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/math.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/number.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/object.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/seq.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/string.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/src/modules/interfaces.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/string-similarity/index.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/src/structures/client.struct.ts": [
+        "d:/projects/bakery/node_modules/discord.js/typings/index.d.ts",
+        "d:/projects/bakery/src/modules/sql.ts",
+        "d:/projects/bakery/src/modules/utils.ts",
+        "d:/projects/bakery/node_modules/@types/glob/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/path.d.ts",
+        "d:/projects/bakery/src/structures/command.struct.ts",
+        "d:/projects/bakery/node_modules/chalk/types/index.d.ts",
+        "d:/projects/bakery/src/auth.json",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/index.d.ts",
+        "d:/projects/bakery/src/modules/constants.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/src/modules/interfaces.ts",
+        "d:/projects/bakery/node_modules/@types/string-similarity/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/src/modules/client.ts": [
+        "d:/projects/bakery/src/structures/client.struct.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/src/bot.ts": [
+        "d:/projects/bakery/node_modules/discord.js/typings/index.d.ts",
+        "d:/projects/bakery/src/modules/client.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/src/commands/test.cmd.ts": [
+        "d:/projects/bakery/src/structures/command.struct.ts",
+        "d:/projects/bakery/src/modules/permissions.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/src/events/message.event.ts": [
+        "d:/projects/bakery/node_modules/discord.js/typings/index.d.ts",
+        "d:/projects/bakery/src/modules/client.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/src/events/modelsloaded.event.ts": [
+        "d:/projects/bakery/src/modules/client.ts",
+        "d:/projects/bakery/node_modules/chalk/types/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/src/events/ready.event.ts": [
+        "d:/projects/bakery/src/modules/client.ts",
+        "d:/projects/bakery/node_modules/chalk/types/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/src/modules/extensions.ts": [
+        "d:/projects/bakery/node_modules/discord.js/typings/index.d.ts",
+        "d:/projects/bakery/src/modules/utils.ts",
+        "d:/projects/bakery/src/structures/client.struct.ts",
+        "d:/projects/bakery/src/modules/client.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ]
+    },
+    "exportedModulesMap": {
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es5.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2016.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2017.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2018.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2019.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.esnext.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.dom.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.dom.iterable.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.webworker.importscripts.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.scripthost.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.core.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.collection.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.generator.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.iterable.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.promise.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.proxy.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.reflect.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.symbol.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2016.array.include.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2017.object.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2017.string.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2017.intl.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2017.typedarrays.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2018.asynciterable.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2018.intl.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2018.promise.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2018.regexp.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2019.array.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2019.object.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2019.string.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2019.symbol.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.esnext.intl.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.esnext.bigint.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/typescript/lib/lib.esnext.full.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/events/index.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/globals.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/assert.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/base.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/globals.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/assert.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/async_hooks.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/buffer.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/child_process.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/cluster.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/console.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/constants.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/crypto.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/dgram.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/dns.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/domain.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/fs.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/http.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/http2.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/https.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/inspector.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/module.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/net.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/os.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/path.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/perf_hooks.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/process.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/punycode.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/querystring.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/readline.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/repl.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/stream.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/string_decoder.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/timers.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/tls.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/trace_events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/tty.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/url.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/v8.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/vm.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/worker_threads.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/zlib.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/ts3.2/index.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/base.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/globals.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/glob/index.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/minimatch/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/src/structures/client.struct.ts": [
+        "d:/projects/bakery/node_modules/discord.js/typings/index.d.ts",
+        "d:/projects/bakery/src/structures/command.struct.ts",
+        "d:/projects/bakery/src/modules/interfaces.ts"
+      ],
+      "d:/projects/bakery/src/modules/extensions.ts": [
+        "d:/projects/bakery/src/structures/client.struct.ts",
+        "d:/projects/bakery/node_modules/discord.js/typings/index.d.ts"
+      ],
+      "d:/projects/bakery/src/modules/client.ts": [
+        "d:/projects/bakery/src/structures/client.struct.ts"
+      ],
+      "d:/projects/bakery/src/events/message.event.ts": [
+        "d:/projects/bakery/node_modules/discord.js/typings/index.d.ts"
+      ],
+      "d:/projects/bakery/src/structures/command.struct.ts": [
+        "d:/projects/bakery/src/modules/permissions.ts",
+        "d:/projects/bakery/src/structures/client.struct.ts",
+        "d:/projects/bakery/node_modules/discord.js/typings/index.d.ts"
+      ],
+      "d:/projects/bakery/src/commands/test.cmd.ts": [
+        "d:/projects/bakery/src/structures/command.struct.ts"
+      ],
+      "d:/projects/bakery/src/modules/permissions.ts": [
+        "d:/projects/bakery/node_modules/discord.js/typings/index.d.ts",
+        "d:/projects/bakery/src/structures/client.struct.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/ws/index.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/http.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/https.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/net.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/discord.js/typings/index.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/stream.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/child_process.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/fs.d.ts",
+        "d:/projects/bakery/node_modules/@types/ws/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/src/modules/utils.ts": [
+        "d:/projects/bakery/node_modules/discord.js/typings/index.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/async_hooks.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/perf_hooks.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/async_hooks.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/buffer.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/child_process.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/net.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/stream.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/cluster.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/child_process.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/net.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/console.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/constants.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/crypto.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/stream.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/tls.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/crypto.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/dns.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/net.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/stream.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/https.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/tls.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/http.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/url.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/http2.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/fs.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/net.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/stream.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/tls.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/url.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/http.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/dgram.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/net.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/dns.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/dns.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/net.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/stream.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/dns.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/tty.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/net.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/http.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/stream.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/url.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/net.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/domain.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/events.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/worker_threads.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/vm.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/stream.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/stream.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/zlib.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/stream.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/v8.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/stream.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/readline.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/stream.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/repl.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/readline.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/vm.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/fs.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/stream.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/url.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/inspector.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/module.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/os.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/path.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/process.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/punycode.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/querystring.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/url.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/querystring.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/string_decoder.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/timers.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/trace_events.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/util.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/string-similarity/index.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/index.d.ts": [
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/common.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/array.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/collection.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/date.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/function.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/lang.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/math.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/number.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/object.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/seq.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/string.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/util.d.ts": [
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/common.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/array.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/collection.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/date.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/function.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/lang.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/math.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/number.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/object.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/seq.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/string.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/string.d.ts": [
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/common.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/array.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/collection.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/date.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/function.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/lang.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/math.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/number.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/object.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/seq.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/seq.d.ts": [
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/common.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/array.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/collection.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/date.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/function.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/lang.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/math.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/number.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/object.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/string.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/object.d.ts": [
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/common.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/array.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/collection.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/date.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/function.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/lang.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/math.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/number.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/seq.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/string.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/number.d.ts": [
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/common.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/array.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/collection.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/date.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/function.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/lang.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/math.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/object.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/seq.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/string.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/math.d.ts": [
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/common.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/array.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/collection.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/date.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/function.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/lang.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/number.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/object.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/seq.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/string.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/lang.d.ts": [
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/common.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/array.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/collection.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/date.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/function.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/math.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/number.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/object.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/seq.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/string.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/function.d.ts": [
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/common.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/array.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/collection.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/date.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/lang.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/math.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/number.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/object.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/seq.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/string.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/date.d.ts": [
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/common.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/array.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/collection.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/function.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/lang.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/math.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/number.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/object.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/seq.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/string.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/collection.d.ts": [
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/common.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/array.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/date.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/function.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/lang.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/math.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/number.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/object.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/seq.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/string.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/array.d.ts": [
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/common.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/collection.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/date.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/function.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/lang.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/math.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/number.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/object.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/seq.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/string.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/common.d.ts": [
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/array.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/collection.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/date.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/function.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/lang.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/math.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/number.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/object.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/seq.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/string.d.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/chalk/types/index.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/minimatch/index.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/src/modules/sql.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/index.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/index.d.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/lib/data-types.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/deferrable.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/operators.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/query-types.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/table-hints.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/index-hints.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/utils.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/sequelize.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/query-interface.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/model.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/transaction.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/associations/index.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/errors.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/promise.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/utils/validator-extras.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/model.d.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/lib/associations/index.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/data-types.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/deferrable.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/hooks.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/instance-validator.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/model-manager.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/operators.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/promise.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/query-interface.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/sequelize.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/transaction.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/utils.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/utils.d.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/lib/data-types.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/model.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/promise.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/sequelize.d.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/lib/data-types.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/deferrable.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/hooks.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/instance-validator.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/model.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/model-manager.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/operators.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/promise.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/query-interface.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/query-types.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/transaction.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/utils.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/utils/validator-extras.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/connection-manager.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/transaction.d.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/lib/deferrable.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/model.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/promise.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/sequelize.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/associations/belongs-to-many.d.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/lib/model.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/promise.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/transaction.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/associations/base.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/associations/index.d.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/lib/associations/base.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/associations/belongs-to.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/associations/has-one.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/associations/has-many.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/associations/belongs-to-many.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/query-interface.d.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/lib/data-types.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/model.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/promise.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/query-types.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/sequelize.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/transaction.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/model-manager.d.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/lib/model.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/sequelize.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/hooks.d.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/lib/instance-validator.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/model.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/sequelize.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/associations/has-many.d.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/lib/data-types.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/model.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/promise.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/associations/base.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/associations/has-one.d.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/lib/data-types.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/model.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/promise.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/associations/base.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/associations/belongs-to.d.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/lib/data-types.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/model.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/promise.d.ts",
+        "d:/projects/bakery/node_modules/sequelize/types/lib/associations/base.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/associations/base.d.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/lib/model.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/errors.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/connection-manager.d.ts": [
+        "d:/projects/bakery/node_modules/sequelize/types/lib/promise.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/utils/validator-extras.d.ts": [
+        "d:/projects/bakery/node_modules/@types/validator/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/validator/index.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/instance-validator.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/promise.d.ts": [
+        "d:/projects/bakery/node_modules/@types/bluebird/index.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/bluebird/index.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/index-hints.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/table-hints.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/query-types.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/operators.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/deferrable.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/sequelize/types/lib/data-types.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/ts3.2/globals.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/globals.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts"
+      ],
+      "d:/projects/bakery/node_modules/@types/node/vm.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ]
+    },
+    "semanticDiagnosticsPerFile": [
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es5.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2016.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2017.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2018.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2019.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.esnext.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.dom.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.dom.iterable.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.webworker.importscripts.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.scripthost.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.core.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.collection.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.generator.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.iterable.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.promise.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.proxy.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.reflect.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.symbol.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2016.array.include.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2017.object.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2017.string.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2017.intl.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2017.typedarrays.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2018.asynciterable.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2018.intl.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2018.promise.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2018.regexp.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2019.array.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2019.object.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2019.string.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.es2019.symbol.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.esnext.intl.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.esnext.bigint.d.ts",
+      "d:/projects/bakery/node_modules/typescript/lib/lib.esnext.full.d.ts",
+      "d:/projects/bakery/node_modules/@types/events/index.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/globals.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/assert.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/async_hooks.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/buffer.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/child_process.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/cluster.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/console.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/constants.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/crypto.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/dgram.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/dns.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/domain.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/events.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/fs.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/http.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/http2.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/https.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/inspector.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/module.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/net.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/os.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/path.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/perf_hooks.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/process.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/punycode.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/querystring.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/readline.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/repl.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/stream.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/string_decoder.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/timers.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/tls.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/trace_events.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/tty.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/url.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/v8.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/vm.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/worker_threads.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/zlib.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/base.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/ts3.2/globals.d.ts",
+      "d:/projects/bakery/node_modules/@types/node/ts3.2/index.d.ts",
+      "d:/projects/bakery/node_modules/@types/ws/index.d.ts",
+      "d:/projects/bakery/node_modules/discord.js/typings/index.d.ts",
+      "d:/projects/bakery/node_modules/sequelize/types/lib/data-types.d.ts",
+      "d:/projects/bakery/node_modules/sequelize/types/lib/deferrable.d.ts",
+      "d:/projects/bakery/node_modules/sequelize/types/lib/operators.d.ts",
+      "d:/projects/bakery/node_modules/sequelize/types/lib/query-types.d.ts",
+      "d:/projects/bakery/node_modules/sequelize/types/lib/table-hints.d.ts",
+      "d:/projects/bakery/node_modules/sequelize/types/lib/index-hints.d.ts",
+      "d:/projects/bakery/node_modules/sequelize/types/lib/associations/base.d.ts",
+      "d:/projects/bakery/node_modules/@types/bluebird/index.d.ts",
+      "d:/projects/bakery/node_modules/sequelize/types/lib/promise.d.ts",
+      "d:/projects/bakery/node_modules/sequelize/types/lib/associations/belongs-to.d.ts",
+      "d:/projects/bakery/node_modules/sequelize/types/lib/associations/has-one.d.ts",
+      "d:/projects/bakery/node_modules/sequelize/types/lib/associations/has-many.d.ts",
+      "d:/projects/bakery/node_modules/sequelize/types/lib/instance-validator.d.ts",
+      "d:/projects/bakery/node_modules/sequelize/types/lib/hooks.d.ts",
+      "d:/projects/bakery/node_modules/sequelize/types/lib/model-manager.d.ts",
+      "d:/projects/bakery/node_modules/sequelize/types/lib/query-interface.d.ts",
+      "d:/projects/bakery/node_modules/@types/validator/index.d.ts",
+      "d:/projects/bakery/node_modules/sequelize/types/lib/utils/validator-extras.d.ts",
+      "d:/projects/bakery/node_modules/sequelize/types/lib/connection-manager.d.ts",
+      "d:/projects/bakery/node_modules/sequelize/types/lib/sequelize.d.ts",
+      "d:/projects/bakery/node_modules/sequelize/types/lib/transaction.d.ts",
+      "d:/projects/bakery/node_modules/sequelize/types/lib/associations/belongs-to-many.d.ts",
+      "d:/projects/bakery/node_modules/sequelize/types/lib/associations/index.d.ts",
+      "d:/projects/bakery/node_modules/sequelize/types/lib/model.d.ts",
+      "d:/projects/bakery/node_modules/sequelize/types/lib/utils.d.ts",
+      "d:/projects/bakery/node_modules/sequelize/types/lib/errors.d.ts",
+      "d:/projects/bakery/node_modules/sequelize/types/index.d.ts",
+      "d:/projects/bakery/src/auth.json",
+      "d:/projects/bakery/src/modules/constants.ts",
+      "d:/projects/bakery/src/modules/sql.ts",
+      "d:/projects/bakery/src/modules/utils.ts",
+      "d:/projects/bakery/node_modules/@types/minimatch/index.d.ts",
+      "d:/projects/bakery/node_modules/@types/glob/index.d.ts",
+      "d:/projects/bakery/src/modules/permissions.ts",
+      "d:/projects/bakery/node_modules/chalk/types/index.d.ts",
+      "d:/projects/bakery/src/structures/command.struct.ts",
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/common.d.ts",
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/array.d.ts",
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/collection.d.ts",
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/date.d.ts",
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/function.d.ts",
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/lang.d.ts",
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/math.d.ts",
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/number.d.ts",
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/object.d.ts",
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/seq.d.ts",
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/string.d.ts",
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/util.d.ts",
+      "d:/projects/bakery/node_modules/@types/lodash/ts3.1/index.d.ts",
+      "d:/projects/bakery/src/modules/interfaces.ts",
+      "d:/projects/bakery/node_modules/@types/string-similarity/index.d.ts",
+      "d:/projects/bakery/src/structures/client.struct.ts",
+      "d:/projects/bakery/src/modules/client.ts",
+      "d:/projects/bakery/src/bot.ts",
+      "d:/projects/bakery/src/commands/test.cmd.ts",
+      "d:/projects/bakery/src/events/message.event.ts",
+      "d:/projects/bakery/src/events/modelsloaded.event.ts",
+      "d:/projects/bakery/src/events/ready.event.ts",
+      "d:/projects/bakery/src/modules/extensions.ts"
+    ]
+  },
+  "version": "3.5.3"
+}

@@ -1,5 +1,5 @@
 import { Collection, Client, Channel, Emoji, Message, TextChannel, Guild, Role } from "discord.js";
-import { sequelize, models } from "../modules/sql";
+import { sequelize, models, ModelObject } from "../modules/sql";
 import * as utils from "../modules/utils";
 import { sync } from "glob";
 import { dirname, resolve, basename, normalize, join } from "path";
@@ -12,6 +12,14 @@ import { inspect } from "util";
 import { Auth } from "../modules/interfaces";
 import { compareTwoStrings } from "string-similarity";
 export class BakeryClient extends Client {
+	/**
+	 * @property {object} models SQL models.
+	 */
+	models: ModelObject = models
+	/**
+	 * @property {any} cached Cached models.
+	 */
+	cached: any = {}
 	/**
 	 * @property {Collection<string, object>} languages The languages for the bot.
 	 */
@@ -76,14 +84,6 @@ export class BakeryClient extends Client {
 	 */
 	async getModule(name: string): Promise<any> {
 		return import(join(__dirname, `../modules/${name}`));
-	}
-	/**
-	 * @description Gets an SQL model.
-	 * @param {string} name The model's name.
-	 * @returns {any} The SQL model.
-	 */
-	getModel(name: string): any {
-		return sequelize.model(name);
 	}
 	/**
 	 * @description Logs to the console with a custom prefix.
@@ -172,13 +172,14 @@ export class BakeryClient extends Client {
 	 */
 	async loadLanguages(): Promise<void> {
 		this.languages = new Collection();
-		const languages: [string, Promise<object>][] = sync(join(__dirname, "../languages/**/*.json")).map((file: string) => {
+		const languages: [string, Promise<object>][] = sync(join(__dirname, "../languages/**/*.js")).map((file: string) => {
 			this.log(file);
 			delete require.cache[resolve(file)];
 			return [basename(file), import(file)];
 		});
 		for (const [name, langPromise] of languages) {
 			const language = await langPromise;
+			this.languages.set(name, language);
 			this.success(`Language ${chalk.greenBright(name)} was loaded!`);
 		}
 	}

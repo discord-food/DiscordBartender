@@ -4,18 +4,9 @@ import { Message } from "discord.js";
 import chalk from "chalk";
 type execCommand = (client: BakeryClient, message: Message, args: string[]) => any;
 export class Command {
-	name: string;
-	aliases: string[];
-	permissionLevel: Permission;
 	category?: string;
-	shortcuts: string[];
 	execFunc?: execCommand;
-	constructor(name: string, aliases: string[] = [], shortcuts: string[] = [], permissionLevel: Permission) {
-		this.name = name;
-		this.aliases = aliases;
-		this.permissionLevel = permissionLevel;
-		this.shortcuts = shortcuts;
-	}
+	constructor(public name: string, public aliases: string[] = [], public shortcuts: string[] = [], public permissionLevel: Permission) {}
 	setExec(func: execCommand) {
 		this.execFunc = func;
 		return this;

@@ -1,10 +1,10 @@
-import { Message, MessageEmbed } from "discord.js";
-export const sendEnhancements = (message: Message, val: any, options: any): any[] => {
+import { Message, MessageEmbed, TextChannel } from "discord.js";
+export const sendEnhancements = (channel: TextChannel, val: any): any[] => {
 	const _internal = (str: any) =>
 		String(str).replace(/\[.+?\]/g, x => {
 			const y = x.match(/(?<=\[).+?(?=\])/g);
 			if (!y) return x;
-			const emoji = message.bakery.mainEmojis.get(y[0]);
+			const emoji = channel.bakery.mainEmojis.get(y[0]);
 			return emoji ? emoji.toString() : x;
 		});
 	if (typeof val === "object" && "embed" in val) val = new MessageEmbed(val.embed);
