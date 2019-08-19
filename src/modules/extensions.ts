@@ -1,7 +1,8 @@
 import { TextChannel, Message, MessageOptions, MessageEmbed, MessageAttachment, Base, User, Guild } from "discord.js";
 import { sendEnhancements } from "./utils";
 import { BakeryClient } from "../structures/client.struct";
-import { client } from "../modules/client";
+import { client } from "./client";
+import { models } from "./sql";
 let temp = TextChannel.prototype.send;
 TextChannel.prototype.send = function send(
 	content?: any,
@@ -14,7 +15,12 @@ declare module "discord.js" {
 		bakery: BakeryClient;
 	}
 	interface Guild {
-		info?: any;
+		info?: typeof models.Guildinfo.prototype;
+	}
+
+	interface Message {
+		permissions?: string[];
 	}
 }
+
 Base.prototype.bakery = client;

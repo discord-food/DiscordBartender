@@ -7,23 +7,27 @@ import { Command } from "./command.struct";
 import chalk from "chalk";
 import * as auth from "../auth.json";
 import _ from "lodash";
-import * as constants from "../modules/constants";
+import { constants } from "../modules/constants";
 import { inspect } from "util";
-import { Auth } from "../modules/interfaces";
+import {} from "../modules/extensions";
 import { compareTwoStrings } from "string-similarity";
 export class BakeryClient extends Client {
 	/**
 	 * @property {object} models SQL models.
 	 */
-	models: ModelObject = models
+	models: ModelObject = models;
+	/**
+	 * @property {object} utils SQL models.
+	 */
+	utils: utils.Utils = utils;
 	/**
 	 * @property {any} cached Cached models.
 	 */
-	cached: any = {}
+	cached: any = {};
 	/**
 	 * @property {Collection<string, object>} languages The languages for the bot.
 	 */
-	languages: Collection<string, object> = new Collection();
+	languages: Collection<string, Languages> = new Collection();
 	/**
 	 * @property {Collection<string, Command>} commands The commands for the bot.
 	 */
@@ -51,7 +55,7 @@ export class BakeryClient extends Client {
 	/**
 	 * @property {object} constants Constants.
 	 */
-	constants: object = constants;
+	constants: Constants = constants;
 	/**
 	 * @property {Guild} mainGuild The main guild.
 	 */
@@ -138,7 +142,7 @@ export class BakeryClient extends Client {
 			return [file, import(file)];
 		});
 		for (const [path, promiseCommand] of commandFiles) {
-			const command: Command = (await promiseCommand as any).command;
+			const command: Command = ((await promiseCommand) as any).command;
 			if (this.commands.has(command.name)) {
 				this.error(
 					`Attempted to load command ${chalk.redBright(command.name)}, but the command already exists. Path: ${chalk.yellowBright(path)}`
@@ -171,15 +175,18 @@ export class BakeryClient extends Client {
 	 * @returns {void}
 	 */
 	async loadLanguages(): Promise<void> {
+		interface LanguageModule {
+			default: Languages
+		}
 		this.languages = new Collection();
-		const languages: [string, Promise<object>][] = sync(join(__dirname, "../languages/**/*.js")).map((file: string) => {
+		const languages: [string, Promise<LanguageModule>][] = sync(join(__dirname, "../languages/**/*.js")).map((file: string) => {
 			this.log(file);
 			delete require.cache[resolve(file)];
-			return [basename(file), import(file)];
+			return [basename(file).split(".")[0], import(file)];
 		});
 		for (const [name, langPromise] of languages) {
-			const language = await langPromise;
-			this.languages.set(name, language);
+			const language: LanguageModule = await langPromise;
+			this.languages.set(name, language.default);
 			this.success(`Language ${chalk.greenBright(name)} was loaded!`);
 		}
 	}
@@ -187,7 +194,7 @@ export class BakeryClient extends Client {
 	 * @description Loads sql models.
 	 * @returns {void}
 	 */
-	async loadModels() : Promise<void> {
+	async loadModels(): Promise<void> {
 		for (const model of Object.values(models)) {
 			await model.sync();
 		}

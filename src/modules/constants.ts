@@ -1,14 +1,16 @@
-export const prefix = "b:";
-export const channels = {
-	e: "f",
+export const constants: Constants = {
+	prefix: "b:",
+	channels: {
+		e: "f",
+	},
+	messages: {
+		"112213:1221": "f",
+	},
+	emojis: {
+		brick: ">602945093762154507:609823798031810560",
+	},
+	roles: {
+		e: "f",
+	},
+	guild: "602945093762154507",
 };
-export const messages = {
-	"112213:1221": "f",
-};
-export const emojis = {
-	e: "f",
-};
-export const roles = {
-	e: "f",
-};
-export const guild = "602945093762154507";

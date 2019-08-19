@@ -1,8 +1,8 @@
 import { Permission, permissions } from "../modules/permissions";
 import { BakeryClient } from "./client.struct";
-import { Message } from "discord.js";
+import { Message, Collection } from "discord.js";
 import chalk from "chalk";
-type execCommand = (client: BakeryClient, message: Message, args: string[]) => any;
+type execCommand = (client: BakeryClient, message: Message, args: string[], lang: Languages) => any;
 export class Command {
 	category?: string;
 	execFunc?: execCommand;
@@ -11,8 +11,8 @@ export class Command {
 		this.execFunc = func;
 		return this;
 	}
-	exec(client: BakeryClient, message: Message, args: string[]) {
+	exec(client: BakeryClient, message: Message, args: string[], lang: Languages) {
 		if (!this.execFunc) return BakeryClient.prototype.error(`The exec function for command ${chalk.redBright(this.name)} was not found.`);
-		return this.execFunc(client, message, args);
+		return this.execFunc(client, message, args, lang);
 	}
 }

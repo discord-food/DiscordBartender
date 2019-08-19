@@ -1,7 +1,9 @@
-export { Op, DataTypes, Model } from "sequelize";
+export { Op } from "sequelize";
+import { Table, Column, Model, HasMany, PrimaryKey, DataType, Default, Sequelize } from "sequelize-typescript";
+export { Model } from "sequelize-typescript";
 import { database } from "../auth.json";
-import { prefix } from "./constants";
-import { Sequelize, DataTypes, Op, Model } from "sequelize";
+import { constants } from "./constants";
+import { DataTypes, Op } from "sequelize";
 const { host, name, username, password } = database;
 export const sequelize = new Sequelize(name, username, password, {
 	host,
@@ -11,33 +13,27 @@ export const sequelize = new Sequelize(name, username, password, {
 		charset: "utf32",
 		collate: "utf32_unicode_ci",
 	},
-	logging: false,
+	logging: false
 });
-const SNOWFLAKE = new DataTypes.CHAR(18);
+const SNOWFLAKE = new DataType.CHAR(18);
+@Table({ freezeTableName: true, tableName: "guildinfo", timestamps: true })
+class Guildinfo extends Model<Guildinfo> {
+	@PrimaryKey
+	@Column(SNOWFLAKE)
+	id!: string;
+
+	@Default(constants.prefix)
+	@Column
+	prefix!: string;
+
+	@Default("english")
+	@Column
+	language!: string;
+}
 export interface ModelObject {
-	guildinfo: typeof Model;
+	Guildinfo: typeof Guildinfo;
 }
 export const models: ModelObject = {
-	guildinfo: sequelize.define(
-		"guildinfo",
-		{
-			id: {
-				type: SNOWFLAKE,
-				allowNull: false,
-				primaryKey: true,
-			},
-			prefix: {
-				type: DataTypes.TEXT,
-				defaultValue: prefix,
-			},
-			language: {
-				type: DataTypes.TEXT,
-				defaultValue: "english",
-			},
-		},
-		{
-			freezeTableName: true,
-			tableName: "guildinfo",
-		}
-	),
+	Guildinfo,
 };
+sequelize.addModels([Guildinfo]);
