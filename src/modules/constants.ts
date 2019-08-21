@@ -7,7 +7,7 @@ export const constants: Constants = {
 		"112213:1221": "f",
 	},
 	emojis: {
-		brick: ">602945093762154507:609823798031810560",
+		brick: "609823798031810560",
 	},
 	roles: {
 		e: "f",
