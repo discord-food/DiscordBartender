@@ -1,6 +1,6 @@
 import { GuildMember, Client } from "discord.js";
 import { BakeryClient } from "../structures/client.struct";
-type execPermission = (client: BakeryClient, member: GuildMember) => boolean;
+type execPermission = (client: BakeryClient, member: GuildMember | null) => boolean;
 /** The permission class. */
 export class Permission {
 	name: string;
@@ -24,6 +24,7 @@ export const permissions = {
  * @returns {number} The permission ID.
  */
 export const getPermission = (member: GuildMember) => {
+	if (member === null) return false;
 	const client = member.client;
 	for (const permission of Object.values(permissions).sort((a: Permission, b: Permission) => b.id - a.id)) {
 		if (permission.exec(member.bakery, member)) {

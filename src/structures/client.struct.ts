@@ -9,15 +9,24 @@ import * as auth from "../auth.json";
 import _ from "lodash";
 import { constants } from "../modules/constants";
 import { inspect } from "util";
-import {} from "../modules/extensions";
+import { } from "../modules/extensions";
 import { compareTwoStrings } from "string-similarity";
+import { BakeryEmbed } from "./embed.struct";
 export class BakeryClient extends Client {
 	/**
-	 * @property {object} models SQL models.
+     * @property {string} EMPTY A string with an invisible character.
+     */
+	EMPTY: string = "​"
+	/**
+	 * @property {typeof BakeryEmbed} embed BakeryEmbed.
+	 */
+	Embed: typeof BakeryEmbed = BakeryEmbed;
+	/**
+	 * @property {ModelObject} models SQL models.
 	 */
 	models: ModelObject = models;
 	/**
-	 * @property {object} utils SQL models.
+	 * @property {utils.Utils} utils SQL models.
 	 */
 	utils: utils.Utils = utils;
 	/**
@@ -63,9 +72,9 @@ export class BakeryClient extends Client {
 		return this.guilds.get(constants.guild);
 	}
 	/**
-	 * @property {object} _ Lodash.
+	 * @property {_} _ Lodash.
 	 */
-	_: object = _;
+	_: typeof _ = _;
 	/**
 	 * @description The constructor.
 	 * @param {number} s The number of shards to initiate.
@@ -149,7 +158,7 @@ export class BakeryClient extends Client {
 				);
 				continue;
 			}
-			command.category = basename(path);
+			command.category = basename(dirname(path));
 			this.commands.set(command.name, command);
 			this.emit("commandLoad", command); // * LOADS EVENT onCommandLoad
 		}
@@ -160,6 +169,7 @@ export class BakeryClient extends Client {
 	 * @returns {void}
 	 */
 	async loadEvents(): Promise<void> {
+		await import("../modules/extensions");
 		const events: [string, Promise<Function>][] = sync(join(__dirname, "../events/**/*.js")).map((file: string) => {
 			delete require.cache[resolve(file)];
 			return [basename(file).split(".")[0], import(file)];
@@ -176,7 +186,7 @@ export class BakeryClient extends Client {
 	 */
 	async loadLanguages(): Promise<void> {
 		interface LanguageModule {
-			default: Languages
+			default: Languages;
 		}
 		this.languages = new Collection();
 		const languages: [string, Promise<LanguageModule>][] = sync(join(__dirname, "../languages/**/*.js")).map((file: string) => {

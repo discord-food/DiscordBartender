@@ -6,7 +6,7 @@ type execCommand = (client: BakeryClient, message: Message, args: string[], lang
 export class Command {
 	category?: string;
 	execFunc?: execCommand;
-	constructor(public name: string, public aliases: string[] = [], public shortcuts: string[] = [], public permissionLevel: Permission) {}
+	constructor(public name: string, public description: string = "No description specified.", public aliases: string[] = [], public shortcuts: string[] = [], public syntax: string = "", public permissionLevel: Permission) {}
 	setExec(func: execCommand) {
 		this.execFunc = func;
 		return this;

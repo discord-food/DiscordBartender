@@ -946,10 +946,10 @@
         "signature": "243586b09b52079db44165501225bb21861f55d6b7095993dda9bdf06f0dfa46"
       },
       "d:/projects/bakery/src/auth.json": {
-        "version": "a09255343bad7cd8491ae5329baab3b838b479413b37151c78d5e20345e9343e"
+        "version": "5788bb34b149aa89f86f12107d7da4b96eea87ce363214fc0e191e13cbbefad9"
       },
       "d:/projects/bakery/src/modules/constants.ts": {
-        "version": "75039d6c7501076e8f23cd11b10aa1f60a8c0458d80cade7df95668c0f16fb9a",
+        "version": "3e7f1386a78a8df7e9f9400909d1a161de14594bd265b3f07b85f54cc6aea9d6",
         "signature": "51993ca70b67234f9a197230af524798a2789f102d5ac61e31ac93bd3b610317"
       },
       "d:/projects/bakery/src/modules/sql.ts": {
@@ -957,8 +957,8 @@
         "signature": "8a4ea5be08132961b52da9de55003f5b2aba470a7b30af6b25548b44e39b409e"
       },
       "d:/projects/bakery/src/modules/utils.ts": {
-        "version": "40cc3fa47c09c9d820060c67f1db2a98c003839022ba584b2f5dc88cd79a7860",
-        "signature": "0b7a8f54380057f0bedb01c27fce21f613ec230f785b5ff9d72d8e6e25763904"
+        "version": "57a3ca6da4fc084437774cd48c0acf997e659d853ada8d1d4cd7feb049cf6eac",
+        "signature": "bd5c10597ef403d13741210db53d7ed6c5bfbb0592ec64cf00d21d36275d5e3c"
       },
       "d:/projects/bakery/node_modules/@types/minimatch/index.d.ts": {
         "version": "1d1e6bd176eee5970968423d7e215bfd66828b6db8d54d17afec05a831322633",
@@ -969,16 +969,16 @@
         "signature": "d852d6282c8dc8156d26d6bda83ab4bde51fee05ba2fe0ecdc165ddda009d3ee"
       },
       "d:/projects/bakery/src/modules/permissions.ts": {
-        "version": "660226c6bd21771121dc5f696ad9f5019f5482c5b2ea5347d0ca3344045ca932",
-        "signature": "59d4817a8b31a676433b894a2e8b4530153ff8123f33890dfa57702d1a92d546"
+        "version": "099a927567e1b1ca1668e91c8c9397cf9d6606f7e8f324d72b24fb494e9623f2",
+        "signature": "988afee66ebf7302e8f67ab2b6113a90449d6e1631387f5fab20dfa9c59208c0"
       },
       "d:/projects/bakery/node_modules/chalk/types/index.d.ts": {
         "version": "091f417275a51ab3c47b949723e9e8a193012157ecc64a96e2d7b1505e82f395",
         "signature": "091f417275a51ab3c47b949723e9e8a193012157ecc64a96e2d7b1505e82f395"
       },
       "d:/projects/bakery/src/structures/command.struct.ts": {
-        "version": "6309c69bb1d099117a29818d79a6051729dae0b9a45a262eb318eead71aaafda",
-        "signature": "fd1faa6c730c3412eae89a535197bd5ed6cf5d2852694dc71018f9c8bf1341ce"
+        "version": "d0d68573b20ce19c48ae52eab751264c41b180e68df1255e350a309fa44db9bd",
+        "signature": "7ccb8e010eec9e094e6d45684618580f2cb049078ea3fc6d77304609f800a8e7"
       },
       "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/common.d.ts": {
         "version": "4025cf62742c5bb3d383c8a62342481622c87e3397ea5e7b7baab18b9efd5798",
@@ -1033,31 +1033,35 @@
         "signature": "bbf144d4354e2aaa6439f32761f3ee798cc68d1600adab6e2a596f25269f106d"
       },
       "d:/projects/bakery/src/modules/extensions.ts": {
-        "version": "6a3aae6850e1a864429ae03c8736d6c16d5e08b5f5f70c2b889d5e3deb28def7",
+        "version": "2dff0d32d9ff32770adc483cd1213829d9bbaddd4fd26ddff5f29b42960f7181",
         "signature": "c5918a0446d858a28257b0f1fecae6a32b4798a0018812f57949f2eb7a00e974"
       },
       "d:/projects/bakery/node_modules/@types/string-similarity/index.d.ts": {
         "version": "c68dc28062d585a5cff878dd85d499f0490c055c438e68cbaa55ed4290b5658c",
         "signature": "c68dc28062d585a5cff878dd85d499f0490c055c438e68cbaa55ed4290b5658c"
       },
+      "d:/projects/bakery/src/structures/embed.struct.ts": {
+        "version": "f1a6156cab826d57c5e83496efda9a49bb760d917b3fc697e00ec986238645ed",
+        "signature": "e80c1d5d6e34b3902d74b1bdcc7a313c9ee6e8a400c2babaa52714bb48cfb2b4"
+      },
       "d:/projects/bakery/src/structures/client.struct.ts": {
-        "version": "26a88c967d37bcb533e47b766d47eaf16d7ccdd645208801f86e7ab741f5f924",
-        "signature": "87faf69c4f0a56aadfbf11f90ed0dcf9d7a04015ef2f4fbfcb7dc68e872e94be"
+        "version": "0e815e2e3127d360e33ee94ff01197b44bf77382933a16bd8e777b594b79b8de",
+        "signature": "8107b9edc4ccb58fff63c06155e65d007bebc99ad8f69931a36adb8e57815963"
       },
       "d:/projects/bakery/src/modules/client.ts": {
         "version": "2717b86a06c6bf5edbcaec8df9b6d8cd9e133063fa3d922f0159408d599aa115",
         "signature": "729cf8fb26c3cdcfb9920e3fdfacc3dfe9d0868e59e351a24efea7b28016cc57"
       },
       "d:/projects/bakery/src/bot.ts": {
-        "version": "7b5ffb4dce055f44a91764d4ae4dde2dbbef42d321cfc40813a5b38af2c0eebb",
+        "version": "82ae3bdbcda094616c6e65c4ff1fca7b1c034289e001b0100de8e2e7fa7c1923",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6"
       },
-      "d:/projects/bakery/src/commands/test.cmd.ts": {
-        "version": "711e35a03b14a925c533108959bb0def1898c3110ef8f6fa7eab0572359ebced",
-        "signature": "717cddd68e3c05542ce33ba4422f8ef982abe46e3def54b04686b3f6951b549b"
+      "d:/projects/bakery/src/commands/information/help.cmd.ts": {
+        "version": "3417be726887ec53b0275c954c61e3a11fccd48eb44c41c5c9e2d7b4110dd707",
+        "signature": "d040ca463bd85da7ec68b9d7dd4264470413a1d1078dff5ee9cde8a8affebe78"
       },
       "d:/projects/bakery/src/events/message.event.ts": {
-        "version": "f02c86aad9272e7eea51193a28c72430067523f76f7d6d43a717cb4424b687e0",
+        "version": "2e6061de17098d126aa8dc29f769021ddc2f7ea111980929272946bd85c9ec21",
         "signature": "d4cf757c49a989262b31a8c94fbe1da63cf189ed15409088089f65e88041475c"
       },
       "d:/projects/bakery/src/events/modelsloaded.event.ts": {
@@ -1069,16 +1073,16 @@
         "signature": "3b74cdde716b656dcbf218528e1d7e66ccca7741778345b05dc00398bf3a1d7e"
       },
       "d:/projects/bakery/src/languages/english.ts": {
-        "version": "e06d188d6eb35050bd1eaae83fa02ca29012a89f5d1a50b85ae7a8385cb23605",
-        "signature": "e60562a8b776546e32b5e8a3c8042c4f47f29408024a2d218c93d2a9e04749ce"
+        "version": "884fa5edac8a9c23161518f6e0a1885d436c7b530be091aa68d46d4a1becd157",
+        "signature": "f2c1b6c79dd1f9f72acc171d8d4430948fbe63b381a50bcd45d4d3d723c2fcf7"
       },
       "d:/projects/bakery/src/modules/declarations.d.ts": {
-        "version": "324022f25c09c8eb4885699ddf8c050538d6a5cefdcc18249bd9a4204ce62e92",
-        "signature": "324022f25c09c8eb4885699ddf8c050538d6a5cefdcc18249bd9a4204ce62e92"
+        "version": "6193b332d7da7e32cfacb4115bd99ba4b30edd2edc18c850b20fd4cbe9e07169",
+        "signature": "6193b332d7da7e32cfacb4115bd99ba4b30edd2edc18c850b20fd4cbe9e07169"
       },
       "d:/projects/bakery/src/modules/interfaces.ts": {
-        "version": "cf5f8a34fe1172a37e57589c702f69dc784dce9609a2f4e7ccca5540de0320e9",
-        "signature": "33d409965bee2a66485b40e5ab9ec6e62c5edd7b7345f9f08002a87a80d0a7e8"
+        "version": "33faad518b57f180e5c0b7c08fdbd949a5f3c40997fe349e96799809cbaf0bf2",
+        "signature": "9f58f691b041cd6e7831d1f267829132080ce072537d2655fc9b40d14e015e4d"
       }
     },
     "options": {
@@ -1092,6 +1096,7 @@
       "esModuleInterop": true,
       "experimentalDecorators": true,
       "emitDecoratorMetadata": true,
+      "project": ".",
       "configFilePath": "D:/projects/bakery/tsconfig.json"
     },
     "referencedMap": {
@@ -2732,10 +2737,16 @@
         "d:/projects/bakery/src/structures/client.struct.ts",
         "d:/projects/bakery/src/modules/client.ts",
         "d:/projects/bakery/src/modules/sql.ts",
+        "d:/projects/bakery/node_modules/@types/node/path.d.ts",
         "d:/projects/bakery/node_modules/@types/node/util.d.ts",
         "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
       ],
       "d:/projects/bakery/node_modules/@types/string-similarity/index.d.ts": [
+        "d:/projects/bakery/node_modules/@types/node/util.d.ts",
+        "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "d:/projects/bakery/src/structures/embed.struct.ts": [
+        "d:/projects/bakery/node_modules/discord.js/typings/index.d.ts",
         "d:/projects/bakery/node_modules/@types/node/util.d.ts",
         "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -2753,6 +2764,7 @@
         "d:/projects/bakery/node_modules/@types/node/util.d.ts",
         "d:/projects/bakery/src/modules/extensions.ts",
         "d:/projects/bakery/node_modules/@types/string-similarity/index.d.ts",
+        "d:/projects/bakery/src/structures/embed.struct.ts",
         "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
       ],
       "d:/projects/bakery/src/modules/client.ts": [
@@ -2763,12 +2775,14 @@
       "d:/projects/bakery/src/bot.ts": [
         "d:/projects/bakery/node_modules/discord.js/typings/index.d.ts",
         "d:/projects/bakery/src/modules/client.ts",
+        "d:/projects/bakery/src/modules/extensions.ts",
         "d:/projects/bakery/node_modules/@types/node/util.d.ts",
         "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "d:/projects/bakery/src/commands/test.cmd.ts": [
+      "d:/projects/bakery/src/commands/information/help.cmd.ts": [
         "d:/projects/bakery/src/structures/command.struct.ts",
         "d:/projects/bakery/src/modules/permissions.ts",
+        "d:/projects/bakery/node_modules/discord.js/typings/index.d.ts",
         "d:/projects/bakery/node_modules/@types/node/util.d.ts",
         "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -4427,16 +4441,21 @@
         "d:/projects/bakery/node_modules/@types/node/util.d.ts",
         "d:/projects/bakery/node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "d:/projects/bakery/src/structures/embed.struct.ts": [
+        "d:/projects/bakery/node_modules/discord.js/typings/index.d.ts"
+      ],
       "d:/projects/bakery/src/structures/client.struct.ts": [
+        "d:/projects/bakery/src/structures/embed.struct.ts",
         "d:/projects/bakery/src/modules/sql.ts",
         "d:/projects/bakery/src/modules/utils.ts",
         "d:/projects/bakery/node_modules/discord.js/typings/index.d.ts",
-        "d:/projects/bakery/src/structures/command.struct.ts"
+        "d:/projects/bakery/src/structures/command.struct.ts",
+        "d:/projects/bakery/node_modules/@types/lodash/ts3.1/index.d.ts"
       ],
       "d:/projects/bakery/src/modules/client.ts": [
         "d:/projects/bakery/src/structures/client.struct.ts"
       ],
-      "d:/projects/bakery/src/commands/test.cmd.ts": [
+      "d:/projects/bakery/src/commands/information/help.cmd.ts": [
         "d:/projects/bakery/src/structures/command.struct.ts"
       ],
       "d:/projects/bakery/src/events/message.event.ts": [
@@ -4687,9 +4706,12 @@
       "d:/projects/bakery/src/auth.json",
       "d:/projects/bakery/src/modules/constants.ts",
       "d:/projects/bakery/src/modules/sql.ts",
+      "d:/projects/bakery/src/modules/utils.ts",
       "d:/projects/bakery/node_modules/@types/minimatch/index.d.ts",
       "d:/projects/bakery/node_modules/@types/glob/index.d.ts",
+      "d:/projects/bakery/src/modules/permissions.ts",
       "d:/projects/bakery/node_modules/chalk/types/index.d.ts",
+      "d:/projects/bakery/src/structures/command.struct.ts",
       "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/common.d.ts",
       "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/array.d.ts",
       "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/collection.d.ts",
@@ -4703,21 +4725,19 @@
       "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/string.d.ts",
       "d:/projects/bakery/node_modules/@types/lodash/ts3.1/common/util.d.ts",
       "d:/projects/bakery/node_modules/@types/lodash/ts3.1/index.d.ts",
-      "d:/projects/bakery/node_modules/@types/string-similarity/index.d.ts",
-      "d:/projects/bakery/src/languages/english.ts",
-      "d:/projects/bakery/src/modules/declarations.d.ts",
-      "d:/projects/bakery/src/modules/interfaces.ts",
-      "d:/projects/bakery/src/modules/utils.ts",
-      "d:/projects/bakery/src/modules/permissions.ts",
-      "d:/projects/bakery/src/structures/command.struct.ts",
       "d:/projects/bakery/src/modules/extensions.ts",
+      "d:/projects/bakery/node_modules/@types/string-similarity/index.d.ts",
+      "d:/projects/bakery/src/structures/embed.struct.ts",
       "d:/projects/bakery/src/structures/client.struct.ts",
       "d:/projects/bakery/src/modules/client.ts",
       "d:/projects/bakery/src/bot.ts",
-      "d:/projects/bakery/src/commands/test.cmd.ts",
+      "d:/projects/bakery/src/commands/information/help.cmd.ts",
       "d:/projects/bakery/src/events/message.event.ts",
       "d:/projects/bakery/src/events/modelsloaded.event.ts",
-      "d:/projects/bakery/src/events/ready.event.ts"
+      "d:/projects/bakery/src/events/ready.event.ts",
+      "d:/projects/bakery/src/languages/english.ts",
+      "d:/projects/bakery/src/modules/declarations.d.ts",
+      "d:/projects/bakery/src/modules/interfaces.ts"
     ]
   },
   "version": "3.5.3"
