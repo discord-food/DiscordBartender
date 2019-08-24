@@ -6,8 +6,9 @@
   "scripts": {
     "test": "echo yeet",
     "start": "node dist/bot",
+    "fresh": "rm -r dist/*",
     "compile": "npx tsc -p .",
-    "dist": "yarn run compile && yarn start"
+    "dist": "yarn run fresh && yarn run compile && yarn start"
   },
   "repository": "git+https://github.com/shadow6060/DiscordBakery.git",
   "author": "Your Name",
