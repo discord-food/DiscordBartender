@@ -8,7 +8,15 @@ export default {
 		},
 		ping: {
 			calculating: "Calculating ping...",
-			pong: "Pong! Took `{}`!"
+			speeds: [
+				"The bot is broken, this is way too slow.",
+				"I feel slow...",
+				"Not too slow, but not too fast.",
+				"So fast!",
+				"Wow! Amazingly fast!",
+				"~~Discord Bakery is a time traveler.~~"
+			],
+			pong: "🏓 Pong! Took `{}`, {}"
 		}
 	},
 	errors: {
