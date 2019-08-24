@@ -13,6 +13,6 @@ export const command = new Command("ping", "Gets the bot ping.", [], [], "[verbo
 			const diff = Number(process.hrtime.bigint() - now);
 			const speed = [0, 2e+7, 5e+7, 1e+8, 5e+9, 1e+10].findIndex(x => diff < x)
 			const speedstr = lang.commands.ping.speeds[5 - Math.max(0, speed)]
-			await msg.edit(client.utils.format(lang.commands.ping.pong, pms(diff / 1000, { formatSubMilliseconds: true }), speedstr))
+			await msg.edit(client.utils.format(lang.commands.ping.pong, pms(diff / 1_000_000, { formatSubMilliseconds: true }), speedstr))
 		}
 	});
