@@ -40,6 +40,7 @@ declare global {
 
 	export interface LanguagePing {
 		calculating: string;
+		pong: string;
 	}
 
 	export interface LanguageErrors {

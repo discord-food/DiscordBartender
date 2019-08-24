@@ -7,7 +7,8 @@ export default {
 			sent: "[yes] I have send you the list of commands!"
 		},
 		ping: {
-			calculating: "Calculating ping..."
+			calculating: "Calculating ping...",
+			pong: "Pong! Took `{}`!"
 		}
 	},
 	errors: {
