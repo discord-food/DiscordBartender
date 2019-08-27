@@ -7,9 +7,10 @@
     "test": "echo yeet",
     "start": "node dist/bot",
     "fresh": "rm -r dist/*",
-    "compile": "npx tsc -p .",
+    "compile": "tsc",
     "renew": "yarn run fresh && yarn run compile",
-    "dist": "yarn run renew && yarn start"
+    "dist": "yarn run renew && yarn start",
+    "windows": "rmdir /s /q \"./dist/\" && mkdir dist && yarn run compile && yarn start"
   },
   "repository": "git+https://github.com/shadow6060/DiscordBakery.git",
   "author": "Your Name",

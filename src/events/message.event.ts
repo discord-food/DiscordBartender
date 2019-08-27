@@ -16,9 +16,11 @@ export const handler = async (message: Message) => {
 	const command = args.shift();
 	const gcommand = client.getCommand(command || "");
 	if (!gcommand) return;
+	const processedArgs = client.parseArguments(gcommand.syntax, args);
+	if (processedArgs.error) return message.channel.send(lang.errors.args.format(lang.errors.argsTypes[processedArgs.error.type].format(processedArgs.error.obj.name), prefix, gcommand.name, gcommand.syntaxString))
 	try {
-		await gcommand.exec(client, message, args, lang);
+		await gcommand.exec(client, message, processedArgs, lang);
 	} catch (err) {
-		await message.channel.send(client.utils.format(lang.errors.internal, err));
+		await message.channel.send(lang.errors.internal.format(err));
 	}
 };

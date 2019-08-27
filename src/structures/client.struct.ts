@@ -90,6 +90,23 @@ export class BakeryClient extends Client {
 			this.loadModels();
 		});
 	}
+	parseArguments(argObject: ArgumentObject[], args: string[]): any {
+		const matched: [ArgumentObject, string][] = argObject.map((x, i) => [x, i === argObject.length -1 ? args.slice(i).join(" ") : args[i]]);
+		const func = new Collection(this.constants.arguments);
+		const returnVal: any = { _list: args };
+		for (const [argObj, arg] of matched) {
+			if (!arg && argObj.required) return { error: { obj: argObj, type: 1 } };
+			const typeFunc = func.get(argObj.type);
+			const processed = typeFunc ? typeFunc(arg) : argObj.type(arg);
+			if (processed === null) return { error: { obj: argObj, type: 0 } }
+			returnVal[argObj.name] = arg === undefined || arg === "" ? undefined : processed;
+		}
+		for (const argObj of argObject) {
+			if (!argObj.required) continue;
+			if (returnVal[argObj.name] === undefined) return { error: { obj: argObj, type: 1 } };
+		}
+		return returnVal;
+	}
 	/**
 	 * @description Gets an module from the modules folder.
 	 * @param {string} name The module's name.
@@ -205,9 +222,7 @@ export class BakeryClient extends Client {
 	 * @returns {void}
 	 */
 	async loadModels(): Promise<void> {
-		for (const model of Object.values(models)) {
-			await model.sync();
-		}
+		await sequelize.sync({ alter: true });
 		this.emit("modelsLoaded");
 	}
 	/**

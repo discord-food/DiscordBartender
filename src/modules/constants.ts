@@ -13,4 +13,9 @@ export const constants: Constants = {
 		e: "f",
 	},
 	guild: "602945093762154507",
+	arguments: [
+		[String, (arg: string) => arg],
+		[Number, (arg: string) => isNaN(Number(arg)) ? null : Number(arg)],
+		[Boolean, (arg: string) => ["yes", "true", "y", "on"].some(x => arg.toLowerCase() === x) ? true : ["no", "false", "n", "off"].some(x => arg.toLowerCase() === x) ? false: null]
+	]
 };

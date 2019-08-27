@@ -1,5 +1,5 @@
 export { Op } from "sequelize";
-import { Table, Column, Model, HasMany, PrimaryKey, DataType, Default, Sequelize } from "sequelize-typescript";
+import { Table, Column, Model, HasMany, PrimaryKey, DataType, Default, Sequelize, AutoIncrement } from "sequelize-typescript";
 export { Model } from "sequelize-typescript";
 import { database } from "../auth.json";
 import { constants } from "./constants";
@@ -30,10 +30,27 @@ class Guildinfo extends Model<Guildinfo> {
 	@Column
 	language!: string;
 }
+@Table({ freezeTableName: true, tableName: "frontcounter", timestamps: true })
+class Frontcounter extends Model<Frontcounter> {
+	@PrimaryKey
+	@AutoIncrement
+	@Column
+	id!: number;
+
+	@Default(constants.prefix)
+	@Column
+	prefix!: string;
+
+	@Default("english")
+	@Column
+	language!: string;
+}
 export interface ModelObject {
 	Guildinfo: typeof Guildinfo;
+	Frontcounter: typeof Frontcounter;
 }
 export const models: ModelObject = {
 	Guildinfo,
+	Frontcounter,
 };
-sequelize.addModels([Guildinfo]);
+sequelize.addModels([Guildinfo, Frontcounter]);

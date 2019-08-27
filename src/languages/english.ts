@@ -1,8 +1,9 @@
+import { Formattable } from "../structures/formattable.struct";
 export default {
 	blacklisted: "Sorry, you are currently blacklisted, you are not allowed to run any commands.",
 	commands: {
 		help: {
-			title: "Commands List: Page {} of {}",
+			title: new Formattable("Commands List: Page {} of {}"),
 			description: "A list of commands for the bot.",
 			sent: "[yes] I have send you the list of commands!"
 		},
@@ -16,10 +17,15 @@ export default {
 				"Wow! Amazingly fast!",
 				"~~Discord Bakery is a time traveler.~~"
 			],
-			pong: "🏓 Pong! Took `{}`, {}"
+			pong: new Formattable("🏓 Pong! Took `{}`, {}")
 		}
 	},
 	errors: {
-		internal: "🔌 Sorry, there was an internal error.\n```js\n{}\n```"
+		internal: new Formattable("🔌 Sorry, there was an internal error.\n```js\n{}\n```"),
+		args: new Formattable("{}\n\**Correct Syntax**: `{}{} {}`"),
+		argsTypes: [
+			new Formattable("Argument `{}` was of incorrect type."),
+			new Formattable("Argument `{}` is required, but was not found.")
+		]
 	}
 }

@@ -1,2 +1,2 @@
 import { BakeryClient } from "../structures/client.struct";
-export const client = new BakeryClient(3);
+export const client: BakeryClient = new BakeryClient(3);
