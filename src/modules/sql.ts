@@ -34,7 +34,6 @@ class Guildinfo extends Model<Guildinfo> {
 @Yable({  tableName: "messages" })
 class Messages extends Model<Messages> {
 	@PrimaryKey
-	@AutoIncrement
 	@Column(SNOWFLAKE)
 	id!: string;
 
