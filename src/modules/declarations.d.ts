@@ -24,10 +24,13 @@ declare module "rivescript" {
 		replyAsync(user: string, message: string, scope: any, callback: (error: Error, reply: string) => void) : void;
 	}
 }
-declare module "simple-markov" {
-	export default class SimpleMarkov {
-		constructor(order: number, learnText?: string);
-		learn(learnText: string): void;
-		generateText(words: number): string;
+declare module "markov-generator" {
+	interface MarkovGeneratorOptions {
+		input: string[];
+		minLength: number;
+	}
+	export default class MarkovGenerator {
+		constructor(optios: MarkovGeneratorOptions);
+		makeChain(): string;
 	}
 }

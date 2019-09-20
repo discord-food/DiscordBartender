@@ -666,12 +666,10 @@ make-dir@^1.0.0:
   dependencies:
     pify "^3.0.0"
 
-markov-strings@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/markov-strings/-/markov-strings-2.1.0.tgz#f870baa0bec7d7437940e31d27c30a8fa6c96a3c"
-  integrity sha512-bJDOilLc7fUllWmGj0kZ6sJ0vAnP4IOkZ/KfYSduhKmKwW3iljvs8ffn2JsozZysmYvNkLPZLIAeoytfV7Cz9w==
-  dependencies:
-    lodash "^4.17.14"
+markov-generator@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/markov-generator/-/markov-generator-1.2.2.tgz#8536b339a3e4ccb219fe0f08cc40c646c7e2807d"
+  integrity sha1-hTazOaPkzLIZ/g8IzEDGRsfigH0=
 
 media-typer@0.3.0:
   version "0.3.0"

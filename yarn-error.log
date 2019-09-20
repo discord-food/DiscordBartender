@@ -1,5 +1,5 @@
 Arguments: 
-  D:\Downloads\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add @types/simple-markov
+  D:\Downloads\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js remove markov-strings
 
 PATH: 
   C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\AMD APP\bin\x86_64;C:\Program Files (x86)\AMD APP\bin\x86;D:\Downloads\PY3\Scripts\;D:\Downloads\PY3\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\Downloads\PuTTY\;C:\Program Files\Git\cmd;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files (x86)\Yarn\bin\;C:\ProgramData\chocolatey\bin;D:\Downloads\nodejs\;C:\Users\T500\.windows-build-tools\python27\;C:\Users\T500\AppData\Local\Microsoft\WindowsApps;D:\Downloads\Microsoft VS Code\bin;C:\Program Files (x86)\Nmap;C:\Users\T500\AppData\Local\Yarn\bin;C:\Users\T500\AppData\Roaming\npm;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;
@@ -14,17 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2fsimple-markov: Not found
-      at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:65939:18)
-      at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:140464:22)
-      at Request.emit (events.js:209:13)
-      at Request.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:141436:10)
-      at Request.emit (events.js:209:13)
-      at IncomingMessage.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:141358:12)
-      at Object.onceWrapper (events.js:298:28)
-      at IncomingMessage.emit (events.js:214:15)
-      at endReadableNT (_stream_readable.js:1178:12)
-      at processTicksAndRejections (internal/process/task_queues.js:80:21)
+  Error: EPERM: operation not permitted, unlink 'D:\projects\bakery\node_modules\markov-strings\src'
 
 npm manifest: 
   {
@@ -83,7 +73,6 @@ npm manifest:
       "rivescript": "^2.0.0",
       "sequelize": "^5.13.1",
       "sequelize-typescript": "^1.0.0-beta.4",
-      "simple-markov": "^1.0.2",
       "string-similarity": "^3.0.0",
       "typescript": "^3.5.3"
     }
@@ -761,6 +750,13 @@ Lockfile:
     dependencies:
       pify "^3.0.0"
   
+  markov-strings@^2.1.0:
+    version "2.1.0"
+    resolved "https://registry.yarnpkg.com/markov-strings/-/markov-strings-2.1.0.tgz#f870baa0bec7d7437940e31d27c30a8fa6c96a3c"
+    integrity sha512-bJDOilLc7fUllWmGj0kZ6sJ0vAnP4IOkZ/KfYSduhKmKwW3iljvs8ffn2JsozZysmYvNkLPZLIAeoytfV7Cz9w==
+    dependencies:
+      lodash "^4.17.14"
+  
   media-typer@0.3.0:
     version "0.3.0"
     resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
@@ -1262,11 +1258,6 @@ Lockfile:
     version "1.2.1"
     resolved "https://registry.yarnpkg.com/shimmer/-/shimmer-1.2.1.tgz#610859f7de327b587efebf501fb43117f9aff337"
     integrity sha512-sQTKC1Re/rM6XyFM6fIAGHRPVGvyXfgzIDvzoq608vM+jeyVD0Tu1E6Np0Kc2zAIFWIj963V2800iF/9LPieQw==
-  
-  simple-markov@^1.0.2:
-    version "1.0.2"
-    resolved "https://registry.yarnpkg.com/simple-markov/-/simple-markov-1.0.2.tgz#af67f8e74c6bb27da584f45eed2883ea695dfe77"
-    integrity sha1-r2f450xrsn2lhPRe7SiD6mld/nc=
   
   source-map@^0.6.1, source-map@~0.6.1:
     version "0.6.1"
