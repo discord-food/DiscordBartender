@@ -17,14 +17,16 @@ export class Permission {
  */
 export const permissions = {
 	everyone: new Permission("everyone", () => true, 0),
+	moderator: new Permission("moderator", () => true, 0),
+	admin: new Permission("admin", (client : BakeryClient, member : GuildMember | null) => true, 0),
 };
 /**
  * @description Gets the permission ID for a GuildMember.
  * @param {GuildMember} member The member of a guild.
  * @returns {number} The permission ID.
  */
-export const getPermission = (member: GuildMember) => {
-	if (member === null) return false;
+export const getPermission = (member: GuildMember): number => {
+	if (member === null) return 0;
 	const client = member.client;
 	for (const permission of Object.values(permissions).sort((a: Permission, b: Permission) => b.id - a.id)) {
 		if (permission.exec(member.bakery, member)) {

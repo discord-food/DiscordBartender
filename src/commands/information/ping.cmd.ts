@@ -4,8 +4,7 @@ import pms from "pretty-ms";
 export const command = new Command("ping", "Gets the bot ping.", [], [], [{ name: "verbose", type: Boolean}], permissions.everyone)
 	.setExec(async (client, message, args, lang) => {
 		if (!message.author) return;
-		const verbose = Boolean(args[0]);
-		if (verbose) {
+		if (args.verbose) {
 			await message.channel.send(`gagi is drunk`)
 		} else {
 			const now = process.hrtime.bigint();
@@ -13,7 +12,6 @@ export const command = new Command("ping", "Gets the bot ping.", [], [], [{ name
 			const diff = Number(process.hrtime.bigint() - now);
 			const speed = [0, 2e+7, 7e+7, 1e+9, 5e+9, 1e+10].findIndex(x => diff < x)
 			const speedstr = lang.commands.ping.speeds[5 - Math.max(0, speed)]
-			client.log(diff)
 			await msg.edit(lang.commands.ping.pong.format(pms(diff / 1000000, { formatSubMilliseconds: true }), speedstr))
 		}
 	});

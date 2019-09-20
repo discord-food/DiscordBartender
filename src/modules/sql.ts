@@ -1,5 +1,5 @@
 export { Op } from "sequelize";
-import { Table, Column, Model, HasMany, PrimaryKey, DataType, Default, Sequelize, AutoIncrement } from "sequelize-typescript";
+import { Table, TableOptions, Column, Model, HasMany, PrimaryKey, DataType, Default, Sequelize, AutoIncrement } from "sequelize-typescript";
 export { Model } from "sequelize-typescript";
 import { database } from "../auth.json";
 import { constants } from "./constants";
@@ -15,8 +15,9 @@ export const sequelize = new Sequelize(name, username, password, {
 	},
 	logging: false
 });
+const Yable = (options: TableOptions) => Table({ ...options, freezeTableName: true, timestamps: true})
 const SNOWFLAKE = new DataType.CHAR(18);
-@Table({ freezeTableName: true, tableName: "guildinfo", timestamps: true })
+@Yable({tableName: "guildinfo" })
 class Guildinfo extends Model<Guildinfo> {
 	@PrimaryKey
 	@Column(SNOWFLAKE)
@@ -30,27 +31,25 @@ class Guildinfo extends Model<Guildinfo> {
 	@Column
 	language!: string;
 }
-@Table({ freezeTableName: true, tableName: "frontcounter", timestamps: true })
-class Frontcounter extends Model<Frontcounter> {
+@Yable({  tableName: "messages" })
+class Messages extends Model<Messages> {
 	@PrimaryKey
 	@AutoIncrement
-	@Column
-	id!: number;
+	@Column(SNOWFLAKE)
+	id!: string;
 
-	@Default(constants.prefix)
-	@Column
-	prefix!: string;
+	@Column(DataType.STRING)
+	content!: string;
 
-	@Default("english")
-	@Column
-	language!: string;
+	@Column(SNOWFLAKE)
+	author!: string;
 }
 export interface ModelObject {
 	Guildinfo: typeof Guildinfo;
-	Frontcounter: typeof Frontcounter;
+	Messages: typeof Messages;
 }
 export const models: ModelObject = {
 	Guildinfo,
-	Frontcounter,
+	Messages,
 };
-sequelize.addModels([Guildinfo, Frontcounter]);
+sequelize.addModels([Guildinfo, Messages]);

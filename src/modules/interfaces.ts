@@ -1,4 +1,5 @@
 import { Formattable } from "../structures/formattable.struct";
+import { Message } from "discord.js";
 declare global {
 	interface AuthDatabase {
 		host: string;
@@ -12,14 +13,22 @@ declare global {
 		database: AuthDatabase;
 	}
 
+
+	type stringObject = { [name: string]: string }
 	interface Constants {
 		prefix: string;
-		channels: object;
-		roles: object;
-		messages: object;
+		channels: stringObject;
+		roles: stringObject;
+		messages: stringObject;
 		guild: string;
-		emojis: object;
-		arguments: [any, Function][];
+		emojis: stringObject;
+		arguments: [any, TypeCheck][];
+		admins: string[];
+		eval: Formattable;
+	}
+	interface FixedLengthArray<T extends any, L extends number> extends Array<T> {
+		0: T;
+		length: L;
 	}
 
 	interface Languages {
@@ -53,9 +62,21 @@ declare global {
 
 	interface ArgumentObject {
 		name: string;
-		type: any;
+		type: TypeCheck;
 		required?: boolean;
 		default?: any;
+	}
+	interface TypeCheck {
+		(arg: string, args: Args): any;
+		typename?: string;
+	}
+	interface Args {
+		_list: string[];
+		_message: Message;
+		[index: string]: any;
+	}
+	interface ArgError {
+		error: { type: number, obj: ArgumentObject }
 	}
 
 }

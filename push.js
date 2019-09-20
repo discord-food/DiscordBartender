@@ -1,6 +1,5 @@
 const { exec } = require("child_process");
 const { promisify } = require("util");
-
 (async() => {
 	const arg = process.argv.slice(2).join(" ");
 	if (!arg) return console.log("No argument!");

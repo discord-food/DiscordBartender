@@ -10,6 +10,7 @@
     "compile": "tsc",
     "renew": "yarn run fresh && yarn run compile",
     "dist": "yarn run renew && yarn start",
+    "lazy": "ts-node .",
     "windows": "rmdir /s /q \"./dist/\" && mkdir dist && yarn run compile && yarn start"
   },
   "repository": "git+https://github.com/shadow6060/DiscordBakery.git",
@@ -22,6 +23,7 @@
   "dependencies": {
     "@types/bluebird": "^3.5.27",
     "@types/glob": "^7.1.1",
+    "@types/hjson": "^2.4.1",
     "@types/lodash": "^4.14.137",
     "@types/node": "^12.7.2",
     "@types/string-similarity": "^3.0.0",
@@ -36,21 +38,24 @@
     "fs-extra": "^8.1.0",
     "glob": "^7.1.4",
     "hbs": "^4.0.4",
+    "hjson": "^3.1.2",
     "json5": "^2.1.0",
     "lodash": "^4.17.15",
+    "markov-strings": "^2.1.0",
     "moment-timezone": "^0.5.26",
     "mysql2": "^1.6.5",
+    "node-cron": "^2.0.3",
     "parse-duration": "^0.1.1",
     "pg": "^7.12.1",
     "pretty-bytes": "^5.3.0",
     "pretty-ms": "^5.0.0",
     "r2": "^2.0.1",
     "reflect-metadata": "^0.1.13",
+    "reinforce-js": "^1.5.1",
+    "rivescript": "^2.0.0",
     "sequelize": "^5.13.1",
     "sequelize-typescript": "^1.0.0-beta.4",
-    "string-similarity": "^3.0.0"
-  },
-  "devDependencies": {
+    "string-similarity": "^3.0.0",
     "typescript": "^3.5.3"
   }
 }

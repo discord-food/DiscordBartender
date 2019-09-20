@@ -1,3 +1,5 @@
+import { Formattable } from "../structures/formattable.struct";
+import { join } from "path"
 export const constants: Constants = {
 	prefix: "b:",
 	channels: {
@@ -17,5 +19,9 @@ export const constants: Constants = {
 		[String, (arg: string) => arg],
 		[Number, (arg: string) => isNaN(Number(arg)) ? null : Number(arg)],
 		[Boolean, (arg: string) => ["yes", "true", "y", "on"].some(x => arg.toLowerCase() === x) ? true : ["no", "false", "n", "off"].some(x => arg.toLowerCase() === x) ? false: null]
-	]
+	],
+	admins: [
+
+	],
+	eval: new Formattable(`(async()=>{{}})()`) // const {client} = await import("${join(__dirname, "./client.ts")}")
 };

@@ -26,7 +26,7 @@ export class BakeryClient extends Client {
 	 */
 	models: ModelObject = models;
 	/**
-	 * @property {utils.Utils} utils SQL models.
+	 * @property {utils.Utils} utils Utils.
 	 */
 	utils: utils.Utils = utils;
 	/**
@@ -90,30 +90,28 @@ export class BakeryClient extends Client {
 			this.loadModels();
 		});
 	}
-	parseArguments(argObject: ArgumentObject[], args: string[]): any {
-		const matched: [ArgumentObject, string][] = argObject.map((x, i) => [x, i === argObject.length -1 ? args.slice(i).join(" ") : args[i]]);
+	inspect(text: any, color = true) {
+		return inspect(text, true, null, color);
+	}
+	db(path: string) {
+		return join(__dirname, "../../db/", path);
+	}
+	async parseArguments(argObject: ArgumentObject[], args: string[], message: Message): Promise<Args | ArgError> {
+		const matched: [ArgumentObject, string][] = argObject.map((x, i) => [x, i === argObject.length - 1 ? args.slice(i).join(" ") : args[i]]);
 		const func = new Collection(this.constants.arguments);
-		const returnVal: any = { _list: args };
-		for (const [argObj, arg] of matched) {
+		const returnVal: Args = { _list: args, _message: message };
+		for (let [argObj, arg] of matched) {
 			if (!arg && argObj.required) return { error: { obj: argObj, type: 1 } };
 			const typeFunc = func.get(argObj.type);
-			const processed = typeFunc ? typeFunc(arg) : argObj.type(arg);
-			if (processed === null) return { error: { obj: argObj, type: 0 } }
-			returnVal[argObj.name] = arg === undefined || arg === "" ? undefined : processed;
+			const processed = typeFunc ? await typeFunc(arg, returnVal) : await argObj.type(arg, returnVal);
+			if (processed === null && arg) return { error: { obj: argObj, type: 0 } }
+			returnVal[argObj.name] = [undefined, ""].some(x => x === arg) ? argObj.default : processed;
 		}
 		for (const argObj of argObject) {
 			if (!argObj.required) continue;
 			if (returnVal[argObj.name] === undefined) return { error: { obj: argObj, type: 1 } };
 		}
 		return returnVal;
-	}
-	/**
-	 * @description Gets an module from the modules folder.
-	 * @param {string} name The module's name.
-	 * @returns {any} The module.
-	 */
-	async getModule(name: string): Promise<any> {
-		return import(join(__dirname, `../modules/${name}`));
 	}
 	/**
 	 * @description Logs to the console with a custom prefix.
@@ -156,6 +154,10 @@ export class BakeryClient extends Client {
 	 */
 	success(obj: any): void {
 		this.dryLog("YAY", obj, chalk.greenBright, chalk.green);
+	}
+
+	customLog(name: string, obj: any): void {
+		this.dryLog(name, obj, chalk.cyanBright, chalk.cyan);
 	}
 	/**
 	 * @description Loads the commands.
@@ -207,7 +209,6 @@ export class BakeryClient extends Client {
 		}
 		this.languages = new Collection();
 		const languages: [string, Promise<LanguageModule>][] = sync(join(__dirname, "../languages/**/*.js")).map((file: string) => {
-			this.log(file);
 			delete require.cache[resolve(file)];
 			return [basename(file).split(".")[0], import(file)];
 		});
