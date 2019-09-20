@@ -7,6 +7,11 @@ export const command = new Command("markov", "Markov Chain test.", [], [], [], p
 	.setExec(async (client, message, args, lang) => {
 		const markov = new MS((await client.models.Messages.findAll()).map(x => x.content), { stateSize: 3 });
 		await markov.buildCorpusAsync();
+		await markov.buildCorpusAsync();
+		await markov.buildCorpusAsync();
+		await markov.buildCorpusAsync();
+		await markov.buildCorpusAsync();
+		await markov.buildCorpusAsync();
 		const result = await markov.generateAsync({ maxTries: 200 });
 		return message.channel.send(result.string);
 	});
