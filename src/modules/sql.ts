@@ -37,7 +37,7 @@ class Messages extends Model<Messages> {
 	@Column(SNOWFLAKE)
 	id!: string;
 
-	@Column(DataType.STRING)
+	@Column(DataType.TEXT)
 	content!: string;
 
 	@Column(SNOWFLAKE)
