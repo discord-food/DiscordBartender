@@ -24,13 +24,30 @@ declare module "rivescript" {
 		replyAsync(user: string, message: string, scope: any, callback: (error: Error, reply: string) => void) : void;
 	}
 }
-declare module "markov-generator" {
-	interface MarkovGeneratorOptions {
-		input: string[];
-		minLength: number;
+declare module "js-markov" {
+	export interface NumericState {
+		state: number,
+		predictions: number[]
 	}
-	export default class MarkovGenerator {
-		constructor(optios: MarkovGeneratorOptions);
-		makeChain(): string;
+	export type Possibility = unknown;
+	export default class Markov {
+		states: (string | number)[]
+		order: number;
+		possibilities: Possibility[];
+		start: string[];
+		constructor(type?: "numeric" | "text" | undefined)
+		addStates(states: string[] | string | NumericState | NumericState[]): void;
+		clearState(): void;
+		clearPossibilities(): void;
+		getStates(): (string | number)[];
+		setOrder(number: number): void;
+		getStates(): number;
+		getPossibilities(possibility: string): Possibility[];
+		train(order?: number): void;
+		generateRandom(chars?: number): string | Possibility[];
+		random(obj: unknown, type: unknown): unknown;
+		predict(value: unknown): unknown;
+		getType(): "numeric" | "text"
+		setType(type: "numeric" | "text"): void;
 	}
 }

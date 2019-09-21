@@ -603,6 +603,11 @@ is-typedarray@^1.0.0:
   resolved "https://registry.yarnpkg.com/is-typedarray/-/is-typedarray-1.0.0.tgz#e479c80858df0c1b11ddda6940f96011fcda4a9a"
   integrity sha1-5HnICFjfDBsR3dppQPlgEfzaSpo=
 
+js-markov@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/js-markov/-/js-markov-3.0.1.tgz#2dd4acdca45c0ea583ce679ffc5cdb9e4e198d7e"
+  integrity sha512-OceGkNku0a7KO7/650r4tevmgvWdFx5FfXxDAwJvK5fx2cUGf59AmfPeqsyNqU9D9PZPOPGUr0vJ7AP/pU9mAw==
+
 json5@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/json5/-/json5-1.0.1.tgz#779fb0018604fa854eacbf6252180d83543e3dbe"
@@ -665,13 +670,6 @@ make-dir@^1.0.0:
   integrity sha512-2w31R7SJtieJJnQtGc7RVL2StM2vGYVfqUOvUDxH6bC6aJTxPxTF0GnIgCyu7tjockiUWAYQRbxa7vKn34s5sQ==
   dependencies:
     pify "^3.0.0"
-
-markov-strings@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/markov-strings/-/markov-strings-2.1.0.tgz#f870baa0bec7d7437940e31d27c30a8fa6c96a3c"
-  integrity sha512-bJDOilLc7fUllWmGj0kZ6sJ0vAnP4IOkZ/KfYSduhKmKwW3iljvs8ffn2JsozZysmYvNkLPZLIAeoytfV7Cz9w==
-  dependencies:
-    lodash "^4.17.14"
 
 media-typer@0.3.0:
   version "0.3.0"
