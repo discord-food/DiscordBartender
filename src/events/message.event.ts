@@ -1,4 +1,4 @@
-import { Message, TextChannel } from "discord.js";
+import { Message, TextChannel, Util } from "discord.js";
 import { client } from "../modules/client";
 import { models } from "../modules/sql";
 export const handler = async (message: Message) => {
@@ -8,7 +8,7 @@ export const handler = async (message: Message) => {
 	if (!lang) return;
 	const prefixes = [client.constants.prefix, `<@${client.user.id}>`, `<@!${client.user.id}>`, message.guild.info.prefix];
 	const prefix = prefixes.find(x => message.content.startsWith(x));
-	if (!prefix) return client.models.Messages.create({ id: message.id, content: message.content, author: message.author.id });;
+	if (!prefix) return client.models.Messages.create({ id: message.id, content: Util.cleanContent(message.content, message), author: message.author.id });;
 
 	message.content = message.content.replace(prefix, "").trim();
 	message.permissions = message.channel.permissionsFor(client.user.id)!.toArray();
