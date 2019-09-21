@@ -7,8 +7,8 @@ export const command = new Command("markov", "Markov Chain test.", [], ["mkv"], 
 	.setExec(async (client, message, args, lang) => {
 		const markov = new Markov();
 		const all = (await client.models.Messages.findAll()).map(x => x.content);
-		markov.addStates([...all, ...all, ...all]);
-		markov.train(5);
+		markov.addStates(all);
+		markov.train(3);
 		try {
 			const generated = markov.generateRandom(args.characters); 
 			await message.channel.send(generated);
