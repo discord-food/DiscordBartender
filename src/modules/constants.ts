@@ -23,5 +23,5 @@ export const constants: Constants = {
 	admins: [
 
 	],
-	eval: new Formattable(`import {client} from "./modules/client";(async()=>{{}})()`) // ")
+	eval: new Formattable(`(async () => { const { client } = await import(require("path").join(__rootname, "/modules/client")); {} })()`) // ")
 };
