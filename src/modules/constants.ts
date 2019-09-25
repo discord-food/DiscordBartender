@@ -21,7 +21,7 @@ export const constants: Constants = {
 		[Boolean, (arg: string) => ["yes", "true", "y", "on"].some(x => arg.toLowerCase() === x) ? true : ["no", "false", "n", "off"].some(x => arg.toLowerCase() === x) ? false: null]
 	],
 	admins: [
-
+		"413143886702313472"
 	],
 	eval: new Formattable(`(async () => { const { client } = await import(require("path").join(__rootname, "/modules/client")); {} })()`) // ")
 };

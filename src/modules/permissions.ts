@@ -1,6 +1,6 @@
 import { GuildMember, Client } from "discord.js";
 import { BakeryClient } from "../structures/client.struct";
-type execPermission = (client: BakeryClient, member: GuildMember | null) => boolean;
+type execPermission = (client: BakeryClient, member: GuildMember) => boolean;
 /** The permission class. */
 export class Permission {
 	name: string;
@@ -17,8 +17,8 @@ export class Permission {
  */
 export const permissions = {
 	everyone: new Permission("everyone", () => true, 0),
-	moderator: new Permission("moderator", () => true, 0),
-	admin: new Permission("admin", (client : BakeryClient, member : GuildMember | null) => true, 0),
+	moderator: new Permission("moderator", () => true, 1),
+	admin: new Permission("admin", (client : BakeryClient, member : GuildMember) => client.constants.admins.includes(member.id), 2),
 };
 /**
  * @description Gets the permission ID for a GuildMember.

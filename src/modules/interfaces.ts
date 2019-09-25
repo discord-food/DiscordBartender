@@ -34,31 +34,27 @@ declare global {
 	interface Languages {
 		blacklisted: string;
 		commands: LanguageCommands;
-		errors: LanguageErrors;
+		errors: {
+			internal: Formattable;
+			args: Formattable;
+			argsTypes: Formattable[];
+		};
 	}
 
 	interface LanguageCommands {
-		help: LanguageHelp;
-		ping: LanguagePing;
+		help: {
+			title: Formattable;
+			description: string;
+			sent: string;
+		};
+		ping: {
+			calculating: string;
+			pong: Formattable;
+			speeds: string[6];
+		};
 	}
 
-	interface LanguageHelp {
-		title: Formattable;
-		description: string;
-		sent: string;
-	}
 
-	interface LanguagePing {
-		calculating: string;
-		pong: Formattable;
-		speeds: string[6];
-	}
-
-	interface LanguageErrors {
-		internal: Formattable;
-		args: Formattable;
-		argsTypes: Formattable[];
-	}
 
 	interface ArgumentObject {
 		name: string;
