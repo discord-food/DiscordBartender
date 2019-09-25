@@ -1,80 +1,78 @@
-import { Collection, Client, Channel, Emoji, Message, TextChannel, Guild, Role } from "discord.js";
-import { sequelize, models, ModelObject } from "../modules/sql";
-import * as utils from "../modules/utils";
-import { sync } from "glob";
-import { dirname, resolve, basename, normalize, join } from "path";
-import { Command } from "./command.struct";
 import chalk from "chalk";
-import * as auth from "../auth.json";
+import { Channel, Client, Collection, Emoji, Guild, Message, Role, TextChannel } from "discord.js";
+import { sync } from "glob";
 import _ from "lodash";
-import { constants } from "../modules/constants";
-import { inspect } from "util";
-import { } from "../modules/extensions";
+import { basename, dirname, join, normalize, resolve } from "path";
 import { compareTwoStrings } from "string-similarity";
+import { inspect } from "util";
+import * as auth from "../auth.json";
+import { constants } from "../modules/constants";
+import { } from "../modules/extensions";
+import { ModelObject, models, sequelize } from "../modules/sql";
+import * as utils from "../modules/utils";
+import { Command } from "./command.struct";
 import { BakeryEmbed } from "./embed.struct";
 export class BakeryClient extends Client {
-	/**
-     * @property {string} EMPTY A string with an invisible character.
-     */
-	EMPTY: string = "​"
-	/**
-	 * @property {typeof BakeryEmbed} embed BakeryEmbed.
-	 */
-	Embed: typeof BakeryEmbed = BakeryEmbed;
-	/**
-	 * @property {ModelObject} models SQL models.
-	 */
-	models: ModelObject = models;
-	/**
-	 * @property {utils.Utils} utils Utils.
-	 */
-	utils: utils.Utils = utils;
-	/**
-	 * @property {any} cached Cached models.
-	 */
-	cached: any = {};
-	/**
-	 * @property {Collection<string, object>} languages The languages for the bot.
-	 */
-	languages: Collection<string, Languages> = new Collection();
-	/**
-	 * @property {Collection<string, Command>} commands The commands for the bot.
-	 */
-	commands: Collection<string, Command> = new Collection();
-	/**
-	 * @property {Collection<string, Channel>} mainChannels The commands for the bot.
-	 */
-	mainChannels: Collection<string, Channel> = new Collection();
-	/**
-	 * @property {Collection<string, Emoji>} mainEmojis The commands for the bot.
-	 */
-	mainEmojis: Collection<string, Emoji> = new Collection();
-	/**
-	 * @property {Collection<string, Message>} mainMessages The commands for the bot.
-	 */
-	mainMessages: Collection<string, Message> = new Collection();
-	/**
-	 * @property {Collection<string, Role>} mainRoles The roles for the bot.
-	 */
-	mainRoles: Collection<string, Role> = new Collection();
-	/**
-	 * @property {Auth} auth The auth.json file.
-	 */
-	auth: Auth = auth;
-	/**
-	 * @property {object} constants Constants.
-	 */
-	constants: Constants = constants;
 	/**
 	 * @property {Guild} mainGuild The main guild.
 	 */
 	get mainGuild() {
 		return this.guilds.get(constants.guild);
 	}
+	/** @property {string} EMPTY A string with an invisible character. */
+	public EMPTY: string = "​";
+	/**
+	 * @property {typeof BakeryEmbed} embed BakeryEmbed.
+	 */
+	public Embed: typeof BakeryEmbed = BakeryEmbed;
+	/**
+	 * @property {ModelObject} models SQL models.
+	 */
+	public models: ModelObject = models;
+	/**
+	 * @property {utils.Utils} utils Utils.
+	 */
+	public utils: utils.Utils = utils;
+	/**
+	 * @property {any} cached Cached models.
+	 */
+	public cached: any = {};
+	/**
+	 * @property {Collection<string, object>} languages The languages for the bot.
+	 */
+	public languages: Collection<string, Languages> = new Collection();
+	/**
+	 * @property {Collection<string, Command>} commands The commands for the bot.
+	 */
+	public commands: Collection<string, Command> = new Collection();
+	/**
+	 * @property {Collection<string, Channel>} mainChannels The commands for the bot.
+	 */
+	public mainChannels: Collection<string, Channel> = new Collection();
+	/**
+	 * @property {Collection<string, Emoji>} mainEmojis The commands for the bot.
+	 */
+	public mainEmojis: Collection<string, Emoji> = new Collection();
+	/**
+	 * @property {Collection<string, Message>} mainMessages The commands for the bot.
+	 */
+	public mainMessages: Collection<string, Message> = new Collection();
+	/**
+	 * @property {Collection<string, Role>} mainRoles The roles for the bot.
+	 */
+	public mainRoles: Collection<string, Role> = new Collection();
+	/**
+	 * @property {Auth} auth The auth.json file.
+	 */
+	public auth: Auth = auth;
+	/**
+	 * @property {object} constants Constants.
+	 */
+	public constants: Constants = constants;
 	/**
 	 * @property {_} _ Lodash.
 	 */
-	_: typeof _ = _;
+	public _: typeof _ = _;
 	/**
 	 * @description The constructor.
 	 * @param {number} s The number of shards to initiate.
@@ -90,45 +88,35 @@ export class BakeryClient extends Client {
 			this.loadModels();
 		});
 	}
-	inspect(text: any, color = true) {
-		return inspect(text, true, null, color);
+	public inspect(text: any, colors = true) {
+		return inspect(text, { showHidden: true, colors });
 	}
-	db(path: string) {
+	public db(path: string) {
 		return join(__dirname, "../../db/", path);
 	}
-	async parseArguments(argObject: ArgumentObject[], args: string[], message: Message): Promise<Args | ArgError> {
-		const matched: [ArgumentObject, string][] = argObject.map((x, i) => [x, i === argObject.length - 1 ? args.slice(i).join(" ") : args[i]]);
+	public async parseArguments(argObject: ArgumentObject[], args: string[], message: Message): Promise<Args | ArgError> {
+		const matched: Array<[ArgumentObject, string]> = argObject.map((x, i) => [x, i === argObject.length - 1 ? args.slice(i).join(" ") : args[i]]);
 		const func = new Collection(this.constants.arguments);
 		const returnVal: Args = { _list: args, _message: message };
-		for (let [argObj, arg] of matched) {
-			if (!arg && argObj.required) return { error: { obj: argObj, type: 1 } };
+		for (const [argObj, arg] of matched) {
+			if (!arg && argObj.required) { return { error: { obj: argObj, type: 1 } }; }
 			const typeFunc = func.get(argObj.type);
 			const processed = typeFunc ? await typeFunc(arg, returnVal) : await argObj.type(arg, returnVal);
-			if (processed === null && arg) return { error: { obj: argObj, type: 0 } }
-			returnVal[argObj.name] = [undefined, ""].some(x => x === arg) ? argObj.default : processed;
+			if (processed === null && arg) { return { error: { obj: argObj, type: 0 } }; }
+			returnVal[argObj.name] = [undefined, ""].some((x) => x === arg) ? argObj.default : processed;
 		}
 		for (const argObj of argObject) {
-			if (!argObj.required) continue;
-			if (returnVal[argObj.name] === undefined) return { error: { obj: argObj, type: 1 } };
+			if (!argObj.required) { continue; }
+			if (returnVal[argObj.name] === undefined) { return { error: { obj: argObj, type: 1 } }; }
 		}
 		return returnVal;
-	}
-	/**
-	 * @description Logs to the console with a custom prefix.
-	 * @param {any} prefix The prefix.
-	 * @param {any} obj The object to be logged.
-	 * @returns {void}.
-	 */
-	private dryLog(prefix: string, obj: any, labelColor: Function = chalk.whiteBright, color: Function = chalk.white): void {
-		if (obj instanceof Object) obj = inspect(obj, true, null, true);
-		console.log(`[${labelColor(prefix)}] ${color(obj)}`);
 	}
 	/**
 	 * @description Logs to the console.
 	 * @param {any} obj The object to be logged.
 	 * @returns {void}.
 	 */
-	log(obj: any): void {
+	public log(obj: any): void {
 		this.dryLog("LOG", obj, chalk.whiteBright, chalk.gray);
 	}
 	/**
@@ -136,7 +124,7 @@ export class BakeryClient extends Client {
 	 * @param {any} obj The object to be errored.
 	 * @returns {void}.
 	 */
-	error(obj: any): void {
+	public error(obj: any): void {
 		this.dryLog("ERR", obj, chalk.redBright, chalk.red);
 	}
 	/**
@@ -144,7 +132,7 @@ export class BakeryClient extends Client {
 	 * @param {any} obj The object to be warned.
 	 * @returns {void}.
 	 */
-	warn(obj: any): void {
+	public warn(obj: any): void {
 		this.dryLog("WAR", obj, chalk.yellowBright, chalk.yellow);
 	}
 	/**
@@ -152,20 +140,20 @@ export class BakeryClient extends Client {
 	 * @param {any} obj The object to be successed.
 	 * @returns {void}.
 	 */
-	success(obj: any): void {
+	public success(obj: any): void {
 		this.dryLog("YAY", obj, chalk.greenBright, chalk.green);
 	}
 
-	customLog(name: string, obj: any): void {
+	public customLog(name: string, obj: any): void {
 		this.dryLog(name, obj, chalk.cyanBright, chalk.cyan);
 	}
 	/**
 	 * @description Loads the commands.
 	 * @returns {void}
 	 */
-	async loadCommands(): Promise<void> {
+	public async loadCommands(): Promise<void> {
 		this.commands = new Collection();
-		const commandFiles: [string, Promise<Command>][] = sync(join(__dirname, "../commands/**/*.js")).map((file: string) => {
+		const commandFiles: Array<[string, Promise<Command>]> = sync(join(__dirname, "../commands/**/*.js")).map((file: string) => {
 			delete require.cache[resolve(file)];
 			return [file, import(file)];
 		});
@@ -173,7 +161,7 @@ export class BakeryClient extends Client {
 			const command: Command = ((await promiseCommand) as any).command;
 			if (this.commands.has(command.name)) {
 				this.error(
-					`Attempted to load command ${chalk.redBright(command.name)}, but the command already exists. Path: ${chalk.yellowBright(path)}`
+					`Attempted to load command ${chalk.redBright(command.name)}, but the command already exists. Path: ${chalk.yellowBright(path)}`,
 				);
 				continue;
 			}
@@ -187,9 +175,9 @@ export class BakeryClient extends Client {
 	 * @description Loads the events.
 	 * @returns {void}
 	 */
-	async loadEvents(): Promise<void> {
+	public async loadEvents(): Promise<void> {
 		await import("../modules/extensions");
-		const events: [string, Promise<Function>][] = sync(join(__dirname, "../events/**/*.js")).map((file: string) => {
+		const events: Array<[string, Promise<CallableFunction>]> = sync(join(__dirname, "../events/**/*.js")).map((file: string) => {
 			delete require.cache[resolve(file)];
 			return [basename(file).split(".")[0], import(file)];
 		});
@@ -203,12 +191,12 @@ export class BakeryClient extends Client {
 	 * @description Loads languages.
 	 * @returns {void}
 	 */
-	async loadLanguages(): Promise<void> {
+	public async loadLanguages(): Promise<void> {
 		interface LanguageModule {
 			default: Languages;
 		}
 		this.languages = new Collection();
-		const languages: [string, Promise<LanguageModule>][] = sync(join(__dirname, "../languages/**/*.js")).map((file: string) => {
+		const languages: Array<[string, Promise<LanguageModule>]> = sync(join(__dirname, "../languages/**/*.js")).map((file: string) => {
 			delete require.cache[resolve(file)];
 			return [basename(file).split(".")[0], import(file)];
 		});
@@ -222,7 +210,7 @@ export class BakeryClient extends Client {
 	 * @description Loads sql models.
 	 * @returns {void}
 	 */
-	async loadModels(): Promise<void> {
+	public async loadModels(): Promise<void> {
 		await sequelize.sync({ alter: true });
 		this.emit("modelsLoaded");
 	}
@@ -230,7 +218,7 @@ export class BakeryClient extends Client {
 	 * @description Loads channels, messages and emojis.
 	 * @returns {void}
 	 */
-	async loadMain(): Promise<void> {
+	public async loadMain(): Promise<void> {
 		this.mainChannels = new Collection();
 		for (const [name, id] of Object.entries(constants.channels)) {
 			const channel = this.channels.get(id);
@@ -261,7 +249,7 @@ export class BakeryClient extends Client {
 				this.error(`The channel for message ${chalk.redBright(name)} was not found.`);
 				continue;
 			}
-			if (!(channel instanceof TextChannel)) continue;
+			if (!(channel instanceof TextChannel)) { continue; }
 			const message = await channel.messages.fetch(messageId);
 			if (!message) {
 				this.error(`Message ${chalk.redBright(name)} was not found.`);
@@ -281,7 +269,7 @@ export class BakeryClient extends Client {
 				this.error(`The guild for role ${chalk.redBright(name)} was not found.`);
 				continue;
 			}
-			if (!(guild instanceof Guild)) continue;
+			if (!(guild instanceof Guild)) { continue; }
 			const role = await guild.roles.fetch(roleId);
 			if (!role) {
 				this.error(`Role ${chalk.redBright(name)} was not found.`);
@@ -291,16 +279,26 @@ export class BakeryClient extends Client {
 		}
 	}
 
-	getCommand(commandResolvable: string) {
+	public getCommand(commandResolvable: string) {
 		commandResolvable = commandResolvable.toLowerCase();
 		return (
 			this.commands.get(commandResolvable) ||
-			this.commands.find(command =>
+			this.commands.find((command) =>
 				[...command.aliases, ...command.shortcuts, command.name].some(
-					str => str === commandResolvable || compareTwoStrings(str, commandResolvable) > 0.85
-				)
+					(str) => str === commandResolvable || compareTwoStrings(str, commandResolvable) > 0.85,
+				),
 			) ||
 			null
 		);
+	}
+	/**
+	 * @description Logs to the console with a custom prefix.
+	 * @param {any} prefix The prefix.
+	 * @param {any} obj The object to be logged.
+	 * @returns {void}.
+	 */
+	private dryLog(prefix: string, obj: any, labelColor: CallableFunction = chalk.whiteBright, color: CallableFunction = chalk.white): void {
+		if (obj instanceof Object) { obj = inspect(obj, true, null, true); }
+		console.log(`[${labelColor(prefix)}] ${color(obj)}`);
 	}
 }

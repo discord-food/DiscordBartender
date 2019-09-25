@@ -1,5 +1,5 @@
+import { join } from "path";
 import { Formattable } from "../structures/formattable.struct";
-import { join } from "path"
 export const constants: Constants = {
 	prefix: "b:",
 	channels: {
@@ -18,10 +18,10 @@ export const constants: Constants = {
 	arguments: [
 		[String, (arg: string) => arg],
 		[Number, (arg: string) => isNaN(Number(arg)) ? null : Number(arg)],
-		[Boolean, (arg: string) => ["yes", "true", "y", "on"].some(x => arg.toLowerCase() === x) ? true : ["no", "false", "n", "off"].some(x => arg.toLowerCase() === x) ? false: null]
+		[Boolean, (arg: string) => ["yes", "true", "y", "on"].some((x) => arg.toLowerCase() === x) ? true : ["no", "false", "n", "off"].some((x) => arg.toLowerCase() === x) ? false : null],
 	],
 	admins: [
-		"413143886702313472"
+		"413143886702313472",
 	],
-	eval: new Formattable(`(async () => { const { client } = await import(require("path").join(__rootname, "/modules/client")); {} })()`) // ")
+	eval: new Formattable(`(async () => { const { client } = await import(require("path").join(__rootname, "/modules/client")); {} })()`), // ")
 };

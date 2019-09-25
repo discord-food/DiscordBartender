@@ -1,9 +1,9 @@
 export { Op } from "sequelize";
-import { Table, TableOptions, Column, Model, HasMany, PrimaryKey, DataType, Default, Sequelize, AutoIncrement } from "sequelize-typescript";
+import { AutoIncrement, Column, DataType, Default, HasMany, Model, PrimaryKey, Sequelize, Table, TableOptions } from "sequelize-typescript";
 export { Model } from "sequelize-typescript";
+import { DataTypes, Op } from "sequelize";
 import { database } from "../auth.json";
 import { constants } from "./constants";
-import { DataTypes, Op } from "sequelize";
 const { host, name, username, password } = database;
 export const sequelize = new Sequelize(name, username, password, {
 	host,
@@ -13,35 +13,35 @@ export const sequelize = new Sequelize(name, username, password, {
 		charset: "utf32",
 		collate: "utf32_unicode_ci",
 	},
-	logging: false
+	logging: false,
 });
-const Yable = (options: TableOptions) => Table({ ...options, freezeTableName: true, timestamps: true})
+const Yable = (options: TableOptions) => Table({ ...options, freezeTableName: true, timestamps: true});
 const SNOWFLAKE = new DataType.CHAR(18);
 @Yable({tableName: "guildinfo" })
 class Guildinfo extends Model<Guildinfo> {
 	@PrimaryKey
 	@Column(SNOWFLAKE)
-	id!: string;
+	public id!: string;
 
 	@Default(constants.prefix)
 	@Column
-	prefix!: string;
+	public prefix!: string;
 
 	@Default("english")
 	@Column
-	language!: string;
+	public language!: string;
 }
 @Yable({  tableName: "messages" })
 class Messages extends Model<Messages> {
 	@PrimaryKey
 	@Column(SNOWFLAKE)
-	id!: string;
+	public id!: string;
 
 	@Column(DataType.TEXT)
-	content!: string;
+	public content!: string;
 
 	@Column(SNOWFLAKE)
-	author!: string;
+	public author!: string;
 }
 export interface ModelObject {
 	Guildinfo: typeof Guildinfo;

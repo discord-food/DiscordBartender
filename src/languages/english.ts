@@ -5,7 +5,7 @@ export default {
 		help: {
 			title: new Formattable("Commands List: Page {} of {}"),
 			description: "A list of commands for the bot.",
-			sent: "[yes] I have send you the list of commands!"
+			sent: "[yes] I have send you the list of commands!",
 		},
 		ping: {
 			calculating: "Calculating ping...",
@@ -15,17 +15,17 @@ export default {
 				"Not too slow, but not too fast.",
 				"So fast!",
 				"Wow! Amazingly fast!",
-				"~~Discord Bakery is a time traveler.~~"
+				"~~Discord Bakery is a time traveler.~~",
 			],
-			pong: new Formattable("🏓 Pong! Took `{}`, {}")
-		}
+			pong: new Formattable("🏓 Pong! Took `{}`, {}"),
+		},
 	},
 	errors: {
 		internal: new Formattable("🔌 Sorry, there was an internal error.\n```js\n{}\n```"),
 		args: new Formattable("{}\n\**Correct Syntax**: `{}{} {}`"),
 		argsTypes: [
 			new Formattable("Argument `{}` was of incorrect type."),
-			new Formattable("Argument `{}` is required, but was not found.")
-		]
-	}
-}
+			new Formattable("Argument `{}` is required, but was not found."),
+		],
+	},
+};

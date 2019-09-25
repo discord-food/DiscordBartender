@@ -1,13 +1,13 @@
-import { TextChannel, Message, MessageOptions, MessageEmbed, MessageAttachment, Base, User, Guild, MessageEditOptions } from "discord.js";
-import { sendEnhancements } from "./utils";
+import { Base, Guild, Message, MessageAttachment, MessageEditOptions, MessageEmbed, MessageOptions, TextChannel, User } from "discord.js";
+import { join } from "path";
 import { BakeryClient } from "../structures/client.struct";
 import { client } from "./client";
 import { models } from "./sql";
-import { join } from "path";
+import { sendEnhancements } from "./utils";
 const temp = TextChannel.prototype.send;
 TextChannel.prototype.send = function send(
 	content?: any,
-	options?: MessageOptions | MessageEmbed | MessageAttachment | (MessageEmbed | MessageAttachment)[] | undefined
+	options?: MessageOptions | MessageEmbed | MessageAttachment | Array<MessageEmbed | MessageAttachment> | undefined,
 ): any {
 	return temp.bind(this, sendEnhancements(this, content), options)();
 };
@@ -29,7 +29,7 @@ declare module "discord.js" {
 }
 
 Base.prototype.bakery = client;
-declare module NodeJS {
+declare namespace NodeJS {
 	interface Global {
 		__rootname: string;
 	}
