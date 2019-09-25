@@ -11,7 +11,7 @@ export const command = new Command("exec", "Execute terminal.", [], [], [{ name:
 			} catch (err) {
 				return err;
 			}
-		})
+		})()
 		for (const text of Util.splitMessage(`**RESULT:**\n\`\`\`js\n${client.inspect(execed, false)}\n\`\`\``, { append: "\n```", prepend: "```js\n" }).slice(0, 1)) {
 			await message.channel.send(text);
 		}
