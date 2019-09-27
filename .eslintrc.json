@@ -31,7 +31,8 @@
 		"curly": ["error", "multi-or-nest", "consistent"],
 		"dot-location": ["error", "property"],
 		"dot-notation": "error",
-		"no-empty-function": "error",
+		"no-empty-function": "off",
+		"@typescript-eslint/no-empty-function": "error",
 		"no-floating-decimal": "error",
 		"no-implied-eval": "error",
 		"no-invalid-this": "error",
@@ -116,7 +117,7 @@
 		"max-statements-per-line": [
 			"error",
 			{
-				"max": 2
+				"max": 3
 			}
 		],
 		"new-cap": "off",

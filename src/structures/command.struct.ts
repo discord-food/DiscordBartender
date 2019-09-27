@@ -22,7 +22,7 @@ export class Command {
 	public execFunc?: execCommand;
 	constructor(public name: string, public description: string = "No description specified.", public aliases: string[] = [], public shortcuts: string[] = [], public syntax: ArgumentObject[] = [], public permissionLevel: Permission) { }
 	get syntaxString() {
-		return this.syntax.map(x => `${x.required ? "{" : "["}${x.name}:${x.type as any.typename || x.type.name}${x.default ? "=" : ""}${x.default || ""}${x.required ? "}" : "]"}`).join(" ");
+		return this.syntax.map(x => `${x.required ? "{" : "["}${x.name}:${(x.type as any).typename || x.type.name}${x.default ? "=" : ""}${x.default || ""}${x.required ? "}" : "]"}`).join(" ");
 	}
 	public setExec(func: execCommand) {
 		this.execFunc = func;
