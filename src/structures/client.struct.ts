@@ -269,11 +269,11 @@ export class BakeryClient extends Client {
 		}
 		this.mainRoles = new Collection();
 		for (const [name, id] of Object.entries(constants.roles)) {
-			if (!id.match(/^\>\d+:\d+$/)) {
+			if (!id.match(/^>\d+:\d+$/)) {
 				this.error(`Role ${chalk.magenta(name)} was not the correct format.`);
 				continue;
 			}
-			const [guildId, roleId] = [(id.match(/(?<=\>)\d+/) || [])[0], (id.match(/(?<=:)\d+/) || [])[0]];
+			const [guildId, roleId] = [(id.match(/(?<=>)\d+/) || [])[0], (id.match(/(?<=:)\d+/) || [])[0]];
 			const guild = this.guilds.get(guildId);
 			if (!guild) {
 				this.error(`The guild for role ${chalk.redBright(name)} was not found.`);
