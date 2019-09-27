@@ -16,9 +16,9 @@ export class Permission {
  * @property {object} permissions An object of permissions.
  */
 export const permissions = {
+	admin: new Permission("admin", (client: BakeryClient, member: GuildMember) => client.constants.admins.includes(member.id), 2),
 	everyone: new Permission("everyone", () => true, 0),
 	moderator: new Permission("moderator", () => true, 1),
-	admin: new Permission("admin", (client: BakeryClient, member: GuildMember) => client.constants.admins.includes(member.id), 2),
 };
 /**
  * @description Gets the permission ID for a GuildMember.
@@ -26,12 +26,8 @@ export const permissions = {
  * @returns {number} The permission ID.
  */
 export const getPermission = (member: GuildMember): number => {
-	if (member === null) { return 0; }
+	if (member === null) return 0;
 	const client = member.client;
-	for (const permission of Object.values(permissions).sort((a: Permission, b: Permission) => b.id - a.id)) {
-		if (permission.exec(member.bakery, member)) {
-			return permission.id;
-		}
-	}
+	for (const permission of Object.values(permissions).sort((a: Permission, b: Permission) => b.id - a.id)) if (permission.exec(member.bakery, member)) return permission.id;
 	return 0;
 };

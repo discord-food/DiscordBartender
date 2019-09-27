@@ -1,4 +1,5 @@
 import chalk from "chalk";
+import { execSync } from "child_process";
 import { Channel, Client, Collection, Emoji, Guild, Message, Role, TextChannel } from "discord.js";
 import { sync } from "glob";
 import _ from "lodash";
@@ -20,7 +21,7 @@ export class BakeryClient extends Client {
 		return this.guilds.get(constants.guild);
 	}
 	/** @property {string} EMPTY A string with an invisible character. */
-	public EMPTY: string = "​";
+	public EMPTY = "​";
 	/**
 	 * @property {typeof BakeryEmbed} embed BakeryEmbed.
 	 */
@@ -99,15 +100,15 @@ export class BakeryClient extends Client {
 		const func = new Collection(this.constants.arguments);
 		const returnVal: Args = { _list: args, _message: message };
 		for (const [argObj, arg] of matched) {
-			if (!arg && argObj.required) { return { error: { obj: argObj, type: 1 } }; }
+			if (!arg && argObj.required) return { error: { obj: argObj, type: 1 } };
 			const typeFunc = func.get(argObj.type);
 			const processed = typeFunc ? await typeFunc(arg, returnVal) : await argObj.type(arg, returnVal);
-			if (processed === null && arg) { return { error: { obj: argObj, type: 0 } }; }
-			returnVal[argObj.name] = [undefined, ""].some((x) => x === arg) ? argObj.default : processed;
+			if (processed === null && arg) return { error: { obj: argObj, type: 0 } };
+			returnVal[argObj.name] = [undefined, ""].some(x => x === arg) ? argObj.default : processed;
 		}
 		for (const argObj of argObject) {
-			if (!argObj.required) { continue; }
-			if (returnVal[argObj.name] === undefined) { return { error: { obj: argObj, type: 1 } }; }
+			if (!argObj.required) continue;
+			if (returnVal[argObj.name] === undefined) return { error: { obj: argObj, type: 1 } };
 		}
 		return returnVal;
 	}
@@ -147,6 +148,15 @@ export class BakeryClient extends Client {
 	public customLog(name: string, obj: any): void {
 		this.dryLog(name, obj, chalk.cyanBright, chalk.cyan);
 	}
+	public exec(code: string): Error | any {
+		return (() => {
+			try {
+				return execSync(code);
+			} catch (err) {
+				return err;
+			}
+		})();
+	}
 	/**
 	 * @description Loads the commands.
 	 * @returns {void}
@@ -182,8 +192,8 @@ export class BakeryClient extends Client {
 			return [basename(file).split(".")[0], import(file)];
 		});
 		for (const [name, eventPromise] of events) {
-			const event = await eventPromise;
-			this.on(name, (event as any).handler);
+			const event: any = await eventPromise;
+			this.on(name, event.handler);
 			this.log(`Event ${chalk.yellow(name)} was loaded!`);
 		}
 	}
@@ -249,7 +259,7 @@ export class BakeryClient extends Client {
 				this.error(`The channel for message ${chalk.redBright(name)} was not found.`);
 				continue;
 			}
-			if (!(channel instanceof TextChannel)) { continue; }
+			if (!(channel instanceof TextChannel)) continue;
 			const message = await channel.messages.fetch(messageId);
 			if (!message) {
 				this.error(`Message ${chalk.redBright(name)} was not found.`);
@@ -269,7 +279,7 @@ export class BakeryClient extends Client {
 				this.error(`The guild for role ${chalk.redBright(name)} was not found.`);
 				continue;
 			}
-			if (!(guild instanceof Guild)) { continue; }
+			if (!(guild instanceof Guild)) continue;
 			const role = await guild.roles.fetch(roleId);
 			if (!role) {
 				this.error(`Role ${chalk.redBright(name)} was not found.`);
@@ -283,9 +293,9 @@ export class BakeryClient extends Client {
 		commandResolvable = commandResolvable.toLowerCase();
 		return (
 			this.commands.get(commandResolvable) ||
-			this.commands.find((command) =>
+			this.commands.find(command =>
 				[...command.aliases, ...command.shortcuts, command.name].some(
-					(str) => str === commandResolvable || compareTwoStrings(str, commandResolvable) > 0.85,
+					str => str === commandResolvable || compareTwoStrings(str, commandResolvable) > 0.85,
 				),
 			) ||
 			null
@@ -298,7 +308,7 @@ export class BakeryClient extends Client {
 	 * @returns {void}.
 	 */
 	private dryLog(prefix: string, obj: any, labelColor: CallableFunction = chalk.whiteBright, color: CallableFunction = chalk.white): void {
-		if (obj instanceof Object) { obj = inspect(obj, true, null, true); }
+		if (obj instanceof Object) obj = inspect(obj, true, null, true);
 		console.log(`[${labelColor(prefix)}] ${color(obj)}`);
 	}
 }

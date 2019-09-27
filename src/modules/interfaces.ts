@@ -13,7 +13,7 @@ declare global {
 		database: AuthDatabase;
 	}
 
-	interface StringObject { [name: string]: string; }
+	interface StringObject { [name: string]: string }
 	interface Constants {
 		prefix: string;
 		channels: StringObject;
@@ -69,7 +69,7 @@ declare global {
 		[index: string]: any;
 	}
 	interface ArgError {
-		error: { type: number, obj: ArgumentObject };
+		error: { type: number; obj: ArgumentObject };
 	}
 
 }

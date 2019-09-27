@@ -29,9 +29,4 @@ declare module "discord.js" {
 }
 
 Base.prototype.bakery = client;
-declare namespace NodeJS {
-	interface Global {
-		__rootname: string;
-	}
-}
 eval("global.__rootname = require('path').join(__dirname, '../')");

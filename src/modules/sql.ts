@@ -15,9 +15,9 @@ export const sequelize = new Sequelize(name, username, password, {
 	},
 	logging: false,
 });
-const Yable = (options: TableOptions) => Table({ ...options, freezeTableName: true, timestamps: true});
+const Yable = (options: TableOptions) => Table({ ...options, freezeTableName: true, timestamps: true });
 const SNOWFLAKE = new DataType.CHAR(18);
-@Yable({tableName: "guildinfo" })
+@Yable({ tableName: "guildinfo" })
 class Guildinfo extends Model<Guildinfo> {
 	@PrimaryKey
 	@Column(SNOWFLAKE)
@@ -31,7 +31,7 @@ class Guildinfo extends Model<Guildinfo> {
 	@Column
 	public language!: string;
 }
-@Yable({  tableName: "messages" })
+@Yable({ tableName: "messages" })
 class Messages extends Model<Messages> {
 	@PrimaryKey
 	@Column(SNOWFLAKE)
