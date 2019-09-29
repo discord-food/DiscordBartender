@@ -203,7 +203,7 @@ export class BakeryClient extends Client {
 	 */
 	public async loadLanguages(): Promise<void> {
 		interface LanguageModule {
-			default: Languages;
+			language: Languages;
 		}
 		this.languages = new Collection();
 		const languages: Array<[string, Promise<LanguageModule>]> = sync(join(__dirname, "../languages/**/*.js")).map((file: string) => {
@@ -212,7 +212,7 @@ export class BakeryClient extends Client {
 		});
 		for (const [name, langPromise] of languages) {
 			const language: LanguageModule = await langPromise;
-			this.languages.set(name, language.default);
+			this.languages.set(name, language.language);
 			this.success(`Language ${chalk.greenBright(name)} was loaded!`);
 		}
 	}
