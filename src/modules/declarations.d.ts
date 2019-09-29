@@ -1,7 +1,4 @@
-declare interface String {
-}
 declare const __rootname: string;
-
 declare module "rivescript" {
 	class Rivescript {
 		public Promise(callback: (resolve: (any: any) => void, reject: (any: any) => void) => void): void;
@@ -38,9 +35,8 @@ declare module "js-markov" {
 		public addStates(states: string[] | string | NumericState | NumericState[]): void;
 		public clearState(): void;
 		public clearPossibilities(): void;
-		public getStates(): Array<string | number>;
+		public getStates(): Array<string | number> | number;
 		public setOrder(number: number): void;
-		public getStates(): number;
 		public getPossibilities(possibility: string): Possibility[];
 		public train(order?: number): void;
 		public generateRandom(chars?: number): string | Possibility[];

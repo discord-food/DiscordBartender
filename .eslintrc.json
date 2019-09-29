@@ -26,6 +26,7 @@
 		],
 		"no-extra-parens": "off",
 		"no-template-curly-in-string": "error",
+		"@typescript-eslint/no-non-null-assertion": "off",
 		"no-unsafe-negation": "error",
 		"accessor-pairs": "warn",
 		"curly": ["error", "multi-or-nest", "consistent"],

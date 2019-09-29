@@ -6,5 +6,5 @@ import { Command } from "../../structures/command.struct";
 export const command = new Command("restart", "Restart the bot.", [], [], [], permissions.admin)
 	.setExec(async(client, message, args, lang) => {
 		await message.channel.send("Restarting...");
-		client.exec("yarn run ez")
+		client.exec("yarn run ez");
 	});

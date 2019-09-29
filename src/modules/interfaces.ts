@@ -37,6 +37,7 @@ declare global {
 			internal: Formattable;
 			args: Formattable;
 			argsTypes: Formattable[];
+			permission: Formattable;
 		};
 	}
 
@@ -49,7 +50,7 @@ declare global {
 		ping: {
 			calculating: string;
 			pong: Formattable;
-			speeds: string[6];
+			speeds: string[];
 		};
 	}
 

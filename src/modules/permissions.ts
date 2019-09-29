@@ -16,9 +16,9 @@ export class Permission {
  * @property {object} permissions An object of permissions.
  */
 export const permissions = {
-	admin: new Permission("admin", (client: BakeryClient, member: GuildMember) => client.constants.admins.includes(member.id), 2),
-	everyone: new Permission("everyone", () => true, 0),
-	moderator: new Permission("moderator", () => true, 1),
+	everyone: new Permission("PUBLIC", () => true, 0),
+	moderator: new Permission("MODERATOR", () => true, 1),
+	admin: new Permission("ADMIN", (client: BakeryClient, member: GuildMember) => client.constants.admins.includes(member.id), 2),
 };
 /**
  * @description Gets the permission ID for a GuildMember.

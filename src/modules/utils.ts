@@ -27,7 +27,7 @@ export const format = (str: string, ...formats: any[]): string => formats.reduce
 
 export const getText = async(message: Message, display = "Respond with text.", time = 40000, filter: CallableFunction = (m: Message) => m.author!.id === message.author!.id): Promise<string | undefined> => {
 	await message.channel.send(display);
-	const res = await message.channel.awaitMessages(m => (m.content && similarTo(m.content, "cancel")) || filter(m) && m.author.id === message.author!.id, { time, max: 1 });
+	const res = await message.channel.awaitMessages(m => (m.content && similarTo(m.content, "cancel")) || Boolean(filter(m) && m.author.id === message.author!.id), { time, max: 1 });
 	if (!res.size) return void message.channel.send("No response. Cancelled.");
 	const resm = res.first()!;
 	if (resm.attachments.size) return resm.attachments.first()!.proxyURL;
@@ -40,12 +40,12 @@ export const getOptionalText = async(message: Message, display = "Respond with t
 	if (similarTo(text, "yes")) return getText(message, "Please respond with the input.");
 	return text;
 };
-interface getIndexReturnVal<T> {
+interface GetIndexReturnVal<T> {
 	index: number;
 	item: T;
 	displayItem: any;
 }
-export const getIndex = async<T>(message: Message, list: any[], internal: T[] = list.map((x, i) => x === null ? list[i] : x), display = "item"): Promise<getIndexReturnVal<T> | false> => {
+export const getIndex = async<T>(message: Message, list: any[], internal: T[] = list.map((x, i) => x === null ? list[i] : x), display = "item"): Promise<GetIndexReturnVal<T> | false> => {
 	if (internal.length < 2) {
 		await message.channel.send(`\`${list[0]}\` has been automatically chosen, as it is the only option.`);
 		return { index: 0, item: internal[0], displayItem: list[0] };
@@ -72,9 +72,9 @@ export const getUser = async(message: Message, toParse: string, { autoself = fal
 	if (user) return user;
 	if (!toParse) return null;
 	const userlist = client.mainGuild!.members.concat(message.guild!.members)
-		.map(x => [x, compareUsers(toParse, x.user)])
-		.filter(x => filter(x[0] as GuildMember))
-		.sort((x, y) => compareUsers(toParse, y[0] as GuildMember.user) - compareUsers(toParse, x[0] as GuildMember.user)) as Array<[GuildMember, number]>;
+		.map(x => [x, compareUsers(toParse, x.user)] as [GuildMember, number])
+		.filter(x => filter(x[0]))
+		.sort((x, y) => compareUsers(toParse, y[0].user) - compareUsers(toParse, x[0].user)) as Array<[GuildMember, number]>;
 	if (!userlist.length) return null;
 	if (compareUsers(toParse, userlist[0][0].user) > 0.9) return userlist[0][0].user;
 	const names = userlist.map(x => `${x[0].user.tag.padEnd(37)} - ${(x[1] * 100).toFixed(2)}%`).slice(0, 5);
@@ -86,7 +86,7 @@ export const getUser = async(message: Message, toParse: string, { autoself = fal
 export interface Utils {
 	sendEnhancements(channel: TextChannel, val: any): any[];
 	format(str: string, ...formats: any[]): string;
-	getIndex<T>(message: Message, list: any[], internal?: T[], display?: string): Promise<getIndexReturnVal<T> | false>;
+	getIndex<T>(message: Message, list: any[], internal?: T[], display?: string): Promise<GetIndexReturnVal<T> | false>;
 	getText(message: Message, display: string, time: number, filter: CallableFunction): Promise<string | undefined>;
 	similarTo(value: string, checking: string): boolean;
 	getOptionalText(message: Message, display: string, time: number, filter: CallableFunction): Promise<string | false | undefined>;

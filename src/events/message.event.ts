@@ -12,14 +12,15 @@ export const handler = async(message: Message) => {
 	if (!prefix) return client.models.Messages.create({ id: message.id, content: Util.cleanContent(message.content, message), author: message.author.id });
 	message.content = message.content.replace(prefix, "").trim();
 	message.permissions = message.channel.permissionsFor(client.user.id)!.toArray();
-	const args = message.content.replace(/\\\"/g, "!_dq_!").match(/('.*?'|".*?"|\S+)/g)!.map(x => x.replace(/^"(.+(?="$))"$/, "$1").replace(/\!_dq_\!/g, '"'));
+	const args = message.content.replace(/\\"/g, "!_dq_!").match(/('.*?'|".*?"|\S+)/g)!.map(x => x.replace(/^"(.+(?="$))"$/, "$1").replace(/!_dq_!/g, '"'));
 	const command = args.shift();
 	const gcommand = client.getCommand(command || "");
 	if (!gcommand) return;
+	if (getPermission(message.member!) < gcommand.permissionLevel.id) return message.channel.send(lang.errors.permission.format(gcommand.permissionLevel.name)); ;
 	const processedArgs: Args | ArgError = await client.parseArguments(gcommand.syntax, args, message);
 	if (processedArgs.error) return message.channel.send(lang.errors.args.format(lang.errors.argsTypes[processedArgs.error.type].format(processedArgs.error.obj.name), prefix, gcommand.name, gcommand.syntaxString));
 	try {
-		await gcommand.exec(client, message, processedArgs, lang);
+		await gcommand.exec(client, message, processedArgs as Args, lang);
 	} catch (err) {
 		await message.channel.send(lang.errors.internal.format(err));
 		client.error(err);
