@@ -1,8 +1,23 @@
-const { exec } = require("child_process");
-const { promisify } = require("util");
+// @ts-ignore
+const { exec } = require("child_process"); /* eslint-disable-line */
+const { promisify } = require("util"); /* eslint-disable-line */
+const pushes = [
+	"Fixed some bugs",
+	"Added new features",
+	"Fixed a command",
+	"Created some bugs",
+	"Made some secret sauce",
+	"Cooked spaghetti",
+	"Decomposed spaghetti",
+	"Bullied gagi",
+	"Making profit",
+	"Added minecraft",
+	"Removed gagi",
+	"Edited government secret codes"
+];
 (async() => {
-	const arg = process.argv.slice(2).join(" ");
-	if (!arg) return console.log("No argument!");
+	let arg = process.argv.slice(2).join(" ");
+	if (!arg) arg = pushes[Math.floor(Math.random() * pushes.length)]
 
 	console.log(`Pushing...`);
 

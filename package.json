@@ -15,7 +15,7 @@
     "windows": "rmdir /s /q \"./dist/\" && mkdir dist && yarn run compile && yarn start"
   },
   "repository": "git+https://github.com/shadow6060/DiscordBakery.git",
-  "author": "Your Name",
+  "author": "Went and did some shit.",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/shadow6060/DiscordBakery/issues"
