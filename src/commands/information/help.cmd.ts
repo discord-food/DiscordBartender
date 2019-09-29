@@ -5,7 +5,7 @@ export const command = new Command("help", "Gets the command list.", ["?"], ["hp
 	.setExec(async(client, message, args, lang) => {
 		if (!message.author) return;
 		const commands = client.commands
-			.filter(x => x.permissionLevel.exec(client, message.member));
+			.filter(x => x.permissionLevel.exec(client, message.member!));
 		const fields: EmbedField[] = Object.entries(client._.groupBy(commands.array(), "category"))
 			.flatMap(([category, categoryCommands]) => [{ name: `== ${category.toUpperCase()} ==`, value: client.EMPTY }, ...categoryCommands.map(x => ({ name: `${x.name} ${x.syntaxString}`, value: `**Aliases**: ${x.aliases.join(", ") || "[None]"}\n**Shortcuts**: ${x.shortcuts.join(", ") || "[None]"}\n**Permission**: ${x.permissionLevel.name.toUpperCase()}\n${x.description}` }))]);
 		const chunked = client._.chunk(fields, 25);
