@@ -3,7 +3,7 @@ import { client } from "../modules/client";
 import { getPermission } from "../modules/permissions";
 import { models } from "../modules/sql";
 export const handler = async(message: Message) => {
-	if (!message.guild || !message.author || message.author.bot || !client.user || message.channel.type !== "text" || !(message.channel instanceof TextChannel)) return;
+	if (!message.guild || !message.author || message.author.bot || !client.user || message.channel.type !== "text" || !(message.channel instanceof TextChannel)) return client.log("temp temp return");
 	[message.guild.info] = await models.Guildinfo.findOrCreate({ where: { id: message.guild.id }, defaults: { id: message.guild.id } });
 	const lang = client.languages.get(message.guild.info.language || "english");
 	if (!lang) return;
