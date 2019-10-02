@@ -53,7 +53,7 @@ const suffix = [
 ];
 (async() => {
 	let arg = process.argv.slice(2).join(" ");
-	if (!arg) arg = Math.floor(Math.random() * 2) ? rand(pushes) : `${rand(prefix)} ${rand(suffix)}`;
+	if (!arg) arg = Math.floor(Math.random() * 3) ? rand(pushes) : `${rand(prefix)} ${rand(suffix)}`;
 
 	console.log(`Pushing...`);
 
