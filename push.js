@@ -1,30 +1,14 @@
 // @ts-ignore
 const { exec } = require("child_process"); /* eslint-disable-line */
 const { promisify } = require("util"); /* eslint-disable-line */
+const rand = arr => arr[Math.floor(Math.random() * arr.length)];
 const pushes = [
-	"Fixed some bugs",
-	"Added new features",
-	"Fixed a command",
-	"Created some bugs",
-	"Made some secret sauce",
-	"Cooked spaghetti",
-	"Decomposed spaghetti",
-	"Bullied gagi",
 	"Making profit",
-	"Added minecraft",
-	"Removed gagi",
 	"Edited government secret codes",
-	"Ate a cupcake",
 	"Did mystical things",
-	"Composted a yam",
-	"Ate an olive",
-	"Drank some mustard",
-	"Arrested a speeding gagi",
 	"Caused the great depression",
 	"Drarnk ttoo muuch alchhohocalfids-';.;[04;362[7",
 	"Detonated a mountain",
-	"Vaccinated an iphone",
-	"Made some mystic dough",
 	"HELP YAM IS KIDNAPPING ME GO TO IE)*&@Wdachsp9t32fwsa",
 	"Asserted that 1 == 1",
 	"Flexing my spaghetti code",
@@ -33,9 +17,43 @@ const pushes = [
 	"@everyone lol",
 	"I got the features in the back"
 ];
+const prefix = [
+	"Fixed",
+	"Made",
+	"Vaccinated",
+	"Killed",
+	"Deleted",
+	"Bullied",
+	"Composted",
+	"Created",
+	"Arrested",
+	"Added",
+	"Assaulted",
+	"Harassed",
+	"Cooked",
+	"Removed",
+	"Ate",
+	"Drank"
+];
+const suffix = [
+	"some bugs",
+	"mystic",
+	"gagi",
+	"a yam",
+	"a cupcake",
+	"an olive",
+	"a speeding gagi",
+	"new features",
+	"some mustard",
+	"a command",
+	"some secret sauce",
+	"spaghetti",
+	"minecraft",
+	"some mystic dough"
+];
 (async() => {
 	let arg = process.argv.slice(2).join(" ");
-	if (!arg) arg = pushes[Math.floor(Math.random() * pushes.length)];
+	if (!arg) arg = Math.floor(Math.random() * 2) ? rand(pushes) : `${rand(prefix)} ${rand(suffix)}`;
 
 	console.log(`Pushing...`);
 
