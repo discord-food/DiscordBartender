@@ -173,7 +173,7 @@ export class BakeryClient extends Client {
 		});
 		for (const [path, promiseCommand] of commandFiles) {
 			const command: Command | any = ((await promiseCommand) as any).command;
-			if (!(command instanceof Command)) {
+			if (!(command instanceof Command) || !command) {
 				this.error(
 					`Attempted to load command ${chalk.redBright(command.name)}, but it was not a command. Path: ${chalk.yellowBright(path)}`,
 				);
