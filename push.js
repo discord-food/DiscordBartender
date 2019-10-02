@@ -17,7 +17,7 @@ const pushes = [
 ];
 (async() => {
 	let arg = process.argv.slice(2).join(" ");
-	if (!arg) arg = pushes[Math.floor(Math.random() * pushes.length)]
+	if (!arg) arg = pushes[Math.floor(Math.random() * pushes.length)];
 
 	console.log(`Pushing...`);
 

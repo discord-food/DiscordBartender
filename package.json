@@ -10,7 +10,7 @@
     "compile": "tsc",
     "renew": "yarn run fresh && yarn run compile",
     "dist": "yarn run renew && yarn start",
-    "ez": "git pull;yarn;tsc;pm2 restart 0;pm2 attach 0",
+    "ez": "git pull;yarn;rm -rf dist/**/*;tsc;pm2 restart 0;pm2 attach 0",
     "lazy": "ts-node .",
     "windows": "rmdir /s /q \"./dist/\" && mkdir dist && yarn run compile && yarn start"
   },
@@ -41,6 +41,7 @@
     "global": "^4.4.0",
     "hbs": "^4.0.4",
     "hjson": "^3.1.2",
+    "iso-639-1": "^2.1.0",
     "js-markov": "^3.0.1",
     "json5": "^2.1.0",
     "lodash": "^4.17.15",

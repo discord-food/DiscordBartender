@@ -13,6 +13,7 @@ import { ModelObject, models, sequelize } from "../modules/sql";
 import * as utils from "../modules/utils";
 import { Command } from "./command.struct";
 import { BakeryEmbed } from "./embed.struct";
+import ISO from "iso-639-1";
 export class BakeryClient extends Client {
 	/**
 	 * @property {Guild} mainGuild The main guild.
@@ -148,6 +149,9 @@ export class BakeryClient extends Client {
 	public customLog(name: string, obj: any): void {
 		this.dryLog(name, obj, chalk.cyanBright, chalk.cyan);
 	}
+	public getLanguage(lang: string): Languages | null {
+		return this.languages.get(ISO.getCode(lang)) || null;
+	}
 	public exec(code: string): Error | any {
 		return (() => {
 			try {
@@ -168,7 +172,13 @@ export class BakeryClient extends Client {
 			return [file, import(file)];
 		});
 		for (const [path, promiseCommand] of commandFiles) {
-			const command: Command = ((await promiseCommand) as any).command;
+			const command: Command | any = ((await promiseCommand) as any).command;
+			if (!(command instanceof Command)) {
+				this.error(
+					`Attempted to load command ${chalk.redBright(command.name)}, but it was not a command. Path: ${chalk.yellowBright(path)}`,
+				);
+				continue;
+			}
 			if (this.commands.has(command.name)) {
 				this.error(
 					`Attempted to load command ${chalk.redBright(command.name)}, but the command already exists. Path: ${chalk.yellowBright(path)}`,

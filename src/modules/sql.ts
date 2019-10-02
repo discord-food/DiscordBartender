@@ -17,8 +17,8 @@ export const sequelize = new Sequelize(name, username, password, {
 });
 const Yable = (options: TableOptions) => Table({ ...options, freezeTableName: true, timestamps: true });
 const SNOWFLAKE = new DataType.CHAR(18);
-@Yable({ tableName: "guildinfo" })
-class Guildinfo extends Model<Guildinfo> {
+@Yable({ tableName: "guildoptions" })
+class Guildoptions extends Model<Guildoptions> {
 	@PrimaryKey
 	@Column(SNOWFLAKE)
 	public id!: string;
@@ -27,7 +27,21 @@ class Guildinfo extends Model<Guildinfo> {
 	@Column
 	public prefix!: string;
 
-	@Default("english")
+	@Default("en")
+	@Column
+	public language!: string;
+}
+@Yable({ tableName: "useroptions" })
+class Useroptions extends Model<Useroptions> {
+	@PrimaryKey
+	@Column(SNOWFLAKE)
+	public id!: string;
+
+	@Default(constants.prefix)
+	@Column
+	public prefix!: string;
+
+	@Default("en")
 	@Column
 	public language!: string;
 }
@@ -44,11 +58,11 @@ class Messages extends Model<Messages> {
 	public author!: string;
 }
 export interface ModelObject {
-	Guildinfo: typeof Guildinfo;
+	Guildoptions: typeof Guildoptions;
 	Messages: typeof Messages;
 }
 export const models: ModelObject = {
-	Guildinfo,
+	Guildoptions,
 	Messages,
 };
-sequelize.addModels([Guildinfo, Messages]);
+sequelize.addModels([Guildoptions, Messages]);

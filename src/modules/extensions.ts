@@ -20,7 +20,7 @@ declare module "discord.js" {
 		bakery: BakeryClient;
 	}
 	interface Guild {
-		info?: typeof models.Guildinfo.prototype;
+		info?: typeof models.Guildoptions.prototype;
 	}
 
 	interface Message {
