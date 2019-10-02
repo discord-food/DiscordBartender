@@ -13,7 +13,25 @@ const pushes = [
 	"Making profit",
 	"Added minecraft",
 	"Removed gagi",
-	"Edited government secret codes"
+	"Edited government secret codes",
+	"Ate a cupcake",
+	"Did mystical things",
+	"Composted a yam",
+	"Ate an olive",
+	"Drank some mustard",
+	"Arrested a speeding gagi",
+	"Caused the great depression",
+	"Drarnk ttoo muuch alchhohocalfids-';.;[04;362[7",
+	"Detonated a mountain",
+	"Vaccinated an iphone",
+	"Made some mystic dough",
+	"HELP YAM IS KIDNAPPING ME GO TO IE)*&@Wdachsp9t32fwsa",
+	"Asserted that 1 == 1",
+	"Flexing my spaghetti code",
+	"Murdered a murder murderer",
+	"What's this? An error!",
+	"@everyone lol",
+	"I got the features in the back"
 ];
 (async() => {
 	let arg = process.argv.slice(2).join(" ");
