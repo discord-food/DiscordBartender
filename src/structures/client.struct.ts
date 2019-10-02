@@ -150,7 +150,7 @@ export class BakeryClient extends Client {
 		this.dryLog(name, obj, chalk.cyanBright, chalk.cyan);
 	}
 	public getLanguage(lang: string): Languages | null {
-		return this.languages.get(ISO.getCode(lang)) || null;
+		return this.languages.get(lang) || this.languages.get(ISO.getCode(lang)) || null;
 	}
 	public exec(code: string): Error | any {
 		return (() => {
