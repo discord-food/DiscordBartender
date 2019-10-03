@@ -7,6 +7,7 @@ export const command = new Command("options", "Change guild and user options.", 
 	{ name: "set", type: String }
 ], permissions.everyone)
 	.setExec(async(client, message, args, lang) => {
+		const forbidden = ["id", "createdAt", "updatedAt"];
 		const model = (() => {
 			if (args.selection === "guild") return client.models.Guildoptions;
 			else if (args.selection === "user") return client.models.Useroptions;
@@ -18,8 +19,8 @@ export const command = new Command("options", "Change guild and user options.", 
 				.setTitle(`${{ guild: "Guild", user: "User" }[args.selection as "guild" | "user"]} Options`)
 				.setDescription("The current options.");
 			for (const option in model.rawAttributes) {
-				if (option === model.primaryKeyAttribute) continue;
-				embed.addField(option, options.get(option));
+				if (forbidden.includes(option)) continue;
+				embed.addField(option.toUpperCase(), options.get(option));
 			};
 			return message.channel.send(embed);
 		} else {
