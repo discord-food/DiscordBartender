@@ -2,7 +2,8 @@ import * as Discord from "discord.js";
 import { createInterface } from "readline";
 import { transpile } from "typescript";
 import { client } from "./modules/client";
-import { } from "./modules/extensions";
+import "./modules/extensions";
+import "source-map-support/register";
 // Process events
 const reader = createInterface({
 	input: process.stdin,
