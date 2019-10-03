@@ -60,9 +60,11 @@ class Messages extends Model<Messages> {
 export interface ModelObject {
 	Guildoptions: typeof Guildoptions;
 	Messages: typeof Messages;
+	Useroptions: typeof Useroptions;
 }
 export const models: ModelObject = {
 	Guildoptions,
 	Messages,
+	Useroptions,
 };
-sequelize.addModels([Guildoptions, Messages]);
+sequelize.addModels([Guildoptions, Messages, Useroptions]);
