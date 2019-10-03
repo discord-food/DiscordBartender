@@ -7,7 +7,7 @@ import { BakeryClient } from "./client.struct";
 type execCommand = (client: BakeryClient, message: Message, args: any, lang: Languages) => any;
 
 export class Command {
-	public static OR = (...vals: string[]): TypeCheck => Object.assign((arg: string) => vals.some(x => similarTo(arg, x))
+	public static OR = (...vals: string[]): TypeCheck => Object.assign((arg: string) => vals.find(x => similarTo(arg, x)) || null
 		, { get typename(): string { return vals.join("|"); } })
 	public static WITHIN = (min: number, max: number): TypeCheck => Object.assign((arg: string) => isNaN(+arg) ? null : limit(+arg, min, max)
 		, { get typename(): string { return `${min}-${max}`; } })

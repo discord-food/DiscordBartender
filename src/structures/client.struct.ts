@@ -105,8 +105,6 @@ export class BakeryClient extends Client {
 			const typeFunc = func.get(argObj.type);
 			const processed = arg ? typeFunc ? await typeFunc(arg, returnVal) : await argObj.type(arg, returnVal) : undefined;
 			if (processed === null && arg) return { error: { obj: argObj, type: 0 } };
-			message.bakery.log(argObj);
-			message.bakery.log(arg);
 			returnVal[argObj.name] = [undefined, ""].some(x => x === arg) ? argObj.default : processed;
 		}
 		for (const argObj of argObject) {
