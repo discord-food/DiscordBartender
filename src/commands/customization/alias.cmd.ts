@@ -1,7 +1,7 @@
 import { EmbedField, GuildMember } from "discord.js";
 import { join } from "path";
 import { permissions } from "../../modules/permissions";
-import { Command } from "bakery-command-struct";
+import { Command } from "../../structures/command.struct";
 export const command = new Command("alias", "Create an alias for a command.", [], [], [
 	{ name: "command", type: String, required: true },
 	{ name: "command", type: String, required: true },

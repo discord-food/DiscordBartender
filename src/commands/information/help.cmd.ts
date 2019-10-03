@@ -1,6 +1,6 @@
 import { EmbedField, GuildMember } from "discord.js";
 import { permissions } from "../../modules/permissions";
-import { Command } from "bakery-command-struct";
+import { Command } from "../../structures/command.struct";
 export const command = new Command("help", "Gets the command list.", ["?"], ["hp"], [], permissions.everyone)
 	.setExec(async(client, message, args, lang) => {
 		if (!message.author) return;

@@ -1,6 +1,6 @@
 import pms from "pretty-ms";
 import { permissions } from "../../modules/permissions";
-import { Command } from "bakery-command-struct";
+import { Command } from "../../structures/command.struct";
 export const command = new Command("ping", "Gets the bot ping.", [], [], [{ name: "verbose", type: Boolean }], permissions.everyone)
 	.setExec(async(client, message, args, lang) => {
 		if (!message.author) return;
