@@ -3,8 +3,8 @@ import { join } from "path";
 import { permissions } from "../../modules/permissions";
 import { Command } from "../../structures/command.struct";
 export const command = new Command("options", "Change guild and user options.", [], ["opt"], [
-	{ name: "selection", type: Command.OR("guild", "user"), required: true },
-	{ name: "set", type: String, required: true }
+	{ name: "selection", type: Command.OR("guild", "user"), default: "user" },
+	{ name: "set", type: String }
 ], permissions.everyone)
 	.setExec(async(client, message, args, lang) => {
 		const model = (() => {
