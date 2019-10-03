@@ -22,5 +22,7 @@ export const command = new Command("options", "Change guild and user options.", 
 				embed.addField(option, options.get(option));
 			};
 			return message.channel.send(embed);
+		} else {
+			// todo
 		}
 	});
