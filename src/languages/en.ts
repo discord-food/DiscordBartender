@@ -18,7 +18,7 @@ export const language: Languages = {
 				"~~Discord Bakery is a time traveler.~~",
 			],
 			pong: new Formattable("🏓 Pong! Took `{}`, {}"),
-		},
+		}
 	},
 	errors: {
 		internal: new Formattable("🔌 Sorry, there was an internal error.\n```js\n{}\n```"),

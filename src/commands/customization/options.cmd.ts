@@ -4,7 +4,7 @@ import { permissions } from "../../modules/permissions";
 import { Command } from "../../structures/command.struct";
 export const command = new Command("options", "Change guild and user options.", [], ["opt"], [
 	{ name: "selection", type: Command.OR("guild", "user"), default: "user" },
-	{ name: "set", type: String }
+	{ name: "set", type: Boolean }
 ], permissions.everyone)
 	.setExec(async(client, message, args, lang) => {
 		const forbidden = ["id", "createdAt", "updatedAt"];
@@ -24,6 +24,16 @@ export const command = new Command("options", "Change guild and user options.", 
 			};
 			return message.channel.send(embed);
 		} else {
-			// todo
+			const toSet = await client.utils.getIndex<string>(message, Object.keys(model.rawAttributes).filter(x => !forbidden.includes(x)), undefined, "option to set");
+			if (!toSet) return;
+			const opt = toSet.item;
+			const toVal = await client.utils.getText(message, "What do you want to set it to?");
+			if (!toVal) return;
+			try {
+				await options.update({ [opt]: toVal });
+				await message.channel.send(`Option has been successfully set.`);
+			} catch {
+				await message.channel.send("Invalid set value.");
+			}
 		}
 	});
