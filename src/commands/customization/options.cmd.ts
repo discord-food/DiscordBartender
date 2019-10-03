@@ -11,7 +11,7 @@ export const command = new Command("options", "Change guild and user options.", 
 		const model = (() => {
 			if (args.selection === "guild") return client.models.Guildoptions;
 			else if (args.selection === "user") return client.models.Useroptions;
-			else throw new Error("This should never occur.");
+			else throw new Error(`This should never occur. ${args.selection}`);
 		})();
 		const [options] = await model.findOrCreate({ where: { id: message.author!.id }, defaults: { id: message.author!.id } });
 		if (!args.set) {
