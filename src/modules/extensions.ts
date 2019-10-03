@@ -2,8 +2,8 @@ import { Base, Guild, Message, MessageAttachment, MessageEditOptions, MessageEmb
 import { join } from "path";
 import { BakeryClient } from "../structures/client.struct";
 import { client } from "./client";
-import { models } from "./sql";
 import { sendEnhancements } from "./utils";
+import { models } from "./sql";
 const temp = TextChannel.prototype.send;
 TextChannel.prototype.send = function send(
 	content?: any,
@@ -20,7 +20,11 @@ declare module "discord.js" {
 		bakery: BakeryClient;
 	}
 	interface Guild {
-		info?: typeof models.Guildoptions.prototype;
+		options?: models.Guildoptions;
+	}
+
+	interface User {
+		options?: models.Useroptions;
 	}
 
 	interface Message {

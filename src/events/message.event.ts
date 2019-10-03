@@ -4,10 +4,11 @@ import { getPermission } from "../modules/permissions";
 import { models } from "../modules/sql";
 export const handler = async(message: Message) => {
 	if (!message.guild || !message.author || message.author.bot || !client.user || message.channel.type !== "text" || !(message.channel instanceof TextChannel)) return;
-	[message.guild.info] = await models.Guildoptions.findOrCreate({ where: { id: message.guild.id }, defaults: { id: message.guild.id } });
-	const lang = client.getLanguage(message.guild.info.language) || client.getLanguage(message.guild.info.language);
-	if (!lang) return client.log(message.guild.info.language);
-	const prefixes = [client.constants.prefix, `<@${client.user.id}>`, `<@!${client.user.id}>`, message.guild.info.prefix];
+	[message.guild.options] = await models.Guildoptions.findOrCreate({ where: { id: message.guild.id }, defaults: { id: message.guild.id } });
+	[message.author.options] = await models.Useroptions.findOrCreate({ where: { id: message.author.id }, defaults: { id: message.author.id } });
+	const lang = client.getLanguage(message.guild.options.language === "en" ? message.author.options.language : message.guild.options.language);
+	if (!lang) return client.log(message.guild.options.language);
+	const prefixes = [client.constants.prefix, `<@${client.user.id}>`, `<@!${client.user.id}>`, message.guild.options.prefix, message.author.options.prefix];
 	const prefix = prefixes.find(x => message.content.startsWith(x));
 	if (!prefix) return client.models.Messages.create({ id: message.id, content: Util.cleanContent(message.content, message), author: message.author.id });
 	message.content = message.content.replace(prefix, "").trim();

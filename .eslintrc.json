@@ -28,6 +28,7 @@
 		"no-template-curly-in-string": "error",
 		"@typescript-eslint/no-non-null-assertion": "off",
 		"@typescript-eslint/ban-ts-ignore": "off",
+		"@typescript-eslint/no-namespace": "off",
 		"no-unsafe-negation": "error",
 		"accessor-pairs": "warn",
 		"curly": ["error", "multi-or-nest", "consistent"],
