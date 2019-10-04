@@ -33,7 +33,7 @@ export namespace models {
 		public prefix!: string;
 
 		@Default("en")
-		@IsIn([langCodes])
+		@IsIn({ msg: `Invalid language. Must be one of these: \`${langCodes.join(", ")}\``, args: [langCodes] })
 		@Column
 		public language!: string;
 	}
@@ -47,7 +47,7 @@ export namespace models {
 		@Column
 		public prefix!: string;
 
-		@IsIn([langCodes])
+		@IsIn({ msg: `Invalid language. Must be one of these: \`${langCodes.join(", ")}\``, args: [langCodes] })
 		@Column
 		public language?: string;
 	}

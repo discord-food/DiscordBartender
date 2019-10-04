@@ -34,7 +34,7 @@ export const command = new Command("options", "Change guild and user options.", 
 				await message.channel.send(`Option has been successfully set.`);
 			} catch (e) {
 				client.test = e;
-				await message.channel.send(`Invalid value.\n${e.message}`);
+				await message.channel.send(`Invalid value.`);
 			}
 		}
 	});
