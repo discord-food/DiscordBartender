@@ -1,5 +1,6 @@
 export { Op } from "sequelize";
 import { AutoIncrement, Column, DataType, Default, HasMany, Model, PrimaryKey, Sequelize, Table, TableOptions } from "sequelize-typescript";
+import { IsIn } from "sequelize-typescript";
 export { Model } from "sequelize-typescript";
 import { Op } from "sequelize";
 import { database } from "../auth.json";
@@ -20,6 +21,8 @@ export const sequelize = new Sequelize(name, username, password, {
 const Yable = (options: TableOptions) => Table({ ...options, freezeTableName: true, timestamps: true });
 const SNOWFLAKE = new DataType.CHAR(18);
 export namespace models {
+	const langCodes = sync(join(__dirname, "../languages/**/*.ts")).map(x => basename(x, ".ts"))
+	console.log(langCodes);
 	@Yable({ tableName: "guildoptions" })
 	export class Guildoptions extends Model<Guildoptions> {
 		@PrimaryKey
@@ -31,10 +34,10 @@ export namespace models {
 		public prefix!: string;
 
 		@Default("en")
+		@IsIn([langCodes])
 		@Column
 		public language!: string;
 	}
-	console.log(sync(join(__dirname, "../languages/**/*.ts")).map(x => basename(x, ".ts")))
 	@Yable({ tableName: "useroptions" })
 	export class Useroptions extends Model<Useroptions> {
 		@PrimaryKey
@@ -45,7 +48,8 @@ export namespace models {
 		@Column
 		public prefix!: string;
 
-		@Column(DataType.ENUM("oof", "en"))
+		@IsIn([langCodes])
+		@Column
 		public language?: string;
 	}
 	@Yable({ tableName: "messages" })
