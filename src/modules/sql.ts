@@ -21,7 +21,7 @@ export const sequelize = new Sequelize(name, username, password, {
 const Yable = (options: TableOptions) => Table({ ...options, freezeTableName: true, timestamps: true });
 const SNOWFLAKE = new DataType.CHAR(18);
 export namespace models {
-	const langCodes = sync(join(__dirname, "../languages/**/*.ts")).map(x => basename(x, ".ts"))
+	const langCodes = sync(join(__dirname, "../languages/**/*.js")).map(x => basename(x, ".js"))
 	@Yable({ tableName: "guildoptions" })
 	export class Guildoptions extends Model<Guildoptions> {
 		@PrimaryKey
