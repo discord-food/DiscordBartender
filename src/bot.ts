@@ -13,6 +13,9 @@ const reader = createInterface({
 (process as NodeJS.EventEmitter).on("unhandledRejection", (err: Error, p) => {
 	if (err) client.error(err.stack);
 });
+(process as NodeJS.EventEmitter).on("uncaughtException", (err: Error, p) => {
+	if (err) client.error(err.stack);
+});
 reader.on("line", async input => {
 	if (!input) return;
 	let response = "??";
