@@ -1,13 +1,13 @@
 import { Message, TextChannel, Util } from "discord.js";
 import { client } from "../modules/client";
-import { getPermission } from "../modules/permissions";
+import { hasPermission } from "../modules/permissions";
 import { models } from "../modules/sql";
 export const handler = async(message: Message) => {
 	if (!message.guild || !message.author || message.author.bot || !client.user || message.channel.type !== "text" || !(message.channel instanceof TextChannel)) return;
 	[message.guild.options] = await models.Guildoptions.findOrCreate({ where: { id: message.guild.id }, defaults: { id: message.guild.id } });
 	[message.author.options] = await models.Useroptions.findOrCreate({ where: { id: message.author.id }, defaults: { id: message.author.id } });
-	const lang = client.getLanguage(message.guild.options.language === "en" ? message.author.options.language : message.guild.options.language);
-	if (!lang) return client.log(message.guild.options.language);
+	const lang = client.getLanguage(message.author.options.language || message.guild.options.language);
+	if (!lang) return;
 	const prefixes = [client.constants.prefix, `<@${client.user.id}>`, `<@!${client.user.id}>`, message.guild.options.prefix, message.author.options.prefix];
 	const prefix = prefixes.find(x => message.content.startsWith(x));
 	if (!prefix) return client.models.Messages.create({ id: message.id, content: Util.cleanContent(message.content, message), author: message.author.id });
@@ -17,7 +17,7 @@ export const handler = async(message: Message) => {
 	const command = args.shift();
 	const gcommand = client.getCommand(command || "");
 	if (!gcommand) return;
-	if (getPermission(message.member!) < gcommand.permissionLevel.id) return message.channel.send(lang.errors.permission.format(gcommand.permissionLevel.name)); ;
+	if (!await hasPermission(message.member, gcommand.permissionLevel)) return message.channel.send(lang.errors.permission.format(gcommand.permissionLevel.name)); ;
 	const processedArgs: Args | ArgError = await client.parseArguments(gcommand.syntax, args, message);
 	if (processedArgs.error) return message.channel.send(lang.errors.args.format(lang.errors.argsTypes[processedArgs.error.type].format(processedArgs.error.obj.name), prefix, gcommand.name, gcommand.syntaxString));
 	try {

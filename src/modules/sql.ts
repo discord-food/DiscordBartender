@@ -42,9 +42,8 @@ export namespace models {
 		@Column
 		public prefix!: string;
 
-		@Default("en")
 		@Column
-		public language!: string;
+		public language?: string;
 	}
 	@Yable({ tableName: "messages" })
 	export class Messages extends Model<Messages> {

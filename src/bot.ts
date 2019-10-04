@@ -4,6 +4,7 @@ import { transpile } from "typescript";
 import { client } from "./modules/client";
 import "./modules/extensions";
 import "source-map-support/register";
+import "module-alias/register";
 // Process events
 const reader = createInterface({
 	input: process.stdin,
