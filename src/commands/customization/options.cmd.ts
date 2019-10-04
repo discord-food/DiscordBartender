@@ -30,9 +30,10 @@ export const command = new Command("options", "Change guild and user options.", 
 			const toVal = await client.utils.getText(message, "What do you want to set it to?");
 			if (!toVal) return;
 			try {
-				await options.update({ [opt]: toVal });
+				await options.update({ [opt]: toVal.toLowerCase() === "null" ? null : toVal });
 				await message.channel.send(`Option has been successfully set.`);
 			} catch (e) {
+				client.test = e;
 				await message.channel.send(`Invalid value.\n${e.message}`);
 			}
 		}
