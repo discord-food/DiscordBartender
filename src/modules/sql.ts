@@ -34,6 +34,7 @@ export namespace models {
 		@Column
 		public language!: string;
 	}
+	console.log(sync(join(__dirname, "../languages/**/*.ts")).map(x => basename(x, ".ts")))
 	@Yable({ tableName: "useroptions" })
 	export class Useroptions extends Model<Useroptions> {
 		@PrimaryKey
@@ -44,7 +45,7 @@ export namespace models {
 		@Column
 		public prefix!: string;
 
-		@Column(DataType.ENUM(...sync(join(__dirname, "../languages/**/*.ts")).map(x => basename(x, ".ts"))))
+		@Column(DataType.ENUM("oof", "en"))
 		public language?: string;
 	}
 	@Yable({ tableName: "messages" })
