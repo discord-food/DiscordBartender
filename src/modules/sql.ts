@@ -1,9 +1,11 @@
 export { Op } from "sequelize";
 import { AutoIncrement, Column, DataType, Default, HasMany, Model, PrimaryKey, Sequelize, Table, TableOptions } from "sequelize-typescript";
 export { Model } from "sequelize-typescript";
-import { DataTypes, Op } from "sequelize";
+import { Op } from "sequelize";
 import { database } from "../auth.json";
 import { constants } from "./constants";
+import { sync } from "glob";
+import { basename, join } from "path";
 const { host, name, username, password } = database;
 export const sequelize = new Sequelize(name, username, password, {
 	host,
@@ -42,7 +44,7 @@ export namespace models {
 		@Column
 		public prefix!: string;
 
-		@Column
+		@Column(DataType.ENUM(...sync(join(__dirname, "../languages/**/*.ts")).map(x => basename(x, ".ts"))))
 		public language?: string;
 	}
 	@Yable({ tableName: "messages" })
