@@ -69,7 +69,7 @@
     "eslint": "^6.4.0"
   },
   "_moduleAliases": {
-   "db-permissions": "./dist/modules/permissions",
-   "db-command": "./dist/structures/command"
+   "@db-struct": "./dist/structures",
+   "@db-module": "./dist/modules"
   }
 }

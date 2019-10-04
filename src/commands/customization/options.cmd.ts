@@ -1,7 +1,7 @@
 import { EmbedField, GuildMember } from "discord.js";
 import { join } from "path";
 import { permissions } from "../../modules/permissions";
-import { Command } from "db-command";
+import { Command } from "@db-struct/command.struct";
 export const command = new Command("options", "Change guild and user options.", [], ["opt"], [
 	{ name: "selection", type: Command.OR("guild", "user"), default: "user" },
 	{ name: "set", type: Boolean }

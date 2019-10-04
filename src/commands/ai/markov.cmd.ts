@@ -2,7 +2,7 @@ import { EmbedField, GuildMember } from "discord.js";
 import Markov from "js-markov";
 import { join } from "path";
 import { permissions } from "../../modules/permissions";
-import { Command } from "db-command";
+import { Command } from "@db-struct/command.struct";
 export const command = new Command("markov", "Markov Chain test.", [], ["mkv"], [{ name: "characters", type: Number, default: 1000 }], permissions.everyone)
 	.setExec(async(client, message, args, lang) => {
 		const markov = new Markov();
