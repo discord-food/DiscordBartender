@@ -22,7 +22,6 @@ const Yable = (options: TableOptions) => Table({ ...options, freezeTableName: tr
 const SNOWFLAKE = new DataType.CHAR(18);
 export namespace models {
 	const langCodes = sync(join(__dirname, "../languages/**/*.ts")).map(x => basename(x, ".ts"))
-	console.log(langCodes);
 	@Yable({ tableName: "guildoptions" })
 	export class Guildoptions extends Model<Guildoptions> {
 		@PrimaryKey
