@@ -33,7 +33,7 @@ export const command = new Command("options", "Change guild and user options.", 
 				await options.update({ [opt]: toVal.toLowerCase() === "null" ? null : toVal });
 				await message.channel.send(`Option has been successfully set.`);
 			} catch (e) {
-				await message.channel.send(`Invalid value. ${e.message.split("Validation error: ")[1]}`);
+				await message.channel.send(e.message.split("Validation error: ")[1]);
 			}
 		}
 	});

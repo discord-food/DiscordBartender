@@ -6,6 +6,7 @@ export const handler = async(message: Message) => {
 	if (!message.guild || !message.author || message.author.bot || !client.user || message.channel.type !== "text" || !(message.channel instanceof TextChannel)) return;
 	[message.guild.options] = await models.Guildoptions.findOrCreate({ where: { id: message.guild.id }, defaults: { id: message.guild.id } });
 	[message.author.options] = await models.Useroptions.findOrCreate({ where: { id: message.author.id }, defaults: { id: message.author.id } });
+	[message.author.info] = await models.Userinfo.findOrCreate({ where: { id: message.author.id }, defaults: { id: message.author.id } });
 	const lang = client.getLanguage(message.author.options.language || message.guild.options.language);
 	if (!lang) return;
 	const prefixes = [client.constants.prefix, `<@${client.user.id}>`, `<@!${client.user.id}>`, message.guild.options.prefix, message.author.options.prefix];

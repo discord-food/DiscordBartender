@@ -18,7 +18,7 @@ export class BakeryClient extends Client {
 	/**
 	 * @property {Guild} mainGuild The main guild.
 	 */
-	get mainGuild() {
+	public get mainGuild() {
 		return this.guilds.get(constants.guild);
 	}
 	/** @property {string} EMPTY A string with an invisible character. */
@@ -80,7 +80,7 @@ export class BakeryClient extends Client {
 	 * @param {number} s The number of shards to initiate.
 	 * @returns {BakeryClient} The client.
 	 */
-	constructor(s: number) {
+	public constructor(s: number) {
 		super({ disableEveryone: true, shardCount: s });
 		this.loadEvents();
 		this.loadCommands();

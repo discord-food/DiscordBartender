@@ -1,6 +1,8 @@
 export { Op } from "sequelize";
-import { AutoIncrement, Column, DataType, Default, HasMany, Model, PrimaryKey, Sequelize, Table, TableOptions } from "sequelize-typescript";
-import { IsIn } from "sequelize-typescript";
+import {
+	AutoIncrement, Column, DataType, Default, HasMany, Model,
+	PrimaryKey, Sequelize, Table, TableOptions, BelongsTo, ForeignKey,
+	IsIn } from "sequelize-typescript";
 export { Model } from "sequelize-typescript";
 import { Op } from "sequelize";
 import { database } from "../auth.json";
@@ -21,7 +23,7 @@ export const sequelize = new Sequelize(name, username, password, {
 const Yable = (options: TableOptions) => Table({ ...options, freezeTableName: true, timestamps: true });
 const SNOWFLAKE = new DataType.CHAR(18);
 export namespace models {
-	const langCodes = sync(join(__dirname, "../languages/**/*.js")).map(x => basename(x, ".js"))
+	const langCodes = sync(join(__dirname, "../languages/**/*.js")).map(x => basename(x, ".js"));
 	@Yable({ tableName: "guildoptions" })
 	export class Guildoptions extends Model<Guildoptions> {
 		@PrimaryKey
@@ -50,6 +52,37 @@ export namespace models {
 		@IsIn({ msg: `Invalid language. Must be one of these: \`${langCodes.join(", ")}\``, args: [langCodes] })
 		@Column
 		public language?: string;
+	}
+	@Yable({ tableName: "alias" })
+	export class Alias extends Model<Alias> {
+		@PrimaryKey
+		@Column(SNOWFLAKE)
+		public id!: string;
+
+		@Column
+		public name!: string;
+
+		@Column
+		public command!: string;
+
+		@ForeignKey(() => Userinfo)
+		@Column(SNOWFLAKE)
+		public userId!: number;
+
+		@BelongsTo(() => Userinfo)
+		@Column
+		public user!: Userinfo;
+	}
+
+	@Yable({ tableName: "userinfo" })
+	export class Userinfo extends Model<Userinfo> {
+		@PrimaryKey
+		@Column(SNOWFLAKE)
+		public id!: string;
+
+		@HasMany(() => Alias)
+		@Column
+		public aliases!: Alias[];
 	}
 	@Yable({ tableName: "messages" })
 	export class Messages extends Model<Messages> {
