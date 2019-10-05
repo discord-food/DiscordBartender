@@ -84,6 +84,7 @@ export namespace models {
 		@Column
 		public aliases!: Alias[];
 	}
+
 	@Yable({ tableName: "messages" })
 	export class Messages extends Model<Messages> {
 		@PrimaryKey
