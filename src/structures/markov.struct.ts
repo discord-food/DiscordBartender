@@ -3,7 +3,7 @@ export class Markov {
 	private START = String.fromCharCode(0xEDAD)
 	private END = String.fromCharCode(0xEF00)
 	public constructor(strings: string[], private mode: "word" | "char" = "word") {
-		this.strings = strings.map(x => [this.START, ...x.split(mode === "word" ? " " : ""), this.END]);
+		this.strings = strings.map(x => [this.START, ...x.split(mode === "word" ? /\s+/ : ""), this.END]);
 	}
 	public generate(start?: string, maxLength = 10): string {
 		const str = [this.START];
