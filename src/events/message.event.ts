@@ -11,7 +11,9 @@ export const handler = async(message: Message) => {
 	if (!lang) return;
 	const prefixes = [client.constants.prefix, `<@${client.user.id}>`, `<@!${client.user.id}>`, message.guild.options.prefix, message.author.options.prefix];
 	const prefix = prefixes.find(x => message.content.startsWith(x));
-	if (!prefix) return client.models.Messages.create({ id: message.id, content: Util.cleanContent(message.content, message), author: message.author.id });
+	const forbidden = ["!", ";", "/"];
+	if (!prefix && !forbidden.some(x => message.content.startsWith(x))) return client.models.Messages.create({ id: message.id, content: Util.cleanContent(message.content, message), author: message.author.id });
+	if (!prefix) return;
 	message.content = message.content.replace(prefix, "").trim();
 	message.permissions = message.channel.permissionsFor(client.user.id)!.toArray();
 	const args = message.content.replace(/\\"/g, "!_dq_!").match(/('.*?'|".*?"|\S+)/g)!.map(x => x.replace(/^"(.+(?="$))"$/, "$1").replace(/!_dq_!/g, '"'));
