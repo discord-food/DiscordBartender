@@ -1,6 +1,6 @@
 export class Formattable {
 	private formatsNeeded: number;
-	constructor(private string: string) {
+	public constructor(private string: string) {
 		this.formatsNeeded = string.split("{}").length - 1;
 	}
 	public format(...args: any[]) {
