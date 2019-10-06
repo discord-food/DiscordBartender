@@ -25,7 +25,7 @@ declare module "discord.js" {
 
 	interface User {
 		options?: models.Useroptions;
-		info?: models.Userinfo;
+		// info?: models.Userinfo;
 	}
 
 	interface Message {

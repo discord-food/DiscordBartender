@@ -3,7 +3,7 @@ export const language: Languages = {
 	blacklisted: "OOF, you are BLACKLIST.",
 	commands: {
 		help: {
-			title: new Formattable("coomandd listtt OOFFFFFF"),
+			title: new Formattable("coomandd listtt OOFFFFFF {} of {}"),
 			description: "oof the commands",
 			sent: "[yes] I have oofed you the list of commands!",
 		},

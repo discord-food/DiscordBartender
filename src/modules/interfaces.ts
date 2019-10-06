@@ -79,7 +79,7 @@ declare global {
 		default?: any;
 	}
 	interface TypeCheck {
-		(arg: string, args: Args): any;
+		(arg: string, args: Args, argObj: ArgumentObject): any;
 		typename?: string;
 	}
 	interface Args {

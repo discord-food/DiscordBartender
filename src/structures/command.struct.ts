@@ -7,8 +7,10 @@ import { BakeryClient } from "./client.struct";
 type execCommand = (client: BakeryClient, message: Message, args: any, lang: Languages) => any;
 
 export class Command {
-	public static OR = (...vals: string[]): TypeCheck => Object.assign((arg: string) => vals.find(x => similarTo(arg, x)) || null
+	public static OR = (...vals: string[]): TypeCheck => Object.assign((arg: string) => vals.find(x => similarTo(arg.toLowerCase(), x.toLowerCase())) || null
 		, { get typename(): string { return vals.join("|"); } })
+	public static INDEX = (...vals: string[][]): TypeCheck => Object.assign((arg: string) => vals.findIndex(x => x.some(y => similarTo(arg.toLowerCase(), y.toLowerCase()))) || null
+		, { get typename(): string { return vals.map(x => x.join(", ")).join("|"); } })
 	public static WITHIN = (min: number, max: number): TypeCheck => Object.assign((arg: string) => isNaN(+arg) ? null : limit(+arg, min, max)
 		, { get typename(): string { return `${min}-${max}`; } })
 	public static AND = (functions: TypeCheck[], argType: TypeCheck): TypeCheck => Object.assign((arg: string) => functions.every(x => getArgType(x)(arg) !== null) ? getArgType(argType)(arg) : null

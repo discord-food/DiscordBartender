@@ -5,15 +5,17 @@ export const constants: Constants = {
 		"413143886702313472",
 	],
 	arguments: [
-		[String, (arg: string) => arg],
-		[Number, (arg: string) => isNaN(Number(arg)) ? null : Number(arg)],
-		[Boolean, (arg: string) => ["yes", "true", "y", "on"].some(x => arg.toLowerCase() === x) ? true : ["no", "false", "n", "off"].some(x => arg.toLowerCase() === x) ? false : null],
+		[String, arg => arg],
+		[Number, arg => isNaN(Number(arg)) ? null : Number(arg)],
+		[Boolean, (arg, args, argObj) => ["yes", "true", "y", "on", "t", argObj.name.toLowerCase()].some(x => arg.toLowerCase() === x) ? true : ["no", "false", "n", "off"].some(x => arg.toLowerCase() === x) ? false : null],
 	],
 	channels: {
 		e: "f",
 	},
 	emojis: {
 		brick: "609823798031810560",
+		yes: "630425682559893525",
+		no: "630425053040738324",
 	},
 	eval: new Formattable(`(async () => { const { client } = await import(require("path").join(__rootname, "/modules/client")); {} })()`), // ")
 	guild: "602945093762154507",
