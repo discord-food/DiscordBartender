@@ -4,7 +4,7 @@ import { permissions } from "../../modules/permissions";
 import { Command } from "@db-struct/command.struct";
 import { Markov } from "@db-struct/markov.struct";
 export const command = new Command("markov", "Markov Chain test.", [], ["mkv"], [
-	{ name: "start", type: String },
+	{ name: "start", type: String, default: "" },
 	{ name: "mode", type: Command.OR("word", "char"), default: "word" },
 	{ name: "order", type: Number, default: 2 },
 ], permissions.everyone)
