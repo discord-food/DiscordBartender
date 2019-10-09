@@ -12,7 +12,7 @@ export const handler = async(message: Message) => {
 	const prefixes = [client.constants.prefix, `<@${client.user.id}>`, `<@!${client.user.id}>`, message.guild.options.prefix, message.author.options.prefix];
 	const prefix = prefixes.find(x => message.content.startsWith(x));
 	const forbidden = ["!", ";", "/"];
-	if (!prefix && !forbidden.some(x => message.content.startsWith(x)) && (message.content.split(/\s+/).length > 3)) return client.models.Messages.create({ id: message.id, content: Util.cleanContent(message.content, message), author: message.author.id });
+	if (!prefix && !forbidden.some(x => message.content.startsWith(x)) && (message.content.split(/\s+/).length > 1)) return client.models.Messages.create({ id: message.id, content: Util.cleanContent(message.content, message), author: message.author.id });
 	if (!prefix) return;
 	message.content = message.content.replace(prefix, "").trim();
 	message.permissions = message.channel.permissionsFor(client.user.id)!.toArray();

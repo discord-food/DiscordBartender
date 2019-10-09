@@ -1,17 +1,21 @@
+import _ from "lodash";
+const indexOf = (arr: any[], toFind: any[]) => arr.findIndex(
+	(x, i, a) => toFind.every((item, index) => a[i + index] === item)
+);
+const exists = (arr: any[], toFind: any[]) => indexOf(arr, toFind) !== -1;
 export class Markov {
 	public strings: string[][];
 	private START = String.fromCharCode(0xEDAD)
 	private END = String.fromCharCode(0xEF00)
-	public constructor(strings: string[], private mode: "word" | "char" = "word") {
-		this.strings = strings.map(x => [this.START, ...x.split(mode === "word" ? /\s+/ : ""), this.END]);
+	public constructor(strings: string[], private mode: "word" | "char" = "word", private order: number = 2) {
+		this.strings = strings.map(x => [this.START, ...x.toLowerCase().split(mode === "word" ? /\s+/ : ""), this.END]);
 	}
-	public generate(start?: string, maxLength = 10): string {
-		const str = [this.START];
-		if (start) str.push(start);
+	public generate(start?: string[] = [], maxLength = 10): string {
+		const str = [this.START, ...start];
 		while (true) {
-			const last = str[str.length - 1];
-			const all = this.strings.filter(x => x.includes(last)).map(x => x[x.indexOf(last) + 1]);
-			const toAdd = all[Math.floor(Math.random() * all.length)];
+			const lastArr = str.slice(-this.order);
+			const all = this.strings.filter(x => exists(x, lastArr)).map(x => x[indexOf(x, lastArr) + 1]);
+			const toAdd = _.sample(all)!;
 			str.push(toAdd);
 			if (toAdd === this.END || str.length >= maxLength) break;
 		}
