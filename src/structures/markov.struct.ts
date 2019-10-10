@@ -11,7 +11,8 @@ export class Markov {
 		this.strings = strings.map(x => [this.START, ...x.toLowerCase().split(mode === "word" ? /\s+/ : ""), this.END]);
 	}
 	public generate(start: string[] = [], maxLength = 10): string {
-		const str = [this.START, ...start];
+		const starting = start.length ? start : _.sampleSize(this.strings.map(x => x[x.indexOf(this.START) + 1]), 1);
+		const str = [this.START, ...starting];
 		while (true) {
 			const lastArr = str.slice(-this.order);
 			const all = this.strings.filter(x => exists(x, lastArr)).map(x => x[indexOf(x, lastArr) + this.order]);
