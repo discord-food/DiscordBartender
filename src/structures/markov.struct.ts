@@ -10,11 +10,11 @@ export class Markov {
 	public constructor(strings: string[], private mode: "word" | "char" = "word", private order: number = 2) {
 		this.strings = strings.map(x => [this.START, ...x.toLowerCase().split(mode === "word" ? /\s+/ : ""), this.END]);
 	}
-	public generate(start?: string[] = [], maxLength = 10): string {
+	public generate(start: string[] = [], maxLength = 10): string {
 		const str = [this.START, ...start];
 		while (true) {
 			const lastArr = str.slice(-this.order);
-			const all = this.strings.filter(x => exists(x, lastArr)).map(x => x[indexOf(x, lastArr) + 1]);
+			const all = this.strings.filter(x => exists(x, lastArr)).map(x => x[indexOf(x, lastArr) + this.order]);
 			const toAdd = _.sample(all)!;
 			str.push(toAdd);
 			if (toAdd === this.END || str.length >= maxLength) break;
