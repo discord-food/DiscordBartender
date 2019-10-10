@@ -5,6 +5,7 @@ import { permissions } from "../../modules/permissions";
 import { Command } from "@db-struct/command.struct";
 export const command = new Command("restart", "Restarts the bot.", [], [], [], permissions.admin)
 	.setExec(async(client, message, args, lang) => {
+		await client.user!.setActivity("Restarting...");
 		await message.channel.send("Restarting...");
 		client.exec("yarn run ez");
 	});
