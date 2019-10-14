@@ -61,6 +61,7 @@
     "sequelize-typescript": "^1.0.0-beta.4",
     "source-map-support": "^0.5.13",
     "string-similarity": "^3.0.0",
+    "typeorm": "^0.2.19",
     "typescript": "^3.5.3"
   },
   "devDependencies": {
@@ -69,7 +70,7 @@
     "eslint": "^6.4.0"
   },
   "_moduleAliases": {
-   "@db-struct": "./dist/structures",
-   "@db-module": "./dist/modules"
+    "@db-struct": "./dist/structures",
+    "@db-module": "./dist/modules"
   }
 }

@@ -53,7 +53,17 @@ export namespace models {
 		@Column
 		public language?: string;
 	}
-	/*
+
+	@Yable({ tableName: "userinfo" })
+	export class Userinfo extends Model<Userinfo> {
+		@PrimaryKey
+		@Column(SNOWFLAKE)
+		public id!: string;
+
+		// @HasMany(() => Alias)
+		// @Column
+		// public aliases!: Alias[];
+	}
 	@Yable({ tableName: "alias" })
 	export class Alias extends Model<Alias> {
 		@PrimaryKey
@@ -74,18 +84,6 @@ export namespace models {
 		@Column
 		public user!: Userinfo;
 	}
-
-	@Yable({ tableName: "userinfo" })
-	export class Userinfo extends Model<Userinfo> {
-		@PrimaryKey
-		@Column(SNOWFLAKE)
-		public id!: string;
-
-		@HasMany(() => Alias)
-		@Column
-		public aliases!: Alias[];
-	}
-	*/
 
 	@Yable({ tableName: "messages" })
 	export class Messages extends Model<Messages> {
