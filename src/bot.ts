@@ -1,10 +1,10 @@
+import "module-alias/register";
 import * as Discord from "discord.js";
 import { createInterface } from "readline";
 import { transpile } from "typescript";
 import { client } from "./modules/client";
 import "./modules/extensions";
 import "source-map-support/register";
-import "module-alias/register";
 // Process events
 const reader = createInterface({
 	input: process.stdin,
