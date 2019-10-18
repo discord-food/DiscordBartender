@@ -9,7 +9,7 @@ import { inspect } from "util";
 import * as auth from "../auth.json";
 import { constants } from "../modules/constants";
 import { } from "../modules/extensions";
-import { ModelObject, models, sequelize } from "../modules/sql";
+import { BaseEntity, models, connection } from "../modules/sql";
 import * as utils from "../modules/utils";
 import { Command } from "./command.struct";
 import { BakeryEmbed } from "./embed.struct";
@@ -28,9 +28,9 @@ export class BakeryClient extends Client {
 	 */
 	public Embed: typeof BakeryEmbed = BakeryEmbed;
 	/**
-	 * @property {ModelObject} models SQL models.
+	 * @property {typeof models} models SQL models.
 	 */
-	public models: ModelObject = models;
+	public models: typeof models = models;
 	/**
 	 * @property {utils.Utils} utils Utils.
 	 */
@@ -231,7 +231,7 @@ export class BakeryClient extends Client {
 	 * @returns {void}
 	 */
 	public async loadModels(): Promise<void> {
-		await sequelize.sync({ alter: true });
+		await (await connection).connect();
 		this.emit("modelsLoaded");
 	}
 	/**

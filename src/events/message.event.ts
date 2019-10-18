@@ -1,11 +1,12 @@
 import { Message, TextChannel, Util } from "discord.js";
 import { client } from "../modules/client";
 import { hasPermission } from "../modules/permissions";
-import { models } from "../modules/sql";
+import { models, connection } from "../modules/sql";
+import Upsert from "typeorm-upsert";
 export const handler = async(message: Message) => {
 	if (!message.guild || !message.author || message.author.bot || !client.user || message.channel.type !== "text" || !(message.channel instanceof TextChannel)) return;
-	[message.guild.options] = await models.Guildoptions.findOrCreate({ where: { id: message.guild.id }, defaults: { id: message.guild.id } });
-	[message.author.options] = await models.Useroptions.findOrCreate({ where: { id: message.author.id }, defaults: { id: message.author.id } });
+	message.guild.options = await Upsert(models.Guildoptions as any, {} as models.Guildoptions, message.guild.id);
+	message.author.options = await Upsert(models.Useroptions as any, {} as models.Useroptions, message.author.id);
 	// [message.author.info] = await models.Userinfo.findOrCreate({ where: { id: message.author.id }, defaults: { id: message.author.id } });
 	const lang = client.getLanguage(message.author.options.language || message.guild.options.language);
 	if (!lang) return;

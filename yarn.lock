@@ -2258,6 +2258,12 @@ typedarray-to-buffer@^3.1.2:
   dependencies:
     is-typedarray "^1.0.0"
 
+"typeorm-upsert@https://github.com/danielmhanover/typeorm-upsert/":
+  version "1.0.0"
+  resolved "https://github.com/danielmhanover/typeorm-upsert/#078369b8159f0ed84c334d69c348ce5f6881a686"
+  dependencies:
+    lodash "^4.17.15"
+
 typeorm@^0.2.19:
   version "0.2.19"
   resolved "https://registry.yarnpkg.com/typeorm/-/typeorm-0.2.19.tgz#a0cff0714180e5720df157df02c5759a1a646dc3"

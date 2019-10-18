@@ -1,102 +1,83 @@
-export { Op } from "sequelize";
-import {
-	AutoIncrement, Column, DataType, Default, HasMany, Model,
-	PrimaryKey, Sequelize, Table, TableOptions, BelongsTo, ForeignKey,
-	IsIn } from "sequelize-typescript";
-export { Model } from "sequelize-typescript";
-import { Op } from "sequelize";
 import { database } from "../auth.json";
-import { constants } from "./constants";
+import { constants } from "@db-module/constants";
 import { sync } from "glob";
 import { basename, join } from "path";
 const { host, name, username, password } = database;
-export const sequelize = new Sequelize(name, username, password, {
+import { createConnection, Connection, Entity, PrimaryGeneratedColumn, Column, PrimaryColumn, BaseEntity,
+	 OneToMany, ManyToOne, Generated, CreateDateColumn, UpdateDateColumn } from "typeorm";
+export { Connection, BaseEntity } from "typeorm";
+
+export const connection = createConnection({
+	type: "postgres",
 	host,
 	port: 5432,
-	dialect: "postgres",
-	define: {
-		charset: "utf32",
-		collate: "utf32_unicode_ci",
-	},
-	logging: false,
+	username,
+	password,
+	database: name,
+	synchronize: true
 });
-const Yable = (options: TableOptions) => Table({ ...options, freezeTableName: true, timestamps: true });
-const SNOWFLAKE = new DataType.CHAR(18);
 export namespace models {
-	const langCodes = sync(join(__dirname, "../languages/**/*.js")).map(x => basename(x, ".js"));
-	@Yable({ tableName: "guildoptions" })
-	export class Guildoptions extends Model<Guildoptions> {
-		@PrimaryKey
-		@Column(SNOWFLAKE)
-		public id!: string;
+	const SNOWFLAKE_LENGTH = 18;
+	enum LangCodes {
+		ENGLISH = "en",
+		OOF = "oof"
+	}
+	abstract class SetupEntity extends BaseEntity {
+		@CreateDateColumn()
+		public createdAt!: Date
 
-		@Default(constants.prefix)
-		@Column
+		@UpdateDateColumn()
+		public updatedAt!: Date
+	}
+	abstract class SnowflakedEntity extends SetupEntity {
+		@PrimaryColumn()
+		@Column("char", { length: SNOWFLAKE_LENGTH })
+		public id!: string;
+	}
+	@Entity()
+	export class Guildoptions extends SnowflakedEntity {
+		@Column("text", { nullable: true, default: constants.prefix })
 		public prefix!: string;
 
-		@Default("en")
-		@IsIn({ msg: `Invalid language. Must be one of these: \`${langCodes.join(", ")}\``, args: [langCodes] })
-		@Column
-		public language!: string;
+		@Column({ nullable: true, type: "enum", enum: LangCodes, default: LangCodes.ENGLISH })
+		public language!: LangCodes;
 	}
-	@Yable({ tableName: "useroptions" })
-	export class Useroptions extends Model<Useroptions> {
-		@PrimaryKey
-		@Column(SNOWFLAKE)
-		public id!: string;
-
-		@Default(constants.prefix)
-		@Column
+	@Entity()
+	export class Useroptions extends SnowflakedEntity {
+		@Column("text", { nullable: true, default: null })
 		public prefix!: string;
 
-		@IsIn({ msg: `Invalid language. Must be one of these: \`${langCodes.join(", ")}\``, args: [langCodes] })
-		@Column
-		public language?: string;
+		@Column({ type: "enum", nullable: true, enum: LangCodes, default: null })
+		public language?: LangCodes;
 	}
 
-	@Yable({ tableName: "userinfo" })
-	export class Userinfo extends Model<Userinfo> {
-		@PrimaryKey
-		@Column(SNOWFLAKE)
-		public id!: string;
-
-		// @HasMany(() => Alias)
-		// @Column
-		// public aliases!: Alias[];
+	@Entity()
+	export class Userinfo extends SnowflakedEntity {
+		@OneToMany(() => models.Alias, alias => alias.user)
+		public aliases!: Alias[];
 	}
-	@Yable({ tableName: "alias" })
-	export class Alias extends Model<Alias> {
-		@PrimaryKey
-		@Column(SNOWFLAKE)
+	@Entity()
+	export class Alias extends SetupEntity {
+		@PrimaryGeneratedColumn("uuid")
+		@Column()
 		public id!: string;
 
-		@Column
+		@Column("text")
 		public name!: string;
 
-		@Column
+		@Column()
 		public command!: string;
 
-		@ForeignKey(() => Userinfo)
-		@Column(SNOWFLAKE)
-		public userId!: number;
-
-		@BelongsTo(() => Userinfo)
-		@Column
+		@ManyToOne(() => Userinfo, userinfo => userinfo.aliases)
 		public user!: Userinfo;
 	}
 
-	@Yable({ tableName: "messages" })
-	export class Messages extends Model<Messages> {
-		@PrimaryKey
-		@Column(SNOWFLAKE)
-		public id!: string;
-
-		@Column(DataType.TEXT)
+	@Entity()
+	export class Messages extends SnowflakedEntity {
+		@Column("text")
 		public content!: string;
 
-		@Column(SNOWFLAKE)
+		@Column("char", { length: SNOWFLAKE_LENGTH })
 		public author!: string;
 	}
 }
-export type ModelObject = typeof models;
-sequelize.addModels(Object.values(models));
