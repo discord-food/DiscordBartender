@@ -19,13 +19,21 @@ export const command = new Command("graph", "Graph a math equation.", [], [], [{
 		} catch (err) {
 			return message.channel.send(lang.errors.graph.format(err.message));
 		}
-		const canvasRenderService = new CanvasRenderService(500, 500);
+		const canvasRenderService = new CanvasRenderService(500, 1000, Chart => {
+			Chart.plugins.register({
+				beforeDraw(chartInstance: any) {
+					const { ctx } = chartInstance.chart;
+					ctx.fillStyle = "white";
+					ctx.fillRect(0, 0, chartInstance.chart.width, chartInstance.chart.height);
+				}
+			});
+		});
 		const image = await canvasRenderService.renderToBuffer({
 			type: "line",
 			data: {
 				datasets: [{
 					data: _.range(10).map(x => equation.evaluate({ x })),
-					backgroundColor: "#FFFFFF"
+					backgroundColor: "black"
 				}] }
 		});
 		await message.channel.send(new MessageAttachment(image));
