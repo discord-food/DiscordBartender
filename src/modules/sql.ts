@@ -20,13 +20,11 @@ export namespace models {
 		@UpdateDateColumn()
 		public updatedAt!: Date
 	}
-	abstract class SnowflakedEntity extends SetupEntity {
+	@Entity()
+	export class Guildoptions {
 		@PrimaryColumn()
 		@Column("char", { length: SNOWFLAKE_LENGTH })
 		public id!: string;
-	}
-	@Entity()
-	export class Guildoptions extends SnowflakedEntity {
 		@Column("text", { nullable: true, default: constants.prefix })
 		public prefix!: string;
 
@@ -34,7 +32,10 @@ export namespace models {
 		public language!: LangCodes;
 	}
 	@Entity()
-	export class Useroptions extends SnowflakedEntity {
+	export class Useroptions {
+		@PrimaryColumn()
+		@Column("char", { length: SNOWFLAKE_LENGTH })
+		public id!: string;
 		@Column("text", { nullable: true, default: null })
 		public prefix!: string;
 
@@ -43,7 +44,10 @@ export namespace models {
 	}
 
 	@Entity()
-	export class Userinfo extends SnowflakedEntity {
+	export class Userinfo {
+		@PrimaryColumn()
+		@Column("char", { length: SNOWFLAKE_LENGTH })
+		public id!: string;
 		@OneToMany(() => models.Alias, alias => alias.user)
 		public aliases!: Alias[];
 	}
@@ -64,7 +68,10 @@ export namespace models {
 	}
 
 	@Entity()
-	export class Messages extends SnowflakedEntity {
+	export class Messages {
+		@PrimaryColumn()
+		@Column("char", { length: SNOWFLAKE_LENGTH })
+		public id!: string;
 		@Column("text")
 		public content!: string;
 
