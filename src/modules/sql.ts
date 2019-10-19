@@ -16,6 +16,7 @@ export const connection = createConnection({
 	database: name,
 	synchronize: true
 });
+
 export namespace models {
 	const SNOWFLAKE_LENGTH = 18;
 	enum LangCodes {

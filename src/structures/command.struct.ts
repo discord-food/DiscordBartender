@@ -19,6 +19,9 @@ export class Command {
 		, { get typename(): string { return "JSON"; } })
 	public static USER = ({ self = false, filter = (member: GuildMember) => true }: { self?: boolean; filter?: (member: GuildMember) => boolean } = {}): TypeCheck => Object.assign((arg: string, args: Args) => getUser(args._message, arg, { autoself: self, filter })
 		, { get typename(): string { return "USER"; } })
+	public static CUSTOM = (func: TypeCheck, name?: string): TypeCheck => Object.assign(func
+		, { get typename(): string { return (name || func.name).toUpperCase(); } })
+
 
 	public category?: string;
 	public execFunc?: execCommand;
