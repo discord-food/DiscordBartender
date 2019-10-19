@@ -231,7 +231,7 @@ export class BakeryClient extends Client {
 	 * @returns {void}
 	 */
 	public async loadModels(): Promise<void> {
-		await (await connection).query("1 = 1");
+		await (await connection).query("1 + 1");
 		this.emit("modelsLoaded");
 	}
 	/**
