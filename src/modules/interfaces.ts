@@ -56,6 +56,7 @@ declare global {
 			args: Formattable;
 			argsTypes: Formattable[];
 			permission: Formattable;
+			graph: Formattable;
 		};
 	}
 

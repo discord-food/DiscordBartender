@@ -28,5 +28,6 @@ export const language: Languages = {
 			new Formattable("Argument `{}` is required, but was not found."),
 		],
 		permission: new Formattable("[no] You do not have permission to execute this command.\nYou must have the permission `{}` to execute this command."),
+		graph: new Formattable("[no] Invalid equation.\n`{}`")
 	},
 };
