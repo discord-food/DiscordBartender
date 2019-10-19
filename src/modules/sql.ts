@@ -7,16 +7,6 @@ import { createConnection, Connection, Entity, PrimaryGeneratedColumn, Column, P
 	 OneToMany, ManyToOne, Generated, CreateDateColumn, UpdateDateColumn } from "typeorm";
 export { Connection, BaseEntity } from "typeorm";
 
-export const connection = createConnection({
-	type: "postgres",
-	host,
-	port: 5432,
-	username,
-	password,
-	database: name,
-	synchronize: true
-});
-
 export namespace models {
 	const SNOWFLAKE_LENGTH = 18;
 	enum LangCodes {
@@ -82,3 +72,14 @@ export namespace models {
 		public author!: string;
 	}
 }
+
+export const connection = createConnection({
+	type: "postgres",
+	host,
+	port: 5432,
+	username,
+	password,
+	database: name,
+	synchronize: true,
+	entities: Object.values(models)
+});
