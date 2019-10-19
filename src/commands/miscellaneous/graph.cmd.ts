@@ -19,7 +19,7 @@ export const command = new Command("graph", "Graph a math equation.", [], [], [{
 		} catch (err) {
 			return message.channel.send(lang.errors.graph.format(err.message));
 		}
-		const canvasRenderService = new CanvasRenderService(1000, 500, Chart => {
+		const canvasRenderService = new CanvasRenderService(1400, 500, Chart => {
 			Chart.plugins.register({
 				beforeDraw(chartInstance: any) {
 					const { ctx } = chartInstance.chart;
@@ -27,14 +27,15 @@ export const command = new Command("graph", "Graph a math equation.", [], [], [{
 					ctx.fillRect(0, 0, chartInstance.chart.width, chartInstance.chart.height);
 				}
 			});
-			Chart.defaults.global.defaultFontFamily = "Helvetica";
+			Chart.defaults.global.legend.display = false;
 		});
 		const image = await canvasRenderService.renderToBuffer({
 			type: "line",
 			data: {
 				datasets: [{
 					data: _.range(10).map(x => equation.evaluate({ x })),
-					borderColor: "#DCDDDE"
+					borderColor: "#DCDDDE",
+					backgroundColor: "rgba(0, 0, 0, 0)"
 				}] }
 		});
 		await message.channel.send(new MessageAttachment(image));
