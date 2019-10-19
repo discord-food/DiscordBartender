@@ -16,10 +16,10 @@ export namespace models {
 	type NullableLangCodes = LangCodes | null;
 	abstract class SetupEntity extends BaseEntity {
 		@CreateDateColumn()
-		public createdAt!: Date
+		public createdAt?: Date
 
 		@UpdateDateColumn()
-		public updatedAt!: Date
+		public updatedAt?: Date
 	}
 	abstract class SnowflakedEntity extends SetupEntity {
 		@PrimaryColumn("char", { length: SNOWFLAKE_LENGTH })
@@ -36,7 +36,7 @@ export namespace models {
 	@Entity()
 	export class Useroptions extends SnowflakedEntity {
 		@Column("text", { nullable: true, default: null })
-		public prefix!: string;
+		public prefix?: string;
 
 		@Column({ type: "enum", nullable: true, enum: LangCodes })
 		public language?: NullableLangCodes;

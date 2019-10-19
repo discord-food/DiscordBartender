@@ -5,13 +5,13 @@ import { models, connection } from "../modules/sql";
 import { Upsert } from "@db-module/upsert";
 export const handler = async(message: Message) => {
 	if (!message.guild || !message.author || message.author.bot || !client.user || message.channel.type !== "text" || !(message.channel instanceof TextChannel)) return;
-	message.guild.options = await Upsert(models.Guildoptions as any, {} as models.Guildoptions, message.guild.id);
-	message.author.options = await Upsert(models.Useroptions as any, {} as models.Useroptions, message.author.id);
+	message.guild.options = await Upsert(models.Guildoptions as any, { id: message.guild.id } as models.Guildoptions, message.guild.id);
+	message.author.options = await Upsert(models.Useroptions as any, { id: message.author.id } as models.Useroptions, message.author.id);
 	// [message.author.info] = await models.Userinfo.findOrCreate({ where: { id: message.author.id }, defaults: { id: message.author.id } });
 	const lang = client.getLanguage(message.author.options.language || message.guild.options.language);
 	if (!lang) return;
 	const prefixes = [client.constants.prefix, `<@${client.user.id}>`, `<@!${client.user.id}>`, message.guild.options.prefix, message.author.options.prefix];
-	const prefix = prefixes.find(x => message.content.startsWith(x));
+	const prefix = prefixes.find(x => x && message.content.startsWith(x));
 	const forbidden = ["!", ";", "/"];
 	if (!prefix && !forbidden.some(x => message.content.startsWith(x)) && (message.content.split(/\s+/).length > 1)) return client.models.Messages.create({ id: message.id, content: Util.cleanContent(message.content, message), author: message.author.id });
 	if (!prefix) return;
