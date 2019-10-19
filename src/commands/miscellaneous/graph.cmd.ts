@@ -19,7 +19,7 @@ export const command = new Command("graph", "Graph a math equation.", [], [], [{
 		} catch (err) {
 			return message.channel.send(lang.errors.graph.format(err.message));
 		}
-		const canvasRenderService = new CanvasRenderService(500, 1000, Chart => {
+		const canvasRenderService = new CanvasRenderService(1000, 500, Chart => {
 			Chart.plugins.register({
 				beforeDraw(chartInstance: any) {
 					const { ctx } = chartInstance.chart;
