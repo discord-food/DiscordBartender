@@ -2,7 +2,7 @@ import pms from "pretty-ms";
 import { parse, MathNode } from "mathjs";
 import { permissions } from "../../modules/permissions";
 import { Command } from "@db-struct/command.struct";
-export const command = new Command("graph", "Graph a math equation.", [], [], [{ name: "equation", type: Command.CUSTOM(str => {
+export const command = new Command("graph", "Graph a math equation.", [], [], [{ name: "equation", required: true, type: Command.CUSTOM(str => {
 	try {
 		return parse(str);
 	} catch {
