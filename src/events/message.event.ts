@@ -17,7 +17,7 @@ export const handler = async(message: Message) => {
 	if (!prefix) return;
 	message.content = message.content.replace(prefix, "").trim();
 	message.permissions = message.channel.permissionsFor(client.user.id)!.toArray();
-	const args = message.content.replace(/\\"/g, "!_dq_!").match(/('.*?'|".*?"|\S+)/g)!.map(x => x.replace(/^"(.+(?="$))"$/, "$1").replace(/!_dq_!/g, '"'));
+	const args = message.content.replace(/\\"/g, "!_dq_!").match(/('.*?'|"".*?""|\S+)/g)!.map(x => x.replace(/^""(.+(?=""$))""$/, "$1").replace(/!_dq_!/g, '"'));
 	const command = args.shift();
 	const gcommand = client.getCommand(command || "");
 	if (!gcommand) return;

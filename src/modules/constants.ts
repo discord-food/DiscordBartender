@@ -3,6 +3,8 @@ import { Formattable } from "../structures/formattable.struct";
 export const constants: Constants = {
 	admins: [
 		"413143886702313472",
+		"256392197648154624",
+		"129693097431924736",
 	],
 	arguments: [
 		[String, arg => arg],
