@@ -49,7 +49,6 @@ export namespace models {
 	@Entity()
 	export class Alias extends SetupEntity {
 		@PrimaryGeneratedColumn("uuid")
-		@Column()
 		public id!: string;
 
 		@Column("text")
