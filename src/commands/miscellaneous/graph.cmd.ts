@@ -15,7 +15,7 @@ export const command = new Command("graph", "Graph a math equation.", [], [], [{
 	.setExec(async(client, message, args, lang) => {
 		const equation: MathNode = args.equation;
 		try {
-			equation.evaluate(2);
+			equation.evaluate({ x: 2 });
 		} catch (err) {
 			return message.channel.send(lang.errors.graph.format(err.message));
 		}
@@ -24,7 +24,8 @@ export const command = new Command("graph", "Graph a math equation.", [], [], [{
 			type: "line",
 			data: {
 				datasets: [{
-					data: [1, 2, 4, 5, 2]
+					data: _.range(10).map(x => equation.evaluate({ x })),
+					backgroundColor: "#FFFFFF"
 				}] }
 		});
 		await message.channel.send(new MessageAttachment(image));
