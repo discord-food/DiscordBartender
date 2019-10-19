@@ -11,8 +11,9 @@ export namespace models {
 	const SNOWFLAKE_LENGTH = 18;
 	enum LangCodes {
 		ENGLISH = "en",
-		OOF = "oof"
+		OOF = "oof",
 	}
+	type NullableLangCodes = LangCodes | null;
 	abstract class SetupEntity extends BaseEntity {
 		@CreateDateColumn()
 		public createdAt!: Date
@@ -37,8 +38,8 @@ export namespace models {
 		@Column("text", { nullable: true, default: null })
 		public prefix!: string;
 
-		@Column({ type: "enum", nullable: true, enum: LangCodes, default: null })
-		public language?: LangCodes;
+		@Column({ type: "enum", nullable: true, enum: LangCodes })
+		public language?: NullableLangCodes;
 	}
 
 	@Entity()
