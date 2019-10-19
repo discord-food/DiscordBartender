@@ -23,17 +23,18 @@ export const command = new Command("graph", "Graph a math equation.", [], [], [{
 			Chart.plugins.register({
 				beforeDraw(chartInstance: any) {
 					const { ctx } = chartInstance.chart;
-					ctx.fillStyle = "white";
+					ctx.fillStyle = "#2F3136";
 					ctx.fillRect(0, 0, chartInstance.chart.width, chartInstance.chart.height);
 				}
 			});
+			Chart.defaults.global.defaultFontFamily = "Helvetica";
 		});
 		const image = await canvasRenderService.renderToBuffer({
 			type: "line",
 			data: {
 				datasets: [{
 					data: _.range(10).map(x => equation.evaluate({ x })),
-					backgroundColor: "black"
+					borderColor: "#DCDDDE"
 				}] }
 		});
 		await message.channel.send(new MessageAttachment(image));
