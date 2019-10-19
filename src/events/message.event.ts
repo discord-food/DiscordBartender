@@ -2,7 +2,7 @@ import { Message, TextChannel, Util } from "discord.js";
 import { client } from "../modules/client";
 import { hasPermission } from "../modules/permissions";
 import { models, connection } from "../modules/sql";
-import Upsert from "typeorm-upsert";
+import { Upsert } from "@db-module/upsert";
 export const handler = async(message: Message) => {
 	if (!message.guild || !message.author || message.author.bot || !client.user || message.channel.type !== "text" || !(message.channel instanceof TextChannel)) return;
 	message.guild.options = await Upsert(models.Guildoptions as any, {} as models.Guildoptions, message.guild.id);
