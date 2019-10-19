@@ -33,7 +33,7 @@ export const command = new Command("graph", "Graph a math equation.", [], [], [{
 			type: "line",
 			data: {
 				datasets: [{
-					data: _.range(10).map(x => equation.evaluate({ x })),
+					data: _.range(60).map(x => equation.evaluate({ x })),
 					borderColor: "#DCDDDE",
 					backgroundColor: "rgba(0, 0, 0, 0)"
 				}] }
