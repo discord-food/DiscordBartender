@@ -5,8 +5,8 @@ import { models, connection } from "../modules/sql";
 import { Upsert } from "@db-module/upsert";
 export const handler = async(message: Message) => {
 	if (!message.guild || !message.author || message.author.bot || !client.user || message.channel.type !== "text" || !(message.channel instanceof TextChannel)) return;
-	message.guild.options = await Upsert(models.Guildoptions as any, { id: message.guild.id } as models.Guildoptions, message.guild.id);
-	message.author.options = await Upsert(models.Useroptions as any, { id: message.author.id } as models.Useroptions, message.author.id);
+	message.guild.options = await Upsert(models.Guildoptions as any, { id: message.guild.id } as models.Guildoptions, "id");
+	message.author.options = await Upsert(models.Useroptions as any, { id: message.author.id } as models.Useroptions, "id");
 	// [message.author.info] = await models.Userinfo.findOrCreate({ where: { id: message.author.id }, defaults: { id: message.author.id } });
 	const lang = client.getLanguage(message.author.options.language || message.guild.options.language);
 	if (!lang) return;
