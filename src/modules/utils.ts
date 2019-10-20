@@ -63,6 +63,7 @@ export const limit = (num: number, min: number, max: number): number => Math.max
 export const getArgType = (argType: CallableFunction): CallableFunction => new Collection(constants.arguments).get(argType) || argType;
 const compareUsers = (text: string, user: User) => Math.max(compareTwoStrings(text.toLowerCase(), user.username.toLowerCase()), compareTwoStrings(text.toLowerCase(), user.tag.toLowerCase()));
 export const getUser = async(message: Message, toParse: string, { autoself = false, filter = (member: GuildMember) => true }): Promise<User | null> => {
+	message.bakery.log(toParse);
 	const client = message.bakery;
 	const id = toParse.replace(/<@!?[0-9]+>/g, input => input.replace(/<|!|>|@/g, ""));
 	const user = !toParse && autoself ? message.author :
