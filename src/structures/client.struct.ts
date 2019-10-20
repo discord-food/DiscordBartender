@@ -318,7 +318,7 @@ export class BakeryClient extends Client {
 	 * @returns {void}.
 	 */
 	private dryLog(prefix: string, obj: any, labelColor: CallableFunction = chalk.whiteBright, color: CallableFunction = chalk.white): void {
-		if (obj instanceof Object) obj = inspect(obj, true, null, true);
+		if (obj instanceof Object) obj = inspect(obj, true, 2, true);
 		console.log(`[${labelColor(prefix)}] ${color(obj)}`);
 	}
 }
