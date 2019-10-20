@@ -32,12 +32,12 @@ export const command = new Command("graph", "Graph a math equation.", [], [], [{
 		const image = await canvasRenderService.renderToBuffer({
 			type: "line",
 			data: {
-				labels: _.range(60),
+				labels: _.range(100),
 				datasets: [{
-					data: _.range(60).map(x => equation.evaluate({ x })),
+					data: _.range(100).map(x => equation.evaluate({ x })),
 					borderColor: "#DCDDDE",
 					backgroundColor: "rgba(0, 0, 0, 0)",
-					lineTension: 0
+					lineTension: 1
 				}] }
 		});
 		await message.channel.send(new MessageAttachment(image));
