@@ -82,6 +82,7 @@ declare global {
 	interface TypeCheck {
 		(arg: string, args: Args, argObj: ArgumentObject): any;
 		typename?: string;
+		allowNone?: boolean;
 	}
 	interface Args {
 		_list: string[];

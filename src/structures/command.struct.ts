@@ -18,7 +18,7 @@ export class Command {
 	public static JSON = (defaults: any): TypeCheck => Object.assign((arg: string) => { try { return Object.assign(defaults || parse(arg), defaults, parse(arg)); } catch { return null; } }
 		, { get typename(): string { return "JSON"; } })
 	public static USER = ({ self = false, filter = (member: GuildMember) => true }: { self?: boolean; filter?: (member: GuildMember) => boolean } = {}): TypeCheck => Object.assign((arg: string, args: Args) => getUser(args._message, arg, { autoself: self, filter })
-		, { get typename(): string { return "USER"; } })
+		, { get typename(): string { return "USER"; }, get allowNone(): boolean { return true; } })
 	public static CUSTOM = (func: TypeCheck, name?: string): TypeCheck => Object.assign(func
 		, { get typename(): string { return (name || func.name).toUpperCase(); } })
 
