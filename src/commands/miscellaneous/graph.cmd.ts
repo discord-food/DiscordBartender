@@ -36,7 +36,8 @@ export const command = new Command("graph", "Graph a math equation.", [], [], [{
 				datasets: [{
 					data: _.range(60).map(x => equation.evaluate({ x })),
 					borderColor: "#DCDDDE",
-					backgroundColor: "rgba(0, 0, 0, 0)"
+					backgroundColor: "rgba(0, 0, 0, 0)",
+					lineTension: 0
 				}] }
 		});
 		await message.channel.send(new MessageAttachment(image));
