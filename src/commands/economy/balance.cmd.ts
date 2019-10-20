@@ -7,6 +7,7 @@ export const command = new Command("account", "Gets your account info.", ["money
 	type: Command.USER({ self: true }),
 }], permissions.everyone)
 	.setExec(async(client, message, args, lang) => {
+		client.log(args);
 		const account = await CreateIfNotExistByPk(client.models.Userinfo, "id", args.user.id);
 		const embed = new client.Embed()
 			.setTitle(`${args.user.tag}'s Account`)
