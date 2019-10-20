@@ -1,9 +1,9 @@
-import { BaseEntity, ObjectType, QueryBuilder, Connection } from "typeorm";
+import { BaseEntity, ObjectType, QueryBuilder, Connection, SelectQueryBuilder } from "typeorm";
 import _ from "lodash";
 
 type ClassType<T> = {
 	new(): T;
-	createQueryBuilder<T>(this: ObjectType<T>, alias?: string): QueryBuilder<T>;
+	createQueryBuilder<T>(this: ObjectType<T>, alias?: string | undefined): SelectQueryBuilder<T | BaseEntity>;
 }
 // i copied this
 /*
@@ -39,10 +39,12 @@ export const Upsert = async <T>(
 };
 
 
-export const CreateIfNotExist = async <T>(entity: ClassType<T>, pk: string, values: T) => {
+export const CreateIfNotExist = async <T>(entity: ClassType<T>, pk: keyof T, values: T) => {
 	const qb = entity.createQueryBuilder()
 		.insert()
 		.values(values)
 		.onConflict(`("${pk}") DO NOTHING`);
 	return (await qb.returning("*").execute()).generatedMaps[0] as T;
 };
+
+export const CreateIfNotExistByPk = async <T>(entity: ClassType<T>, pk: keyof T, key: any) => CreateIfNotExist(entity, pk, { [pk]: key } as any);
