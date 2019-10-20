@@ -32,7 +32,7 @@ export const command = new Command("graph", "Graph a math equation.", [], [], [{
 		const image = await canvasRenderService.renderToBuffer({
 			type: "line",
 			data: {
-				labes: _.range(60),
+				labels: _.range(60),
 				datasets: [{
 					data: _.range(60).map(x => equation.evaluate({ x })),
 					borderColor: "#DCDDDE",
