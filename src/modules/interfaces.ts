@@ -1,7 +1,22 @@
 import { Message } from "discord.js";
 import { Formattable } from "../structures/formattable.struct";
+import { client } from "@db-module/client";
+
+type _ConvertIntoObject<Keys extends any[], Values extends any[], Acc extends {}> = {
+  0: Acc;
+  1: _ConvertIntoObject<Shift<Keys>, Shift<Values>, {
+	[K in Keys[0]]: Values[0]
+  } & Acc>;
+}[Keys["length"] extends 0 ? 0 : 1];
+
 declare global {
-	const a = 2;
+	type Shift<T extends any[]> = ((...args: T) => any) extends ((first: any, ...rest: infer R) => any) ? R : never;
+	type UnionToIntersection<U> =
+	  (U extends any ? (k: U) => void : never) extends ((k: infer I) => void) ? I : never
+	type ConvertTuplesIntoObject<Keys extends any[], Values extends any[]> = _ConvertIntoObject<Keys, Values, {}>
+	type ConvertObjectArrayIntoObject<T extends Readonly<{ name: string; type: any }[]>> = UnionToIntersection<{
+		[K in keyof T]: T[K] extends { name: infer K2; type: infer V } ? { [K3 in Extract<K2, keyof any>]: V } : never
+	  }[number]>
 	type iso = "aa" | "ab" | "ae" | "af" | "ak" | "am" | "an" | "ar" | "as" | "av" |
 		"ay" | "az" | "ba" | "be" | "bg" | "bh" | "bi" | "bm" | "bn" | "bo" | "br" |
 		"bs" | "ca" | "ce" | "ch" | "co" | "cr" | "cs" | "cu" | "cv" | "cy" | "da" |
@@ -74,20 +89,19 @@ declare global {
 	}
 
 	interface ArgumentObject {
-		name: string;
-		type: TypeCheck;
-		required?: boolean;
-		default?: any;
+		readonly name: string;
+		readonly type: TypeCheck;
+		readonly required?: boolean;
+		readonly default?: any;
 	}
 	interface TypeCheck {
 		(arg: string, args: Args, argObj: ArgumentObject): any;
-		typename?: string;
-		allowNone?: boolean;
+		readonly typename?: string;
+		readonly allowNone?: boolean;
 	}
 	interface Args {
 		_list: string[];
 		_message: Message;
-		[index: string]: any;
 	}
 	interface ArgError {
 		error: { type: number; obj: ArgumentObject };
@@ -95,3 +109,10 @@ declare global {
 
 }
 export {};
+const bar = String;
+type foo = ReturnType<typeof bar>
+const b = [{ name: "e", type: String }, { name: "tt", type: Number }, { name: "jj", type: Boolean }] as const;
+type c = ConvertObjectArrayIntoObject<typeof b>
+type e = {
+	[index in typeof b[number]["name"]]: ReturnType<c[index]>;
+}

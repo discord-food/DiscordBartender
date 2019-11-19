@@ -11,7 +11,7 @@ export const command = new Command("graph", "Graph a math equation.", [], [], [{
 	} catch {
 		return null;
 	}
-}) }], permissions.everyone)
+}) }] as const, permissions.everyone)
 	.setExec(async(client, message, args, lang) => {
 		const equation: MathNode = args.equation;
 		try {
@@ -27,12 +27,12 @@ export const command = new Command("graph", "Graph a math equation.", [], [], [{
 					ctx.fillRect(0, 0, chartInstance.chart.width, chartInstance.chart.height);
 				}
 			});
-			Chart.defaults.global.legend.display = false;
+			Chart.defaults.global.legend!.display = false;
 		});
 		const image = await canvasRenderService.renderToBuffer({
 			type: "line",
 			data: {
-				labels: _.range(100),
+				labels: _.range(100).map(String),
 				datasets: [{
 					data: _.range(100).map(x => equation.evaluate({ x })),
 					borderColor: "#DCDDDE",

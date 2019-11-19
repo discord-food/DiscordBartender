@@ -4,9 +4,10 @@ import { parse } from "hjson";
 import { Permission, permissions } from "../modules/permissions";
 import { getArgType, getUser, limit, similarTo } from "../modules/utils";
 import { BakeryClient } from "./client.struct";
-type execCommand = (client: BakeryClient, message: Message, args: any, lang: Languages) => any;
-
-export class Command {
+type ReturnExec<T extends ArgumentObject> = {
+	[index in T[][number]["name"]]: any
+}
+export class Command<T extends ArgumentObject> {
 	public static OR = (...vals: string[]): TypeCheck => Object.assign((arg: string) => vals.find(x => similarTo(arg.toLowerCase(), x.toLowerCase())) || null
 		, { get typename(): string { return vals.join("|"); } })
 	public static INDEX = (...vals: string[][]): TypeCheck => Object.assign((arg: string) => vals.findIndex(x => x.some(y => similarTo(arg.toLowerCase(), y.toLowerCase()))) || null
@@ -24,19 +25,19 @@ export class Command {
 
 
 	public category?: string;
-	public execFunc?: execCommand;
+	public execFunc?: (client: BakeryClient, message: Message, args: Args & ReturnExec<T>, lang: Languages) => any;
 	public readonly path: string;
-	public constructor(public name: string, public description: string = "No description specified.", public aliases: string[] = [], public shortcuts: string[] = [], public syntax: ArgumentObject[] = [], public permissionLevel: Permission) {
+	public constructor(public name: string, public description: string = "No description specified.", public aliases: string[] = [], public shortcuts: string[] = [], public syntax: Readonly<readonly T[]>, public permissionLevel: Permission) {
 		this.path = module.parent!.filename;
 	}
 	public get syntaxString() {
 		return this.syntax.map(x => `${x.required ? "{" : "["}${x.name}:${(x.type as any).typename || x.type.name}${x.default ? "=" : ""}${x.default || ""}${x.required ? "}" : "]"}`).join(" ");
 	}
-	public setExec(func: execCommand) {
+	public setExec(func: (client: BakeryClient, message: Message, args: Args & ReturnExec<T>, lang: Languages) => any) {
 		this.execFunc = func;
 		return this;
 	}
-	public exec(client: BakeryClient, message: Message, args: Args, lang: Languages) {
+	public exec(client: BakeryClient, message: Message, args: Args & ReturnExec<T>, lang: Languages) {
 		if (!this.execFunc) return BakeryClient.prototype.error(`The exec function for command ${chalk.redBright(this.name)} was not found.`);
 		return this.execFunc(client, message, args, lang);
 	}

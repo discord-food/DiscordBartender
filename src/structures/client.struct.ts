@@ -9,7 +9,8 @@ import { inspect } from "util";
 import * as auth from "../auth.json";
 import { constants } from "../modules/constants";
 import { } from "../modules/extensions";
-import { BaseEntity, models, connection } from "../modules/sql";
+import * as sql from "../modules/sql";
+const { BaseEntity, models, connection } = sql;
 import * as utils from "../modules/utils";
 import { Command } from "./command.struct";
 import { BakeryEmbed } from "./embed.struct";
@@ -40,13 +41,17 @@ export class BakeryClient extends Client {
 	 */
 	public cached: any = {};
 	/**
+	 * @property {typeof sql} sql SQL module.
+	 */
+	public sql: typeof sql = sql;
+	/**
 	 * @property {Collection<string, object>} languages The languages for the bot.
 	 */
 	public languages: Collection<string, Languages> = new Collection();
 	/**
 	 * @property {Collection<string, Command>} commands The commands for the bot.
 	 */
-	public commands: Collection<string, Command> = new Collection();
+	public commands: Collection<string, Command<any>> = new Collection();
 	/**
 	 * @property {Collection<string, Channel>} mainChannels The commands for the bot.
 	 */
@@ -96,16 +101,37 @@ export class BakeryClient extends Client {
 	public db(path: string) {
 		return join(__dirname, "../../db/", path);
 	}
-	public async parseArguments(argObject: ArgumentObject[], args: string[], message: Message): Promise<Args | ArgError> {
+	public async parseArguments3(argObject: readonly ArgumentObject[], args: string[], message: Message): Promise<Args | ArgError> {
 		const matched: Array<[ArgumentObject, string]> = argObject.map((x, i) => [x, i === argObject.length - 1 ? args.slice(i).join(" ") : args[i]]);
 		const func = new Collection(this.constants.arguments);
-		const returnVal: Args = { _list: args, _message: message };
+		const returnVal: Args & { [index: string]: any } = { _list: args, _message: message };
 		for (const [argObj, arg] of matched) {
 			if (!arg && argObj.required) return { error: { obj: argObj, type: 1 } };
 			const typeFunc = func.get(argObj.type);
 			const processed = arg ? typeFunc ? await typeFunc(arg, returnVal, argObj) : await argObj.type(arg, returnVal, argObj) : argObj.type.allowNone ? await argObj.type(arg, returnVal, argObj) : undefined;
 			if (processed === null && arg) return { error: { obj: argObj, type: 0 } };
 			returnVal[argObj.name] = [undefined, ""].some(x => x === arg) ? argObj.default : processed;
+		}
+		for (const argObj of argObject) {
+			if (!argObj.required) continue;
+			if (returnVal[argObj.name] === undefined) return { error: { obj: argObj, type: 1 } };
+		}
+		return returnVal;
+	}
+	public async parseArguments(argObject: readonly ArgumentObject[], args: string[], message: Message): Promise<Args | ArgError> {
+		const matched: Array<[ArgumentObject, string]> = argObject.map((x, i) => [x, i === argObject.length - 1 ? args.slice(i).join(" ") : args[i]]);
+		const func = new Collection(this.constants.arguments);
+		const returnVal: Args & { [index: string]: any } = { _list: args, _message: message };
+		for (const [argObj, arg] of matched) {
+			const typeFunc = func.get(argObj.type);
+			const processed = await (typeFunc || argObj.type)(arg, returnVal, argObj);
+			if (argObj.required) {
+				if (processed === null && arg) return { error: { obj: argObj, type: 0 } };
+				if (!arg && argObj.required) return { error: { obj: argObj, type: 1 } };
+				returnVal[argObj.name] = processed;
+			} else {
+				returnVal[argObj.name] = argObj.default || processed;
+			}
 		}
 		for (const argObj of argObject) {
 			if (!argObj.required) continue;
@@ -167,12 +193,12 @@ export class BakeryClient extends Client {
 	 */
 	public async loadCommands(): Promise<void> {
 		this.commands = new Collection();
-		const commandFiles: Array<[string, Promise<Command>]> = sync(join(__dirname, "../commands/**/*.js")).map((file: string) => {
+		const commandFiles: Array<[string, Promise<Command<any>>]> = sync(join(__dirname, "../commands/**/*.js")).map((file: string) => {
 			delete require.cache[resolve(file)];
 			return [file, import(file)];
 		});
 		for (const [path, promiseCommand] of commandFiles) {
-			const command: Command | any = ((await promiseCommand) as any).command;
+			const command: Command<any> | any = ((await promiseCommand) as any).command;
 			if (!(command instanceof Command)) {
 				this.error(
 					`Attempted to load command ${basename(path)}, but it was not a command. Path: ${chalk.yellowBright(path)}`,
@@ -182,6 +208,13 @@ export class BakeryClient extends Client {
 			if (this.commands.has(command.name)) {
 				this.error(
 					`Attempted to load command ${chalk.redBright(command.name)}, but the command already exists. Path: ${chalk.yellowBright(path)}`,
+				);
+				continue;
+			}
+			const filename = basename(path).split(".")[0];
+			if (filename !== command.name) {
+				this.error(
+					`Attempted to load command ${chalk.redBright(filename)}, but the command exported was ${chalk.redBright(command.name)}. Path: ${chalk.yellowBright(path)}`,
 				);
 				continue;
 			}

@@ -23,7 +23,7 @@ export const handler = async(message: Message) => {
 	if (!gcommand) return;
 	if (!await hasPermission(message.member, gcommand.permissionLevel)) return message.channel.send(lang.errors.permission.format(gcommand.permissionLevel.name)); ;
 	const processedArgs: Args | ArgError = await client.parseArguments(gcommand.syntax, args, message);
-	if (processedArgs.error) return message.channel.send(lang.errors.args.format(lang.errors.argsTypes[processedArgs.error.type].format(processedArgs.error.obj.name), prefix, gcommand.name, gcommand.syntaxString));
+	if ((processedArgs as ArgError).error !== undefined) return message.channel.send(lang.errors.args.format(lang.errors.argsTypes[(processedArgs as ArgError).error.type].format((processedArgs as ArgError).error.obj.name), prefix, gcommand.name, gcommand.syntaxString));
 	try {
 		await gcommand.exec(client, message, processedArgs as Args, lang);
 	} catch (err) {

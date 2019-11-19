@@ -48,3 +48,4 @@ export const CreateIfNotExist = async <T>(entity: ClassType<T>, pk: keyof T, val
 };
 
 export const CreateIfNotExistByPk = async <T>(entity: ClassType<T>, pk: keyof T, key: any) => CreateIfNotExist(entity, pk, { [pk]: key } as any);
+
