@@ -3,7 +3,7 @@ import { Collection, GuildMember, Message } from "discord.js";
 import { parse } from "hjson";
 import { Permission, permissions } from "../modules/permissions";
 import { getArgType, getUser, limit, similarTo } from "../modules/utils";
-import { BakeryClient } from "./client.struct";
+import { BartenderClient } from "./client.struct";
 type ReturnExec<T extends ArgumentObject> = {
 	[index in T[][number]["name"]]: any
 }
@@ -25,7 +25,7 @@ export class Command<T extends ArgumentObject> {
 
 
 	public category?: string;
-	public execFunc?: (client: BakeryClient, message: Message, args: Args & ReturnExec<T>, lang: Languages) => any;
+	public execFunc?: (client: BartenderClient, message: Message, args: Args & ReturnExec<T>, lang: Languages) => any;
 	public readonly path: string;
 	public constructor(public name: string, public description: string = "No description specified.", public aliases: string[] = [], public shortcuts: string[] = [], public syntax: Readonly<readonly T[]>, public permissionLevel: Permission) {
 		this.path = module.parent!.filename;
@@ -33,12 +33,12 @@ export class Command<T extends ArgumentObject> {
 	public get syntaxString() {
 		return this.syntax.map(x => `${x.required ? "{" : "["}${x.name}:${(x.type as any).typename || x.type.name}${x.default ? "=" : ""}${x.default || ""}${x.required ? "}" : "]"}`).join(" ");
 	}
-	public setExec(func: (client: BakeryClient, message: Message, args: Args & ReturnExec<T>, lang: Languages) => any) {
+	public setExec(func: (client: BartenderClient, message: Message, args: Args & ReturnExec<T>, lang: Languages) => any) {
 		this.execFunc = func;
 		return this;
 	}
-	public exec(client: BakeryClient, message: Message, args: Args & ReturnExec<T>, lang: Languages) {
-		if (!this.execFunc) return BakeryClient.prototype.error(`The exec function for command ${chalk.redBright(this.name)} was not found.`);
+	public exec(client: BartenderClient, message: Message, args: Args & ReturnExec<T>, lang: Languages) {
+		if (!this.execFunc) return BartenderClient.prototype.error(`The exec function for command ${chalk.redBright(this.name)} was not found.`);
 		return this.execFunc(client, message, args, lang);
 	}
 }

@@ -1,5 +1,19 @@
 import { join } from "path";
 import { Formattable } from "../structures/formattable.struct";
+declare global {
+	interface Constants {
+		prefix: string;
+		channels: StringObject;
+		roles: StringObject;
+		messages: StringObject;
+		guild: string;
+		emojis: StringObject;
+		arguments: Array<[any, TypeCheck]>;
+		admins: string[];
+		eval: Formattable;
+		port: number;
+	}
+}
 export const constants: Constants = {
 	admins: [
 		"413143886702313472",
@@ -28,4 +42,5 @@ export const constants: Constants = {
 	roles: {
 		e: "f",
 	},
+	port: 3000,
 };

@@ -47,17 +47,6 @@ declare global {
 	}
 
 	interface StringObject { [name: string]: string }
-	interface Constants {
-		prefix: string;
-		channels: StringObject;
-		roles: StringObject;
-		messages: StringObject;
-		guild: string;
-		emojis: StringObject;
-		arguments: Array<[any, TypeCheck]>;
-		admins: string[];
-		eval: Formattable;
-	}
 	interface FixedLengthArray<T extends any, L extends number> extends Array<T> {
 		0: T;
 		length: L;

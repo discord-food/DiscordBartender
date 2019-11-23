@@ -1,9 +1,9 @@
 import chalk from "chalk";
-import { execSync } from "child_process";
+import { execSync, spawnSync } from "child_process";
 import { Channel, Client, Collection, Emoji, Guild, Message, Role, TextChannel } from "discord.js";
 import { sync } from "glob";
 import _ from "lodash";
-import { basename, dirname, join, normalize, resolve } from "path";
+import { basename, dirname, join, normalize, resolve, win32 } from "path";
 import { compareTwoStrings } from "string-similarity";
 import { inspect } from "util";
 import * as auth from "../auth.json";
@@ -15,7 +15,7 @@ import * as utils from "../modules/utils";
 import { Command } from "./command.struct";
 import { BakeryEmbed } from "./embed.struct";
 import ISO from "iso-639-1";
-export class BakeryClient extends Client {
+export class BartenderClient extends Client {
 	/**
 	 * @property {Guild} mainGuild The main guild.
 	 */
@@ -83,17 +83,22 @@ export class BakeryClient extends Client {
 	/**
 	 * @description The constructor.
 	 * @param {number} s The number of shards to initiate.
-	 * @returns {BakeryClient} The client.
+	 * @returns {BartenderClient} The client.
 	 */
 	public constructor(s: number) {
 		super({ disableEveryone: true, shardCount: s });
 		this.loadEvents();
 		this.loadCommands();
 		this.loadLanguages();
+		this.loadSite();
 		this.on("ready", () => {
 			this.loadMain();
 			this.loadModels();
 		});
+	}
+	public async loadSite() {
+		spawnSync("bash", [join(__dirname, "../www/start.sh")]);
+		await import("../www/server");
 	}
 	public inspect(text: any, colors = true) {
 		return inspect(text, { showHidden: true, colors });
@@ -218,7 +223,8 @@ export class BakeryClient extends Client {
 				);
 				continue;
 			}
-			command.category = basename(dirname(path));
+			const dirs = win32.normalize(dirname(path)).split("\\");
+			command.category = dirs.includes("commands") ? dirs.slice(dirs.indexOf("commands") + 1).join(":").toUpperCase() : "NO_CATEGORY";
 			this.commands.set(command.name, command);
 			this.emit("commandLoad", command); // * LOADS EVENT onCommandLoad
 		}

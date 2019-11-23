@@ -1,6 +1,6 @@
 import { Base, Guild, Message, MessageAttachment, MessageEditOptions, MessageEmbed, MessageOptions, TextChannel, User } from "discord.js";
 import { join } from "path";
-import { BakeryClient } from "../structures/client.struct";
+import { BartenderClient } from "../structures/client.struct";
 import { client } from "./client";
 import { sendEnhancements } from "./utils";
 import { models } from "./sql";
@@ -17,7 +17,7 @@ Message.prototype.edit = function edit(content: any, options?: MessageEditOption
 };
 declare module "discord.js" {
 	interface Base {
-		bakery: BakeryClient;
+		bakery: BartenderClient;
 	}
 	interface Guild {
 		options?: models.Guildoptions;

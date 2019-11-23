@@ -7,7 +7,7 @@ export const command = new Command("help", "Gets the command list.", ["?"], ["hp
 		const commands = client.commands
 			.filter(x => x.permissionLevel.exec(client, message.member!));
 		const fields: EmbedField[] = Object.entries(client._.groupBy(commands.array(), "category"))
-			.flatMap(([category, categoryCommands]) => [{ name: `== ${category.toUpperCase()} ==`, value: client.EMPTY }, ...categoryCommands.map(x => ({ name: `${x.name} ${x.syntaxString}`, value: `**Aliases**: ${x.aliases.join(", ") || "[None]"}\n**Shortcuts**: ${x.shortcuts.join(", ") || "[None]"}\n**Permission**: ${x.permissionLevel.name.toUpperCase()}\n${x.description}` }))]);
+			.flatMap(([category, categoryCommands]) => [{ name: client.EMPTY, value: `__**== ${category.toUpperCase()} ==**__` }, ...categoryCommands.map(x => ({ name: `${x.name} ${x.syntaxString}`, value: `**Aliases**: ${x.aliases.join(", ") || "[None]"}\n**Shortcuts**: ${x.shortcuts.join(", ") || "[None]"}\n**Permission**: ${x.permissionLevel.name.toUpperCase()}\n${x.description}` }))]);
 		const chunked = client._.chunk(fields, 25);
 		for (const [index, embedFields] of chunked.entries()) {
 			const embed = new client.Embed()
