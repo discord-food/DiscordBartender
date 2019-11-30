@@ -1,4 +1,4 @@
-import "module-alias/register";
+require("module-alias/register");
 import * as Discord from "discord.js";
 import { createInterface } from "readline";
 import { transpile } from "typescript";

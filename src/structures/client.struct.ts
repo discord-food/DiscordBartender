@@ -96,6 +96,9 @@ export class BartenderClient extends Client {
 			this.loadModels();
 		});
 	}
+	public get connectedToInternet() {
+		return true;
+	}
 	public async loadSite() {
 		spawnSync("bash", [join(__dirname, "../www/start.sh")]);
 		await import("../www/server");

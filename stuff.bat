@@ -1,1 +1,3 @@
-yarn build;tsc;yarn start
+yarn build
+tsc
+yarn start

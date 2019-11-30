@@ -26,6 +26,7 @@
 		],
 		"no-extra-parens": "off",
 		"no-template-curly-in-string": "error",
+		"grouped-accessor-pairs": ["error", "getBeforeSet"],
 		"@typescript-eslint/no-non-null-assertion": "off",
 		"@typescript-eslint/ban-ts-ignore": "off",
 		"@typescript-eslint/no-namespace": "off",

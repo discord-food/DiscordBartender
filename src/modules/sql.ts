@@ -9,6 +9,7 @@ export { Connection, BaseEntity } from "typeorm";
 
 export namespace models {
 	const SNOWFLAKE_LENGTH = 18;
+	const SNOWFLAKE_OPTIONS = { length: SNOWFLAKE_LENGTH };
 	enum LangCodes {
 		ENGLISH = "en",
 		OOF = "oof",
@@ -69,8 +70,17 @@ export namespace models {
 		@Column("text")
 		public content!: string;
 
-		@Column("char", { length: SNOWFLAKE_LENGTH })
+		@Column("char", SNOWFLAKE_OPTIONS)
 		public author!: string;
+	}
+
+	@Entity()
+	export class Blacklist extends SnowflakedEntity {
+		@Column("text")
+		public reason!: string;
+
+		@Column("char", SNOWFLAKE_OPTIONS)
+		public executor!: string;
 	}
 }
 
