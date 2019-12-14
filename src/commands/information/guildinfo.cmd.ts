@@ -3,6 +3,7 @@ import { permissions } from "../../modules/permissions";
 import { Command } from "@db-struct/command.struct";
 import moment from "moment-timezone";
 import simplur from "simplur";
+import prettyms from "pretty-ms";
 export const command = new Command(
 	"guildinfo",
 	"Gets info about the guild.",
@@ -12,22 +13,25 @@ export const command = new Command(
 	permissions.everyone
 ).setExec(async(client, message, args, lang) => {
 	if (!message.guild) return;
-	const enum features {
+	enum Features {
 		ANIMATED_ICON = "Animated Icon",
 		BANNER = "Banner",
-		COMMERCE = "Store",
+		COMMERCE = "Store Channel",
 		DISCOVERABLE = "Discoverable",
 		FEATURABLE = "Featurable",
 		INVITE_SPLASH = "Invite Banner",
 		PUBLIC = "Public",
-		NEWS = "News",
+		NEWS = "News Channel",
 		PARTNERED = "Partnered",
 		VANITY_URL = "Vanity Invite URL",
 		VERIFIED = "Verified",
-		VIP_REGIONS = "VIP Voice Servers"
+		VIP_REGIONS = "VIP Voice Servers",
+		MORE_EMOJI = "More Emojis"
 	}
+	const BoostTiers = ["None", "Level 1", "Level 2", "Level 3"] as const;
 	const { guild } = message;
 	const { channels } = guild;
+	await guild.fetch();
 	const { _ } = client;
 	const nl = { length: 0 };
 	const groupedChannels = Object.assign(
@@ -39,11 +43,11 @@ export const command = new Command(
 		return len ? `**${len}** ${name} channel(s)` : "";
 	};
 	const embed = new client.Embed()
+		.setTitle(`${guild.name} [drunkStamp]${guild.premiumTier ? ` [boostL${guild.premiumTier}]` : ""}${guild.features.includes("PARTNERED" as any) ? ` [partnered]` : ""}${guild.verified ? " [verified]" : ""}`)
 		.setThumbnail(guild.iconURL()!)
 		.setImage(guild.bannerURL()!);
 	await (async() => {
 		if (!guild.available) return embed.addField("Outage Status", "Outage Ongoing");
-		else embed.addField("Outage Status", "No Outage");
 		const creationDate = moment(guild.createdAt);
 		embed
 			.addField(
@@ -64,10 +68,25 @@ ${channellength("unknown")}`,
 			)
 			.addField(
 				"Emojis",
-				`List of emojis: ${guild.emojis.map(String).join("")}`,
+				`${guild.emojis.map(String).join("")}`,
 				true
 			)
-			.addField("Features", `${guild.features.map( x=>)}`, true);
+			.addField("Features", `${guild.features.map(x => Features[x]).join(", ")}`, true)
+			.addField("ID", guild.id, true)
+			.addField("Bot Joined", `${moment(guild.joinedAt).format("LLL Z")} (${prettyms(Date.now() - +guild.joinedAt, { unitCount: 3 })} ago)`, true)
+			.addField("User Joined", `${moment(message.member!.joinedAt!).format("LLL Z")} (${prettyms(Date.now() - +message.member!.joinedAt!, { unitCount: 3 })} ago)`, true)
+			.addField("Member Count", guild.memberCount, true)
+			.addField("MFA Level", guild.mfaLevel, true)
+			.addField("Owner", guild.owner, true)
+			.addField("Boosts", guild.premiumSubscriptionCount, true)
+			.addField("Boost Tier", BoostTiers[guild.premiumTier], true)
+			.addField("Region", guild.region, true)
+			.addField("Maximum Members", guild.maximumMembers, true)
+			.addField("Roles", `${guild.roles.size} roles in total.`, true)
+			.addField("Shard", `This guild is on **Shard ${guild.shard.id}**.`, true)
+			.addField("System Channel", guild.systemChannel || "None", true)
+			.addField("Vanity URL", guild.vanityURLCode ? `discord.gg/${guild.vanityURLCode}` : "None", true)
+			.addField("Verification Level", guild.verificationLevel, true);
 		if (guild.description) embed.addField("Description", guild.description, true);
 	})();
 	await message.channel.send(embed);

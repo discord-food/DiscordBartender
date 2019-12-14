@@ -1,5 +1,6 @@
 import { Channel, Collection, GuildMember, Message, MessageEmbed, TextChannel, User } from "discord.js";
 import { compareTwoStrings } from "string-similarity";
+import { sampleSize } from "lodash";
 import { constants } from "./constants";
 export const similarTo = (value: string, checking: string): boolean => compareTwoStrings(value.toLowerCase(), checking) > 0.8;
 export const sendEnhancements = (channel: Channel, val: any): any => {
@@ -12,6 +13,7 @@ export const sendEnhancements = (channel: Channel, val: any): any => {
 		});
 	if (typeof val === "object" && "embed" in val) val = new MessageEmbed(val.embed);
 	if (val instanceof MessageEmbed) {
+		if (val.title) val.title = _internal(val.title);
 		if (val.description) val.description = _internal(val.description);
 		if (val.fields) {
 			for (const field of val.fields) {
@@ -83,6 +85,11 @@ export const getUser = async(message: Message, toParse: string, { autoself = fal
 	if (!filter(nameDict.item[0])) return null;
 	return nameDict.item[0].user || null;
 };
+export const randomString = (len = 6) => {
+	const all = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	const arr = all.split("");
+	return sampleSize(arr, len).join("");
+};
 export interface Utils {
 	sendEnhancements(channel: TextChannel, val: any): any[];
 	format(str: string, ...formats: any[]): string;
@@ -93,4 +100,5 @@ export interface Utils {
 	limit(num: number, min: number, max: number): number;
 	getArgType(argType: CallableFunction): CallableFunction;
 	getUser(message: Message, toParse: string, { autoself, filter }: { autoself: boolean; filter: (member: GuildMember) => boolean }): Promise<User | null>;
+	randomString(len?: number): string;
 }

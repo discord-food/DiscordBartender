@@ -100,8 +100,7 @@ export class BartenderClient extends Client {
 		return true;
 	}
 	public async loadSite() {
-		spawnSync("bash", [join(__dirname, "../www/start.sh")]);
-		await import("../www/server");
+		return import("../www/server");
 	}
 	public inspect(text: any, colors = true) {
 		return inspect(text, { showHidden: true, colors });

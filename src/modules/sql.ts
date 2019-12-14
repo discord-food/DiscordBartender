@@ -2,9 +2,10 @@ import { database } from "../auth.json";
 import { constants } from "@db-module/constants";
 import { sync } from "glob";
 import { basename, join } from "path";
+import { randomString } from "@db-module/utils";
 const { host, name, username, password } = database;
 import { createConnection, Connection, Entity, PrimaryGeneratedColumn, Column, PrimaryColumn, BaseEntity,
-	 OneToMany, ManyToOne, Generated, CreateDateColumn, UpdateDateColumn } from "typeorm";
+	 OneToMany, ManyToOne, Generated, CreateDateColumn, UpdateDateColumn, BeforeInsert } from "typeorm";
 export { Connection, BaseEntity } from "typeorm";
 
 export namespace models {
@@ -81,6 +82,38 @@ export namespace models {
 
 		@Column("char", SNOWFLAKE_OPTIONS)
 		public executor!: string;
+	}
+
+	@Entity()
+	export class Orders extends BaseEntity {
+		@PrimaryColumn("varchar")
+		public id!: string;
+
+		@Column("char", SNOWFLAKE_OPTIONS)
+		public user!: string;
+
+		@Column("char", SNOWFLAKE_OPTIONS)
+		public channel!: string;
+
+		@Column("text")
+		public description!: string;
+
+		@ManyToOne(type => models.Types, type => type.orders)
+		public type!: models.Types;
+
+		@BeforeInsert()
+		private beforeInsert() {
+			this.id = randomString();
+		}
+	}
+
+	@Entity()
+	export class Types extends BaseEntity {
+		@PrimaryGeneratedColumn()
+		public id!: number;
+
+		@OneToMany(type => Orders, order => order.type)
+		public orders!: Orders[];
 	}
 }
 

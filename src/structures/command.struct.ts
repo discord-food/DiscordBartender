@@ -22,6 +22,8 @@ export class Command<T extends ArgumentObject> {
 		, { get typename(): string { return "USER"; }, get allowNone(): boolean { return true; } })
 	public static CUSTOM = (func: TypeCheck, name?: string): TypeCheck => Object.assign(func
 		, { get typename(): string { return (name || func.name).toUpperCase(); } })
+	public static CHANNEL = (self = true): TypeCheck => Object.assign((arg: string, args: Args) => args._message.client.channels.get(arg.replace(/<@!?[0-9]+>/g, input => input.replace(/<|!|>|@/g, ""))) || self ? args._message.channel : null
+		, { get typename(): string { return "CHANNEL"; } })
 
 
 	public category?: string;
