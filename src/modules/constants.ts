@@ -1,18 +1,20 @@
 import { join } from "path";
 import { Formattable } from "../structures/formattable.struct";
 declare global {
-	interface Constants {
-		readonly prefix: string;
-		readonly channels: StringObject;
-		readonly roles: StringObject;
-		readonly messages: StringObject;
-		readonly guild: string;
-		readonly emojis: StringObject;
-		readonly arguments: readonly (readonly [any, TypeCheck])[];
-		readonly admins: readonly string[];
-		readonly eval: Formattable;
-		readonly port: number;
+	interface MutableConstants {
+		prefix: string;
+		channels: StringObject;
+		roles: StringObject;
+		messages: StringObject;
+		guild: string;
+		emojis: StringObject;
+		arguments: readonly Readonly<[any, TypeCheck]>[];
+		admins: readonly string[];
+		eval: Formattable;
+		port: number;
+		currencySymbol: string;
 	}
+	type Constants = Readonly<MutableConstants>
 }
 export const constants: Constants = {
 	admins: [
@@ -51,4 +53,5 @@ export const constants: Constants = {
 		e: "f",
 	},
 	port: 3000,
+	currencySymbol: "$",
 } as const;

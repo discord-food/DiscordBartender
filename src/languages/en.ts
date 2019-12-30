@@ -21,8 +21,26 @@ export const language: Languages = {
 		},
 		work: {
 			responses: FA([
-				"You e and got {}.",
+				"Grass isn't real, but the {} you received is.",
 				"You detonated a mountain, and sold the remains for {}.",
+				"You sold a piece of paper for {}.",
+				"You took a shower, and got {}.",
+				"You made grass become real, and got {} in return.",
+				"You watched a movie, and got {}.",
+				"You printed out {} from your printer.",
+				"You slayed a dragon, and got paid {}.",
+				"Time travelers from the future brought {} to save their timeline.",
+				"You called a taxi instead of drunk driving. You got {}.",
+				"Citywide riot ensues. You defend your local bar. You got {}.",
+				"Citywide riot ensues. You loot your local bar. You got {}.",
+				"Citywide riot ensues. You order beer from a bunker. You got {}.",
+				"You liquidate your assets and invest in Discord Bakery. You got {}.",
+				"You identified a bug in the Discord Bakery bot, and reported it. You got {} in return.",
+				"You identified a bug in the Discord Bakery bot, and exploited it to get {}.",
+				"You act like you belong at the police station, and got {}.",
+				"You voted in your local election, and got {}.",
+				"Break room is magically blessed. You got {}.",
+				"You attempt to summon a demon, but all that appears are piles of cash. You got {}."
 			])
 		}
 	},

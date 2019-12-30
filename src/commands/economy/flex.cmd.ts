@@ -4,7 +4,7 @@ import { Command } from "@db-struct/command.struct";
 export const command = new Command("flex", "Flex your cash.", [], ["flx"], [] as const, permissions.everyone)
 	.setExec(async(client, message, args, lang) => {
 		const account = await client.getAccount(message.author.id);
-		const cashStr = `\`$${client.formatter.format(account.balance)}\``;
+		const cashStr = `\`${client.constants.currencySymbol}${client.formatter.format(account.balance)}\``;
 		const force = (m: string) => message.channel.send(`${message.author} flexes their ${cashStr} with the force of ${m}.`);
 		if (account.balance > 1e11) return force(`ten thousand suns`);
 		if (account.balance > 1e10) return force(`one thousand suns`);

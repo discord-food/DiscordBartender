@@ -10,6 +10,6 @@ export const command = new Command("account", "Gets your account info.", ["money
 		const embed = new client.Embed()
 			.setTitle(`${args.user.tag}'s Account`)
 			.setDescription("The account info, such as balance.")
-			.addField("Balance", `$${client.formatter.format(account.balance)}`);
+			.addField("Balance", `${client.constants.currencySymbol}${client.formatter.format(account.balance)}`);
 		await message.channel.send(embed);
 	});
