@@ -76,6 +76,9 @@ declare global {
 			pong: Formattable;
 			speeds: string[];
 		};
+		work: {
+			responses: Formattable[];
+		};
 	}
 
 	interface ArgumentObject {

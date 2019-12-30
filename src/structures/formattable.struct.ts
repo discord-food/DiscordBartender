@@ -14,3 +14,5 @@ export class Formattable {
 		return this.toString();
 	}
 }
+export const FormattableArray = (strings: string[]) => strings.map(x => new Formattable(x));
+

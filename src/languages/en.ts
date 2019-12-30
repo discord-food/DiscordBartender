@@ -1,4 +1,4 @@
-import { Formattable } from "../structures/formattable.struct";
+import { Formattable, FormattableArray as FA } from "../structures/formattable.struct";
 export const language: Languages = {
 	blacklisted: "Sorry, you are currently blacklisted, you are not allowed to run any commands.",
 	commands: {
@@ -18,6 +18,12 @@ export const language: Languages = {
 				"~~Discord Bakery is a time traveler.~~",
 			],
 			pong: new Formattable("🏓 Pong! Took `{}`, {}"),
+		},
+		work: {
+			responses: FA([
+				"You e and got {}.",
+				"You detonated a mountain, and sold the remains for {}.",
+			])
 		}
 	},
 	errors: {
