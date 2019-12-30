@@ -14,6 +14,7 @@ const { BaseEntity, models, connection } = sql;
 import * as utils from "../modules/utils";
 import { Command } from "./command.struct";
 import { BakeryEmbed } from "./embed.struct";
+import { CreateIfNotExistByPk } from "@db-module/upsert";
 import ISO from "iso-639-1";
 export class BartenderClient extends Client {
 	/**
@@ -96,6 +97,9 @@ export class BartenderClient extends Client {
 			this.loadMain();
 			this.loadModels();
 		});
+	}
+	public async getAccount(id: string): Promise<sql.models.Userinfo> {
+		return CreateIfNotExistByPk(this.models.Userinfo, "id", id);
 	}
 	public get connectedToInternet() {
 		return true;
