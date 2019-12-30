@@ -6,9 +6,9 @@ export const command = new Command("allinone", "ALL IN ONE.", [], [], [] as cons
 	.setExec(async(client, message, args, lang) => {
 		const m = await message.channel.send("Pulling...");
 		await client.exec("git pull");
-		m.edit("Building...");
+		await m.edit("Building...");
 		try { await client.exec("tsc"); } catch {};
-		m.edit("Restarting...");
+		await m.edit("Restarting...");
 		await client.user!.setActivity("Restarting...");
 		process.exit();
 	});
