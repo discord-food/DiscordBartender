@@ -61,6 +61,7 @@ declare global {
 			argsTypes: Formattable[];
 			permission: Formattable;
 			graph: Formattable;
+			cooldown: Formattable;
 		};
 	}
 

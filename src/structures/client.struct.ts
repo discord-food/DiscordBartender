@@ -101,7 +101,7 @@ export class BartenderClient extends Client {
 	public async getAccount(id: string): Promise<sql.models.Userinfo> {
 		return CreateIfNotExistByPk(this.models.Userinfo, "id", id) as any;
 	}
-	public async getCooldowns(id: string): Promise<sql.models.Userinfo> {
+	public async getCooldowns(id: string): Promise<sql.models.Cooldowns> {
 		return CreateIfNotExistByPk(this.models.Cooldowns, "id", id) as any;
 	}
 	public get connectedToInternet() {

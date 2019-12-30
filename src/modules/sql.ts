@@ -50,6 +50,8 @@ export namespace models {
 		public aliases!: Alias[];
 		@Column({ default: 0, type: "bigint" })
 		public balance!: number;
+		@Column({ default: {}, type: "jsonb" })
+		public cooldowns!: { [index: string]: number };
 	}
 	@Entity()
 	export class Cooldowns extends SnowflakedEntity {

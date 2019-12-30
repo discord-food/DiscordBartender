@@ -3,11 +3,12 @@ import { client } from "../modules/client";
 import { hasPermission } from "../modules/permissions";
 import { models, connection } from "../modules/sql";
 import { Upsert } from "@db-module/upsert";
+import pms from "pretty-ms";
 export const handler = async(message: Message) => {
 	if (!message.guild || !message.author || message.author.bot || !client.user || message.channel.type !== "text" || !(message.channel instanceof TextChannel)) return;
 	message.guild.options = await Upsert(models.Guildoptions as any, { id: message.guild.id } as models.Guildoptions, "id");
 	message.author.options = await Upsert(models.Useroptions as any, { id: message.author.id } as models.Useroptions, "id");
-	// [message.author.info] = await models.Userinfo.findOrCreate({ where: { id: message.author.id }, defaults: { id: message.author.id } });
+	const account = await client.getAccount(message.author.id);
 	const lang = client.getLanguage(message.author.options.language || message.guild.options.language);
 	if (!lang) return;
 	const prefixes = [client.constants.prefix, `<@${client.user.id}>`, `<@!${client.user.id}>`, message.guild.options.prefix, message.author.options.prefix];
@@ -22,6 +23,9 @@ export const handler = async(message: Message) => {
 	const gcommand = client.getCommand(command || "");
 	if (!gcommand) return;
 	if (!await hasPermission(message.member, gcommand.permissionLevel)) return message.channel.send(lang.errors.permission.format(gcommand.permissionLevel.name)); ;
+	if (account.cooldowns[gcommand.name] > Date.now()) return message.channel.send(lang.errors.cooldown.format(pms(account.cooldowns[gcommand.name] - Date.now(), { unitCount: 3 }), gcommand.name));
+	account.cooldowns[gcommand.name] = Date.now() + gcommand.cooldown;
+	await account.save();
 	const processedArgs: Args | ArgError = await client.parseArguments(gcommand.syntax, args, message);
 	if ((processedArgs as ArgError).error !== undefined) return message.channel.send(lang.errors.args.format(lang.errors.argsTypes[(processedArgs as ArgError).error.type].format((processedArgs as ArgError).error.obj.name), prefix, gcommand.name, gcommand.syntaxString));
 	try {

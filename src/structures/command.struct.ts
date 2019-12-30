@@ -29,7 +29,7 @@ export class Command<T extends ArgumentObject> {
 	public category?: string;
 	public execFunc?: (client: BartenderClient, message: Message, args: Args & ReturnExec<T>, lang: Languages) => any;
 	public readonly path: string;
-	public constructor(public name: string, public description: string = "No description specified.", public aliases: string[] = [], public shortcuts: string[] = [], public syntax: Readonly<readonly T[]>, public permissionLevel: Permission) {
+	public constructor(public name: string, public description: string = "No description specified.", public aliases: string[] = [], public shortcuts: string[] = [], public syntax: Readonly<readonly T[]>, public permissionLevel: Permission, public cooldown = 0) {
 		this.path = module.parent!.filename;
 	}
 	public get syntaxString() {
