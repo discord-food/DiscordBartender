@@ -50,18 +50,11 @@ export namespace models {
 		public aliases!: Alias[];
 		@Column({ default: 0, type: "bigint" })
 		public balance!: number;
-
-		@OneToOne(type => models.Cooldowns, cooldown => cooldown.user)
-		@JoinColumn()
-		public cooldowns!: models.Cooldowns;
 	}
 	@Entity()
 	export class Cooldowns extends SnowflakedEntity {
 		@Column({ default: 0 })
 		public work!: Date;
-
-		@OneToOne(type => Userinfo, userinfo => userinfo.cooldowns) // specify inverse side as a second parameter
-		public user!: Userinfo;
 	}
 	@Entity()
 	export class Alias extends SetupEntity {
