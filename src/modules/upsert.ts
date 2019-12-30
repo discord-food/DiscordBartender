@@ -47,8 +47,8 @@ export const CreateIfNotExist = async <T>(entity: ClassType<T>, pk: keyof T, val
 	return (await qb.returning("*").execute()).generatedMaps[0] as T;
 };
 
-export const CreateIfNotExistByPk = async <T>(entity: ClassType<T>, pk: keyof T, key: any) => {
-	const [e] = await entity.find({ where: { [pk]: key } });
+export const CreateIfNotExistByPk = async <T>(entity: ClassType<T>, pk: keyof T, key: any, relations?: string[]) => {
+	const [e] = await entity.find({ where: { [pk]: key }, relations });
 	if (e) return e;
 	const f = await entity.insert([{ [pk]: key }]);
 	return f.generatedMaps[0];

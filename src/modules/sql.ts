@@ -5,7 +5,7 @@ import { basename, join } from "path";
 import { randomString } from "@db-module/utils";
 const { host, name, username, password } = database;
 import { createConnection, Connection, Entity, PrimaryGeneratedColumn, Column, PrimaryColumn, BaseEntity,
-	 OneToMany, ManyToOne, Generated, CreateDateColumn, UpdateDateColumn, BeforeInsert } from "typeorm";
+	 OneToMany, ManyToOne, OneToOne, Generated, CreateDateColumn, UpdateDateColumn, BeforeInsert, JoinColumn } from "typeorm";
 export { Connection, BaseEntity } from "typeorm";
 
 export namespace models {
@@ -50,6 +50,18 @@ export namespace models {
 		public aliases!: Alias[];
 		@Column({ default: 0, type: "bigint" })
 		public balance!: number;
+
+		@OneToOne(type => models.Cooldowns, cooldown => cooldown.user)
+		@JoinColumn()
+		public cooldowns!: models.Cooldowns;
+	}
+	@Entity()
+	export class Cooldowns extends SnowflakedEntity {
+		@Column({ default: 0 })
+		public work!: Date;
+
+		@OneToOne(type => Userinfo, userinfo => userinfo.cooldowns) // specify inverse side as a second parameter
+		public user!: Userinfo;
 	}
 	@Entity()
 	export class Alias extends SetupEntity {
