@@ -12,6 +12,7 @@ export const permissions = {
 	serverMod: new Permission("SERVER_MOD", (client, member) => member.permissions.has("MANAGE_GUILD"), 1),
 	moderator: new Permission("MODERATOR", () => true, 2),
 	admin: new Permission("ADMIN", (client, member) => client.constants.admins.includes(member.id), 3),
+	developer: new Permission("DEVELOPER", (client, member) => client.constants.admins.includes(member.id), 4),
 };
 /**
  * @description Gets the permission ID for a GuildMember.

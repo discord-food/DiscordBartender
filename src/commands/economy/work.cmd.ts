@@ -16,7 +16,7 @@ export const command = new Command("work", "Work to earn some cash. This command
 		*/
 		const account = await client.getAccount(message.author.id);
 		const added = random(10, 70);
-		account.balance += added;
+		account.balance -= -added;
 		await account.save();
 		await message.channel.send(sample(lang.commands.work.responses)!.format(`\`${client.constants.currencySymbol}${client.formatter.format(added)}\``));
 	});
