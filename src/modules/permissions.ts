@@ -10,7 +10,7 @@ export class Permission {
 export const permissions = {
 	everyone: new Permission("PUBLIC", () => true, 0),
 	serverMod: new Permission("SERVER_MOD", (client, member) => member.permissions.has("MANAGE_GUILD"), 1),
-	moderator: new Permission("MODERATOR", () => true, 2),
+	moderator: new Permission("MODERATOR", (client, member, mainMember) => mainMember?.roles.has(client.mainRoles.get("staff")?.id ?? "") ?? false, 2),
 	admin: new Permission("ADMIN", (client, member, mainMember) => mainMember?.hasPermission("ADMINISTRATOR") ?? false, 3),
 	developer: new Permission("DEVELOPER", (client, member) => client.constants.admins.includes(member.id), 4),
 };
