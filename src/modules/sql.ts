@@ -48,7 +48,7 @@ export namespace models {
 	export class Userinfo extends SnowflakedEntity {
 		@OneToMany(() => models.Alias, alias => alias.user)
 		public aliases!: Alias[];
-		@Column({ default: 0 })
+		@Column({ default: 0, type: "bigint" })
 		public balance!: number;
 	}
 	@Entity()

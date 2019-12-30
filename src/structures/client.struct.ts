@@ -80,6 +80,7 @@ export class BartenderClient extends Client {
 	 * @property {_} _ Lodash.
 	 */
 	public _: typeof _ = _;
+	public formatter = new Intl.NumberFormat("en-CA", { maximumFractionDigits: 2 })
 	/**
 	 * @description The constructor.
 	 * @param {number} s The number of shards to initiate.
