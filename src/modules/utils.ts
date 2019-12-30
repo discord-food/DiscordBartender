@@ -90,15 +90,3 @@ export const randomString = (len = 6) => {
 	const arr = all.split("");
 	return sampleSize(arr, len).join("");
 };
-export interface Utils {
-	sendEnhancements(channel: TextChannel, val: any): any[];
-	format(str: string, ...formats: any[]): string;
-	getIndex<T>(message: Message, list: any[], internal?: T[], display?: string): Promise<GetIndexReturnVal<T> | false>;
-	getText(message: Message, display?: string, time?: number, filter?: (m: Message) => boolean): Promise<string | undefined>;
-	similarTo(value: string, checking: string): boolean;
-	getOptionalText(message: Message, display: string, time: number, filter: (m: Message) => boolean): Promise<string | false | undefined>;
-	limit(num: number, min: number, max: number): number;
-	getArgType(argType: CallableFunction): CallableFunction;
-	getUser(message: Message, toParse: string, { autoself, filter }: { autoself: boolean; filter: (member: GuildMember) => boolean }): Promise<User | null>;
-	randomString(len?: number): string;
-}

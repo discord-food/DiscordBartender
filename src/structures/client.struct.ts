@@ -33,9 +33,9 @@ export class BartenderClient extends Client {
 	 */
 	public models: typeof models = models;
 	/**
-	 * @property {utils.Utils} utils Utils.
+	 * @property {utils} utils Utils.
 	 */
-	public utils: utils.Utils = utils;
+	public utils: typeof utils = utils;
 	/**
 	 * @property {any} cached Cached models.
 	 */
