@@ -53,7 +53,7 @@ export namespace models {
 	}
 	@Entity()
 	export class Cooldowns extends SnowflakedEntity {
-		@Column({ default: 0 })
+		@Column({ default: new Date(0) })
 		public work!: Date;
 	}
 	@Entity()
