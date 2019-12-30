@@ -2,7 +2,7 @@ import { Client, GuildMember } from "discord.js";
 import { BartenderClient } from "../structures/client.struct";
 /** The permission class. */
 export class Permission {
-	public constructor(public name: string, public exec: (client: BartenderClient, member: GuildMember) => boolean, public id: number) {}
+	public constructor(public name: string, public exec: (client: BartenderClient, member: GuildMember, mainMember?: GuildMember) => boolean, public id: number) {}
 }
 /**
  * @property {object} permissions An object of permissions.
@@ -11,7 +11,7 @@ export const permissions = {
 	everyone: new Permission("PUBLIC", () => true, 0),
 	serverMod: new Permission("SERVER_MOD", (client, member) => member.permissions.has("MANAGE_GUILD"), 1),
 	moderator: new Permission("MODERATOR", () => true, 2),
-	admin: new Permission("ADMIN", (client, member) => client.constants.admins.includes(member.id), 3),
+	admin: new Permission("ADMIN", (client, member, mainMember) => mainMember?.hasPermission("ADMINISTRATOR") ?? false, 3),
 	developer: new Permission("DEVELOPER", (client, member) => client.constants.admins.includes(member.id), 4),
 };
 /**
@@ -21,8 +21,8 @@ export const permissions = {
  */
 export const getPermission = async(member: GuildMember | null): Promise<number> => {
 	if (member === null) return 0;
-	const client = member.client;
-	for (const permission of Object.values(permissions).sort((a: Permission, b: Permission) => b.id - a.id)) if (await permission.exec(member.bakery, member)) return permission.id;
+	const client = member.bartender;
+	for (const permission of Object.values(permissions).sort((a: Permission, b: Permission) => b.id - a.id)) if (await permission.exec(member.bartender, member, client.mainGuild!.members.get(member.id))) return permission.id;
 	return 0;
 };
 /**

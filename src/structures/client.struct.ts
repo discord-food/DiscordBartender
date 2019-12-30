@@ -70,6 +70,10 @@ export class BartenderClient extends Client {
 	 */
 	public mainRoles: Collection<string, Role> = new Collection();
 	/**
+	 * @property {Collection<number, Role>} milestones The milestone roles.
+	 */
+	public milestones: Collection<number, Role> = new Collection();
+	/**
 	 * @property {Auth} auth The auth.json file.
 	 */
 	public auth: Auth = auth;
@@ -345,6 +349,15 @@ export class BartenderClient extends Client {
 				continue;
 			}
 			this.mainRoles.set(name, role);
+		}
+		this.milestones = new Collection();
+		for (const milestone of constants.milestones) {
+			const ms = await this.mainGuild!.roles.fetch(milestone.id);
+			if (!ms) {
+				this.error(`Milestone ${chalk.redBright(String(milestone.value))} was not found.`);
+				continue;
+			}
+			this.milestones.set(milestone.value, ms);
 		}
 	}
 

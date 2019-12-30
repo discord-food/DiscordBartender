@@ -4,7 +4,7 @@ import { Command } from "@db-struct/command.struct";
 export const command = new Command("resetcooldowns", "Reset a user's cooldowns.", [], ["rc"], [{
 	name: "user",
 	type: Command.USER({ self: true }),
-}] as const, permissions.everyone)
+}] as const, permissions.moderator)
 	.setExec(async(client, message, args, lang) => {
 		const account = await client.getAccount(args.user.id);
 		account.cooldowns = {};

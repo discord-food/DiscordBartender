@@ -17,7 +17,7 @@ Message.prototype.edit = function edit(content: any, options?: MessageEditOption
 };
 declare module "discord.js" {
 	interface Base {
-		bakery: BartenderClient;
+		bartender: BartenderClient;
 	}
 	interface Guild {
 		options?: models.Guildoptions;
@@ -33,5 +33,5 @@ declare module "discord.js" {
 	}
 }
 
-Base.prototype.bakery = client;
+Base.prototype.bartender = client;
 eval("global.__rootname = require('path').join(__dirname, '../')");

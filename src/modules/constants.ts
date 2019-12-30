@@ -13,6 +13,7 @@ declare global {
 		readonly eval: Formattable;
 		readonly port: number;
 		readonly currencySymbol: string;
+		readonly milestones: readonly Readonly<{ value: number; id: string }>[];
 	}
 }
 export const constants: Constants = {
@@ -53,4 +54,14 @@ export const constants: Constants = {
 	},
 	port: 3000,
 	currencySymbol: "$",
+	milestones: [
+		{
+			value: 0,
+			id: "661298144927285296"
+		},
+		{
+			value: 50,
+			id: "661298369507098673"
+		},
+	]
 } as const;

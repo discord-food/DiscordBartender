@@ -28,7 +28,7 @@ Trace:
 
 npm manifest: 
   {
-  	"name": "discord-bakery",
+  	"name": "discord-bartender",
   	"version": "1.0.0",
   	"description": "mystic has planckpenis",
   	"main": "./dist/bot.js",
@@ -45,12 +45,12 @@ npm manifest:
   		"lazy": "ts-node .",
   		"windows": "rmdir /s /q \"./dist/\" && mkdir dist && yarn run compile && yarn start"
   	},
-  	"repository": "git+https://github.com/shadow6060/DiscordBakery.git",
+  	"repository": "git+https://github.com/shadow6060/Discordbartender.git",
   	"author": "Went and did some shit.",
   	"bugs": {
-  		"url": "https://github.com/shadow6060/DiscordBakery/issues"
+  		"url": "https://github.com/shadow6060/Discordbartender/issues"
   	},
-  	"homepage": "https://github.com/shadow6060/DiscordBakery#readme",
+  	"homepage": "https://github.com/shadow6060/Discordbartender#readme",
   	"dependencies": {
   		"@types/bluebird": "^3.5.27",
   		"@types/chart.js": "^2.9.0",

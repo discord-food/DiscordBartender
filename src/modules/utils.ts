@@ -8,7 +8,7 @@ export const sendEnhancements = (channel: Channel, val: any): any => {
 		String(str).replace(/\[.+?\]/g, x => {
 			const y = x.match(/(?<=\[).+?(?=\])/g);
 			if (!y) return x;
-			const emoji = channel.bakery.mainEmojis.get(y[0]);
+			const emoji = channel.bartender.mainEmojis.get(y[0]);
 			return emoji ? emoji.toString() : x;
 		});
 	if (typeof val === "object" && "embed" in val) val = new MessageEmbed(val.embed);
@@ -65,7 +65,7 @@ export const limit = (num: number, min: number, max: number): number => Math.max
 export const getArgType = (argType: CallableFunction): CallableFunction => new Collection(constants.arguments).get(argType) || argType;
 const compareUsers = (text: string, user: User) => Math.max(compareTwoStrings(text.toLowerCase(), user.username.toLowerCase()), compareTwoStrings(text.toLowerCase(), user.tag.toLowerCase()));
 export const getUser = async(message: Message, toParse: string, { autoself = false, filter = (member: GuildMember) => true }): Promise<User | null> => {
-	const client = message.bakery;
+	const client = message.bartender;
 	const id = toParse.replace(/<@!?[0-9]+>/g, input => input.replace(/<|!|>|@/g, ""));
 	const user = !toParse && autoself ? message.author :
 		!toParse && !autoself ? null :
