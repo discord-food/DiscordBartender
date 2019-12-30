@@ -50,7 +50,7 @@ export const constants: Constants = {
 	},
 	prefix: "b:",
 	roles: {
-		staff: "602945093762154507:661304502397173761",
+		staff: ">602945093762154507:661304502397173761",
 	},
 	port: 3000,
 	currencySymbol: "$",
