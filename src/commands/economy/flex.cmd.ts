@@ -6,6 +6,10 @@ export const command = new Command("flex", "Flex your cash.", [], ["flx"], [] as
 		const account = await client.getAccount(message.author.id);
 		const cashStr = `\`${client.constants.currencySymbol}${client.formatter.format(account.balance)}\``;
 		const force = (m: string) => message.channel.send(`${message.author} flexes their ${cashStr} with the force of ${m}.`);
+		if (account.balance > 1e15) return force(`the entire universe`);
+		if (account.balance > 1e14) return force(`the entire milky way`);
+		if (account.balance > 1e13) return force(`one million suns`);
+		if (account.balance > 1e12) return force(`one hundred thousand suns`);
 		if (account.balance > 1e11) return force(`ten thousand suns`);
 		if (account.balance > 1e10) return force(`one thousand suns`);
 		if (account.balance > 1e9) return force(`one hundred suns`);
