@@ -19,6 +19,6 @@ export const command = new Command("flex", "Flex your cash.", [], ["flx"], [] as
 		if (account.balance > 1e2) return message.channel.send(`${message.author} flexes their ${cashStr}.`);
 		if (account.balance > 1e1) return message.channel.send(`${message.author} tried to flex their ${cashStr}, but failed.`);
 		if (account.balance > 1e0) return message.channel.send(`${message.author} tried to flex their ${cashStr}, but failed miserably.`);
-		if (!account.balance) return message.channel.send(`${message.author} tried to flex their ${cashStr}, but failed miserably. They don't even have any money!`);
-		return message.channel.send(`${message.author} tried to flex their ${cashStr}, but failed horribly. Why would you even want to flex that amount? That amount is embarrassing. You should be ashamed of yourself.`);
+		if (account.balance > -1) return message.channel.send(`${message.author} tried to flex their ${cashStr}, but failed miserably. They don't even have any money!`);
+		return message.channel.send(`${message.author} tried to flex their ${cashStr}, but failed horribly. Why would you even want to flex ${cashStr}? That's embarrassing. You should be ashamed of yourself.`);
 	});
