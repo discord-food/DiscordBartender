@@ -15,6 +15,9 @@ export namespace models {
 		ENGLISH = "en",
 		OOF = "oof",
 	}
+	enum TypeSpecials {
+		NONE = ""
+	}
 	type NullableLangCodes = LangCodes | null;
 	abstract class SetupEntity extends BaseEntity {
 		@CreateDateColumn()
@@ -105,7 +108,7 @@ export namespace models {
 		@Column("text")
 		public description!: string;
 
-		@ManyToOne(type => models.Types, type => type.orders)
+		@ManyToOne(type => models.Types, type => type.orders, { cascade: true })
 		public type!: models.Types;
 
 		@BeforeInsert()
@@ -119,8 +122,18 @@ export namespace models {
 		@PrimaryGeneratedColumn()
 		public id!: number;
 
-		@OneToMany(type => Orders, order => order.type)
+		@OneToMany(type => Orders, order => order.type, { cascade: true })
 		public orders!: Orders[];
+
+		@Column("text")
+		public name!: string;
+
+		@Column({
+			type: "enum",
+			enum: TypeSpecials,
+			default: TypeSpecials.NONE
+		})
+		public special!: TypeSpecials;
 	}
 }
 
