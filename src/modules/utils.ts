@@ -1,8 +1,17 @@
-import { Channel, Collection, GuildMember, Message, MessageEmbed, TextChannel, User } from "discord.js";
+import {
+	Channel,
+	Collection,
+	GuildMember,
+	Message,
+	MessageEmbed,
+	TextChannel,
+	User
+} from "discord.js";
 import { compareTwoStrings } from "string-similarity";
 import { sampleSize } from "lodash";
 import { constants } from "./constants";
-export const similarTo = (value: string, checking: string): boolean => compareTwoStrings(value.toLowerCase(), checking) > 0.8;
+export const similarTo = (value: string, checking: string): boolean =>
+	compareTwoStrings(value.toLowerCase(), checking) > 0.8;
 export const sendEnhancements = (channel: Channel, val: any): any => {
 	const _internal = (str: any) =>
 		String(str).replace(/\[.+?\]/g, x => {
@@ -11,7 +20,8 @@ export const sendEnhancements = (channel: Channel, val: any): any => {
 			const emoji = channel.bartender.mainEmojis.get(y[0]);
 			return emoji ? emoji.toString() : x;
 		});
-	if (typeof val === "object" && "embed" in val) val = new MessageEmbed(val.embed);
+	if (typeof val === "object" && "embed" in val)
+		val = new MessageEmbed(val.embed);
 	if (val instanceof MessageEmbed) {
 		if (val.title) val.title = _internal(val.title);
 		if (val.description) val.description = _internal(val.description);
@@ -25,21 +35,39 @@ export const sendEnhancements = (channel: Channel, val: any): any => {
 	if (typeof val === "string") val = _internal(val);
 	return val;
 };
-export const format = (str: string, ...formats: any[]): string => formats.reduce((l, x) => l.replace("{}", x), str);
+export const format = (str: string, ...formats: any[]): string =>
+	formats.reduce((l, x) => l.replace("{}", x), str);
 
-export const getText = async(message: Message, display = "Respond with text.", time = 40000, filter: CallableFunction = (m: Message) => m.author.id === message.author.id): Promise<string | undefined> => {
+export const getText = async (
+	message: Message,
+	display = "Respond with text.",
+	time = 40000,
+	filter: CallableFunction = (m: Message) => m.author.id === message.author.id
+): Promise<string | undefined> => {
 	await message.channel.send(display);
-	const res = await message.channel.awaitMessages(m => (m.content && similarTo(m.content, "cancel")) || Boolean(filter(m) && m.author.id === message.author.id), { time, max: 1 });
+	const res = await message.channel.awaitMessages(
+		m =>
+			(m.content && similarTo(m.content, "cancel")) ||
+			Boolean(filter(m) && m.author.id === message.author.id),
+		{ time, max: 1 }
+	);
 	if (!res.size) return void message.channel.send("No response. Cancelled.");
 	const resm = res.first()!;
 	if (resm.attachments.size) return resm.attachments.first()!.proxyURL;
-	if (similarTo(resm.content, "cancel")) return void message.channel.send("Cancelled.");
+	if (similarTo(resm.content, "cancel"))
+		return void message.channel.send("Cancelled.");
 	return resm.content;
 };
-export const getOptionalText = async(message: Message, display = "Respond with text.", time = 40000, filter: CallableFunction = (m: Message) => m.author.id === message.author.id): Promise<string | false | undefined> => {
+export const getOptionalText = async (
+	message: Message,
+	display = "Respond with text.",
+	time = 40000,
+	filter: CallableFunction = (m: Message) => m.author.id === message.author.id
+): Promise<string | false | undefined> => {
 	const text = await getText(message, display, time, filter);
 	if (!text || similarTo(text, "no")) return false;
-	if (similarTo(text, "yes")) return getText(message, "Please respond with the input.");
+	if (similarTo(text, "yes"))
+		return getText(message, "Please respond with the input.");
 	return text;
 };
 interface GetIndexReturnVal<T> {
@@ -47,67 +75,128 @@ interface GetIndexReturnVal<T> {
 	item: T;
 	displayItem: any;
 }
-export const getIndex = async<T>(message: Message, list: any[], internal: T[] = list.map((x, i) => x === null ? list[i] : x), display = "item"): Promise<GetIndexReturnVal<T> | false> => {
+export const getIndex = async <T>(
+	message: Message,
+	list: any[],
+	internal: T[] = list.map((x, i) => (x === null ? list[i] : x)),
+	display = "item",
+	displayFormat = false
+): Promise<GetIndexReturnVal<T> | false> => {
 	if (internal.length < 2) {
-		await message.channel.send(`\`${list[0]}\` has been automatically chosen, as it is the only option.`);
+		await message.channel.send(
+			`\`${list[0]}\` has been automatically chosen, as it is the only option.`
+		);
 		return { index: 0, item: internal[0], displayItem: list[0] };
 	}
 	const mapped = list.map((x, i) => `[${i + 1}] ${x}`);
-	const index = await exports.getText(message, `Please reply with the index of the ${display}.
+	const index = await exports.getText(
+		message,
+		displayFormat
+			? display.replace("{}", mapped.join("\n"))
+			: `Please reply with the index of the ${display}.
 \`\`\`ini
 ${mapped.join("\n")}
 \`\`\`
-	`, 40000, (m: Message) => !isNaN(+m.content) && +m.content > 0 && +m.content <= list.length);
+	`,
+		40000,
+		(m: Message) =>
+			!isNaN(+m.content) && +m.content > 0 && +m.content <= list.length
+	);
 	if (!index) return false;
-	return { index: index - 1, item: internal[index - 1], displayItem: list[index - 1] };
+	return {
+		index: index - 1,
+		item: internal[index - 1],
+		displayItem: list[index - 1]
+	};
 };
-export const limit = (num: number, min: number, max: number): number => Math.max(Math.min(+num, max), min);
-export const getArgType = (argType: CallableFunction): CallableFunction => new Collection(constants.arguments).get(argType) || argType;
-const compareUsers = (text: string, user: User) => Math.max(compareTwoStrings(text.toLowerCase(), user.username.toLowerCase()), compareTwoStrings(text.toLowerCase(), user.tag.toLowerCase()));
-export const getUser = async(message: Message, toParse: string, { autoself = false, filter = (member: GuildMember) => true }): Promise<User | null> => {
+export const limit = (num: number, min: number, max: number): number =>
+	Math.max(Math.min(+num, max), min);
+export const getArgType = (argType: CallableFunction): CallableFunction =>
+	new Collection(constants.arguments).get(argType) || argType;
+const compareUsers = (text: string, user: User) =>
+	Math.max(
+		compareTwoStrings(text.toLowerCase(), user.username.toLowerCase()),
+		compareTwoStrings(text.toLowerCase(), user.tag.toLowerCase())
+	);
+export const getUser = async (
+	message: Message,
+	toParse: string,
+	{ autoself = false, filter = (member: GuildMember) => true }
+): Promise<User | null> => {
 	const client = message.bartender;
-	const id = toParse.replace(/<@!?[0-9]+>/g, input => input.replace(/<|!|>|@/g, ""));
-	const user = !toParse && autoself ? message.author :
-		!toParse && !autoself ? null :
-			!isNaN(+id) ? client.users.get(id) || null :
-				null;
+	const id = toParse.replace(/<@!?[0-9]+>/g, input =>
+		input.replace(/<|!|>|@/g, "")
+	);
+	const user =
+		!toParse && autoself
+			? message.author
+			: !toParse && !autoself
+			? null
+			: !isNaN(+id)
+			? client.users.get(id) || null
+			: null;
 	if (user) return user;
 	if (!toParse) return null;
-	const userlist = client.mainGuild!.members.concat(message.guild!.members)
+	const userlist = client
+		.mainGuild!.members.concat(message.guild!.members)
 		.map(x => [x, compareUsers(toParse, x.user)] as [GuildMember, number])
 		.filter(x => filter(x[0]))
-		.sort((x, y) => compareUsers(toParse, y[0].user) - compareUsers(toParse, x[0].user));
+		.sort(
+			(x, y) =>
+				compareUsers(toParse, y[0].user) -
+				compareUsers(toParse, x[0].user)
+		);
 	if (!userlist.length) return null;
-	if (compareUsers(toParse, userlist[0][0].user) > 0.9) return userlist[0][0].user;
-	const names = userlist.map(x => `${x[0].user.tag.padEnd(37)} - ${(x[1] * 100).toFixed(2)}%`).slice(0, 5);
+	if (compareUsers(toParse, userlist[0][0].user) > 0.9)
+		return userlist[0][0].user;
+	const names = userlist
+		.map(x => `${x[0].user.tag.padEnd(37)} - ${(x[1] * 100).toFixed(2)}%`)
+		.slice(0, 5);
 	const nameDict = await getIndex(message, names, userlist, "user");
 	if (!nameDict) return null;
 	if (!filter(nameDict.item[0])) return null;
 	return nameDict.item[0].user || null;
 };
 export const randomString = (len = 6) => {
-	const all = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	const all =
+		"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	const arr = all.split("");
 	return sampleSize(arr, len).join("");
 };
 export class ProgressBar {
-	public constructor(public min = 0, public max = 100, public filled = "▓", public unfilled = "░") {}
-	public generate(progress = this.max / 2, { percent = false, decimals = 0, prefix = "", total = this.max } = {}) {
+	public constructor(
+		public min = 0,
+		public max = 100,
+		public filled = "▓",
+		public unfilled = "░"
+	) {}
+	public generate(
+		progress = this.max / 2,
+		{ percent = false, decimals = 0, prefix = "", total = this.max } = {}
+	) {
 		if (progress < 0) progress = 0;
-		const filled = this.filled.repeat(Math.max(progress * (total / this.max), 0));
-		const unfilled = this.unfilled.repeat(Math.max(total - filled.length, 0));
-		return `${prefix ? `${prefix} ` : ""}${filled}${unfilled}${percent ? ` ${((progress / this.max) * 100).toFixed(decimals)}%` : ""}`;
+		const filled = this.filled.repeat(
+			Math.max(progress * (total / this.max), 0)
+		);
+		const unfilled = this.unfilled.repeat(
+			Math.max(total - filled.length, 0)
+		);
+		return `${prefix ? `${prefix} ` : ""}${filled}${unfilled}${
+			percent
+				? ` ${((progress / this.max) * 100).toFixed(decimals)}%`
+				: ""
+		}`;
 	}
 	public setMin(m: number) {
-		return this.min = m, this;
+		return (this.min = m), this;
 	}
 	public setMax(m: number) {
-		return this.max = m, this;
+		return (this.max = m), this;
 	}
 	public setFilled(f: string) {
-		return this.filled = f, this;
+		return (this.filled = f), this;
 	}
 	public setUnfilled(u: string) {
-		return this.unfilled = u, this;
+		return (this.unfilled = u), this;
 	}
 }
