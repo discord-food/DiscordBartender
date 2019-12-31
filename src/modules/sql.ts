@@ -108,7 +108,7 @@ export namespace models {
 		@Column("text")
 		public description!: string;
 
-		@ManyToOne(type => models.Types, type => type.orders, { cascade: true })
+		@ManyToOne(type => models.Types, type => type.orders, { cascade: ["insert", "update"] })
 		public type!: models.Types;
 
 		@BeforeInsert()
@@ -122,7 +122,7 @@ export namespace models {
 		@PrimaryGeneratedColumn()
 		public id!: number;
 
-		@OneToMany(type => Orders, order => order.type, { cascade: true })
+		@OneToMany(type => Orders, order => order.type, { cascade: ["insert", "update"] })
 		public orders!: Orders[];
 
 		@Column("text")

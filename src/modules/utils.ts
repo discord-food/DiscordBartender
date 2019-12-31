@@ -27,16 +27,16 @@ export const sendEnhancements = (channel: Channel, val: any): any => {
 };
 export const format = (str: string, ...formats: any[]): string => formats.reduce((l, x) => l.replace("{}", x), str);
 
-export const getText = async(message: Message, display = "Respond with text.", time = 40000, filter: CallableFunction = (m: Message) => m.author!.id === message.author!.id): Promise<string | undefined> => {
+export const getText = async(message: Message, display = "Respond with text.", time = 40000, filter: CallableFunction = (m: Message) => m.author.id === message.author.id): Promise<string | undefined> => {
 	await message.channel.send(display);
-	const res = await message.channel.awaitMessages(m => (m.content && similarTo(m.content, "cancel")) || Boolean(filter(m) && m.author.id === message.author!.id), { time, max: 1 });
+	const res = await message.channel.awaitMessages(m => (m.content && similarTo(m.content, "cancel")) || Boolean(filter(m) && m.author.id === message.author.id), { time, max: 1 });
 	if (!res.size) return void message.channel.send("No response. Cancelled.");
 	const resm = res.first()!;
 	if (resm.attachments.size) return resm.attachments.first()!.proxyURL;
 	if (similarTo(resm.content, "cancel")) return void message.channel.send("Cancelled.");
 	return resm.content;
 };
-export const getOptionalText = async(message: Message, display = "Respond with text.", time = 40000, filter: CallableFunction = (m: Message) => m.author!.id === message.author!.id): Promise<string | false | undefined> => {
+export const getOptionalText = async(message: Message, display = "Respond with text.", time = 40000, filter: CallableFunction = (m: Message) => m.author.id === message.author.id): Promise<string | false | undefined> => {
 	const text = await getText(message, display, time, filter);
 	if (!text || similarTo(text, "no")) return false;
 	if (similarTo(text, "yes")) return getText(message, "Please respond with the input.");
@@ -76,7 +76,7 @@ export const getUser = async(message: Message, toParse: string, { autoself = fal
 	const userlist = client.mainGuild!.members.concat(message.guild!.members)
 		.map(x => [x, compareUsers(toParse, x.user)] as [GuildMember, number])
 		.filter(x => filter(x[0]))
-		.sort((x, y) => compareUsers(toParse, y[0].user) - compareUsers(toParse, x[0].user)) as Array<[GuildMember, number]>;
+		.sort((x, y) => compareUsers(toParse, y[0].user) - compareUsers(toParse, x[0].user));
 	if (!userlist.length) return null;
 	if (compareUsers(toParse, userlist[0][0].user) > 0.9) return userlist[0][0].user;
 	const names = userlist.map(x => `${x[0].user.tag.padEnd(37)} - ${(x[1] * 100).toFixed(2)}%`).slice(0, 5);
@@ -90,3 +90,24 @@ export const randomString = (len = 6) => {
 	const arr = all.split("");
 	return sampleSize(arr, len).join("");
 };
+export class ProgressBar {
+	public constructor(public min = 0, public max = 100, public filled = "▓", public unfilled = "░") {}
+	public generate(progress = this.max / 2, { percent = false, decimals = 0, prefix = "", total = this.max } = {}) {
+		if (progress < 0) progress = 0;
+		const filled = this.filled.repeat(Math.max(progress * (total / this.max), 0));
+		const unfilled = this.unfilled.repeat(Math.max(total - filled.length, 0));
+		return `${prefix ? `${prefix} ` : ""}${filled}${unfilled}${percent ? ` ${((progress / this.max) * 100).toFixed(decimals)}%` : ""}`;
+	}
+	public setMin(m: number) {
+		return this.min = m, this;
+	}
+	public setMax(m: number) {
+		return this.max = m, this;
+	}
+	public setFilled(f: string) {
+		return this.filled = f, this;
+	}
+	public setUnfilled(u: string) {
+		return this.unfilled = u, this;
+	}
+}
