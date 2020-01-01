@@ -8,15 +8,16 @@ import { createConnection, Connection, Entity, PrimaryGeneratedColumn, Column, P
 	 OneToMany, ManyToOne, OneToOne, Generated, CreateDateColumn, UpdateDateColumn, BeforeInsert, JoinColumn } from "typeorm";
 export { Connection, BaseEntity } from "typeorm";
 
+export enum TypeSpecials {
+	NONE = "",
+	CUSTOM = "custom",
+}
 export namespace models {
 	const SNOWFLAKE_LENGTH = 18;
 	const SNOWFLAKE_OPTIONS = { length: SNOWFLAKE_LENGTH };
 	enum LangCodes {
 		ENGLISH = "en",
 		OOF = "oof",
-	}
-	enum TypeSpecials {
-		NONE = ""
 	}
 	type NullableLangCodes = LangCodes | null;
 	abstract class SetupEntity extends BaseEntity {

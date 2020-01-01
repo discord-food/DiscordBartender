@@ -22,21 +22,31 @@
 	"rules": {
 		"@typescript-eslint/array-type": "array",
 		"@typescript-eslint/ban-ts-ignore": "off",
+		"@typescript-eslint/consistent-type-definitions": [
+			"error",
+			"interface"
+		],
 		"@typescript-eslint/expicit-function-return-type": "off",
 		"@typescript-eslint/explicit-function-return-type": "off",
 		"@typescript-eslint/explicit-member-accessibility": "warn",
+		"@typescript-eslint/interface-name-prefix": "off",
 		"@typescript-eslint/no-empty-function": "error",
 		"@typescript-eslint/no-explicit-any": "off",
-		"@typescript-eslint/no-extra-parens": ["warn", "all", {
-			"nestedBinaryExpressions": false
-		}],
-		"@typescript-eslint/consistent-type-definitions": ["error", "interface"],
-		"@typescript-eslint/interface-name-prefix": "off",
+		"@typescript-eslint/no-extra-parens": [
+			"warn",
+			"all",
+			{
+				"nestedBinaryExpressions": false
+			}
+		],
 		"@typescript-eslint/no-namespace": "off",
 		"@typescript-eslint/no-non-null-assertion": "off",
 		"@typescript-eslint/no-unused-vars": "off",
 		"@typescript-eslint/no-useless-constructor": "error",
 		"@typescript-eslint/prefer-optional-chain": "off",
+		"@typescript-eslint/semi": [
+			"error"
+		],
 		"accessor-pairs": "warn",
 		"array-bracket-spacing": "error",
 		"arrow-body-style": "error",
@@ -227,7 +237,7 @@
 			}
 		],
 		"rest-spread-spacing": "error",
-		"semi": "error",
+		"semi": "off",
 		"semi-spacing": "error",
 		"space-before-blocks": "error",
 		"space-before-function-paren": [
