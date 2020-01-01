@@ -17,7 +17,7 @@ export const command = new Command("order", "Orders a drink.", [], ["odr"], [] a
 			description = await client.utils.getText(message, "What would you like to order? (custom order)")
 			if (!description) return;
 		}
-		const order = client.models.Orders.create({ description, type, user: message.author.id });
+		const order = client.models.Orders.create({ description, type, user: message.author.id, channel: message.channel.id });
 		await order.save();
 		await message.channel.send(order.id);
 	});
