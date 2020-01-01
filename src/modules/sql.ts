@@ -106,8 +106,8 @@ export namespace models {
 		@Column("char", SNOWFLAKE_OPTIONS)
 		public channel!: string;
 
-		@Column("text")
-		public description!: string;
+		@Column("text", { nullable: true })
+		public description?: string;
 
 		@ManyToOne(type => models.Types, type => type.orders, { cascade: ["insert", "update"] })
 		public type!: models.Types;
