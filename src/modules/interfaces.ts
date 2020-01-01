@@ -83,7 +83,10 @@ declare global {
 		};
 		list: {
 			noOrders: string;
-		}
+		};
+		order: {
+			exists: string;
+		};
 	}
 
 	interface ArgumentObject {

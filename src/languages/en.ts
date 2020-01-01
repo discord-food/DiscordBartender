@@ -45,7 +45,10 @@ export const language: Languages = {
 				"Break room is magically blessed. You got {}.",
 				"You attempt to summon a demon, but all that appears are piles of cash. You got {}."
 			])
-		}
+		},
+		order: {
+			exists: "[no] You already have an active order."
+		},
 	},
 	errors: {
 		internal: new Formattable("🔌 Sorry, there was an internal error.\n```js\n{}\n```"),

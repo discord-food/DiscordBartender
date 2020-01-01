@@ -115,6 +115,9 @@ export namespace models {
 		@Column("text", { nullable: true })
 		public description?: string;
 
+		@Column("char", SNOWFLAKE_OPTIONS)
+		public user!: string;
+		
 		@Column({
 			type: "enum",
 			enum: Status,
@@ -129,7 +132,7 @@ export namespace models {
 		}
 
 		@Column("jsonb", { default: {} })
-		public metadata!: { claimer?: string, channel: string, user: string }
+		public metadata!: { claimer?: string, channel: string }
 
 		@ManyToOne(type => models.Types, type => type.orders, { cascade: ["insert", "update"] })
 		public type!: models.Types;
