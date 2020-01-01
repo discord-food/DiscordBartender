@@ -14,6 +14,7 @@ declare global {
 		readonly port: number;
 		readonly currencySymbol: string;
 		readonly milestones: readonly Readonly<{ value: number; id: string }>[];
+		readonly statuses: readonly (string | Formattable)[];
 	}
 }
 export const constants: Constants = {
@@ -63,5 +64,6 @@ export const constants: Constants = {
 			value: 50,
 			id: "661298369507098673"
 		},
-	]
+	],
+	statuses: ["Unprepared", new Formattable("Preparing by {}"), "Brewing", "Pending Delivery", "Delivering", "Delivered", "Cancelled By User", "Deleted By Staff", "Failed Preparation"],
 } as const;

@@ -12,6 +12,17 @@ export enum TypeSpecials {
 	NONE = "",
 	CUSTOM = "custom",
 }
+export enum Status {
+	UNPREPARED,
+	PREPARING,
+	BREWING,
+	PENDING_DELIVERY,
+	DELIVERING,
+	DELIVERED,
+	CANCELLED,
+	DELETED,
+	FAILED
+}
 export namespace models {
 	const SNOWFLAKE_LENGTH = 18;
 	const SNOWFLAKE_OPTIONS = { length: SNOWFLAKE_LENGTH };
@@ -100,14 +111,21 @@ export namespace models {
 		@PrimaryColumn("varchar")
 		public id!: string;
 
-		@Column("char", SNOWFLAKE_OPTIONS)
-		public user!: string;
-
-		@Column("char", SNOWFLAKE_OPTIONS)
-		public channel!: string;
-
 		@Column("text", { nullable: true })
 		public description?: string;
+
+		@Column({
+			type: "enum",
+			enum: Status,
+			default: Status.UNPREPARED
+		})
+		public status?: Status;
+		get available(): boolean {
+			return (this.status ?? 0) <= 5;
+		}
+
+		@Column("jsonb", { default: {} })
+		public metadata!: { claimer: string, channel: string, user: string }
 
 		@ManyToOne(type => models.Types, type => type.orders, { cascade: ["insert", "update"] })
 		public type!: models.Types;
