@@ -19,7 +19,7 @@ export const command = new Command(
 		.setThumbnail(client.user?.avatarURL({ format: "png" }) ?? "")
 		.addField("User Tag", client.user?.tag ?? "Not Found", true)
 		.addField("ID", client.user?.id ?? "Not Found", true)
-		.addField("Node.JS Version", process.version, true)
+		.addField("Node.JS Version", process.version)
 		.addField("Discord.JS Version", client.Discord.version, true)
 		.addField("V8 Version", versions.v8, true)
 		.addField("OpenSSL Version", versions.openssl, true)
