@@ -3,6 +3,7 @@ import { execSync, spawnSync } from "child_process";
 import { Channel, Client, Collection, Emoji, Guild, Message, Role, TextChannel } from "discord.js";
 import { sync } from "glob";
 import _ from "lodash";
+import Discord from "discord.js";
 import { basename, dirname, join, normalize, resolve, win32 } from "path";
 import { compareTwoStrings } from "string-similarity";
 import { inspect } from "util";
@@ -87,6 +88,7 @@ export class BartenderClient extends Client {
 	public _: typeof _ = _;
 	public formatter = new Intl.NumberFormat("en-CA", { maximumFractionDigits: 2 })
 	public progressBar = new utils.ProgressBar(70);
+	public Discord = Discord;
 	/**
 	 * @description The constructor.
 	 * @param {number} s The number of shards to initiate.

@@ -86,7 +86,8 @@ ${channellength("unknown")}`,
 			.addField("Shard", `This guild is on **Shard ${guild.shard.id}**.`, true)
 			.addField("System Channel", guild.systemChannel || "None", true)
 			.addField("Vanity URL", guild.vanityURLCode ? `discord.gg/${guild.vanityURLCode}` : "None", true)
-			.addField("Verification Level", guild.verificationLevel, true);
+			.addField("Verification Level", guild.verificationLevel, true)
+			.addField("Widget Channel", guild.widgetEnabled ? guild.widgetChannel : "Off", true);
 		if (guild.description) embed.addField("Description", guild.description, true);
 	})();
 	await message.channel.send(embed);
