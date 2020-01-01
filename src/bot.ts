@@ -14,8 +14,10 @@ const reader = createInterface({
 (process as NodeJS.EventEmitter).on("unhandledRejection", (err: Error, p) => {
 	if (err) client.error(err.stack);
 });
-(process as NodeJS.EventEmitter).on("uncaughtException", (err: Error, p) => {
+(process as NodeJS.EventEmitter).on("uncaughtException", async(err: Error, p) => {
 	if (err) client.error(err.stack);
+	await (client.mainChannels.get("fatal") as Discord.TextChannel)?.send(`Fatal error.\n\`\`\`js\n${err.toString()}\n\`\`\``)
+	process.exit(1);
 });
 reader.on("line", async input => {
 	if (!input) return;

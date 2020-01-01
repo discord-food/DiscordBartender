@@ -29,7 +29,7 @@ export const constants: Constants = {
 		[Boolean, (arg: string, args: Args, argObj: ArgumentObject) => ["yes", "true", "y", "on", "t", argObj.name.toLowerCase()].some(x => arg.toLowerCase() === x) ? true : ["no", "false", "n", "off"].some(x => arg.toLowerCase() === x) ? false : null],
 	],
 	channels: {
-		e: "f",
+		fatal: "661811790732197928",
 	},
 	emojis: {
 		brick: "609823798031810560",
