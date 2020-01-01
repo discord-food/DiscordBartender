@@ -365,12 +365,13 @@ export class BartenderClient extends Client {
 	public getCommand(commandResolvable: string) {
 		commandResolvable = commandResolvable.toLowerCase();
 		return (
-			this.commands.get(commandResolvable) ||
+			this.commands.get(commandResolvable) ??
+			this.commands.find(command => [...command.aliases, ...command.shortcuts].some(str => str === commandResolvable)) ??
 			this.commands.find(command =>
 				[...command.aliases, ...command.shortcuts, command.name].some(
 					str => str === commandResolvable || compareTwoStrings(str, commandResolvable) > 0.85,
 				),
-			) ||
+			) ??
 			null
 		);
 	}
