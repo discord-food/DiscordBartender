@@ -9,6 +9,9 @@ type _ConvertIntoObject<Keys extends any[], Values extends any[], Acc extends {}
   } & Acc>;
 }[Keys["length"] extends 0 ? 0 : 1];
 declare global {
+	type Entries<T> = {
+		[P in keyof T]: [P, T[P]];
+	}[keyof T];
 	type Shift<T extends any[]> = ((...args: T) => any) extends ((first: any, ...rest: infer R) => any) ? R : never;
 	type UnionToIntersection<U> =
 	  (U extends any ? (k: U) => void : never) extends ((k: infer I) => void) ? I : never

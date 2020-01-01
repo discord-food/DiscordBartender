@@ -40,7 +40,7 @@ export class BartenderClient extends Client {
 	/**
 	 * @property {any} cached Cached models.
 	 */
-	public cached: any = {};
+	public cached: {[index in keyof typeof sql.models]?: ((typeof sql.models)[index])[]} = {};
 	/**
 	 * @property {typeof sql} sql SQL module.
 	 */
@@ -86,6 +86,7 @@ export class BartenderClient extends Client {
 	 */
 	public _: typeof _ = _;
 	public formatter = new Intl.NumberFormat("en-CA", { maximumFractionDigits: 2 })
+	public progressBar = new utils.ProgressBar(70);
 	/**
 	 * @description The constructor.
 	 * @param {number} s The number of shards to initiate.

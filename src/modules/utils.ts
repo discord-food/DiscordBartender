@@ -165,30 +165,30 @@ export const randomString = (len = 6) => {
 };
 export class ProgressBar {
 	public constructor(
-		public min = 0,
-		public max = 100,
+		public length = 100,
+		public max = length,
 		public filled = "▓",
 		public unfilled = "░"
 	) {}
 	public generate(
-		progress = this.max / 2,
+		progress = this.length / 2,
 		{ percent = false, decimals = 0, prefix = "", total = this.max } = {}
 	) {
 		if (progress < 0) progress = 0;
 		const filled = this.filled.repeat(
-			Math.max(progress * (total / this.max), 0)
+			Math.max(progress * (total / this.length), 0)
 		);
 		const unfilled = this.unfilled.repeat(
 			Math.max(total - filled.length, 0)
 		);
 		return `${prefix ? `${prefix} ` : ""}${filled}${unfilled}${
 			percent
-				? ` ${((progress / this.max) * 100).toFixed(decimals)}%`
+				? ` ${((progress / this.length) * 100).toFixed(decimals)}%`
 				: ""
 		}`;
 	}
-	public setMin(m: number) {
-		return (this.min = m), this;
+	public setLength(m: number) {
+		return (this.length = m), this;
 	}
 	public setMax(m: number) {
 		return (this.max = m), this;

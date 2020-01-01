@@ -5,7 +5,7 @@ export const command = new Command("order", "Orders a drink.", [], ["odr"], [] a
 	.setExec(async(client, message, args, lang) => {
 		const allTypes = await client.models.Types.find();
 		if (!allTypes.length) return message.channel.send(`[no] The menu is empty. What happened?`)
-		const typeIndex = await client.utils.getIndex(message, allTypes.map(x => x.name), allTypes, "order item");
+		const typeIndex = await client.utils.getIndex(message, allTypes.map(x => x.name), allTypes, "order item", true);
 		if (!typeIndex) return;
 		const type = typeIndex.item;
 		await message.channel.send(type.name);
