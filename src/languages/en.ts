@@ -19,6 +19,9 @@ export const language: Languages = {
 			],
 			pong: new Formattable("🏓 Pong! Took `{}`, {}"),
 		},
+		list: {
+			noOrders: "[no] There are currently no orders."
+		},
 		work: {
 			responses: FA([
 				"Grass isn't real, but the {} you received is.",

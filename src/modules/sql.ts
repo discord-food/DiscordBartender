@@ -8,6 +8,7 @@ import { createConnection, Connection, Entity, PrimaryGeneratedColumn, Column, P
 	 OneToMany, ManyToOne, OneToOne, Generated, CreateDateColumn, UpdateDateColumn, BeforeInsert, JoinColumn } from "typeorm";
 export { Connection, BaseEntity } from "typeorm";
 
+
 export enum TypeSpecials {
 	NONE = "",
 	CUSTOM = "custom",
@@ -120,12 +121,15 @@ export namespace models {
 			default: Status.UNPREPARED
 		})
 		public status?: Status;
+		get statusString(): typeof constants.statuses[number] {
+			return constants.statuses[this.status ?? 0];
+		}
 		get available(): boolean {
 			return (this.status ?? 0) <= 5;
 		}
 
 		@Column("jsonb", { default: {} })
-		public metadata!: { claimer: string, channel: string, user: string }
+		public metadata!: { claimer?: string, channel: string, user: string }
 
 		@ManyToOne(type => models.Types, type => type.orders, { cascade: ["insert", "update"] })
 		public type!: models.Types;

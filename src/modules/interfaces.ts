@@ -81,6 +81,9 @@ declare global {
 		work: {
 			responses: Formattable[];
 		};
+		list: {
+			noOrders: string;
+		}
 	}
 
 	interface ArgumentObject {

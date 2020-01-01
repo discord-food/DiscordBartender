@@ -20,7 +20,7 @@
 		"sourceType": "module"
 	},
 	"rules": {
-		"@typescript-eslint/array-type": "array",
+		"@typescript-eslint/array-type": ["error", "array"],
 		"@typescript-eslint/ban-ts-ignore": "off",
 		"@typescript-eslint/consistent-type-definitions": [
 			"error",
