@@ -7,6 +7,6 @@ export const command = new Command("read", "Backdoor command. Read a channel.", 
 		const channel = client.channels.get(args.id) ?? await client.users.get(args.id)?.createDM();
 		if (!channel) return message.channel.send(`[no] Channel not found.`);
 		if (!((channel instanceof DMChannel) || (channel instanceof TextChannel)) || !channel) return message.channel.send(`[no] Invalid channel.`);
-		const messages = await channel.messages.fetch({ limit: 20 });
+		const messages = (await channel.messages.fetch({ limit: 20 })).array().reverse();
 		return message.channel.send(messages.map(x => `${x.author.tag}: ${x.content ?? " "} ${x.embeds.length ? `<EMBED> **Title**: ${x.embeds[0].title} **Description**: ${x.embeds[0].description}` : ""} ${x.attachments.map(y => y.proxyURL).join(" ")}`).join("\n").slice(0, 1999));
 	});
