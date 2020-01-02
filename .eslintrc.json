@@ -29,7 +29,7 @@
 		"@typescript-eslint/explicit-function-return-type": "off",
 		"@typescript-eslint/explicit-member-accessibility": "warn",
 		"@typescript-eslint/interface-name-prefix": "off",
-		"@typescript-eslint/no-empty-function": "error",
+		"@typescript-eslint/no-empty-function": "warn",
 		"@typescript-eslint/no-explicit-any": "off",
 		"@typescript-eslint/no-extra-parens": [
 			"warn",

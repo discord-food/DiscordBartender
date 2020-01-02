@@ -26,6 +26,7 @@ app.get("/", (req, res) => {
 	res.render("home.hbs");
 });
 app.put("/v1/orders", (req, res) => {
+	"soon";
 });
 http.listen(2345, () => {
 	client.log("Site hosted on *:2345");

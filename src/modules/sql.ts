@@ -124,10 +124,10 @@ export namespace models {
 			default: Status.UNPREPARED
 		})
 		public status?: Status;
-		get statusString(): typeof constants.statuses[number] {
+		public get statusString(): typeof constants.statuses[number] {
 			return constants.statuses[this.status ?? 0];
 		}
-		get available(): boolean {
+		public get available(): boolean {
 			return (this.status ?? 0) <= 5;
 		}
 
