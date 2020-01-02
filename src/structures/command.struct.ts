@@ -32,7 +32,7 @@ export class Command<T extends ArgumentObject> {
 		, { get typename(): string { return `${argType.typename || argType.name}>${functions.map(x => x.typename || x.name).join("&")}`; } });
 	public static JSON = (defaults: any) => Object.assign((arg: string) => { try { return Object.assign(defaults || parse(arg), defaults, parse(arg)); } catch { return null; } }
 		, { get typename(): string { return "JSON"; }, get funcname() { return "JSON" as const; } });
-	public static USER = ({ self = false, filter = (member: GuildMember) => true }: { self?: boolean; filter?: (member: GuildMember) => boolean } = {}): TypeCheck => Object.assign((arg: string, args: Args) => getUser(args._message, arg, { autoself: self, filter })
+	public static USER = ({ self = false, filter = (member: GuildMember) => true }: { self?: boolean; filter?: (member: GuildMember) => boolean } = {}) => Object.assign((arg: string, args: Args) => getUser(args._message, arg, { autoself: self, filter })
 		, { get typename(): string { return "USER"; }, get allowNone(): boolean { return true; }, get funcname() { return "USER" as const; } });
 	public static CUSTOM = <T, F extends TypeCheck>(func: F, returnVal: T, name?: string) => Object.assign(func
 		, { get typename(): string { return (name || func.name).toUpperCase(); }, get funcname() { return "CUSTOM" as const; }, get special() { return returnVal; }, });
