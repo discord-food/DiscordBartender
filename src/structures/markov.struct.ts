@@ -5,8 +5,8 @@ const indexOf = (arr: any[], toFind: any[]) => arr.findIndex(
 const exists = (arr: any[], toFind: any[]) => indexOf(arr, toFind) !== -1;
 export class Markov {
 	public strings: string[][];
-	private START = String.fromCharCode(0xEDAD)
-	private END = String.fromCharCode(0xEF00)
+	private START = String.fromCharCode(0xEDAD);
+	private END = String.fromCharCode(0xEF00);
 	public constructor(strings: string[], private mode: "word" | "char" = "word", private order: number = 2) {
 		this.strings = strings.map(x => [this.START, ...x.toLowerCase().split(mode === "word" ? /\s+/ : ""), this.END]);
 	}

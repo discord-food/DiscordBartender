@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
 });
 app.put("/v1/orders", (req, res) => {
 });
-http.listen(3000, () => {
-	client.log("Site hosted on *:3000");
+http.listen(2345, () => {
+	client.log("Site hosted on *:2345");
 });
 export { http, app };

@@ -45,8 +45,9 @@ export const command = new Command(
 	const embed = new client.Embed()
 		.setTitle(`${guild.name} [drunkStamp]${guild.premiumTier ? ` [boostL${guild.premiumTier}]` : ""}${guild.features.includes("PARTNERED" as any) ? ` [partnered]` : ""}${guild.verified ? " [verified]" : ""}`)
 		.setThumbnail(guild.iconURL()!)
+		.setColor(client.Colors.GRAY)
 		.setImage(guild.bannerURL()!);
-	await (async() => {
+	(() => {
 		if (!guild.available) return embed.addField("Outage Status", "Outage Ongoing");
 		const creationDate = moment(guild.createdAt);
 		embed

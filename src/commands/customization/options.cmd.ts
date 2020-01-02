@@ -16,7 +16,7 @@ export const command = new Command("options", "Change guild and user options.", 
 		})();
 		const metadata = (await client.sql.connection).getMetadata(model);
 		const columns = metadata.columns.map(column => column.propertyName);
-		const options = await CreateIfNotExistByPk(model, "id", message.author!.id);
+		const options = await CreateIfNotExistByPk(model, "id", message.author.id);
 		if (!args.set) {
 			const embed = new client.Embed()
 				.setTitle(`${{ guild: "Guild", user: "User" }[args.selection as "guild" | "user"]} Options`)

@@ -20,8 +20,7 @@ export const sendEnhancements = (channel: Channel, val: any): any => {
 			const emoji = channel.bartender.mainEmojis.get(y[0]);
 			return emoji ? emoji.toString() : x;
 		});
-	if (typeof val === "object" && "embed" in val)
-		val = new MessageEmbed(val.embed);
+	if (typeof val === "object" && "embed" in val) val = new MessageEmbed(val.embed);
 	if (val instanceof MessageEmbed) {
 		if (val.title) val.title = _internal(val.title);
 		if (val.description) val.description = _internal(val.description);
@@ -38,7 +37,7 @@ export const sendEnhancements = (channel: Channel, val: any): any => {
 export const format = (str: string, ...formats: any[]): string =>
 	formats.reduce((l, x) => l.replace("{}", x), str);
 
-export const getText = async (
+export const getText = async(
 	message: Message,
 	display = "Respond with text.",
 	time = 40000,
@@ -54,11 +53,10 @@ export const getText = async (
 	if (!res.size) return void message.channel.send("No response. Cancelled.");
 	const resm = res.first()!;
 	if (resm.attachments.size) return resm.attachments.first()!.proxyURL;
-	if (similarTo(resm.content, "cancel"))
-		return void message.channel.send("Cancelled.");
+	if (similarTo(resm.content, "cancel")) return void message.channel.send("Cancelled.");
 	return resm.content;
 };
-export const getOptionalText = async (
+export const getOptionalText = async(
 	message: Message,
 	display = "Respond with text.",
 	time = 40000,
@@ -66,8 +64,7 @@ export const getOptionalText = async (
 ): Promise<string | false | undefined> => {
 	const text = await getText(message, display, time, filter);
 	if (!text || similarTo(text, "no")) return false;
-	if (similarTo(text, "yes"))
-		return getText(message, "Please respond with the input.");
+	if (similarTo(text, "yes")) return getText(message, "Please respond with the input.");
 	return text;
 };
 interface GetIndexReturnVal<T> {
@@ -78,7 +75,7 @@ interface GetIndexReturnVal<T> {
 export const getIndex = async <T>(
 	message: Message,
 	list: any[],
-	internal: T[] = list.map((x, i) => (x === null ? list[i] : x)),
+	internal: T[] = list.map((x, i) => x === null ? list[i] : x),
 	display = "item",
 	displayFormat = false
 ): Promise<GetIndexReturnVal<T> | false> => {
@@ -91,9 +88,9 @@ export const getIndex = async <T>(
 	const mapped = list.map((x, i) => `[${i + 1}] ${x}`);
 	const index = await exports.getText(
 		message,
-		displayFormat
-			? display.replace("{}", mapped.join("\n"))
-			: `Please reply with the index of the ${display}.
+		displayFormat ?
+			display.replace("{}", mapped.join("\n")) :
+			`Please reply with the index of the ${display}.
 \`\`\`ini
 ${mapped.join("\n")}
 \`\`\`
@@ -118,7 +115,7 @@ const compareUsers = (text: string, user: User) =>
 		compareTwoStrings(text.toLowerCase(), user.username.toLowerCase()),
 		compareTwoStrings(text.toLowerCase(), user.tag.toLowerCase())
 	);
-export const getUser = async (
+export const getUser = async(
 	message: Message,
 	toParse: string,
 	{ autoself = false, filter = (member: GuildMember) => true }
@@ -128,13 +125,13 @@ export const getUser = async (
 		input.replace(/<|!|>|@/g, "")
 	);
 	const user =
-		!toParse && autoself
-			? message.author
-			: !toParse && !autoself
-			? null
-			: !isNaN(+id)
-			? client.users.get(id) || null
-			: null;
+		!toParse && autoself ?
+			message.author :
+			!toParse && !autoself ?
+				null :
+				!isNaN(+id) ?
+					client.users.get(id) || null :
+					null;
 	if (user) return user;
 	if (!toParse) return null;
 	const userlist = client
@@ -147,8 +144,7 @@ export const getUser = async (
 				compareUsers(toParse, x[0].user)
 		);
 	if (!userlist.length) return null;
-	if (compareUsers(toParse, userlist[0][0].user) > 0.9)
-		return userlist[0][0].user;
+	if (compareUsers(toParse, userlist[0][0].user) > 0.9) return userlist[0][0].user;
 	const names = userlist
 		.map(x => `${x[0].user.tag.padEnd(37)} - ${(x[1] * 100).toFixed(2)}%`)
 		.slice(0, 5);
@@ -182,21 +178,21 @@ export class ProgressBar {
 			Math.max(total - filled.length, 0)
 		);
 		return `${prefix ? `${prefix} ` : ""}${filled}${unfilled}${
-			percent
-				? ` ${((progress / this.length) * 100).toFixed(decimals)}%`
-				: ""
+			percent ?
+				` ${((progress / this.length) * 100).toFixed(decimals)}%` :
+				""
 		}`;
 	}
 	public setLength(m: number) {
-		return (this.length = m), this;
+		return this.length = m, this;
 	}
 	public setMax(m: number) {
-		return (this.max = m), this;
+		return this.max = m, this;
 	}
 	public setFilled(f: string) {
-		return (this.filled = f), this;
+		return this.filled = f, this;
 	}
 	public setUnfilled(u: string) {
-		return (this.unfilled = u), this;
+		return this.unfilled = u, this;
 	}
 }

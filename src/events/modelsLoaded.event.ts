@@ -3,7 +3,7 @@ import { client } from "../modules/client";
 import { models } from "../modules/sql";
 
 const entries = <T>(obj: T): Entries<T>[] => Object.entries(obj) as any;
-export const handler = async() => {
+export const handler = () => {
 	client.success(`Models were successfully loaded!`);
 
 	client.setInterval(async() => {

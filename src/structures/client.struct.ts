@@ -1,9 +1,8 @@
 import chalk from "chalk";
 import { execSync, spawnSync } from "child_process";
-import { Channel, Client, Collection, Emoji, Guild, Message, Role, TextChannel } from "discord.js";
+import Discord, { Channel, Client, Collection, Emoji, Guild, Message, Role, TextChannel } from "discord.js";
 import { sync } from "glob";
 import _ from "lodash";
-import Discord from "discord.js";
 import { basename, dirname, join, normalize, resolve, win32 } from "path";
 import { compareTwoStrings } from "string-similarity";
 import { inspect } from "util";
@@ -17,7 +16,9 @@ import { Command } from "./command.struct";
 import { BakeryEmbed } from "./embed.struct";
 import { CreateIfNotExistByPk } from "@db-module/upsert";
 import ISO from "iso-639-1";
+import { Colors } from "@db-module/interfaces";
 export class BartenderClient extends Client {
+	public Colors = Colors;
 	/**
 	 * @property {Guild} mainGuild The main guild.
 	 */
@@ -86,7 +87,7 @@ export class BartenderClient extends Client {
 	 * @property {_} _ Lodash.
 	 */
 	public _: typeof _ = _;
-	public formatter = new Intl.NumberFormat("en-CA", { maximumFractionDigits: 2 })
+	public formatter = new Intl.NumberFormat("en-CA", { maximumFractionDigits: 2 });
 	public progressBar = new utils.ProgressBar(70);
 	public Discord = Discord;
 	/**
@@ -105,10 +106,10 @@ export class BartenderClient extends Client {
 			this.loadModels();
 		});
 	}
-	public async getAccount(id: string): Promise<sql.models.Userinfo> {
+	public getAccount(id: string): Promise<sql.models.Userinfo> {
 		return CreateIfNotExistByPk(this.models.Userinfo, "id", id) as any;
 	}
-	public async getCooldowns(id: string): Promise<sql.models.Cooldowns> {
+	public getCooldowns(id: string): Promise<sql.models.Cooldowns> {
 		return CreateIfNotExistByPk(this.models.Cooldowns, "id", id) as any;
 	}
 	public get connectedToInternet() {
@@ -183,7 +184,7 @@ export class BartenderClient extends Client {
 	 * @returns {void}.
 	 */
 	public warn(obj: any): void {
-		this.dryLog("WAR", obj, chalk.yellowBright, chalk.yellow);
+		this.dryLog("WRN", obj, chalk.yellowBright, chalk.yellow);
 	}
 	/**
 	 * @description Successes to the console.
@@ -191,7 +192,7 @@ export class BartenderClient extends Client {
 	 * @returns {void}.
 	 */
 	public success(obj: any): void {
-		this.dryLog("YAY", obj, chalk.greenBright, chalk.green);
+		this.dryLog("SUC", obj, chalk.greenBright, chalk.green);
 	}
 
 	public customLog(name: string, obj: any): void {

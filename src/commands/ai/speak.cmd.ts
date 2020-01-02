@@ -8,6 +8,6 @@ export const command = new Command("speak", "Say things.", ["say"], [], [{ name:
 		const rivescript = new Rivescript({ utf8: true });
 		await rivescript.loadDirectory(client.db("rive"));
 		rivescript.sortReplies();
-		const reply = await rivescript.reply(message.author!.id, args.text);
+		const reply = await rivescript.reply(message.author.id, args.text);
 		await message.channel.send(`📩  **${reply}**`);
 	});

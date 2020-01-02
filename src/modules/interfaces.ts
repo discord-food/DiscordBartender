@@ -14,11 +14,11 @@ declare global {
 	}[keyof T];
 	type Shift<T extends any[]> = ((...args: T) => any) extends ((first: any, ...rest: infer R) => any) ? R : never;
 	type UnionToIntersection<U> =
-	  (U extends any ? (k: U) => void : never) extends ((k: infer I) => void) ? I : never
-	type ConvertTuplesIntoObject<Keys extends any[], Values extends any[]> = _ConvertIntoObject<Keys, Values, {}>
+	  (U extends any ? (k: U) => void : never) extends ((k: infer I) => void) ? I : never;
+	type ConvertTuplesIntoObject<Keys extends any[], Values extends any[]> = _ConvertIntoObject<Keys, Values, {}>;
 	type ConvertObjectArrayIntoObject<T extends Readonly<{ name: string; type: any }[]>> = UnionToIntersection<{
 		[K in keyof T]: T[K] extends { name: infer K2; type: infer V } ? { [K3 in Extract<K2, keyof any>]: V } : never
-	  }[number]>
+	  }[number]>;
 	type iso = "aa" | "ab" | "ae" | "af" | "ak" | "am" | "an" | "ar" | "as" | "av" |
 		"ay" | "az" | "ba" | "be" | "bg" | "bh" | "bi" | "bm" | "bn" | "bo" | "br" |
 		"bs" | "ca" | "ce" | "ch" | "co" | "cr" | "cs" | "cu" | "cv" | "cy" | "da" |
@@ -35,7 +35,7 @@ declare global {
 		"si" | "sk" | "sl" | "sm" | "sn" | "so" | "sq" | "sr" | "ss" | "st" | "su" |
 		"sv" | "sw" | "ta" | "te" | "tg" | "th" | "ti" | "tk" | "tl" | "tn" | "to" |
 		"tr" | "ts" | "tt" | "tw" | "ty" | "ug" | "uk" | "ur" | "uz" | "ve" | "vi" |
-		"vo" | "wa" | "wo" | "xh" | "yi" | "yo" | "za" | "zh" | "zu"
+		"vo" | "wa" | "wo" | "xh" | "yi" | "yo" | "za" | "zh" | "zu";
 	interface AuthDatabase {
 		host: string;
 		name: string;
@@ -107,13 +107,37 @@ declare global {
 	interface ArgError {
 		error: { type: number; obj: ArgumentObject };
 	}
-
 }
-export {};
+/* eslint-disable no-multi-spaces */
+export enum Colors {
+	RED         = 0xF03010,
+	ORANGE      = 0xE28F0F,
+	YELLOW      = 0xF2EA0F,
+	LIME        = 0x2DE810,
+	GREEN       = 0x26B310,
+	CYAN        = 0x00B7EB,
+	BLUE        = 0x1186D4,
+	NAVY        = 0x0F5787,
+	PURPLE      = 0x8A10CC,
+	MAGENTA     = 0xDE14D7,
+	FUCHSIA     = 0xDE1476,
+	WINE        = 0x940C0C,
+	BROWN       = 0x964B00,
+	GRAY        = 0x808080,
+	DARK_GRAY   = 0x2C2F33,
+	LIGHT_GRAY  = 0x99AAB5,
+	BACKGROUND  = 0x36393F,
+	WHITE       = 0xFFFFFF,
+	BLACK       = 0x000000,
+	NOT_BLACK   = 0x23272A,
+	BLURPLE     = 0x7289DA,
+	RANDOM      = "random"
+}
+/* eslint-enable */;
 const bar = String;
-type foo = ReturnType<typeof bar>
+type foo = ReturnType<typeof bar>;
 const b = [{ name: "e", type: String }, { name: "tt", type: Number }, { name: "jj", type: Boolean }] as const;
-type c = ConvertObjectArrayIntoObject<typeof b>
+type c = ConvertObjectArrayIntoObject<typeof b>;
 type e = {
 	[index in typeof b[number]["name"]]: ReturnType<c[index]>;
-}
+};

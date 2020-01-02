@@ -34,10 +34,10 @@ export namespace models {
 	type NullableLangCodes = LangCodes | null;
 	abstract class SetupEntity extends BaseEntity {
 		@CreateDateColumn()
-		public createdAt?: Date
+		public createdAt?: Date;
 
 		@UpdateDateColumn()
-		public updatedAt?: Date
+		public updatedAt?: Date;
 	}
 	abstract class SnowflakedEntity extends SetupEntity {
 		@PrimaryColumn("char", { length: SNOWFLAKE_LENGTH })
@@ -117,7 +117,7 @@ export namespace models {
 
 		@Column("char", SNOWFLAKE_OPTIONS)
 		public user!: string;
-		
+
 		@Column({
 			type: "enum",
 			enum: Status,
@@ -132,7 +132,7 @@ export namespace models {
 		}
 
 		@Column("jsonb", { default: {} })
-		public metadata!: { claimer?: string, channel: string }
+		public metadata!: { claimer?: string; channel: string };
 
 		@ManyToOne(type => models.Types, type => type.orders, { cascade: ["insert", "update"] })
 		public type!: models.Types;

@@ -20,7 +20,6 @@
 		"sourceType": "module"
 	},
 	"rules": {
-		"@typescript-eslint/array-type": ["error", "array"],
 		"@typescript-eslint/ban-ts-ignore": "off",
 		"@typescript-eslint/consistent-type-definitions": [
 			"error",
@@ -44,9 +43,11 @@
 		"@typescript-eslint/no-unused-vars": "off",
 		"@typescript-eslint/no-useless-constructor": "error",
 		"@typescript-eslint/prefer-optional-chain": "off",
+		"@typescript-eslint/prefer-regexp-exec": "off",
 		"@typescript-eslint/semi": [
 			"error"
 		],
+		"@typescript-eslint/unbound-method": "off",
 		"accessor-pairs": "warn",
 		"array-bracket-spacing": "error",
 		"arrow-body-style": "error",
@@ -179,7 +180,7 @@
 		],
 		"no-return-await": "error",
 		"no-self-compare": "error",
-		"no-sequences": "error",
+		"no-sequences": "off",
 		"no-shadow": [
 			"error",
 			{

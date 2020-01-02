@@ -2,7 +2,7 @@ import { Client, GuildMember } from "discord.js";
 import { BartenderClient } from "../structures/client.struct";
 /** The permission class. */
 export class Permission {
-	public constructor(public name: string, public exec: (client: BartenderClient, member: GuildMember, mainMember?: GuildMember) => boolean, public id: number) {}
+	public constructor(public name: string, public exec: (client: BartenderClient, member: GuildMember, mainMember?: GuildMember) => boolean | Promise<boolean>, public id: number) {}
 }
 /**
  * @property {object} permissions An object of permissions.

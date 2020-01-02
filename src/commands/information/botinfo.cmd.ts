@@ -15,6 +15,7 @@ export const command = new Command(
 	const { versions } = process;
 	const embed = new client.Embed()
 		.setTitle("Bot Info")
+		.setColor(client.Colors.GRAY)
 		.setDescription("Information about the bot!")
 		.setThumbnail(client.user?.avatarURL({ format: "png" }) ?? "")
 		.addField("User Tag", client.user?.tag ?? "Not Found", true)
@@ -26,6 +27,6 @@ export const command = new Command(
 		.addField("Users", client.users.size, true)
 		.addField("Channels", client.channels.size, true)
 		.addField("Guilds", client.guilds.size, true)
-		.addField("Uptime", prettyms(client.uptime ?? 0, { unitCount: 3, verbose: true }), true)
+		.addField("Uptime", prettyms(client.uptime ?? 0, { unitCount: 3, verbose: true }), true);
 	await message.channel.send(embed);
 });

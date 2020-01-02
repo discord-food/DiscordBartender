@@ -4,7 +4,7 @@ import _ from "lodash";
 type ClassType<T> = {
 	new(): T;
 	createQueryBuilder<T>(this: ObjectType<T>, alias?: string | undefined): SelectQueryBuilder<T | BaseEntity>;
-} & typeof BaseEntity
+} & typeof BaseEntity;
 // i copied this
 /*
  * EntityType - TypeORM Entity

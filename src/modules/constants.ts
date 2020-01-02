@@ -47,12 +47,13 @@ export const constants: Constants = {
 	eval: new Formattable(`(async () => { const { client } = await import(require("path").join(__rootname, "/modules/client")); {} })()`), // ")
 	guild: "602945093762154507",
 	messages: {
-		"112213:1221": "f",
+		verify: "#612737748901560340:662144175269216266",
 	},
 	prefix: "b:",
 	roles: {
 		staff: ">602945093762154507:661304502397173761",
 		moderator: ">602945093762154507:661304884439547906",
+		unverified: ">602945093762154507:661759463375634443",
 	},
 	port: 3000,
 	currencySymbol: "$",

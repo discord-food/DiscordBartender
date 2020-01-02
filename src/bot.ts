@@ -5,7 +5,7 @@ import { transpile } from "typescript";
 import { client } from "./modules/client";
 import "./modules/extensions";
 import "source-map-support/register";
-if (+process.version.replace("v", "").split(".")[0] < 13) throw new Error(`Outdated Node.JS Version: This bot requires requires a Node.JS version of v13 or higher. You have ${process.version}`)
+if (+process.version.replace("v", "").split(".")[0] < 13) throw new Error(`Outdated Node.JS Version: This bot requires requires a Node.JS version of v13 or higher. You have ${process.version}`);
 // Process events
 const reader = createInterface({
 	input: process.stdin,
@@ -16,7 +16,7 @@ const reader = createInterface({
 });
 (process as NodeJS.EventEmitter).on("uncaughtException", async(err: Error, p) => {
 	if (err) client.error(err.stack);
-	await (client.mainChannels.get("fatal") as Discord.TextChannel)?.send(`Fatal error.\n\`\`\`js\n${err.toString()}\n\`\`\``)
+	await (client.mainChannels.get("fatal") as Discord.TextChannel)?.send(`Fatal error.\n\`\`\`js\n${err.toString()}\n\`\`\``);
 	process.exit(1);
 });
 reader.on("line", async input => {
