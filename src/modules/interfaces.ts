@@ -99,6 +99,8 @@ declare global {
 		(arg: string, args: Args, argObj: ArgumentObject): any;
 		readonly typename?: string;
 		readonly allowNone?: boolean;
+		readonly special?: any;
+		readonly funcname?: string;
 	}
 	interface Args {
 		_list: string[];
