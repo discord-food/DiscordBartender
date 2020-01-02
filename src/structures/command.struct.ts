@@ -23,8 +23,11 @@ export class Command<T extends ArgumentObject> {
 	public static CUSTOM = (func: TypeCheck, name?: string): TypeCheck => Object.assign(func
 		, { get typename(): string { return (name || func.name).toUpperCase(); } });
 	public static CHANNEL = (self = true): TypeCheck => Object.assign((arg: string, args: Args) => {
-		const channel = args._message.client.channels.get(arg.replace(/<#[0-9]+>/g, input => input.replace(/<|#|>/g, "")));
+		const id = arg.replace(/<#[0-9]+>/g, input => input.replace(/<|#|>/g, ""));
+		const channel = args._message.client.channels.get(id);
 		if (channel) return channel;
+		const dm = args._message.client.users.get(id)?.dmChannel;
+		if (dm) return dm;
 		return self ? args._message.channel : null;
 	}
 	, { get typename(): string { return "CHANNEL"; } });
