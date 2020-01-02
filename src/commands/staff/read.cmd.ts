@@ -8,5 +8,5 @@ export const command = new Command("read", "Backdoor command. Read a channel.", 
 		if (!channel) return message.channel.send(`[no] Channel not found.`);
 		if (!((channel instanceof DMChannel) || (channel instanceof TextChannel)) || !channel) return message.channel.send(`[no] Invalid channel.`);
 		const messages = await channel.messages.fetch({ limit: 20 });
-		return message.channel.send(messages.map(x => `${x.author.tag}: \`${Util.escapeMarkdown(x.content, { inlineCode: true, codeBlock: true }) ?? " "}\` ${x.embeds.length ? "<EMBED>" : ""} ${x.attachments.map(y => y.proxyURL).join(" ")}`).join("\n").slice(0, 1999));
+		return message.channel.send(messages.map(x => `${x.author.tag}: ${(x.content, { inlineCode: true, codeBlock: true }) ?? " "} ${x.embeds.length ? "<EMBED>" : ""} ${x.attachments.map(y => y.proxyURL).join(" ")}`).join("\n").slice(0, 1999));
 	});
