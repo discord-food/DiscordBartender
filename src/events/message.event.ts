@@ -25,7 +25,7 @@ export const handler = async(message: Message) => {
 	if (!await hasPermission(message.member, gcommand.permissionLevel)) return message.channel.send(lang.errors.permission.format(gcommand.permissionLevel.name)); ;
 	if (account.cooldowns[gcommand.name] > Date.now()) return message.channel.send(lang.errors.cooldown.format(pms(account.cooldowns[gcommand.name] - Date.now(), { unitCount: 3 }), gcommand.name));
 	account.cooldowns[gcommand.name] = Date.now() + gcommand.cooldown;
-	await account.save();
+	// await account.save();
 	const processedArgs: Args | ArgError = await client.parseArguments(gcommand.syntax, args, message);
 	if ((processedArgs as ArgError).error !== undefined) return message.channel.send(lang.errors.args.format(lang.errors.argsTypes[(processedArgs as ArgError).error.type].format((processedArgs as ArgError).error.obj.name), prefix, gcommand.name, gcommand.syntaxString));
 	try {
