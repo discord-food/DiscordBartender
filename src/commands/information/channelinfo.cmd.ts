@@ -158,7 +158,7 @@ export const command = new Command(
 					prettyms(channel.rateLimitPerUser * 1000) :
 					"Not Enabled", true
 			)
-			.addField("Description", channel.topic ?? "None", true);
+			.addField("Description", channel.topic || "None", true);
 	}
 	await message.channel.send(embed);
 });

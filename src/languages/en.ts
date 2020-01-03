@@ -51,6 +51,10 @@ export const language: Languages = {
 		},
 	},
 	errors: {
+		codes: {
+			10004: "[no] Error: Unknown guild.",
+			50013: "[no] Error: Missing permissions. The bot does not have enough permissions to run the requested task.",
+		},
 		internal: new Formattable("🔌 Sorry, there was an internal error.\n```js\n{}\n```"),
 		args: new Formattable("{}\n**Correct Syntax**: `{}{} {}`"),
 		argsTypes: [

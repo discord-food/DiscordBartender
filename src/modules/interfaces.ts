@@ -64,6 +64,7 @@ declare global {
 			permission: Formattable;
 			graph: Formattable;
 			cooldown: Formattable;
+			codes: { [index: number]: string };
 		};
 	}
 

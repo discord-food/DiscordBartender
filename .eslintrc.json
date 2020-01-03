@@ -175,10 +175,7 @@
 		"no-new-wrappers": "error",
 		"no-octal-escape": "error",
 		"no-path-concat": "error",
-		"no-return-assign": [
-			"error",
-			"except-parens"
-		],
+		"no-return-assign": "off",
 		"no-return-await": "error",
 		"no-self-compare": "error",
 		"no-sequences": "off",

@@ -31,7 +31,7 @@ export const handler = async(message: Message) => {
 	try {
 		await gcommand.exec(client, message, processedArgs as Args, lang);
 	} catch (err) {
-		await message.channel.send(lang.errors.internal.format(err));
+		await message.channel.send(lang.errors.codes[err.code] ?? lang.errors.internal.format(err));
 		client.error(err);
 	}
 };
