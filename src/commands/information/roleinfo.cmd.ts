@@ -10,17 +10,17 @@ export const command = new Command("roleinfo", "Check information about a role."
 			.setColor(role.color || client.Colors.GRAY)
 			.setTitle("Role Info")
 			.setDescription(`Information about the role **${role.name}**`)
-			.addField("Name", role.name)
-			.addField("ID", role.name)
-			.addField("Color", role.hexColor)
-			.addField("Created At", moment(role.createdAt).calendar())
-			.addField("Hoisted", role.hoist ? "Hoisted" : "Not Hoisted")
-			.addField("External", role.managed ? "This role is managed by an external service." : "Not external.")
-			.addField("Members", `${role.members.size} members.`)
-			.addField("Mentionable", `This role is not mentionable.`)
-			.addField("Permission Bitfield", role.permissions.bitfield)
-			.addField("Position", role.position)
-			.addField("Raw Position", role.rawPosition);
-		if (role.deleted) embed.addField("Deleted", "This role has been deleted.");
+			.addField("Name", role.name, true)
+			.addField("ID", role.name, true)
+			.addField("Color", role.hexColor, true)
+			.addField("Created At", moment(role.createdAt).calendar(), true)
+			.addField("Hoisted", role.hoist ? "Hoisted" : "Not Hoisted", true)
+			.addField("External", role.managed ? "This role is managed by an external service." : "Not external.", true)
+			.addField("Members", `${role.members.size} members.`, true)
+			.addField("Mentionable", `This role is not mentionable.`, true)
+			.addField("Permission Bitfield", role.permissions.bitfield, true)
+			.addField("Position", role.position, true)
+			.addField("Raw Position", role.rawPosition, true);
+		if (role.deleted) embed.addField("Deleted", "This role has been deleted.", true);
 		await message.channel.send(embed);
 	});
