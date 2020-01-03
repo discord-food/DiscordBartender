@@ -22,4 +22,5 @@ export const command = new Command("roleinfo", "Check information about a role."
 			.addField("Position", role.position)
 			.addField("Raw Position", role.rawPosition);
 		if (role.deleted) embed.addField("Deleted", "This role has been deleted.");
+		await message.channel.send(embed);
 	});
