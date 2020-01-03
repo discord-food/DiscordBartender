@@ -17,3 +17,5 @@ Created by unexpected william#4061 (413143886702313472)
 [x] Info Commands
 [ ] Economy
 [ ] Stock Market
+
+Go check the trello [here](https://trello.com/b/qvyWi0J1/bar-development)
