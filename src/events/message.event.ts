@@ -9,7 +9,7 @@ export const handler = async(message: Message) => {
 	message.guild.options = await Upsert(models.Guildoptions as any, { id: message.guild.id } as models.Guildoptions, "id");
 	message.author.options = await Upsert(models.Useroptions as any, { id: message.author.id } as models.Useroptions, "id");
 	const account = await client.getAccount(message.author.id);
-	const lang = client.getLanguage(message.author.options.language || message.guild.options.language);
+	const lang = client.getLanguage(message.author.options.language ?? message.guild.options.language);
 	if (!lang) return;
 	const prefixes = [client.constants.prefix, `<@${client.user.id}>`, `<@!${client.user.id}>`, message.guild.options.prefix, message.author.options.prefix];
 	const prefix = prefixes.find(x => x && message.content.startsWith(x));
@@ -20,7 +20,7 @@ export const handler = async(message: Message) => {
 	message.permissions = message.channel.permissionsFor(client.user.id)!.toArray();
 	const args = message.content.replace(/\\"/g, "!_dq_!").match(/('.*?'|"".*?""|\S+)/g)!.map(x => x.replace(/^""(.+(?=""$))""$/, "$1").replace(/!_dq_!/g, '"'));
 	const command = args.shift();
-	const gcommand = client.getCommand(command || "");
+	const gcommand = client.getCommand(command ?? "");
 	if (!gcommand) return;
 	if (!await hasPermission(message.member, gcommand.permissionLevel)) return message.channel.send(lang.errors.permission.format(gcommand.permissionLevel.name)); ;
 	if (account.cooldowns[gcommand.name] > Date.now()) return message.channel.send(lang.errors.cooldown.format(pms(account.cooldowns[gcommand.name] - Date.now(), { unitCount: 3 }), gcommand.name));

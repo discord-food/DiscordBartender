@@ -22,20 +22,20 @@ type GetType<T> =
 	: any;
 type NullableGetType<T> = GetType<T> | null;
 export class Command<T extends ArgumentObject> {
-	public static OR = <T extends string[]>(...vals: T) => Object.assign((arg: string) => vals.find(x => arg && similarTo(arg.toLowerCase(), x.toLowerCase())) || null
+	public static OR = <T extends string[]>(...vals: T) => Object.assign((arg: string) => vals.find(x => arg && similarTo(arg.toLowerCase(), x.toLowerCase())) ?? null
 		, { get typename() { return vals.join("|"); }, get special() { return vals; }, get funcname() { return "OR" as const; } });
 	public static INDEX = (...vals: string[][]) => Object.assign((arg: string) => vals.findIndex(x => x.some(y => similarTo(arg.toLowerCase(), y.toLowerCase()))) || null
 		, { get typename(): string { return vals.map(x => x.join(", ")).join("|"); }, get funcname() { return "INDEX"; } });
 	public static WITHIN = (min: number, max: number) => Object.assign((arg: string) => isNaN(+arg) ? null : limit(+arg, min, max)
 		, { get typename(): string { return `${min}-${max}`; }, get funcname() { return "WITHIN"; } });
 	public static AND = (functions: TypeCheck[], argType: TypeCheck) => Object.assign((arg: string) => functions.every(x => getArgType(x)(arg) !== null) ? getArgType(argType)(arg) : null
-		, { get typename(): string { return `${argType.typename || argType.name}>${functions.map(x => x.typename || x.name).join("&")}`; } });
+		, { get typename(): string { return `${argType.typename ?? argType.name}>${functions.map(x => x.typename ?? x.name).join("&")}`; } });
 	public static JSON = (defaults: any) => Object.assign((arg: string) => { try { return Object.assign(defaults || parse(arg), defaults, parse(arg)); } catch { return null; } }
 		, { get typename(): string { return "JSON"; }, get funcname() { return "JSON" as const; } });
 	public static USER = ({ self = false, filter = (member: GuildMember) => true }: { self?: boolean; filter?: (member: GuildMember) => boolean } = {}) => Object.assign((arg: string, args: Args) => getUser(args._message, arg, { autoself: self, filter })
 		, { get typename(): string { return "USER"; }, get allowNone(): boolean { return true; }, get funcname() { return "USER" as const; } });
 	public static CUSTOM = <T, F extends TypeCheck>(func: F, returnVal: T, name?: string) => Object.assign(func
-		, { get typename(): string { return (name || func.name).toUpperCase(); }, get funcname() { return "CUSTOM" as const; }, get special() { return returnVal; }, });
+		, { get typename(): string { return (name ?? func.name).toUpperCase(); }, get funcname() { return "CUSTOM" as const; }, get special() { return returnVal; }, });
 	public static CHANNEL = (self = true) => Object.assign((arg: string, args: Args) => {
 		const id = arg.replace(/<#[0-9]+>/g, input => input.replace(/<|#|>/g, ""));
 		const channel = args._message.client.channels.get(id);

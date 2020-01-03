@@ -109,7 +109,7 @@ ${mapped.join("\n")}
 export const limit = (num: number, min: number, max: number): number =>
 	Math.max(Math.min(+num, max), min);
 export const getArgType = (argType: CallableFunction): CallableFunction =>
-	new Collection(constants.arguments).get(argType) || argType;
+	new Collection(constants.arguments).get(argType) ?? argType;
 const compareUsers = (text: string, user: User) =>
 	Math.max(
 		compareTwoStrings(text.toLowerCase(), user.username.toLowerCase()),
@@ -130,7 +130,7 @@ export const getUser = async(
 			!toParse && !autoself ?
 				null :
 				!isNaN(+id) ?
-					client.users.get(id) || null :
+					client.users.get(id) ?? null :
 					null;
 	if (user) return user;
 	if (!toParse) return null;

@@ -40,7 +40,7 @@ export const command = new Command(
 	];
 	const privateChannel = () =>
 		!(channel as InstanceType<typeof GuildChannel>)
-			.permissionsFor(message.guild?.id || "")
+			.permissionsFor(message.guild?.id ?? "")
 			?.has("VIEW_CHANNEL");
 	const embed = new client.Embed()
 		.setTitle("Channel Info")

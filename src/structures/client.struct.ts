@@ -147,7 +147,7 @@ export class BartenderClient extends Client {
 		const returnVal: Args & { [index: string]: any } = { _list: args, _message: message };
 		for (const [argObj, arg] of matched) {
 			const typeFunc = func.get(argObj.type);
-			const processed = await (typeFunc || argObj.type)(arg, returnVal, argObj);
+			const processed = await (typeFunc ?? argObj.type)(arg, returnVal, argObj);
 			if (argObj.required) {
 				if (processed === null && arg) return { error: { obj: argObj, type: 0 } };
 				if (!arg && argObj.required) return { error: { obj: argObj, type: 1 } };
@@ -199,7 +199,7 @@ export class BartenderClient extends Client {
 		this.dryLog(name, obj, chalk.cyanBright, chalk.cyan);
 	}
 	public getLanguage(lang: string): Languages | null {
-		return this.languages.get(lang) || this.languages.get(ISO.getCode(lang)) || null;
+		return (this.languages.get(lang) ?? this.languages.get(ISO.getCode(lang))) ?? null;
 	}
 	public exec(code: string): Error | any {
 		return (() => {
@@ -320,7 +320,7 @@ export class BartenderClient extends Client {
 				this.error(`Message ${chalk.magenta(name)} was not the correct format.`);
 				continue;
 			}
-			const [channelId, messageId] = [(id.match(/(?<=#)\d+/) || [])[0], (id.match(/(?<=:)\d+/) || [])[0]];
+			const [channelId, messageId] = [(id.match(/(?<=#)\d+/) ?? [])[0], (id.match(/(?<=:)\d+/) ?? [])[0]];
 			const channel = this.channels.get(channelId);
 			if (!channel || channel.type !== "text") {
 				this.error(`The channel for message ${chalk.redBright(name)} was not found.`);
@@ -340,7 +340,7 @@ export class BartenderClient extends Client {
 				this.error(`Role ${chalk.magenta(name)} was not the correct format.`);
 				continue;
 			}
-			const [guildId, roleId] = [(id.match(/(?<=>)\d+/) || [])[0], (id.match(/(?<=:)\d+/) || [])[0]];
+			const [guildId, roleId] = [(id.match(/(?<=>)\d+/) ?? [])[0], (id.match(/(?<=:)\d+/) ?? [])[0]];
 			const guild = this.guilds.get(guildId);
 			if (!guild) {
 				this.error(`The guild for role ${chalk.redBright(name)} was not found.`);

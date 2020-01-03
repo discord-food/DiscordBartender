@@ -85,7 +85,7 @@ ${channellength("unknown")}`,
 			.addField("Maximum Members", guild.maximumMembers, true)
 			.addField("Roles", `${guild.roles.size} roles in total.`, true)
 			.addField("Shard", `This guild is on **Shard ${guild.shard.id}**.`, true)
-			.addField("System Channel", guild.systemChannel || "None", true)
+			.addField("System Channel", guild.systemChannel ?? "None", true)
 			.addField("Vanity URL", guild.vanityURLCode ? `discord.gg/${guild.vanityURLCode}` : "None", true)
 			.addField("Verification Level", guild.verificationLevel, true)
 			.addField("Widget Channel", guild.widgetEnabled ? guild.widgetChannel : "Off", true);
