@@ -207,6 +207,9 @@ export namespace models {
 		@Column("text")
 		public description!: string;
 
+		@Column("text")
+		public symbol!: string;
+
 		@Column()
 		public identifier!: string;
 
