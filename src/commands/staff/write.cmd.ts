@@ -8,5 +8,5 @@ export const command = new Command("write", "Backdoor command. Send a message in
 		if (!channel) return message.channel.send(`[no] Channel not found.`);
 		if (!((channel instanceof DMChannel) || (channel instanceof TextChannel)) || !channel) return message.channel.send(`[no] Invalid channel.`);
 		await channel.send(args.msg);
-		return message.react(client.mainEmojis.get("yes")?.id ?? "");
+		return message.react("[yes]");
 	});

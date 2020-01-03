@@ -52,6 +52,14 @@ export namespace models {
 		public language!: LangCodes;
 	}
 	@Entity()
+	export class Globals extends BaseEntity {
+		@PrimaryGeneratedColumn()
+		public id!: string;
+
+		@OneToMany(type => models.InventoryItem, inventoryItem => inventoryItem.globals, { cascade: ["insert", "update"], eager: true })
+		public items!: models.InventoryItem[];
+	}
+	@Entity()
 	export class Useroptions extends SnowflakedEntity {
 		@Column("text", { nullable: true, default: null })
 		public prefix?: string;
@@ -250,6 +258,9 @@ export namespace models {
 
 		@ManyToOne(type => Userinfo, userinfo => userinfo.items, { cascade: ["insert", "update"] })
 		public user!: Userinfo;
+
+		@ManyToOne(type => Globals, globals => globals.items, { cascade: ["insert", "update"] })
+		public globals!: Globals;
 	}
 	@Entity()
 	export class Farm extends SnowflakedEntity {

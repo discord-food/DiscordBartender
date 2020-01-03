@@ -5,7 +5,7 @@ import moment from "moment-timezone";
 export const command = new Command("roleinfo", "Check information about a role.", [], [], [{ name: "role", type: Command.ROLE(), required: true }] as const, permissions.everyone)
 	.setExec(async(client, message, args, lang) => {
 		const { role } = args;
-		if (!role) return message.react(client.mainEmojis.get("no")!.id!);
+		if (!role) return message.react("[no]");
 		const embed = new client.Embed()
 			.setColor(role.color || client.Colors.GRAY)
 			.setTitle("Role Info")
