@@ -50,7 +50,7 @@ export const CreateIfNotExist = async <T>(entity: ClassType<T>, pk: keyof T, val
 export const CreateIfNotExistByPk = async <T>(entity: ClassType<T>, pk: keyof T, key: any, options: FindOneOptions<BaseEntity> = {}) => {
 	const e = await entity.findOne({ where: { [pk]: key }, ...options });
 	if (e) return e;
-	const f = await entity.insert([{ [pk]: key }]);
-	return f.generatedMaps[0];
+	await entity.insert([{ [pk]: key }]);
+	return entity.findOne({ where: { [pk]: key }, ...options });
 }
 ;

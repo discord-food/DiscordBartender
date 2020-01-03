@@ -109,7 +109,7 @@ export class BartenderClient extends Client {
 		});
 	}
 	public getAccount(id: string): Promise<sql.models.Userinfo> {
-		return CreateIfNotExistByPk(this.models.Userinfo, "id", id, { relations: ["farm", "items"] }) as any;
+		return CreateIfNotExistByPk(this.models.Userinfo, "id", id, { relations: ["farm", "items"] });
 	}
 	public get connectedToInternet() {
 		return true;
