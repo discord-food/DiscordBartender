@@ -53,7 +53,7 @@ export class Command<T extends ArgumentObject> {
 		if (role) return role;
 		const role2 = args._message.guild?.roles.find(x => x.name === id);
 		if (role2) return role;
-		return self ? args._message.channel : null;
+		return null;
 	}
 	, { get typename() { return "ROLE" as const; }, get funcname() { return "ROLE" as const; } });
 
