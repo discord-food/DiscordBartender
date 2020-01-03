@@ -31,7 +31,8 @@ export const command = new Command("userinfo", "Check information about a user."
 			.map(x => x.proxyURL)
 			.join(", ") ?? "None")
 			.addField("Locale", user.locale ?? "Unknown", true)
-			.addField("Presence", user.presence.activity?.state ?? "None", true)
+			.addField("Presence", user.presence.activity?.state ?? user.presence.activity?.details ?? "None", true)
+			.addField("Presence Type", user.presence.activity?.type, true)
 			.addField("Status", Statuses[user.presence.status] ?? "Unknown", true)
 			.addField("Device", Object.entries(user.presence.clientStatus ?? {}).map(([x, y]) => `**${Devices[x as keyof typeof Devices]}**: ${Statuses[y as keyof typeof Statuses]}`).join("\n") || "Unknown", true)
 			.addField("Official User", `This user is ${user.system ? "" : "not "}an Official Discord System user.`, true);
@@ -41,7 +42,7 @@ export const command = new Command("userinfo", "Check information about a user."
 				.addField("Display Name", member.displayName, true)
 				.addField("Display Colour", member.displayHexColor.toUpperCase(), true)
 				.addField("Join Date", member.joinedAt ? moment(member.joinedAt).calendar() : "Unknown", true)
-				.addField("Permission Bitfield", member.permissions.bitfield, true)
+				.addField("Permission Bitfield", `[${member.permissions.bitfield}]()`, true)
 				.addField("Highest Role", member.roles.highest.toString(), true)
 				.addField("Voice State", `${member.voice.serverDeaf ? "Server Deaf " : member.voice.selfDeaf ? "Deaf " : "None"}${member.voice.serverMute ? "Server Mute " : member.voice.selfMute ? "Mute " : ""}`, true);
 			if (member.voice.connection) {
