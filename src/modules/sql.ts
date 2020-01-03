@@ -191,7 +191,7 @@ export namespace models {
 		@Column()
 		public time!: number;
 
-		@Column("jsonb", { array: true, default: [] })
+		@Column("jsonb", { array: true, default: "{}" })
 		public rewards!: { id: number; chance: number }[];
 	}
 
