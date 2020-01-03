@@ -54,4 +54,5 @@ export const command = new Command("userinfo", "Check information about a user."
 			}
 			if (member.premiumSince) embed.addField("Nitro Boost", `Boosting since ${moment(member.premiumSince).calendar()}`);
 		}
+		await message.channel.send(embed);
 	});
