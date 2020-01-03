@@ -5,7 +5,7 @@ import { basename, join } from "path";
 import { randomString } from "@db-module/utils";
 const { host, name, username, password } = database;
 import { createConnection, Connection, Entity, PrimaryGeneratedColumn, Column, PrimaryColumn, BaseEntity,
-	 OneToMany, ManyToOne, OneToOne, Generated, CreateDateColumn, UpdateDateColumn, BeforeInsert, JoinColumn } from "typeorm";
+	 OneToMany, ManyToOne, OneToOne, Generated, CreateDateColumn, UpdateDateColumn, BeforeInsert, JoinColumn, JoinTable, ManyToMany } from "typeorm";
 export { Connection, BaseEntity } from "typeorm";
 
 
@@ -26,7 +26,7 @@ export enum Status {
 }
 export namespace models {
 	const SNOWFLAKE_LENGTH = 18;
-	const SNOWFLAKE_OPTIONS = { length: SNOWFLAKE_LENGTH };
+	const SNOWFLAKE_OPTIONS = { type: "char", length: SNOWFLAKE_LENGTH } as const;
 	enum LangCodes {
 		ENGLISH = "en",
 		OOF = "oof",
@@ -64,16 +64,21 @@ export namespace models {
 	export class Userinfo extends SnowflakedEntity {
 		@OneToMany(() => models.Alias, alias => alias.user)
 		public aliases!: Alias[];
+
 		@Column({ default: 0, type: "bigint" })
 		public balance!: number;
+
 		@Column({ default: {}, type: "jsonb" })
 		public cooldowns!: { [index: string]: number };
+
+		@OneToMany(type => models.InventoryItem, inventoryItem => inventoryItem.user, { cascade: ["insert", "update"] })
+		public items!: models.InventoryItem[];
+
+		@OneToOne(type => models.Farm)
+		@JoinColumn()
+		public farm!: models.Farm;
 	}
-	@Entity()
-	export class Cooldowns extends SnowflakedEntity {
-		@Column({ default: new Date(0) })
-		public work!: Date;
-	}
+
 	@Entity()
 	export class Alias extends SetupEntity {
 		@PrimaryGeneratedColumn("uuid")
@@ -94,7 +99,7 @@ export namespace models {
 		@Column("text")
 		public content!: string;
 
-		@Column("char", SNOWFLAKE_OPTIONS)
+		@Column(SNOWFLAKE_OPTIONS)
 		public author!: string;
 	}
 
@@ -103,7 +108,7 @@ export namespace models {
 		@Column("text")
 		public reason!: string;
 
-		@Column("char", SNOWFLAKE_OPTIONS)
+		@Column(SNOWFLAKE_OPTIONS)
 		public executor!: string;
 	}
 
@@ -115,7 +120,7 @@ export namespace models {
 		@Column("text", { nullable: true })
 		public description?: string;
 
-		@Column("char", SNOWFLAKE_OPTIONS)
+		@Column(SNOWFLAKE_OPTIONS)
 		public user!: string;
 
 		@Column({
@@ -160,6 +165,116 @@ export namespace models {
 			default: TypeSpecials.NONE
 		})
 		public special!: TypeSpecials;
+
+		@ManyToMany(type => models.RecipeItem)
+		@JoinTable()
+		public recipe!: models.RecipeItem[];
+	}
+	@Entity()
+	export class CropType extends BaseEntity {
+		@PrimaryGeneratedColumn()
+		public id!: number;
+
+		@OneToMany(type => models.Crop, crop => crop.type, { cascade: ["insert", "update"] })
+		public crops!: models.Crop[];
+
+		@Column("text")
+		public name!: string;
+
+		@Column({
+			type: "enum",
+			enum: TypeSpecials,
+			default: TypeSpecials.NONE
+		})
+		public special!: TypeSpecials;
+
+		@Column()
+		public time!: number;
+
+		@Column("jsonb", { array: true, default: [] })
+		public rewards!: { id: number; chance: number }[];
+	}
+
+	@Entity()
+	export class Item extends BaseEntity {
+		@PrimaryGeneratedColumn()
+		public id!: number;
+
+		@Column("text")
+		public name!: string;
+
+		@Column("text")
+		public description!: string;
+
+		@ManyToOne(type => models.Category, category => category.items, { cascade: ["insert", "update"] })
+		public category!: models.Category;
+
+		@OneToMany(type => models.InventoryItem, inventoryItem => inventoryItem.item, { cascade: ["insert", "update"] })
+		public inventoryItems!: models.InventoryItem[];
+
+		@OneToMany(type => models.RecipeItem, recipeItem => recipeItem.item, { cascade: ["insert", "update"] })
+		public recipes!: models.RecipeItem[];
+	}
+
+	@Entity()
+	export class Category extends BaseEntity {
+		@PrimaryGeneratedColumn()
+		public id!: number;
+
+		@Column("text")
+		public name!: string;
+
+		@Column("text")
+		public description!: string;
+
+		@OneToMany(type => Item, item => item.category, { cascade: ["insert", "update"] })
+		public items!: Item[];
+	}
+
+	export class InventoryItem extends BaseEntity {
+		@PrimaryGeneratedColumn()
+		public id!: number;
+
+		@ManyToOne(type => Item, item => item.inventoryItems, { cascade: ["insert", "update"] })
+		public item!: Item;
+
+		@Column()
+		public count!: number;
+
+		@ManyToOne(type => Userinfo, userinfo => userinfo.items, { cascade: ["insert", "update"] })
+		public user!: Userinfo;
+	}
+	@Entity()
+	export class Farm extends SnowflakedEntity {
+		@OneToMany(type => models.Crop, crop => crop.farm, { cascade: ["insert", "update"] })
+		public crops!: models.Crop[];
+	}
+
+	@Entity()
+	export class Crop extends BaseEntity {
+		@PrimaryGeneratedColumn()
+		public id!: number;
+
+		@ManyToOne(type => CropType, cropType => cropType.crops, { cascade: ["insert", "update"] })
+		public type!: models.Types;
+
+		@ManyToOne(type => Farm, farm => farm.crops, { cascade: ["insert", "update"] })
+		public farm!: models.Farm;
+
+		@Column()
+		public timeLeft!: Date;
+	}
+
+	@Entity()
+	export class RecipeItem extends BaseEntity {
+		@PrimaryGeneratedColumn()
+		public id!: number;
+
+		@ManyToOne(type => Item, item => item.recipes, { cascade: ["insert", "update"] })
+		public item!: Item;
+
+		@Column()
+		public count!: number;
 	}
 }
 

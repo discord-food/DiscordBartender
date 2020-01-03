@@ -1,4 +1,4 @@
-import { BaseEntity, ObjectType, QueryBuilder, Connection, SelectQueryBuilder, Entity } from "typeorm";
+import { BaseEntity, ObjectType, QueryBuilder, Connection, SelectQueryBuilder, Entity, FindOneOptions } from "typeorm";
 import _ from "lodash";
 
 type ClassType<T> = {
@@ -47,8 +47,8 @@ export const CreateIfNotExist = async <T>(entity: ClassType<T>, pk: keyof T, val
 	return (await qb.returning("*").execute()).generatedMaps[0] as T;
 };
 
-export const CreateIfNotExistByPk = async <T>(entity: ClassType<T>, pk: keyof T, key: any) => {
-	const e = await entity.findOne({ where: { [pk]: key } });
+export const CreateIfNotExistByPk = async <T>(entity: ClassType<T>, pk: keyof T, key: any, options: FindOneOptions<BaseEntity> = {}) => {
+	const e = await entity.findOne({ where: { [pk]: key }, ...options });
 	if (e) return e;
 	const f = await entity.insert([{ [pk]: key }]);
 	return f.generatedMaps[0];
