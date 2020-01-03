@@ -24,35 +24,35 @@ export const command = new Command("userinfo", "Check information about a user."
 			.setDescription(`Information for user **${user.tag}**`)
 			.setThumbnail(user.displayAvatarURL({ format: "png" }))
 			.setColor(client.Colors.GRAY)
-			.addField("ID", user.id)
-			.addField("Tag", user.tag)
-			.addField("Account Creation Date", moment(user.createdAt).calendar())
+			.addField("ID", user.id, true)
+			.addField("Tag", user.tag, true)
+			.addField("Account Creation Date", moment(user.createdAt).calendar(), true)
 			.addField("Last Message", user.lastMessage?.content ?? user.lastMessage?.attachments
 			.map(x => x.proxyURL)
 			.join(", ") ?? "None")
-			.addField("Locale", user.locale)
-			.addField("Presence", user.presence.activity?.state || "None")
-			.addField("Status", Statuses[user.presence.status])
-			.addField("Device", Object.entries(user.presence.clientStatus ?? {}).map(([x, y]) => `**${Devices[x as keyof typeof Devices]}**: ${Statuses[y as keyof typeof Statuses]}`).join("\n") ?? "Unknown")
-			.addField("Official User", `This user is ${user.system ? "" : "not "}an Official Discord System user.`);
+			.addField("Locale", user.locale, true)
+			.addField("Presence", user.presence.activity?.state || "None", true)
+			.addField("Status", Statuses[user.presence.status], true)
+			.addField("Device", Object.entries(user.presence.clientStatus ?? {}).map(([x, y]) => `**${Devices[x as keyof typeof Devices]}**: ${Statuses[y as keyof typeof Statuses]}`).join("\n") ?? "Unknown", true)
+			.addField("Official User", `This user is ${user.system ? "" : "not "}an Official Discord System user.`, true);
 		if (member) {
 			embed
 				.setColor(member.displayColor)
-				.addField("Display Name", member.displayName)
-				.addField("Display Colour", member.displayHexColor.toUpperCase())
-				.addField("Join Date", member.joinedAt ? moment(member.joinedAt).calendar() : "Unknown")
-				.addField("Permission Bitfield", member.permissions.bitfield)
-				.addField("Highest Role", member.roles.highest.toString())
-				.addField("Voice State", `${member.voice.serverDeaf ? "Server Deaf " : member.voice.selfDeaf ? "Deaf " : "None"}${member.voice.serverMute ? "Server Mute " : member.voice.selfMute ? "Mute " : ""}`);
+				.addField("Display Name", member.displayName, true)
+				.addField("Display Colour", member.displayHexColor.toUpperCase(), true)
+				.addField("Join Date", member.joinedAt ? moment(member.joinedAt).calendar() : "Unknown", true)
+				.addField("Permission Bitfield", member.permissions.bitfield, true)
+				.addField("Highest Role", member.roles.highest.toString(), true)
+				.addField("Voice State", `${member.voice.serverDeaf ? "Server Deaf " : member.voice.selfDeaf ? "Deaf " : "None"}${member.voice.serverMute ? "Server Mute " : member.voice.selfMute ? "Mute " : ""}`, true);
 			if (member.voice.connection) {
 				const { voice: { connection } } = member;
 				embed
-					.addField("Connection Channel", `[voice] ${connection.channel.name}`)
-					.addField("Playing For", pms(connection.dispatcher.totalStreamTime))
-					.addField("Volume", `${connection.dispatcher.volumeDecibels} dB`)
-					.addField("Paused", connection.dispatcher.paused ? `Paused for ${pms(connection.dispatcher.pausedTime as unknown as number)}.` : "Not Paused");
+					.addField("Connection Channel", `[voice] ${connection.channel.name}`, true)
+					.addField("Playing For", pms(connection.dispatcher.totalStreamTime), true)
+					.addField("Volume", `${connection.dispatcher.volumeDecibels} dB`, true)
+					.addField("Paused", connection.dispatcher.paused ? `Paused for ${pms(connection.dispatcher.pausedTime as unknown as number)}.` : "Not Paused", true);
 			}
-			if (member.premiumSince) embed.addField("Nitro Boost", `Boosting since ${moment(member.premiumSince).calendar()}`);
+			if (member.premiumSince) embed.addField("Nitro Boost", `Boosting since ${moment(member.premiumSince).calendar()}`, true);
 		}
 		await message.channel.send(embed);
 	});
