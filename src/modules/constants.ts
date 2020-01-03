@@ -43,7 +43,9 @@ export const constants: Constants = {
 		drunkStamp: "650847912154103838",
 		loading: "650876727098343434",
 		truck: "650890220517982216",
-		voice: "662478504075460628"
+		voice: "662478504075460628",
+		water: "662753125924470795",
+		blacklist: "662145556097007616"
 	},
 	eval: new Formattable(`(async () => { const { client } = await import(require("path").join(__rootname, "/modules/client")); {} })()`), // ")
 	guild: "602945093762154507",
