@@ -53,7 +53,7 @@ export class Command<T extends ArgumentObject> {
 	}
 	, { get typename() { return "ROLE" as const; }, get funcname() { return "ROLE" as const; } });
 
-
+	public hidden?: boolean;
 	public category?: string;
 	public execFunc?: (client: BartenderClient, message: Message, args: Args & ReturnExec<T>, lang: Languages) => any;
 	public readonly path: string;
@@ -65,6 +65,10 @@ export class Command<T extends ArgumentObject> {
 	}
 	public setExec(func: (client: BartenderClient, message: Message, args: Args & ReturnExec<T>, lang: Languages) => any) {
 		this.execFunc = func;
+		return this;
+	}
+	public setHidden(hidden: boolean) {
+		this.hidden = hidden;
 		return this;
 	}
 	public exec(client: BartenderClient, message: Message, args: Args & ReturnExec<T>, lang: Languages) {
