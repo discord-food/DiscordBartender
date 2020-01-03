@@ -71,10 +71,10 @@ export namespace models {
 		@Column({ default: {}, type: "jsonb" })
 		public cooldowns!: { [index: string]: number };
 
-		@OneToMany(type => models.InventoryItem, inventoryItem => inventoryItem.user, { cascade: ["insert", "update"] })
+		@OneToMany(type => models.InventoryItem, inventoryItem => inventoryItem.user, { cascade: ["insert", "update"], eager: true })
 		public items!: models.InventoryItem[];
 
-		@OneToOne(type => models.Farm)
+		@OneToOne(type => models.Farm, { eager: true })
 		@JoinColumn()
 		public farm!: models.Farm;
 	}
@@ -166,7 +166,7 @@ export namespace models {
 		})
 		public special!: TypeSpecials;
 
-		@ManyToMany(type => models.RecipeItem)
+		@ManyToMany(type => models.RecipeItem, { eager: true })
 		@JoinTable()
 		public recipe!: models.RecipeItem[];
 	}
@@ -206,7 +206,7 @@ export namespace models {
 		@Column("text")
 		public description!: string;
 
-		@ManyToOne(type => models.Category, category => category.items, { cascade: ["insert", "update"] })
+		@ManyToOne(type => models.Category, category => category.items, { cascade: ["insert", "update"], eager: true })
 		public category!: models.Category;
 
 		@OneToMany(type => models.InventoryItem, inventoryItem => inventoryItem.item, { cascade: ["insert", "update"] })
@@ -235,7 +235,7 @@ export namespace models {
 		@PrimaryGeneratedColumn()
 		public id!: number;
 
-		@ManyToOne(type => Item, item => item.inventoryItems, { cascade: ["insert", "update"] })
+		@ManyToOne(type => Item, item => item.inventoryItems, { cascade: ["insert", "update"], eager: true })
 		public item!: Item;
 
 		@Column()
@@ -246,7 +246,7 @@ export namespace models {
 	}
 	@Entity()
 	export class Farm extends SnowflakedEntity {
-		@OneToMany(type => models.Crop, crop => crop.farm, { cascade: ["insert", "update"] })
+		@OneToMany(type => models.Crop, crop => crop.farm, { cascade: ["insert", "update"], eager: true })
 		public crops!: models.Crop[];
 	}
 
@@ -255,7 +255,7 @@ export namespace models {
 		@PrimaryGeneratedColumn()
 		public id!: number;
 
-		@ManyToOne(type => CropType, cropType => cropType.crops, { cascade: ["insert", "update"] })
+		@ManyToOne(type => CropType, cropType => cropType.crops, { cascade: ["insert", "update"], eager: true })
 		public type!: models.Types;
 
 		@ManyToOne(type => Farm, farm => farm.crops, { cascade: ["insert", "update"] })
@@ -270,7 +270,7 @@ export namespace models {
 		@PrimaryGeneratedColumn()
 		public id!: number;
 
-		@ManyToOne(type => Item, item => item.recipes, { cascade: ["insert", "update"] })
+		@ManyToOne(type => Item, item => item.recipes, { cascade: ["insert", "update"], eager: true })
 		public item!: Item;
 
 		@Column()
