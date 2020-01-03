@@ -1,4 +1,4 @@
-import { Base, Guild, Message, MessageAttachment, MessageEditOptions, MessageEmbed, MessageOptions, TextChannel, User } from "discord.js";
+import { Base, Guild, EmojiResolvable, Message, MessageAttachment, MessageEditOptions, MessageEmbed, MessageOptions, TextChannel, User, DMChannel } from "discord.js";
 import { join } from "path";
 import { BartenderClient } from "../structures/client.struct";
 import { client } from "./client";
@@ -12,9 +12,18 @@ TextChannel.prototype.send = function send(
 	return temp.bind(this, sendEnhancements(this, content), options)();
 };
 const temp2 = Message.prototype.edit;
-Message.prototype.edit = function edit(content: any, options?: MessageEditOptions | MessageEmbed | undefined): Promise<Message> {
+Message.prototype.edit = function edit(content: any, options?: MessageEditOptions | MessageEmbed | undefined) {
 	return temp2.bind(this, sendEnhancements(this.channel, content), options)();
 };
+const temp3 = DMChannel.prototype.send;
+DMChannel.prototype.send = function send(content: any, options?: any) {
+	return temp3.bind(this, sendEnhancements(this, content), options)() as any;
+};
+const temp4 = Message.prototype.react;
+Message.prototype.react = function react(emoji: EmojiResolvable | string) {
+	return temp4.bind(this, this.bartender.mainEmojis.get(typeof emoji === "string" ? emoji.match(/(?<=\[)(.+)(?=\])/)?.[0] ?? "" : "")?.id ?? emoji)() as any;
+};
+
 declare module "discord.js" {
 	interface Base {
 		bartender: BartenderClient;
