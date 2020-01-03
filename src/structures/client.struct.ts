@@ -291,6 +291,9 @@ export class BartenderClient extends Client {
 		await (await connection).query("select * from information_schema.tables");
 		this.emit("modelsLoaded");
 	}
+	public async loadBotlists(): Promise<void> {
+		// todo
+	}
 	/**
 	 * @description Loads channels, messages and emojis.
 	 * @returns {void}
