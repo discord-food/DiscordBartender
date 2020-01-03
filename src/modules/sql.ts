@@ -62,8 +62,8 @@ export namespace models {
 
 	@Entity()
 	export class Userinfo extends SnowflakedEntity {
-		// / @OneToMany(() => models.Alias, alias => alias.user)
-		// / public aliases!: Alias[];
+		@OneToMany(() => models.Alias, alias => alias.user)
+		public aliases!: Alias[];
 
 		@Column({ default: 0, type: "bigint" })
 		public balance!: number;
@@ -71,12 +71,12 @@ export namespace models {
 		@Column({ default: {}, type: "jsonb" })
 		public cooldowns!: { [index: string]: number };
 
-		// / @OneToMany(type => models.InventoryItem, inventoryItem => inventoryItem.user, { cascade: ["insert", "update"] })
-		// / public items!: models.InventoryItem[];
+		@OneToMany(type => models.InventoryItem, inventoryItem => inventoryItem.user, { cascade: ["insert", "update"] })
+		public items!: models.InventoryItem[];
 
-		// / @OneToOne(type => models.Farm)
-		// / @JoinColumn()
-		// / public farm!: models.Farm;
+		@OneToOne(type => models.Farm)
+		@JoinColumn()
+		public farm!: models.Farm;
 	}
 
 	@Entity()
@@ -90,8 +90,8 @@ export namespace models {
 		@Column()
 		public command!: string;
 
-		// / @ManyToOne(() => Userinfo, userinfo => userinfo.aliases)
-		// / public user!: Userinfo;
+		@ManyToOne(() => Userinfo, userinfo => userinfo.aliases)
+		public user!: Userinfo;
 	}
 
 	@Entity()
@@ -139,8 +139,8 @@ export namespace models {
 		@Column("jsonb", { default: {} })
 		public metadata!: { claimer?: string; channel: string };
 
-		// / @ManyToOne(type => models.Types, type => type.orders, { cascade: ["insert", "update"] })
-		// / public type!: models.Types;
+		@ManyToOne(type => models.Types, type => type.orders, { cascade: ["insert", "update"] })
+		public type!: models.Types;
 
 		@BeforeInsert()
 		private beforeInsert() {
@@ -153,7 +153,7 @@ export namespace models {
 		@PrimaryGeneratedColumn()
 		public id!: number;
 
-		// / @OneToMany(type => Orders, order => order.type, { cascade: ["insert", "update"] })
+		@OneToMany(type => Orders, order => order.type, { cascade: ["insert", "update"] })
 		public orders!: Orders[];
 
 		@Column("text")
@@ -166,17 +166,17 @@ export namespace models {
 		})
 		public special!: TypeSpecials;
 
-		// / @ManyToMany(type => models.RecipeItem)
-		// / @JoinTable()
-		// / public recipe!: models.RecipeItem[];
+		@ManyToMany(type => models.RecipeItem)
+		@JoinTable()
+		public recipe!: models.RecipeItem[];
 	}
 	@Entity()
 	export class CropType extends BaseEntity {
 		@PrimaryGeneratedColumn()
 		public id!: number;
 
-		// / @OneToMany(type => models.Crop, crop => crop.type, { cascade: ["insert", "update"] })
-		// / public crops!: models.Crop[];
+		@OneToMany(type => models.Crop, crop => crop.type, { cascade: ["insert", "update"] })
+		public crops!: models.Crop[];
 
 		@Column("text")
 		public name!: string;
@@ -206,14 +206,14 @@ export namespace models {
 		@Column("text")
 		public description!: string;
 
-		// / @ManyToOne(type => models.Category, category => category.items, { cascade: ["insert", "update"] })
-		// / public category!: models.Category;
+		@ManyToOne(type => models.Category, category => category.items, { cascade: ["insert", "update"] })
+		public category!: models.Category;
 
-		// / @OneToMany(type => models.InventoryItem, inventoryItem => inventoryItem.item, { cascade: ["insert", "update"] })
-		// / public inventoryItems!: models.InventoryItem[];
+		@OneToMany(type => models.InventoryItem, inventoryItem => inventoryItem.item, { cascade: ["insert", "update"] })
+		public inventoryItems!: models.InventoryItem[];
 
-		// / @OneToMany(type => models.RecipeItem, recipeItem => recipeItem.item, { cascade: ["insert", "update"] })
-		// / public recipes!: models.RecipeItem[];
+		@OneToMany(type => models.RecipeItem, recipeItem => recipeItem.item, { cascade: ["insert", "update"] })
+		public recipes!: models.RecipeItem[];
 	}
 
 	@Entity()
@@ -227,27 +227,27 @@ export namespace models {
 		@Column("text")
 		public description!: string;
 
-		// / @OneToMany(type => Item, item => item.category, { cascade: ["insert", "update"] })
-		// / public items!: Item[];
+		@OneToMany(type => Item, item => item.category, { cascade: ["insert", "update"] })
+		public items!: Item[];
 	}
-
+	@Entity()
 	export class InventoryItem extends BaseEntity {
 		@PrimaryGeneratedColumn()
 		public id!: number;
 
-		// / @ManyToOne(type => Item, item => item.inventoryItems, { cascade: ["insert", "update"] })
-		// / public item!: Item;
+		@ManyToOne(type => Item, item => item.inventoryItems, { cascade: ["insert", "update"] })
+		public item!: Item;
 
 		@Column()
 		public count!: number;
 
-		// / @ManyToOne(type => Userinfo, userinfo => userinfo.items, { cascade: ["insert", "update"] })
-		// / public user!: Userinfo;
+		@ManyToOne(type => Userinfo, userinfo => userinfo.items, { cascade: ["insert", "update"] })
+		public user!: Userinfo;
 	}
 	@Entity()
 	export class Farm extends SnowflakedEntity {
-		// / @OneToMany(type => models.Crop, crop => crop.farm, { cascade: ["insert", "update"] })
-		// / public crops!: models.Crop[];
+		@OneToMany(type => models.Crop, crop => crop.farm, { cascade: ["insert", "update"] })
+		public crops!: models.Crop[];
 	}
 
 	@Entity()
@@ -255,11 +255,11 @@ export namespace models {
 		@PrimaryGeneratedColumn()
 		public id!: number;
 
-		// / @ManyToOne(type => CropType, cropType => cropType.crops, { cascade: ["insert", "update"] })
-		// / public type!: models.Types;
+		@ManyToOne(type => CropType, cropType => cropType.crops, { cascade: ["insert", "update"] })
+		public type!: models.Types;
 
-		// / @ManyToOne(type => Farm, farm => farm.crops, { cascade: ["insert", "update"] })
-		// / public farm!: models.Farm;
+		@ManyToOne(type => Farm, farm => farm.crops, { cascade: ["insert", "update"] })
+		public farm!: models.Farm;
 
 		@Column()
 		public timeLeft!: Date;
@@ -270,8 +270,8 @@ export namespace models {
 		@PrimaryGeneratedColumn()
 		public id!: number;
 
-		// / @ManyToOne(type => Item, item => item.recipes, { cascade: ["insert", "update"] })
-		// / public item!: Item;
+		@ManyToOne(type => Item, item => item.recipes, { cascade: ["insert", "update"] })
+		public item!: Item;
 
 		@Column()
 		public count!: number;
