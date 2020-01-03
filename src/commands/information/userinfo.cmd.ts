@@ -36,8 +36,8 @@ export const command = new Command("userinfo", "Check information about a user."
 			.addField("Device", Object.entries(user.presence.clientStatus ?? {}).map(([x, y]) => `**${Devices[x as keyof typeof Devices]}**: ${Statuses[y as keyof typeof Statuses]}`).join("\n") || "Unknown", true)
 			.addField("Official User", `This user is ${user.system ? "" : "not "}an Official Discord System user.`, true);
 		if (member) {
+			if (member.displayColor) embed.setColor(member.displayColor);
 			embed
-				.setColor(member.displayColor)
 				.addField("Display Name", member.displayName, true)
 				.addField("Display Colour", member.displayHexColor.toUpperCase(), true)
 				.addField("Join Date", member.joinedAt ? moment(member.joinedAt).calendar() : "Unknown", true)
