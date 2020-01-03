@@ -36,16 +36,18 @@ declare global {
 		"sv" | "sw" | "ta" | "te" | "tg" | "th" | "ti" | "tk" | "tl" | "tn" | "to" |
 		"tr" | "ts" | "tt" | "tw" | "ty" | "ug" | "uk" | "ur" | "uz" | "ve" | "vi" |
 		"vo" | "wa" | "wo" | "xh" | "yi" | "yo" | "za" | "zh" | "zu";
-	interface AuthDatabase {
-		host: string;
-		name: string;
-		username: string;
-		password: string;
-	}
 
 	interface Auth {
 		token: string;
-		database: AuthDatabase;
+		database: {
+			host: string;
+			name: string;
+			username: string;
+			password: string;
+		};
+		botlists: {
+			dbl: string;
+		};
 	}
 
 	interface StringObject { [name: string]: string }

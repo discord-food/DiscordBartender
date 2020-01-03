@@ -17,6 +17,7 @@ import { BakeryEmbed } from "./embed.struct";
 import { CreateIfNotExistByPk } from "@db-module/upsert";
 import ISO from "iso-639-1";
 import { Colors } from "@db-module/interfaces";
+import DBL from "dblapi.js";
 export class BartenderClient extends Client {
 	public Colors = Colors;
 	/**
@@ -104,6 +105,7 @@ export class BartenderClient extends Client {
 		this.on("ready", () => {
 			this.loadMain();
 			this.loadModels();
+			this.loadBotlists();
 		});
 	}
 	public getAccount(id: string): Promise<sql.models.Userinfo> {
@@ -292,7 +294,7 @@ export class BartenderClient extends Client {
 		this.emit("modelsLoaded");
 	}
 	public async loadBotlists(): Promise<void> {
-		// todo
+		// const dbl = new DBL(auth.botlists.dbl, this);
 	}
 	/**
 	 * @description Loads channels, messages and emojis.
