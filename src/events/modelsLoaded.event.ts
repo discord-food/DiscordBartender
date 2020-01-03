@@ -3,8 +3,9 @@ import { client } from "../modules/client";
 import { models } from "../modules/sql";
 
 const entries = <T>(obj: T): Entries<T>[] => Object.entries(obj) as any;
-export const handler = () => {
+export const handler = async() => {
 	client.success(`Models were successfully loaded!`);
+	await client.user?.setActivity("Recently started.");
 
 	client.setInterval(async() => {
 		for (const [name, model] of entries(models)) client.cached[name] = await model.find() as any;
