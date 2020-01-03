@@ -71,9 +71,6 @@ export namespace models {
 		@Column({ default: {}, type: "jsonb" })
 		public cooldowns!: { [index: string]: number };
 
-		@OneToMany(type => models.InventoryItem, inventoryItem => inventoryItem.user, { cascade: ["insert", "update"] })
-		public items!: models.InventoryItem[];
-
 		@OneToOne(type => models.Farm)
 		@JoinColumn()
 		public farm!: models.Farm;
@@ -241,8 +238,8 @@ export namespace models {
 		@Column()
 		public count!: number;
 
-		@ManyToOne(type => Userinfo, userinfo => userinfo.items, { cascade: ["insert", "update"] })
-		public user!: Userinfo;
+		@Column(SNOWFLAKE_OPTIONS)
+		public user!: string;
 	}
 	@Entity()
 	export class Farm extends SnowflakedEntity {
