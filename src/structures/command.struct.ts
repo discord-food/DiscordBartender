@@ -42,13 +42,17 @@ export class Command<T extends ArgumentObject> {
 		if (channel) return channel;
 		const dm = args._message.client.users.get(id)?.dmChannel;
 		if (dm) return dm;
+		const dm2 = args._message.client.channels.find((x: any) => x.name === id);
+		if (dm2) return dm2;
 		return self ? args._message.channel : null;
 	}
 	, { get typename() { return "CHANNEL" as const; }, get funcname() { return "CHANNEL" as const; } });
 	public static ROLE = () => Object.assign((arg: string, args: Args) => {
-		const id = arg.replace(/<#[0-9]+>/g, input => input.replace(/<|#|>/g, ""));
+		const id = arg.replace(/<@&[0-9]+>/g, input => input.replace(/<|@|&|>/g, ""));
 		const role = args._message.guild?.roles.get(id);
 		if (role) return role;
+		const role2 = args._message.guild?.roles.find(x => x.name === id);
+		if (role2) return role;
 		return self ? args._message.channel : null;
 	}
 	, { get typename() { return "ROLE" as const; }, get funcname() { return "ROLE" as const; } });
