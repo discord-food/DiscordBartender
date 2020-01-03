@@ -5,7 +5,7 @@ import { basename, join } from "path";
 import { randomString } from "@db-module/utils";
 const { host, name, username, password } = database;
 import { createConnection, Connection, Entity, PrimaryGeneratedColumn, Column, PrimaryColumn, BaseEntity,
-	 OneToMany, ManyToOne, OneToOne, Generated, CreateDateColumn, UpdateDateColumn, BeforeInsert, JoinColumn, JoinTable, ManyToMany } from "typeorm";
+	 OneToMany, ManyToOne, OneToOne, Generated, CreateDateColumn, UpdateDateColumn, BeforeInsert, JoinColumn, JoinTable, ManyToMany, Unique } from "typeorm";
 export { Connection, BaseEntity } from "typeorm";
 
 
@@ -139,7 +139,7 @@ export namespace models {
 		@Column("jsonb", { default: {} })
 		public metadata!: { claimer?: string; channel: string };
 
-		@ManyToOne(type => models.Types, type => type.orders, { cascade: ["insert", "update"] })
+		@ManyToOne(type => models.Types, type => type.orders, { cascade: ["insert", "update"], eager: true })
 		public type!: models.Types;
 
 		@BeforeInsert()
@@ -196,6 +196,7 @@ export namespace models {
 	}
 
 	@Entity()
+	@Unique(["identifier"])
 	export class Item extends BaseEntity {
 		@PrimaryGeneratedColumn()
 		public id!: number;
@@ -205,6 +206,9 @@ export namespace models {
 
 		@Column("text")
 		public description!: string;
+
+		@Column()
+		public identifier!: string;
 
 		@ManyToOne(type => models.Category, category => category.items, { cascade: ["insert", "update"], eager: true })
 		public category!: models.Category;
