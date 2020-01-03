@@ -30,9 +30,9 @@ export const command = new Command("userinfo", "Check information about a user."
 			.addField("Last Message", user.lastMessage?.content ?? user.lastMessage?.attachments
 			.map(x => x.proxyURL)
 			.join(", ") ?? "None")
-			.addField("Locale", user.locale, true)
-			.addField("Presence", user.presence.activity?.state || "None", true)
-			.addField("Status", Statuses[user.presence.status], true)
+			.addField("Locale", user.locale ?? "Unknown", true)
+			.addField("Presence", user.presence.activity?.state ?? "None", true)
+			.addField("Status", Statuses[user.presence.status] ?? "Unknown", true)
 			.addField("Device", Object.entries(user.presence.clientStatus ?? {}).map(([x, y]) => `**${Devices[x as keyof typeof Devices]}**: ${Statuses[y as keyof typeof Statuses]}`).join("\n") ?? "Unknown", true)
 			.addField("Official User", `This user is ${user.system ? "" : "not "}an Official Discord System user.`, true);
 		if (member) {
