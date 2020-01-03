@@ -43,7 +43,7 @@ export const command = new Command("userinfo", "Check information about a user."
 				.addField("Join Date", member.joinedAt ? moment(member.joinedAt).calendar() : "Unknown")
 				.addField("Permission Bitfield", member.permissions.bitfield)
 				.addField("Highest Role", member.roles.highest.toString())
-				.addField("Voice State", `${member.voice.serverDeaf ? "Server Deaf " : member.voice.selfDeaf ? "Deaf " : ""}${member.voice.serverMute ? "Server Mute " : member.voice.selfMute ? "Mute " : ""}`);
+				.addField("Voice State", `${member.voice.serverDeaf ? "Server Deaf " : member.voice.selfDeaf ? "Deaf " : "None"}${member.voice.serverMute ? "Server Mute " : member.voice.selfMute ? "Mute " : ""}`);
 			if (member.voice.connection) {
 				const { voice: { connection } } = member;
 				embed
