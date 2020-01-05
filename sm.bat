@@ -1,0 +1,2 @@
+node semver %*
+node push

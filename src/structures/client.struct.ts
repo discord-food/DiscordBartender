@@ -7,6 +7,7 @@ import { basename, dirname, join, normalize, resolve, win32 } from "path";
 import { compareTwoStrings } from "string-similarity";
 import { inspect } from "util";
 import * as auth from "../auth.json";
+import { readFileSync } from "fs";
 import { constants } from "../modules/constants";
 import { } from "../modules/extensions";
 import * as sql from "../modules/sql";
@@ -113,6 +114,9 @@ export class BartenderClient extends Client {
 	}
 	public async getGlobals(): Promise<sql.models.Globals> {
 		return await sql.models.Globals.findOne() ?? (await sql.models.Globals.insert({}), await sql.models.Globals.findOne())!;
+	}
+	public get version() {
+		return readFileSync(this.db("./version.txt"), { encoding: "utf8" });
 	}
 	public get connectedToInternet() {
 		return true;
