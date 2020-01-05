@@ -111,8 +111,8 @@ export class BartenderClient extends Client {
 	public getAccount(id: string): Promise<sql.models.Userinfo> {
 		return CreateIfNotExistByPk(this.models.Userinfo, "id", id, {}) as any;
 	}
-	public getGlobals(): Promise<sql.models.Globals> {
-		return CreateIfNotExistByPk(this.models.Globals, "id", undefined, {}) as any;
+	public async getGlobals(): Promise<sql.models.Globals> {
+		return await sql.models.Globals.findOne() ?? (await sql.models.Globals.insert({}), await sql.models.Globals.findOne())!;
 	}
 	public get connectedToInternet() {
 		return true;
