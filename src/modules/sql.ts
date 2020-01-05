@@ -256,7 +256,7 @@ export namespace models {
 		@Column()
 		public count!: number;
 
-		@ManyToOne(type => Userinfo, userinfo => userinfo.items, { cascade: ["insert", "update"] })
+		@ManyToOne(type => Userinfo, userinfo => userinfo.items, { cascade: ["insert", "update"], nullable: true })
 		public user!: Userinfo;
 
 		@ManyToOne(type => Globals, globals => globals.items, { cascade: ["insert", "update"] })
