@@ -13,6 +13,7 @@ export const handler = async() => {
 	const globs = await client.getGlobals();
 	const items = await client.models.Item.find();
 	for (const item of items) {
+		if (globs.items.find(x => x.item.identifier === item.identifier)) continue;
 		const invItem = client.models.InventoryItem.create();
 		invItem.item = item;
 		invItem.count = 250;

@@ -15,6 +15,7 @@ declare global {
 		readonly currencySymbol: string;
 		readonly milestones: readonly Readonly<{ value: number; id: string }>[];
 		readonly statuses: readonly (string | Formattable)[];
+		readonly permissions: number;
 	}
 }
 export const constants: Constants = {
@@ -45,7 +46,10 @@ export const constants: Constants = {
 		truck: "650890220517982216",
 		voice: "662478504075460628",
 		water: "662753125924470795",
-		blacklist: "662145556097007616"
+		blacklist: "662145556097007616",
+		add: "663520129338048522",
+		subtract: "663520154776502272",
+		menu: "",
 	},
 	eval: new Formattable(`(async () => { const { client } = await import(require("path").join(__rootname, "/modules/client")); {} })()`), // ")
 	guild: "602945093762154507",
@@ -71,4 +75,5 @@ export const constants: Constants = {
 		},
 	],
 	statuses: ["Unprepared", new Formattable("Preparing by {}"), "Brewing", "Pending Delivery", "Delivering", "Delivered", "Cancelled By User", "Deleted By Staff", "Failed Preparation"],
+	permissions: 104201409,
 } as const;

@@ -31,6 +31,7 @@ export const handler = async(message: Message) => {
 	try {
 		await gcommand.exec(client, message, processedArgs as Args, lang);
 	} catch (err) {
+		if (err.code === 50013) await message.channel.send(lang.errors.guildPermission.format(new client.Discord.Permissions(client.constants.permissions - (message.guild.me?.permissions.bitfield ?? 0))));
 		await message.channel.send(lang.errors.codes[err.code] ?? lang.errors.internal.format(err));
 		client.error(err);
 	}

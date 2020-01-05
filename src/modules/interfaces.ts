@@ -67,6 +67,7 @@ declare global {
 			graph: Formattable;
 			cooldown: Formattable;
 			codes: { [index: number]: string };
+			guildPermission: Formattable;
 		};
 	}
 

@@ -167,6 +167,9 @@ export namespace models {
 		@Column("text")
 		public name!: string;
 
+		@Column()
+		public identifier!: string;
+
 		@Column({
 			type: "enum",
 			enum: TypeSpecials,
