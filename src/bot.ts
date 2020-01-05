@@ -5,6 +5,7 @@ import { transpile } from "typescript";
 import { client } from "./modules/client";
 import "./modules/extensions";
 import "source-map-support/register";
+import "core-js";
 if (+process.version.replace("v", "").split(".")[0] < 13) throw new Error(`Outdated Node.JS Version: This bot requires requires a Node.JS version of v13 or higher. You have ${process.version}`);
 // Process events
 const reader = createInterface({

@@ -109,7 +109,10 @@ export class BartenderClient extends Client {
 		});
 	}
 	public getAccount(id: string): Promise<sql.models.Userinfo> {
-		return CreateIfNotExistByPk(this.models.Userinfo, "id", id, { relations: ["farm", "items"] });
+		return CreateIfNotExistByPk(this.models.Userinfo, "id", id, {}) as any;
+	}
+	public getGlobals(): Promise<sql.models.Globals> {
+		return CreateIfNotExistByPk(this.models.Globals, "id", undefined, {}) as any;
 	}
 	public get connectedToInternet() {
 		return true;
@@ -168,6 +171,14 @@ export class BartenderClient extends Client {
 	 */
 	public log(obj: any): void {
 		this.dryLog("LOG", obj, chalk.whiteBright, chalk.gray);
+	}
+	/**
+	 * @description Send a debug message.
+	 * @param {any} obj The object to be sent.
+	 * @returns {void}.
+	 */
+	public debug(obj: any): void {
+		this.dryLog("DBG", obj, chalk.cyanBright, chalk.cyan);
 	}
 	/**
 	 * @description Errors to the console.
