@@ -2,12 +2,11 @@ import { database } from "../auth.json";
 import { constants } from "@db-module/constants";
 import { sync } from "glob";
 import { basename, join } from "path";
-import { randomString } from "@db-module/utils";
 const { host, name, username, password } = database;
 import { createConnection, Connection, Entity, PrimaryGeneratedColumn, Column, PrimaryColumn, BaseEntity,
 	 OneToMany, ManyToOne, OneToOne, Generated, CreateDateColumn, UpdateDateColumn, BeforeInsert, JoinColumn, JoinTable, ManyToMany, Unique } from "typeorm";
 export { Connection, BaseEntity } from "typeorm";
-
+import { pickString } from "randomify";
 
 export enum TypeSpecials {
 	NONE = "",
@@ -152,7 +151,7 @@ export namespace models {
 
 		@BeforeInsert()
 		private beforeInsert() {
-			this.id = randomString();
+			this.id = pickString("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", 6);
 		}
 	}
 
@@ -169,6 +168,9 @@ export namespace models {
 
 		@Column()
 		public identifier!: string;
+
+		@Column("text", { default: "No description provided." })
+		public description!: string;
 
 		@Column({
 			type: "enum",

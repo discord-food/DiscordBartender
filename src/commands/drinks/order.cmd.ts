@@ -6,7 +6,7 @@ export const command = new Command("order", "Orders a drink.", [], ["odr"], [] a
 		if (await client.models.Orders.count({ where: { user: message.author.id } })) return message.channel.send(lang.commands.order.exists);
 		const allTypes = await client.models.Types.find({ order: { special: "ASC", id: "DESC" } });
 		if (!allTypes.length) return message.channel.send(`[no] The menu is empty. What happened?`);
-		const typeIndex = await client.utils.getIndex(message, allTypes.map(x => x.name), allTypes, `**[menu] Discord Bartender Menu [menu]**
+		const typeIndex = await client.utils.getIndex(message, allTypes.map(x => `${x.name} # ${x.description}`), allTypes, `**[menu] Discord Bartender Menu [menu]**
 \`\`\`ini
 {}
 \`\`\`

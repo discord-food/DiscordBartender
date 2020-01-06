@@ -153,12 +153,6 @@ export const getUser = async(
 	if (!filter(nameDict.item[0])) return null;
 	return nameDict.item[0].user || null;
 };
-export const randomString = (len = 6) => {
-	const all =
-		"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	const arr = all.split("");
-	return sampleSize(arr, len).join("");
-};
 export class ProgressBar {
 	public constructor(
 		public length = 100,

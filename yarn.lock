@@ -2735,6 +2735,11 @@ r2@^2.0.1:
     node-fetch "^2.0.0-alpha.8"
     typedarray-to-buffer "^3.1.2"
 
+randomify@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/randomify/-/randomify-1.3.2.tgz#b2d401099fac489d67f86fca9ae7ab61d834c154"
+  integrity sha512-XNW0WvVpvTd4yGS9JPNzX+jbC42Bcit4zIV+rvDUhjjRx4wC8oDo7tKoJytzaXSvOaML/ZzGRNt9s3q76hDQNA==
+
 range-parser@~1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
