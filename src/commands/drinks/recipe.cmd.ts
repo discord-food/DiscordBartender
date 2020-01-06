@@ -14,7 +14,7 @@ ${(await client.models.Types.find()).map(x => `\`${x.identifier}\`)}`).join(" ")
 			.setDescription(`Preparing **${recipe.identifier}**.`);
 		for (const item of recipe.recipe) {
 			const itemType = item.item;
-			embed.addField(`${itemType.symbol} ${itemType.name} [${item.count}]`, `**${item.count} ${itemType.identifier}**`);
+			embed.addField(`${itemType.symbol} **${item.count} ${itemType.name}**`, `*${itemType.description}*`);
 		}
 		await message.channel.send(embed);
 	});
