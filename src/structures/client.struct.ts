@@ -118,6 +118,9 @@ export class BartenderClient extends Client {
 	public get version() {
 		return readFileSync(this.db("./version.txt"), { encoding: "utf8" });
 	}
+	public async getActiveOrder(id: string) {
+		return (await sql.models.Orders.find({ where: { user: id } })).find(x => x.available);
+	}
 	public get connectedToInternet() {
 		return true;
 	}

@@ -11,7 +11,7 @@ ${(await client.models.Types.find()).map(x => `\`${x.identifier}\`)}`).join(" ")
 		};
 		const embed = new client.Embed()
 			.setTitle(`Recipe for ${recipe.name}`)
-			.setDescription(`Preparing **${recipe.identifier}**.`);
+			.setDescription(`The ingredients that are needed to prepare **${recipe.identifier}**.`);
 		for (const item of recipe.recipe) {
 			const itemType = item.item;
 			embed.addField(`${itemType.symbol} **${item.count} ${itemType.name}**`, `*${itemType.description}*`);

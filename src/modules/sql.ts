@@ -172,6 +172,9 @@ export namespace models {
 		@Column("text", { default: "No description provided." })
 		public description!: string;
 
+		@Column({ default: 5 })
+		public price!: number;
+
 		@Column({
 			type: "enum",
 			enum: TypeSpecials,
