@@ -10,4 +10,7 @@ export class BakeryEmbed extends MessageEmbed {
 		if (color === Colors.RANDOM) color = Math.floor(Math.random() * 0x1000000);
 		return super.setColor(color);
 	}
+	public addField(name: string, value = "None", inline = true) {
+		return super.addField(name, value, inline);
+	}
 }
