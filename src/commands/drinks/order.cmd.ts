@@ -22,5 +22,7 @@ export const command = new Command("order", "Orders a drink.", [], ["odr"], [] a
 		}
 		const order = client.models.Orders.create({ description, type, user: message.author.id, metadata: { channel: message.channel.id } });
 		await order.save();
+		account.balance -= type.price;
+		await account.save();
 		await message.channel.send(order.id);
 	});

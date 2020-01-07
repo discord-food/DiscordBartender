@@ -8,5 +8,5 @@ export const command = new Command(
 	[] as const,
 	permissions.everyone
 ).setExec(async(client, message, args, lang) => {
-	await message.channel.send(`[add] **Invite the bot at** <${client.generateInvite(client.constants.permissions)}>!`);
+	await message.channel.send(`[add] **Invite the bot at** <${await client.generateInvite(client.constants.permissions)}>!`);
 });
