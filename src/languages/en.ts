@@ -64,6 +64,7 @@ export const language: Languages = {
 		permission: new Formattable("[no] You do not have permission to execute this command.\nYou must have the permission `{}` to execute this command."),
 		graph: new Formattable("[no] Invalid equation.\n`{}`"),
 		cooldown: new Formattable("[no] You must wait `{}` before you can use the command `{}` again."),
-		guildPermission: new Formattable("[no] I do not have enough permissions in this server to run the requested task. I still need the permissions {}.")
+		guildPermission: new Formattable("[no] I do not have enough permissions in this server to run the requested task. I still need the permissions {}."),
+		noOrder: "[ripped] You currently do not have an active order.",
 	},
 };

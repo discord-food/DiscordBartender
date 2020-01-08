@@ -68,6 +68,7 @@ declare global {
 			cooldown: Formattable;
 			codes: { [index: number]: string };
 			guildPermission: Formattable;
+			noOrder: string;
 		};
 	}
 

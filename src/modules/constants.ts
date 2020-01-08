@@ -51,6 +51,7 @@ export const constants: Constants = {
 		subtract: "663520154776502272",
 		menu: "663568180806942730",
 		clay: "663566299846410242",
+		ripped: "664318615943905290",
 	},
 	eval: new Formattable(`(async () => { const { client } = await import(require("path").join(__rootname, "/modules/client")); {} })()`), // ")
 	guild: "602945093762154507",
