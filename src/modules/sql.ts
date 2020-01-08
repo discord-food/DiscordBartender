@@ -120,7 +120,7 @@ export namespace models {
 	}
 
 	@Entity()
-	export class Orders extends BaseEntity {
+	export class Orders extends SetupEntity {
 		@PrimaryColumn("varchar")
 		public id!: string;
 

@@ -7,6 +7,6 @@ export const command = new Command("drinks", "Lists all the types of drinks.", [
 		const embed = new client.Embed()
 			.setTitle(`Drink List`)
 			.setDescription(`All preparable drinks.`);
-		for (const type of all) embed.addField(`${type.name} [${type.orders.length}]`, `**Price**: $${type.price}, **ID**: ${type.identifier}`);
+		for (const type of all) embed.addField(`${type.name} [${type.orders.length} orders]`, `**Price**: $${type.price}, **ID**: ${type.identifier}`);
 		await message.channel.send(embed);
 	});
