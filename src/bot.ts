@@ -18,7 +18,7 @@ const reader = createInterface({
 // eslint-disable-next-line @typescript-eslint/no-misused-promises
 (process as NodeJS.EventEmitter).on("uncaughtException", async(err: Error, p) => {
 	if (err) client.error(err.stack);
-	await (client.mainChannels.get("fatal") as Discord.TextChannel)?.send(`Fatal error.\n\`\`\`js\n${err.toString()}\n\`\`\``);
+	await (client.mainChannels.get("fatal") as Discord.TextChannel)?.send(`Fatal error.\n\`\`\`js\n${err.stack}\n\`\`\``);
 	process.exit(1);
 });
 // eslint-disable-next-line @typescript-eslint/no-misused-promises

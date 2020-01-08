@@ -138,6 +138,7 @@ export const getUser = async(
 		.mainGuild!.members.concat(message.guild!.members)
 		.map(x => [x, compareUsers(toParse, x.user)] as [GuildMember, number])
 		.filter(x => filter(x[0]))
+		.filter(x => x[1])
 		.sort(
 			(x, y) =>
 				compareUsers(toParse, y[0].user) -
