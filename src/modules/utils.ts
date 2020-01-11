@@ -73,7 +73,7 @@ interface GetIndexReturnVal<T> {
 	item: T;
 	displayItem: any;
 }
-const calling: string[] = [];
+const calling: Set<string> = new Set();
 export const getIndex = async <T>(
 	message: Message,
 	list: any[],
@@ -81,11 +81,13 @@ export const getIndex = async <T>(
 	display = "item",
 	displayFormat = false
 ): Promise<GetIndexReturnVal<T> | false> => {
-	if (calling.includes(message.author.id)) return void await message.channel.send("[no] You are already responding to another prompt.") ?? false;
+	if (calling.has(message.author.id)) return void await message.channel.send("[no] You are already responding to another prompt.") ?? false;
+	calling.add(message.author.id);
 	if (internal.length < 2) {
 		await message.channel.send(
 			`\`${list[0]}\` has been automatically chosen, as it is the only option.`
 		);
+		calling.delete(message.author.id);
 		return { index: 0, item: internal[0], displayItem: list[0] };
 	}
 	const mapped = list.map((x, i) => `[${i + 1}] ${x}`);
@@ -103,6 +105,7 @@ ${mapped.join("\n")}
 			!isNaN(+m.content) && +m.content > 0 && +m.content <= list.length
 	);
 	if (!index) return false;
+	calling.delete(message.author.id);
 	return {
 		index: index - 1,
 		item: internal[index - 1],
