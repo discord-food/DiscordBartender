@@ -91,7 +91,7 @@ export const getIndex = async <T>(
 		return { index: 0, item: internal[0], displayItem: list[0] };
 	}
 	const mapped = list.map((x, i) => `[${i + 1}] ${x}`);
-	const index = await exports.getText(
+	const index = await getText(
 		message,
 		displayFormat ?
 			display.replace("{}", mapped.join("\n")) :
@@ -104,12 +104,12 @@ ${mapped.join("\n")}
 		(m: Message) =>
 			!isNaN(+m.content) && +m.content > 0 && +m.content <= list.length
 	);
-	if (!index) return false;
 	calling.delete(message.author.id);
+	if (!index) return false;
 	return {
-		index: index - 1,
-		item: internal[index - 1],
-		displayItem: list[index - 1]
+		index: +index - 1,
+		item: internal[+index - 1],
+		displayItem: list[+index - 1]
 	};
 };
 export const limit = (num: number, min: number, max: number): number =>
