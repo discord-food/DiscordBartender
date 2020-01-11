@@ -10,6 +10,7 @@ import {
 import { compareTwoStrings } from "string-similarity";
 import { sampleSize } from "lodash";
 import { constants } from "./constants";
+import { models } from "./sql";
 export const similarTo = (value: string, checking: string): boolean =>
 	compareTwoStrings(value.toLowerCase(), checking) > 0.8;
 export const sendEnhancements = (channel: Channel, val: any): any => {
@@ -72,6 +73,7 @@ interface GetIndexReturnVal<T> {
 	item: T;
 	displayItem: any;
 }
+const calling: string[] = [];
 export const getIndex = async <T>(
 	message: Message,
 	list: any[],
@@ -79,6 +81,7 @@ export const getIndex = async <T>(
 	display = "item",
 	displayFormat = false
 ): Promise<GetIndexReturnVal<T> | false> => {
+	if (calling.includes(message.author.id)) return void await message.channel.send("[no] You are already responding to another prompt.") ?? false;
 	if (internal.length < 2) {
 		await message.channel.send(
 			`\`${list[0]}\` has been automatically chosen, as it is the only option.`
@@ -153,6 +156,13 @@ export const getUser = async(
 	if (!nameDict) return null;
 	if (!filter(nameDict.item[0])) return null;
 	return nameDict.item[0].user || null;
+};
+export const getOrder = async(message: Message, arg: string, { available } = { available: true }): Promise<models.Orders | null> => {
+	const all = await message.bartender.models.Orders.find();
+	const found = all.find(x => x.id === arg.trim());
+	if (found) return found;
+	const indexed = await getIndex(message, all, all.map(x => `${x.id} - ${x.descriptor}`));
+	return null;
 };
 export class ProgressBar {
 	public constructor(

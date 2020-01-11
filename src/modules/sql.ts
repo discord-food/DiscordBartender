@@ -142,6 +142,9 @@ export namespace models {
 		public get available(): boolean {
 			return (this.status ?? 0) <= 5;
 		}
+		public get descriptor(): string {
+			return (this.type.special === TypeSpecials.CUSTOM ? this.description : this.type.name) ?? "Unknown";
+		}
 
 		@Column("jsonb", { default: {} })
 		public metadata!: { claimer?: string; channel: string };

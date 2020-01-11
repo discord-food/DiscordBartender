@@ -7,5 +7,5 @@ export const command = new Command("list", "List all available orders.", [], ["l
 		const orders = (await client.models.Orders.find({ order: { createdAt: "ASC" } })).filter(x => x.available).sort((x, y) => (x.status ?? 0) - (y.status ?? 0));
 		if (!orders) return message.channel.send(lang.commands.list.noOrders);
 		await message.channel.send(`>>> **__Current Unclaimed Orders__**:
-${orders.map(x => `\`${x.id}\` *${moment(x.createdAt).fromNow()}*: **${x.statusString}${x.status === client.sql.Status.PREPARING ? client.users.get(x.metadata.claimer ?? "")?.tag ?? "Unknown User#0000" : ""}** - ${x.description ?? x.type.name}`).join("\n")}`);
+${orders.map(x => `\`${x.id}\`: **${x.statusString}${x.status === client.sql.Status.PREPARING ? client.users.get(x.metadata.claimer ?? "")?.tag ?? "Unknown User#0000" : ""}** - \`${x.descriptor}\` - *${moment(x.createdAt).fromNow()}*`).join("\n")}`);
 	});

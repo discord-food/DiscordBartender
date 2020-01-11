@@ -41,6 +41,5 @@ declare module "discord.js" {
 		permissions?: string[];
 	}
 }
-
 Base.prototype.bartender = client;
 eval("global.__rootname = require('path').join(__dirname, '../')");
