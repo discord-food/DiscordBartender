@@ -157,6 +157,7 @@ export class BartenderClient extends Client {
 		for (const [argObj, arg] of matched) {
 			const typeFunc = func.get(argObj.type);
 			const processed = await (typeFunc ?? argObj.type)(arg, returnVal, argObj);
+			console.log(processed);
 			if (argObj.required) {
 				if (processed === null && arg) return { error: { obj: argObj, type: 0 } };
 				if (!arg && argObj.required) return { error: { obj: argObj, type: 1 } };
