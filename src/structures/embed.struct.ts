@@ -11,6 +11,6 @@ export class BakeryEmbed extends MessageEmbed {
 		return super.setColor(color);
 	}
 	public addField(name: string, value: any = "None", inline = true) {
-		return super.addField(name, value === "" ? "None" : value, inline);
+		return super.addField(name, value === "" ? "None" : String(value).slice(0, 1999), inline);
 	}
 }
