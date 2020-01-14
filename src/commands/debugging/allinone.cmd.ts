@@ -2,7 +2,7 @@ import { EmbedField, GuildMember, Util } from "discord.js";
 import { transpile } from "typescript";
 import { permissions } from "../../modules/permissions";
 import { Command } from "@db-struct/command.struct";
-export const command = new Command("allinone", "ALL IN ONE.", [], [], [] as const, permissions.developer)
+export const command = new Command("allinone", "ALL IN ONE.", [], ["aio"], [] as const, permissions.developer)
 	.setExec(async(client, message, args, lang) => {
 		const bar = new client.utils.ProgressBar(3, 70);
 		const gen = (n: number) => `\n\`\`\`${bar.generate(n, { percent: true })}\`\`\``;

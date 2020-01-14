@@ -160,12 +160,13 @@ export const getUser = async(
 	if (!filter(nameDict.item[0])) return null;
 	return nameDict.item[0].user || null;
 };
-export const getOrder = async(message: Message, arg: string, { available } = { available: true }): Promise<models.Orders | null> => {
-	const all = await message.bartender.models.Orders.find();
+export const getOrder = async(message: Message, arg: string, { available, filter }: {available?: boolean; filter?: (order: models.Orders) => boolean} = { available: true }): Promise<models.Orders | null> => {
+	const all = (await message.bartender.models.Orders.find()).filter(filter ?? (() => true));
+	if (!all.length) return void message.channel.send(`There are currently no available orders.`) ?? null;
 	const found = all.find(x => x.id === arg.trim());
 	if (found) return found;
-	const indexed = await getIndex(message, all, all.map(x => `${x.id} - ${x.descriptor}`));
-	return null;
+	const indexed = await getIndex(message, all.map(x => `${x.id} - ${x.descriptor}`), all);
+	return indexed ? indexed.item : null;
 };
 export class ProgressBar {
 	public constructor(

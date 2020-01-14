@@ -2,8 +2,9 @@ import chalk from "chalk";
 import { Channel, Constructable, GuildMember, Message, Role, User } from "discord.js";
 import { parse } from "hjson";
 import { Permission } from "../modules/permissions";
-import { getArgType, getUser, limit, similarTo } from "../modules/utils";
+import { getArgType, getUser, limit, similarTo, getOrder } from "../modules/utils";
 import { BartenderClient } from "./client.struct";
+import { models } from "@db-module/sql";
 type ReturnExec<T extends ArgumentObject> = {
 	[index in T[][number]["name"]]: GetType<T[][number]["type"]>
 };
@@ -17,6 +18,7 @@ type GetType<T> =
 		T["funcname"] extends "USER" ? User:
 		T["funcname"] extends "WITHIN" | "INDEX" ? number:
 		T["funcname"] extends "CUSTOM" ? FlatConstruct<T["special"]>:
+		T["funcname"] extends "ORDER" ? models.Orders:
 		T["funcname"] extends "ROLE" ? Role
 		: never
 	: any;
@@ -24,6 +26,8 @@ type NullableGetType<T> = GetType<T> | null;
 export class Command<T extends ArgumentObject> {
 	public static OR = <T extends string[]>(...vals: T) => Object.assign((arg: string) => vals.find(x => arg && similarTo(arg.toLowerCase(), x.toLowerCase())) ?? null
 		, { get typename() { return vals.join("|"); }, get special() { return vals; }, get funcname() { return "OR" as const; } });
+	public static ORDER = (params: Parameters<typeof getOrder>[2]) => Object.assign((arg: string, args: Args) => getOrder(args._message, arg, params)
+		, { get typename() { return "ORDER"; }, get special() { return "ORDER"; }, get funcname() { return "ORDER" as const; } });
 	public static INDEX = (...vals: string[][]) => Object.assign((arg: string) => vals.findIndex(x => x.some(y => similarTo(arg.toLowerCase(), y.toLowerCase()))) || null
 		, { get typename(): string { return vals.map(x => x.join(", ")).join("|"); }, get funcname() { return "INDEX"; } });
 	public static WITHIN = (min: number, max: number) => Object.assign((arg: string) => isNaN(+arg) ? null : limit(+arg, min, max)
