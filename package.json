@@ -85,7 +85,7 @@
 		"socket.io": "^2.3.0",
 		"source-map-support": "^0.5.13",
 		"string-similarity": "^3.0.0",
-		"typeorm": "^0.2.22",
+		"typeorm": "^0.3.0-alpha.24",
 		"typeorm-upsert": "https://github.com/danielmhanover/typeorm-upsert/",
 		"typescript": "^3.7.4"
 	},
