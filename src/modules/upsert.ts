@@ -1,9 +1,8 @@
-import { BaseEntity, ObjectType, QueryBuilder, Connection, SelectQueryBuilder, Entity, FindOneOptions } from "typeorm";
+import { BaseEntity, ObjectType, QueryBuilder, Connection, SelectQueryBuilder, Entity, IndexOptions } from "typeorm";
 import _ from "lodash";
 
 type ClassType<T> = {
 	new(): T;
-	createQueryBuilder<T>(this: ObjectType<T>, alias?: string | undefined): SelectQueryBuilder<T | BaseEntity>;
 } & typeof BaseEntity;
 // i copied this
 /*
@@ -47,7 +46,7 @@ export const CreateIfNotExist = async <T>(entity: ClassType<T>, pk: keyof T, val
 	return (await qb.returning("*").execute()).generatedMaps[0] as T;
 };
 
-export const CreateIfNotExistByPk = async <T>(entity: ClassType<T>, pk: keyof T, key: any, options: FindOneOptions<BaseEntity> = {}) => {
+export const CreateIfNotExistByPk = async <T>(entity: ClassType<T>, pk: keyof T, key: any, options: any = {}) => {
 	const e = await entity.findOne({ where: { [pk]: key }, ...options });
 	if (e) return e;
 	await entity.insert([{ [pk]: key }]);

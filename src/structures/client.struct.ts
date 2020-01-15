@@ -110,7 +110,7 @@ export class BartenderClient extends Client {
 		});
 	}
 	public getAccount(id: string): Promise<sql.models.Userinfo> {
-		return CreateIfNotExistByPk(this.models.Userinfo, "id", id, {}) as any;
+		return CreateIfNotExistByPk(this.models.Userinfo as any, "id", id, {}) as any;
 	}
 	public async getGlobals(): Promise<sql.models.Globals> {
 		return await sql.models.Globals.findOne() ?? (await sql.models.Globals.insert({}), await sql.models.Globals.findOne())!;
