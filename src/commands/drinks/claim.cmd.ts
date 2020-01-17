@@ -9,6 +9,7 @@ export const command = new Command("claim", "Claim an order.", [], ["cl"], [{ na
 		const { order } = args;
 		if (!order) return;
 		order.metadata.claimer = message.author.id;
+		order.status = Status.PREPARING;
 		await order.save();
 		await message.channel.send(lang.commands.claim.success.format(order.id));
 	});
