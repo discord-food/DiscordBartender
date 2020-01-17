@@ -24,5 +24,5 @@ export const command = new Command("order", "Orders a drink.", [], ["odr"], [] a
 		await order.save();
 		account.balance -= type.price;
 		await account.save();
-		await message.channel.send(order.id);
+		await message.channel.send(lang.commands.order.success.format(order.type.name, order.id));
 	});

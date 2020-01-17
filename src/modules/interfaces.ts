@@ -91,6 +91,7 @@ declare global {
 		};
 		order: {
 			exists: string;
+			success: Formattable;
 		};
 		claim: {
 			exists: string;

@@ -47,6 +47,7 @@ export const language: Languages = {
 			])
 		},
 		order: {
+			success: new Formattable("[yes] Your order for **{}** has been placed! The order ID is `{}`."),
 			exists: "[no] You already have an active order."
 		},
 		claim: {
