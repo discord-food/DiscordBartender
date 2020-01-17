@@ -110,10 +110,13 @@ export class BartenderClient extends Client {
 		});
 	}
 	public getAccount(id: string): Promise<sql.models.Userinfo> {
-		return CreateIfNotExistByPk(this.models.Userinfo as any, "id", id, {}) as any;
+		return CreateIfNotExistByPk(models.Userinfo as any, "id", id, {}) as any;
 	}
 	public async getGlobals(): Promise<sql.models.Globals> {
-		return await sql.models.Globals.findOne() ?? (await sql.models.Globals.insert({}), await sql.models.Globals.findOne())!;
+		return await models.Globals.findOne() ?? (await models.Globals.insert({}), await models.Globals.findOne())!;
+	}
+	public async getClaimedOrder(id: string): Promise<sql.models.Orders | undefined> {
+		return (await models.Orders.find()).find(x => x.metadata.claimer === id);
 	}
 	public get version() {
 		return readFileSync(this.db("./version.txt"), { encoding: "utf8" });

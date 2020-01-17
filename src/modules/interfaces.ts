@@ -92,6 +92,10 @@ declare global {
 		order: {
 			exists: string;
 		};
+		claim: {
+			exists: string;
+			success: Formattable;
+		};
 	}
 
 	interface ArgumentObject {

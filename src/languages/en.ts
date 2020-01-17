@@ -49,6 +49,10 @@ export const language: Languages = {
 		order: {
 			exists: "[no] You already have an active order."
 		},
+		claim: {
+			success: new Formattable("[yes] You have successfully claimed the order `{}`."),
+			exists: "[no] You already have a claimed order.",
+		},
 	},
 	errors: {
 		codes: {

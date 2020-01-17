@@ -8,6 +8,7 @@ export const handler = async(message: Message) => {
 	if (!message.guild || !message.author || message.author.bot || !client.user || message.channel.type !== "text" || !(message.channel instanceof TextChannel)) return;
 	message.guild.options = await Upsert(models.Guildoptions as any, { id: message.guild.id } as models.Guildoptions, "id");
 	message.author.options = await Upsert(models.Useroptions as any, { id: message.author.id } as models.Useroptions, "id");
+	message.ping = process.hrtime.bigint();
 	const account = await client.getAccount(message.author.id);
 	const lang = client.getLanguage(message.author.options.language ?? message.guild.options.language);
 	if (!lang) return;

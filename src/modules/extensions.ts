@@ -39,7 +39,8 @@ declare module "discord.js" {
 
 	interface Message {
 		permissions?: string[];
+		ping?: bigint;
 	}
 }
 Base.prototype.bartender = client;
-eval("global.__rootname = require('path').join(__dirname, '../')");
+eval("globalThis.__rootname = require('path').join(__dirname, '../')");
