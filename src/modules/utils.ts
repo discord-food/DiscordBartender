@@ -79,14 +79,13 @@ export const getIndex = async <T>(
 	list: any[],
 	internal: T[] = list.map((x, i) => x === null ? list[i] : x),
 	display = "item",
-	displayFormat = false
+	displayFormat = false,
+	silent = false
 ): Promise<GetIndexReturnVal<T> | false> => {
 	if (calling.has(message.author.id)) return void await message.channel.send("[no] You are already responding to another prompt.") ?? false;
 	calling.add(message.author.id);
 	if (internal.length < 2) {
-		await message.channel.send(
-			`\`${list[0]}\` has been automatically chosen, as it is the only option.`
-		);
+		if (!silent) await message.channel.send(`\`${list[0]}\` has been automatically chosen, as it is the only option.`);
 		calling.delete(message.author.id);
 		return { index: 0, item: internal[0], displayItem: list[0] };
 	}
@@ -124,7 +123,7 @@ const compareUsers = (text: string, user: User) =>
 export const getUser = async(
 	message: Message,
 	toParse: string,
-	{ autoself = false, filter = (member: GuildMember) => true }
+	{ autoself = false, filter = (member: GuildMember) => true, silent = false }
 ): Promise<User | null> => {
 	const client = message.bartender;
 	const id = toParse.replace(/<@!?[0-9]+>/g, input =>
@@ -160,9 +159,9 @@ export const getUser = async(
 	if (!filter(nameDict.item[0])) return null;
 	return nameDict.item[0].user || null;
 };
-export const getOrder = async(message: Message, arg: string, { available, filter }: {available?: boolean; filter?: (order: models.Orders) => boolean} = { available: true }): Promise<models.Orders | null> => {
+export const getOrder = async(message: Message, arg: string, { available, filter, silent }: {available?: boolean; filter?: (order: models.Orders) => boolean; silent?: boolean} = { available: true, silent: false }): Promise<models.Orders | null> => {
 	const all = (await message.bartender.models.Orders.find()).filter(filter ?? (() => true));
-	if (!all.length) return void message.channel.send(`There are currently no available orders.`) ?? null;
+	if (!all.length) return silent ? null : void message.channel.send(`There are currently no available orders.`) ?? null;
 	const found = all.find(x => x.id === arg.trim());
 	if (found) return found;
 	const indexed = await getIndex(message, all.map(x => `${x.id} - ${x.descriptor}`), all);

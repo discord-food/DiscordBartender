@@ -3,7 +3,7 @@ import { permissions } from "../../modules/permissions";
 import { Command } from "@db-struct/command.struct";
 import moment = require("moment-timezone");
 import { Status } from "@db-module/sql";
-export const command = new Command("claim", "Claim an order.", [], ["cl"], [{ name: "order", type: Command.ORDER({ filter: order => order.status === Status.UNPREPARED }) }] as const, permissions.staff)
+export const command = new Command("claim", "Claim an order.", [], ["cl"], [{ name: "order", type: Command.ORDER({ filter: order => order.status === Status.UNPREPARED, silent: true }) }] as const, permissions.staff)
 	.setExec(async(client, message, args, lang) => {
 		if (await client.getClaimedOrder(message.author.id)) return message.channel.send(lang.commands.claim.exists);
 		const { order } = args;
