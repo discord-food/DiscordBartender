@@ -8,6 +8,7 @@ export const command = new Command("claim", "Claim an order.", [], ["cl"], [{ na
 		if (await client.getClaimedOrder(message.author.id)) return message.channel.send(lang.commands.claim.exists);
 		const { order } = args;
 		if (!order) return;
+		if (order.user === message.author.id) return message.channel.send(lang.commands.claim.own);
 		order.metadata.claimer = message.author.id;
 		order.status = Status.PREPARING;
 		await order.save();

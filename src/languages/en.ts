@@ -53,6 +53,7 @@ export const language: Languages = {
 		claim: {
 			success: new Formattable("[yes] You have successfully claimed the order `{}`."),
 			exists: "[no] You already have a claimed order.",
+			own: "[no] You cannot claim your own order.",
 		},
 	},
 	errors: {

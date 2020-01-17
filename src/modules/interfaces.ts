@@ -96,6 +96,7 @@ declare global {
 		claim: {
 			exists: string;
 			success: Formattable;
+			own: string;
 		};
 	}
 
