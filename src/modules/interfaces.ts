@@ -98,6 +98,10 @@ declare global {
 			success: Formattable;
 			own: string;
 		};
+		unclaim: {
+			success: string;
+			notFound: string;
+		};
 	}
 
 	interface ArgumentObject {

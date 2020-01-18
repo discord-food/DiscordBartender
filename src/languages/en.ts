@@ -55,6 +55,10 @@ export const language: Languages = {
 			exists: "[no] You already have a claimed order.",
 			own: "[no] You cannot claim your own order.",
 		},
+		unclaim: {
+			notFound: "[no] You have not claimed any orders.",
+			success: "[yes] The order was successfully unclaimed."
+		},
 	},
 	errors: {
 		codes: {
