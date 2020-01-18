@@ -15,16 +15,18 @@ export const handler = async() => {
 		if (Math.round(Math.random())) return;
 		const all = (await client.getGlobals()).items;
 		const add: models.InventoryItem[] = [];
+		const msg: string[] = [];
 		for (const item of all) {
-			const chance = 45 / item.count;
+			const chance = 145 / item.count;
 			if (Math.random() < chance) add.push(item);
 		}
 		for (const item of add) {
-			const toAdd = Math.max(120 - item.count, Math.random() * (item.count / 2));
+			const toAdd = Math.max(100 - item.count, Math.random() * (item.count / 2));
 			item.count += toAdd;
 			await item.save();
+			msg.push(`${toAdd} ${item.item.name}`);
 		}
-		if (add.length) await client.mainChannels.get("brewery")?.send(`[truck] A delivery of ${add.map(x => `**${x.item.name}**`).join(", ")} has arrived!`);
+		if (msg.length) await client.mainChannels.get("brewery")?.send(`[truck] A delivery of ${msg.map(x => `**${x}**`).join(", ")} has arrived!`);
 	}, 20000);
 	const globs = await client.getGlobals();
 	const items = await client.models.Item.find();
