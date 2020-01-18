@@ -57,7 +57,7 @@ export const language: Languages = {
 		},
 		unclaim: {
 			notFound: "[no] You have not claimed any orders.",
-			success: "[yes] The order was successfully unclaimed."
+			success: new Formattable("[yes] The order `{}` was successfully unclaimed.")
 		},
 	},
 	errors: {

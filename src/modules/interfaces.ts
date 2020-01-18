@@ -99,7 +99,7 @@ declare global {
 			own: string;
 		};
 		unclaim: {
-			success: string;
+			success: Formattable;
 			notFound: string;
 		};
 	}

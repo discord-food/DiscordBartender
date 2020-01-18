@@ -9,5 +9,5 @@ export const command = new Command("unclaim", "Unclaim an order.", [], ["ucl"], 
 		delete order.metadata.claimer;
 		order.status = client.sql.Status.UNPREPARED;
 		await order.save();
-		await message.channel.send(lang.commands.unclaim.success);
+		await message.channel.send(lang.commands.unclaim.success.format(order.id));
 	});
