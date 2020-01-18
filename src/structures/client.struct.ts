@@ -14,7 +14,7 @@ import * as sql from "../modules/sql";
 const { BaseEntity, models, connection } = sql;
 import * as utils from "../modules/utils";
 import { Command } from "./command.struct";
-import { BakeryEmbed } from "./embed.struct";
+import { BartenderEmbed } from "./embed.struct";
 import { CreateIfNotExistByPk } from "@db-module/upsert";
 import ISO from "iso-639-1";
 import { Colors } from "@db-module/interfaces";
@@ -30,9 +30,9 @@ export class BartenderClient extends Client {
 	/** @property {string} EMPTY A string with an invisible character. */
 	public EMPTY = "​";
 	/**
-	 * @property {typeof BakeryEmbed} embed BakeryEmbed.
+	 * @property {typeof BartenderEmbed} embed BartenderEmbed.
 	 */
-	public Embed: typeof BakeryEmbed = BakeryEmbed;
+	public Embed: typeof BartenderEmbed = BartenderEmbed;
 	/**
 	 * @property {typeof models} models SQL models.
 	 */
@@ -58,9 +58,9 @@ export class BartenderClient extends Client {
 	 */
 	public commands: Collection<string, Command<any>> = new Collection();
 	/**
-	 * @property {Collection<string, Channel>} mainChannels The commands for the bot.
+	 * @property {Collection<string, TextChannel>} mainChannels The commands for the bot.
 	 */
-	public mainChannels: Collection<string, Channel> = new Collection();
+	public mainChannels: Collection<string, TextChannel> = new Collection();
 	/**
 	 * @property {Collection<string, Emoji>} mainEmojis The commands for the bot.
 	 */
@@ -327,7 +327,7 @@ export class BartenderClient extends Client {
 				this.error(`Channel ${chalk.redBright(name)} was not found.`);
 				continue;
 			}
-			this.mainChannels.set(name, channel);
+			this.mainChannels.set(name, channel as TextChannel);
 		}
 		this.mainEmojis = new Collection();
 		for (const [name, id] of Object.entries(constants.emojis)) {

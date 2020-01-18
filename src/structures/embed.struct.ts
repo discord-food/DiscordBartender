@@ -1,6 +1,6 @@
 import { MessageEmbed, MessageEmbedOptions, ColorResolvable } from "discord.js";
 import { Colors } from "@db-module/interfaces";
-export class BakeryEmbed extends MessageEmbed {
+export class BartenderEmbed extends MessageEmbed {
 	public constructor(data?: MessageEmbed | MessageEmbedOptions | undefined) {
 		super(data);
 		this.setTimestamp();

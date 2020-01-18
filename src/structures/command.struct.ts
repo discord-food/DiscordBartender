@@ -5,9 +5,11 @@ import { Permission } from "../modules/permissions";
 import { getArgType, getUser, limit, similarTo, getOrder } from "../modules/utils";
 import { BartenderClient } from "./client.struct";
 import { models } from "@db-module/sql";
-type ReturnExec<T extends ArgumentObject> = {
+type ReturnOneExec<T extends ArgumentObject | any> = {
 	[index in T[][number]["name"]]: GetType<T[][number]["type"]>
 };
+type ReturnManyExec<T extends readonly ArgumentObject[]> = { [K in keyof T]: ReturnOneExec<T[K]> };
+type ReturnExec<T extends readonly ArgumentObject[]> = UnionToIntersection<ReturnManyExec<T>[number]>;
 type FlatConstruct<T> = T extends typeof String | typeof Number | typeof Boolean ? ReturnType<T> : T extends Constructable<any> ? InstanceType<T> : T;
 type GetType<T> =
 	T extends typeof String | typeof Number | typeof Boolean ? ReturnType<T> :
@@ -23,7 +25,7 @@ type GetType<T> =
 		: never
 	: any;
 type NullableGetType<T> = GetType<T> | null;
-export class Command<T extends ArgumentObject> {
+export class Command<T extends readonly ArgumentObject[]> {
 	public static OR = <T extends string[]>(...vals: T) => Object.assign((arg: string) => vals.find(x => arg && similarTo(arg.toLowerCase(), x.toLowerCase())) ?? null
 		, { get typename() { return vals.join("|"); }, get special() { return vals; }, get funcname() { return "OR" as const; } });
 	public static ORDER = (params: Parameters<typeof getOrder>[2]) => Object.assign((arg: string, args: Args) => getOrder(args._message, arg, params)
@@ -65,7 +67,7 @@ export class Command<T extends ArgumentObject> {
 	public category?: string;
 	public execFunc?: (client: BartenderClient, message: Message, args: Args & ReturnExec<T>, lang: Languages) => any;
 	public readonly path: string;
-	public constructor(public name: string, public description: string = "No description specified.", public aliases: string[] = [], public shortcuts: string[] = [], public syntax: Readonly<readonly T[]>, public permissionLevel: Permission, public cooldown = 0) {
+	public constructor(public name: string, public description: string = "No description specified.", public aliases: string[] = [], public shortcuts: string[] = [], public syntax: T, public permissionLevel: Permission, public cooldown = 0) {
 		this.path = module.parent!.filename;
 	}
 	public get syntaxString() {

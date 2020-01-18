@@ -7,7 +7,7 @@ export const command = new Command("recipe", "Read the recipe of an order.", [],
 		const recipe = await client.models.Types.findOne({ identifier });
 		if (!recipe) {
 			return message.channel.send(`[no] Recipe was not found. Valid types:
-${(await client.models.Types.find()).map(x => `\`${x.identifier}\`)}`).join(" ")}`);
+${(await client.models.Types.find()).map(x => `\`${x.identifier}\``).join(" ")}`);
 		};
 		const embed = new client.Embed()
 			.setTitle(`Recipe for ${recipe.name}`)

@@ -7,7 +7,7 @@ import { createConnection, Connection, Entity, PrimaryGeneratedColumn, Column, P
 	 OneToMany, ManyToOne, OneToOne, Generated, CreateDateColumn, UpdateDateColumn, BeforeInsert, JoinColumn, JoinTable, ManyToMany, Unique } from "typeorm";
 export { Connection, BaseEntity } from "typeorm";
 import { pickString } from "randomify";
-
+import { BartenderEmbed } from "@db-struct/embed.struct";
 export enum TypeSpecials {
 	NONE = "",
 	CUSTOM = "custom",
@@ -145,7 +145,12 @@ export namespace models {
 		public get descriptor(): string {
 			return (this.type.special === TypeSpecials.CUSTOM ? this.description : this.type.name) ?? "Unknown";
 		}
-
+		public get embed(): BartenderEmbed {
+			return new BartenderEmbed()
+				.setTitle(`Order Info for \`${this.id}\``)
+				.setDescription(`Information about the order \`${this.id}\`.`)
+				.addField(`🆔 ID`, this.id);
+		}
 		@Column("jsonb", { default: {} })
 		public metadata!: { claimer?: string; channel: string };
 

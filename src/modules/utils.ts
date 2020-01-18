@@ -114,7 +114,7 @@ ${mapped.join("\n")}
 export const limit = (num: number, min: number, max: number): number =>
 	Math.max(Math.min(+num, max), min);
 export const getArgType = (argType: CallableFunction): CallableFunction =>
-	new Collection(constants.arguments).get(argType) ?? argType;
+	new Collection<CallableFunction, TypeCheck>(constants.arguments).get(argType) ?? argType;
 const compareUsers = (text: string, user: User) =>
 	Math.max(
 		compareTwoStrings(text.toLowerCase(), user.username.toLowerCase()),

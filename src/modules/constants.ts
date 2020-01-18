@@ -1,5 +1,6 @@
 import { join } from "path";
 import { Formattable } from "../structures/formattable.struct";
+const assertType = <T>(arg: T) => { "assert"; };
 declare global {
 	interface Constants {
 		readonly prefix: string;
@@ -18,7 +19,7 @@ declare global {
 		readonly permissions: number;
 	}
 }
-export const constants: Constants = {
+export const constants = {
 	admins: [
 		"413143886702313472",
 		"256392197648154624",
@@ -31,6 +32,7 @@ export const constants: Constants = {
 	],
 	channels: {
 		fatal: "661811790732197928",
+		brewery: "647623591122173952",
 	},
 	emojis: {
 		brick: "609823798031810560",
@@ -80,3 +82,5 @@ export const constants: Constants = {
 	statuses: ["Unprepared", new Formattable("Preparing by {}"), "Brewing", "Pending Delivery", "Delivering", "Delivered", "Cancelled By User", "Deleted By Staff", "Failed Preparation"],
 	permissions: 104201409,
 } as const;
+assertType<Constants>(constants)
+;
