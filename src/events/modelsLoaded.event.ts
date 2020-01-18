@@ -24,7 +24,7 @@ export const handler = async() => {
 			item.count += toAdd;
 			await item.save();
 		}
-		await client.mainChannels.get("brewery")?.send(`[yes] An ingredient `);
+		if (add.length) await client.mainChannels.get("brewery")?.send(`[truck] A delivery of ${add.map(x => `**${x.item.name}**`).join(", ")} has arrived!`);
 	}, 20000);
 	const globs = await client.getGlobals();
 	const items = await client.models.Item.find();
