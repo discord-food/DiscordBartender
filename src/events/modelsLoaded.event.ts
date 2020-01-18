@@ -21,7 +21,7 @@ export const handler = async() => {
 			if (Math.random() < chance) add.push(item);
 		}
 		for (const item of add) {
-			const toAdd = Math.random() * (item.count < 120 ? item.count / 2 : item.count);
+			const toAdd = Math.random() * (item.count > 220 ? item.count / 2 : item.count);
 			item.count += toAdd;
 			await item.save();
 			msg.push(`${toAdd} ${item.item.name}`);
