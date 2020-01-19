@@ -73,6 +73,7 @@ export class BartenderClient extends Client {
 	 * @property {Collection<string, Role>} mainRoles The roles for the bot.
 	 */
 	public mainRoles: Collection<string, Role> = new Collection();
+	public intervals: Collection<string, NodeJS.Timeout> = new Collection();
 	/**
 	 * @property {Collection<number, Role>} milestones The milestone roles.
 	 */
