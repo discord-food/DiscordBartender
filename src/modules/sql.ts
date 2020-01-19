@@ -142,7 +142,12 @@ export namespace models {
 		})
 		public status!: Status;
 		public get statusString(): typeof constants.statuses[number] {
-			return constants.statuses[this.status ?? 0];
+			const status = constants.statuses[this.status ?? 0];
+			return typeof status === "string" ? status : status.format("a worker");
+		}
+		public statusStringFull(client: Client): typeof constants.statuses[number] {
+			const status = constants.statuses[this.status ?? 0];
+			return typeof status === "string" ? status : status.format(client.users.get(this.metadata.claimer!)?.tag ?? "an unknown worker");
 		}
 		public get available(): boolean {
 			return this.status <= 5;
@@ -151,17 +156,17 @@ export namespace models {
 			return (this.type.special === TypeSpecials.CUSTOM ? this.description : this.type.name) ?? "Unknown";
 		}
 		public getEmbed(client: Client): BartenderEmbed {
-			const userify = (id: string) => `**${client.users.get(id)?.tag ?? "Unknown"}**, **ID**: ${id}`;
+			const userify = (id: string) => `**${client.users.get(id)?.tag ?? "Unknown"}**\n**ID**: ${id}`;
 			const channel = client.channels.get(this.metadata.channel) as TextChannel | undefined;
 			const embed = new BartenderEmbed()
 				.setTitle(`Order Info for \`${this.id}\``)
 				.setDescription(`Information about the order \`${this.id}\`.`)
 				.addField(`🎫 ID`, `\`${this.id}\``)
 				.addField(`🍹 Description`, this.descriptor)
-				.addField(`🚦 Status`, this.statusString)
+				.addField(`🚦 Status`, this.statusStringFull(client))
 				.addField(`👤 Customer`, userify(this.user))
-				.addField(`#️⃣ Channel`, `**#${channel?.name ?? "Unknown"}**, **ID**: ${this.metadata.channel}`);
-			if (channel) embed.addField(`🏚️ Guild`, `**${channel.guild.name}**, **ID**: ${channel.guild.id}`);
+				.addField(`#️⃣ Channel`, `**#${channel?.name ?? "Unknown"}**\n**ID**: ${this.metadata.channel}`);
+			if (channel) embed.addField(`🏚️ Guild`, `**${channel.guild.name}**\n**ID**: ${channel.guild.id}`);
 			if (this.metadata.claimer) embed.addField(`🎟️ Claimer`, userify(this.metadata.claimer));
 			return embed;
 		}
