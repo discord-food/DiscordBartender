@@ -34,7 +34,7 @@ export const handler = async() => {
 							Math.random() * 150,
 							Math.ceil(Math.random() * (10 - (item.count / 100)))
 						)
-					);
+					) + 5;
 					item.count += toAdd;
 					await item.save();
 					msg.push(`${toAdd} ${item.item.name}`);

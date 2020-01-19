@@ -159,7 +159,9 @@ export const getUser = async(
 	if (!filter(nameDict.item[0])) return null;
 	return nameDict.item[0].user || null;
 };
-export const getOrder = async(message: Message, arg: string, { available, filter, silent }: {available?: boolean; filter?: (order: models.Orders) => boolean; silent?: boolean} = { available: true, silent: false }): Promise<models.Orders | null> => {
+export const getOrder = async(message: Message, arg: string, { available = true, silent = false, allowAll = false, filter }: {available?: boolean; filter?: (order: models.Orders) => boolean; silent?: boolean; allowAll?: boolean} = { }): Promise<models.Orders | null> => {
+	const fO = await message.bartender.models.Orders.findOne({ where: { id: arg.trim() } });
+	if (fO && allowAll) return fO;
 	const all = (await message.bartender.models.Orders.find()).filter(filter ?? (() => true));
 	if (!all.length) return silent ? null : void message.channel.send(`There are currently no available orders.`) ?? null;
 	const found = all.find(x => x.id === arg.trim());
