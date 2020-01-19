@@ -46,7 +46,7 @@ export const handler = async() => {
 					const channel = client.mainChannels.get("brewery");
 					const breweryMessages = await channel?.messages.fetch();
 					const firstMsg = breweryMessages?.first();
-					if (firstMsg?.author.id === client.user?.id) await firstMsg?.edit(mess);
+					if (firstMsg?.author.id === client.user?.id && firstMsg?.content.includes("A delivery of **")) await firstMsg?.edit(mess);
 					else await channel?.send(mess);
 				}
 			}, 20000)
