@@ -12,6 +12,10 @@ export enum TypeSpecials {
 	NONE = "",
 	CUSTOM = "custom",
 }
+export enum CategorySpecials {
+	NONE = "",
+	INGREDIENTS = "ingredients",
+}
 export enum Status {
 	UNPREPARED,
 	PREPARING,
@@ -260,6 +264,13 @@ export namespace models {
 
 		@OneToMany(type => Item, item => item.category, { cascade: ["insert", "update"] })
 		public items!: Item[];
+
+		@Column({
+			type: "enum",
+			enum: CategorySpecials,
+			default: CategorySpecials.NONE
+		})
+		public special!: CategorySpecials;
 	}
 	@Entity()
 	export class InventoryItem extends BaseEntity {

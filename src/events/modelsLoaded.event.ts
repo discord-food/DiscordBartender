@@ -21,7 +21,7 @@ export const handler = async() => {
 			if (Math.random() < chance) add.push(item);
 		}
 		for (const item of add) {
-			const toAdd = Math.floor(Math.max(Math.random() * 100, Math.ceil(Math.random() * (7 - (item.count / 100)))));
+			const toAdd = Math.floor(Math.max(Math.random() * 150, Math.ceil(Math.random() * (10 - (item.count / 100)))));
 			item.count += toAdd;
 			await item.save();
 			msg.push(`${toAdd} ${item.item.name}`);
@@ -29,7 +29,7 @@ export const handler = async() => {
 		if (msg.length) await client.mainChannels.get("brewery")?.send(`[truck] A delivery of ${msg.map(x => `**${x}**`).join(", ")} has arrived!`);
 	}, 20000);
 	const globs = await client.getGlobals();
-	const items = await client.models.Item.find();
+	const items = await client.models.Item.find({ where: { category: { special: client.sql.CategorySpecials.INGREDIENTS } } });
 	for (const item of items) {
 		if (globs.items.find(x => x.item.identifier === item.identifier)) continue;
 		const invItem = client.models.InventoryItem.create();
