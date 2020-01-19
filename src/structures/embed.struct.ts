@@ -1,7 +1,7 @@
 import { MessageEmbed, MessageEmbedOptions, ColorResolvable } from "discord.js";
 import { Colors } from "@db-module/interfaces";
 export class BartenderEmbed extends MessageEmbed {
-	public constructor(data?: MessageEmbed | MessageEmbedOptions | undefined) {
+	public constructor(private inline: boolean = true, data?: MessageEmbed | MessageEmbedOptions | undefined) {
 		super(data);
 		this.setTimestamp();
 		this.setColor(Colors.RANDOM);
@@ -10,7 +10,7 @@ export class BartenderEmbed extends MessageEmbed {
 		if (color === Colors.RANDOM) color = Math.floor(Math.random() * 0x1000000);
 		return super.setColor(color);
 	}
-	public addField(name: string, value: any = "None", inline = true) {
+	public addField(name: string, value: any = "None", inline = this.inline ?? true) {
 		return super.addField(name, value === "" ? "None" : String(value).slice(0, 1999), inline);
 	}
 }

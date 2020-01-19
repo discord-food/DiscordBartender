@@ -5,7 +5,7 @@ export const command = new Command("ingredients", "List all ingredients.", [], [
 	.setExec(async(client, message, args, lang) => {
 		const globs = await client.getGlobals();
 		const ingredients = globs.items;
-		const embed = new client.Embed()
+		const embed = new client.Embed(false)
 			.setTitle("Ingredients")
 			.setDescription("A list of all ingredients.");
 		for (const ingr of ingredients) embed.addField(`${ingr.item.symbol} ${ingr.item.name} [${ingr.count} left]`, `**${ingr.item.identifier}**: ${ingr.item.description}`);
