@@ -8,6 +8,7 @@ import { createConnection, Connection, Entity, PrimaryGeneratedColumn, Column, P
 export { Connection, BaseEntity } from "typeorm";
 import { pickString } from "randomify";
 import { BartenderEmbed } from "@db-struct/embed.struct";
+import { Client, User, TextChannel } from "discord.js";
 export enum TypeSpecials {
 	NONE = "",
 	CUSTOM = "custom",
@@ -139,21 +140,30 @@ export namespace models {
 			enum: Status,
 			default: Status.UNPREPARED
 		})
-		public status?: Status;
+		public status!: Status;
 		public get statusString(): typeof constants.statuses[number] {
 			return constants.statuses[this.status ?? 0];
 		}
 		public get available(): boolean {
-			return (this.status ?? 0) <= 5;
+			return this.status <= 5;
 		}
 		public get descriptor(): string {
 			return (this.type.special === TypeSpecials.CUSTOM ? this.description : this.type.name) ?? "Unknown";
 		}
-		public get embed(): BartenderEmbed {
-			return new BartenderEmbed()
+		public getEmbed(client: Client): BartenderEmbed {
+			const userify = (id: string) => `**${client.users.get(id)?.tag ?? "Unknown"}**, **ID**: ${id}`;
+			const channel = client.channels.get(this.metadata.channel) as TextChannel | undefined;
+			const embed = new BartenderEmbed()
 				.setTitle(`Order Info for \`${this.id}\``)
 				.setDescription(`Information about the order \`${this.id}\`.`)
-				.addField(`🆔 ID`, this.id);
+				.addField(`🎫 ID`, `\`${this.id}\``)
+				.addField(`🍹 Description`, this.descriptor)
+				.addField(`🚦 Status`, this.statusString)
+				.addField(`👤 Customer`, userify(this.user))
+				.addField(`#️⃣ Channel`, `**#${channel?.name ?? "Unknown"}**, **ID**: ${this.metadata.channel}`);
+			if (channel) embed.addField(`🏚️ Guild`, `**${channel.guild.name}**, **ID**: ${channel.guild.id}`);
+			if (this.metadata.claimer) embed.addField(`🎟️ Claimer`, userify(this.metadata.claimer));
+			return embed;
 		}
 		@Column("jsonb", { default: {} })
 		public metadata!: { claimer?: string; channel: string };
