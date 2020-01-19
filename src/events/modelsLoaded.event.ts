@@ -40,13 +40,14 @@ export const handler = async() => {
 					msg.push(`${toAdd} ${item.item.name}`);
 				}
 				if (msg.length) {
-					await client.mainChannels
-						.get("brewery")
-						?.send(
-							`[truck] A delivery of ${msg
-								.map(x => `**${x}**`)
-								.join(", ")} has arrived!`
-						);
+					const mess = `[truck] A delivery of ${msg
+						.map(x => `**${x}**`)
+						.join(", ")} has arrived!`;
+					const channel = client.mainChannels.get("brewery");
+					const breweryMessages = await channel?.messages.fetch();
+					const firstMsg = breweryMessages?.first();
+					if (firstMsg?.author.id === client.user?.id) await firstMsg?.edit(mess);
+					else await channel?.send(mess);
 				}
 			}, 20000)
 		);
