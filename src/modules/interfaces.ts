@@ -69,6 +69,7 @@ declare global {
 			codes: { [index: number]: string };
 			guildPermission: Formattable;
 			noOrder: string;
+			noClaimedOrder: string;
 		};
 	}
 

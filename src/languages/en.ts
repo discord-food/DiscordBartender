@@ -76,5 +76,6 @@ export const language: Languages = {
 		cooldown: new Formattable("[no] You must wait `{}` before you can use the command `{}` again."),
 		guildPermission: new Formattable("[no] I do not have enough permissions in this server to run the requested task. I still need the permissions {}."),
 		noOrder: "[ripped] You currently do not have an active order.",
+		noClaimedOrder: "[ripped] You currently do not have a claimed order.",
 	},
 };
