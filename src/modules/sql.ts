@@ -180,6 +180,8 @@ export namespace models {
 		private beforeInsert() {
 			this.id = pickString("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", 6);
 		}
+		@Column("int", { array: true, default: "{}" })
+		public prepared!: number[];
 	}
 
 	@Entity()

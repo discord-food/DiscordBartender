@@ -190,7 +190,7 @@ export class BartenderClient extends Client {
 	 * @returns {void}.
 	 */
 	public debug(obj: any): void {
-		this.dryLog("DBG", obj, chalk.cyanBright, chalk.cyan);
+		this.dryLog("DBG", obj, chalk.cyanBright, chalk.cyan, "debug");
 	}
 	/**
 	 * @description Errors to the console.
@@ -198,7 +198,7 @@ export class BartenderClient extends Client {
 	 * @returns {void}.
 	 */
 	public error(obj: any): void {
-		this.dryLog("ERR", obj, chalk.redBright, chalk.red);
+		this.dryLog("ERR", obj, chalk.redBright, chalk.red, "error");
 	}
 	/**
 	 * @description Warns to the console.
@@ -206,7 +206,7 @@ export class BartenderClient extends Client {
 	 * @returns {void}.
 	 */
 	public warn(obj: any): void {
-		this.dryLog("WRN", obj, chalk.yellowBright, chalk.yellow);
+		this.dryLog("WRN", obj, chalk.yellowBright, chalk.yellow, "warn");
 	}
 	/**
 	 * @description Successes to the console.
@@ -409,8 +409,8 @@ export class BartenderClient extends Client {
 	 * @param {any} obj The object to be logged.
 	 * @returns {void}.
 	 */
-	private dryLog(prefix: string, obj: any, labelColor: CallableFunction = chalk.whiteBright, color: CallableFunction = chalk.white): void {
+	private dryLog(prefix: string, obj: any, labelColor: CallableFunction = chalk.whiteBright, color: CallableFunction = chalk.white, consoleProp: keyof Console = "log"): void {
 		if (obj instanceof Object) obj = inspect(obj, true, 2, true);
-		console.log(`[${labelColor(prefix)}] ${color(obj)}`);
+		console[consoleProp](`[${labelColor(prefix)}] ${color(obj)}`);
 	}
 }

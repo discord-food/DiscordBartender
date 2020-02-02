@@ -11,9 +11,9 @@ export const command = new Command("graph", "Graph a math equation.", [], [], [{
 	} catch {
 		return null;
 	}
-}) }] as const, permissions.everyone)
+}, {} as MathNode) }] as const, permissions.everyone)
 	.setExec(async(client, message, args, lang) => {
-		const equation: MathNode = args.equation;
+		const equation = args.equation;
 		try {
 			equation.evaluate({ x: 2 });
 		} catch (err) {

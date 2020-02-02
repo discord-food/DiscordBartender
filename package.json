@@ -7,7 +7,7 @@
 	"scripts": {
 		"test": "echo yeet",
 		"start": "node dist/bot",
-		"build": "del /S /q dist\\* && xcopy src dist /s /e /exclude:exclude.txt && tsc ",
+		"build": "tsc ",
 		"fresh": "rm -r dist/*",
 		"bstart": "yarn build && yarn start",
 		"renew": "yarn run fresh && yarn run compile",
@@ -54,6 +54,7 @@
 		"express": "^4.17.1",
 		"express-handlebars": "^3.1.0",
 		"extends-classes": "^1.0.5",
+		"faker": "^4.1.0",
 		"fs-extra": "^8.1.0",
 		"glob": "^7.1.4",
 		"global": "^4.4.0",
