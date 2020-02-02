@@ -5,7 +5,8 @@ import {
 	Message,
 	MessageEmbed,
 	TextChannel,
-	User
+	User,
+	MessageReaction
 } from "discord.js";
 import { compareTwoStrings } from "string-similarity";
 import { sampleSize } from "lodash";
@@ -18,7 +19,7 @@ export const sendEnhancements = (channel: Channel, val: any): any => {
 		String(str).replace(/\[.+?\]/g, x => {
 			const y = x.match(/(?<=\[).+?(?=\])/g);
 			if (!y) return x;
-			const emoji = channel.bartender.mainEmojis.get(y[0]);
+			const emoji = channel.bartender.mainEmojis.get(y[0] as any);
 			return emoji ? emoji.toString() : x;
 		});
 	if (typeof val === "object" && "embed" in val) val = new MessageEmbed(val.embed);
@@ -74,6 +75,13 @@ interface GetIndexReturnVal<T> {
 	displayItem: any;
 }
 const calling: Set<string> = new Set();
+export const getConfirmation = async(message: Message, display = "Are you sure?", invertOrder = false) => {
+	const msg = await message.channel.send(display);
+	await msg.react("[yes]");
+	await msg.react("[no]");
+	const reaction = await msg.awaitReactions((r: MessageReaction, user: User) => user.id === message.author.id && ["no", "yes"].includes(r.emoji.name), { max: 1, time: 15000 });
+	return reaction.first()?.emoji.name === "yes";
+};
 export const getIndex = async <T>(
 	message: Message,
 	list: any[],

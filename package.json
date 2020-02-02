@@ -12,7 +12,8 @@
 		"bstart": "yarn build && yarn start",
 		"renew": "yarn run fresh && yarn run compile",
 		"dist": "yarn run renew && yarn start",
-		"ez": "git pull;yarn;tsc;yarn start",
+		"ez": "git pull;sudo yarn;tsc;sudo yarn start",
+		"lez": "git pull;tsc;sudo yarn start",
 		"lazy": "ts-node .",
 		"windows": "rmdir /s /q \"./dist/\" && mkdir dist && yarn run compile && yarn start"
 	},

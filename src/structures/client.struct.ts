@@ -60,24 +60,22 @@ export class BartenderClient extends Client {
 	/**
 	 * @property {Collection<string, TextChannel>} mainChannels The commands for the bot.
 	 */
-	public mainChannels: Collection<string, TextChannel> = new Collection();
+	public mainChannels: Collection<keyof (typeof constants)["channels"], TextChannel> = new Collection();
 	/**
 	 * @property {Collection<string, Emoji>} mainEmojis The commands for the bot.
 	 */
-	public mainEmojis: Collection<string, Emoji> = new Collection();
+	public mainEmojis: Collection<keyof (typeof constants)["emojis"], Emoji> = new Collection();
 	/**
 	 * @property {Collection<string, Message>} mainMessages The commands for the bot.
 	 */
-	public mainMessages: Collection<string, Message> = new Collection();
-	/**
-	 * @property {Collection<string, Role>} mainRoles The roles for the bot.
-	 */
-	public mainRoles: Collection<string, Role> = new Collection();
+	public mainMessages: Collection<keyof (typeof constants)["messages"], Message> = new Collection();
+
+	public mainRoles: Collection<keyof (typeof constants)["roles"], Role> = new Collection();
 	public intervals: Collection<string, NodeJS.Timeout> = new Collection();
 	/**
 	 * @property {Collection<number, Role>} milestones The milestone roles.
 	 */
-	public milestones: Collection<number, Role> = new Collection();
+	public milestones: Collection<(typeof constants)["milestones"][number]["value"], Role> = new Collection();
 	/**
 	 * @property {Auth} auth The auth.json file.
 	 */
@@ -328,7 +326,7 @@ export class BartenderClient extends Client {
 				this.error(`Channel ${chalk.redBright(name)} was not found.`);
 				continue;
 			}
-			this.mainChannels.set(name, channel as TextChannel);
+			this.mainChannels.set(name as any, channel as TextChannel);
 		}
 		this.mainEmojis = new Collection();
 		for (const [name, id] of Object.entries(constants.emojis)) {
@@ -337,7 +335,7 @@ export class BartenderClient extends Client {
 				this.error(`Emoji ${chalk.redBright(name)} was not found.`);
 				continue;
 			}
-			this.mainEmojis.set(name, emoji);
+			this.mainEmojis.set(name as any, emoji);
 		}
 		this.mainMessages = new Collection();
 		for (const [name, id] of Object.entries(constants.messages)) {
@@ -357,7 +355,7 @@ export class BartenderClient extends Client {
 				this.error(`Message ${chalk.redBright(name)} was not found.`);
 				continue;
 			}
-			this.mainMessages.set(name, message);
+			this.mainMessages.set(name as any, message);
 		}
 		this.mainRoles = new Collection();
 		for (const [name, id] of Object.entries(constants.roles)) {
@@ -377,7 +375,7 @@ export class BartenderClient extends Client {
 				this.error(`Role ${chalk.redBright(name)} was not found.`);
 				continue;
 			}
-			this.mainRoles.set(name, role);
+			this.mainRoles.set(name as any, role);
 		}
 		this.milestones = new Collection();
 		for (const milestone of constants.milestones) {
