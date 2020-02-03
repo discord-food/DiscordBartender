@@ -8,7 +8,8 @@ export const command = new Command("prepare", "Prepare your current claimed orde
 		const global = await client.getGlobals();
 		const order = await client.getClaimedOrder(message.author.id);
 		if (!order) return message.channel.send(lang.errors.noClaimedOrder);
-		const checkPrepared = () => order.type.recipe.every(x => order.prepared.includes(x.id));
+		const checkPrepared = async() => order.type.recipe.every(x => order.prepared.includes(x.id)) && (order.status = Status.PENDING_DELIVERY, message.channel.send("The order is fully prepared! It is now pending delivery."));
+		if (await checkPrepared()) return;
 		const embed = new client.Embed(false)
 			.setTitle(`Ingredient Checklist for \`${order.id}\``)
 			.setDescription(`The ingredients needed to prepare \`${order.id}\``);
@@ -29,5 +30,6 @@ export const command = new Command("prepare", "Prepare your current claimed orde
 			order.prepared.push(ingr.id);
 		}
 		await order.save();
+		if (await checkPrepared()) return;
 		await message.channel.send("All preparable ingredients have been prepared.");
 	});
