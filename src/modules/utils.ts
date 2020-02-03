@@ -80,7 +80,7 @@ export const getConfirmation = async(message: Message, display = "Are you sure?"
 	const yes = await msg.react("[yes]");
 	const no = await msg.react("[no]");
 	const reaction = await msg.awaitReactions((r: MessageReaction, user: User) => user.id === message.author.id && [yes.emoji.id, no.emoji.id].includes(r.emoji.id ?? ""), { max: 1, time: 15000 });
-	return reaction.first()?.emoji.name === "yes";
+	return reaction.first()?.emoji.id === yes.emoji.id;
 };
 export const getIndex = async <T>(
 	message: Message,
