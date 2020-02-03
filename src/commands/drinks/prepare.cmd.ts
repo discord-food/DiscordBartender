@@ -8,6 +8,7 @@ export const command = new Command("prepare", "Prepare your current claimed orde
 		const global = await client.getGlobals();
 		const order = await client.getClaimedOrder(message.author.id);
 		if (!order) return message.channel.send(lang.errors.noClaimedOrder);
+		const checkPrepared = () => order.type.recipe.every(x => order.prepared.includes(x.id));
 		const embed = new client.Embed(false)
 			.setTitle(`Ingredient Checklist for \`${order.id}\``)
 			.setDescription(`The ingredients needed to prepare \`${order.id}\``);
