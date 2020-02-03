@@ -71,6 +71,7 @@ declare global {
 			noOrder: string;
 			noClaimedOrder: string;
 			notPreparing: string;
+			notDelivering: string;
 		};
 	}
 

@@ -170,8 +170,8 @@ export namespace models {
 			if (this.metadata.claimer) embed.addField(`🎟️ Claimer`, userify(this.metadata.claimer));
 			return embed;
 		}
-		@Column("jsonb", { default: {} })
-		public metadata!: { claimer?: string; channel: string };
+		@Column("jsonb", { default: { brewFinish: 157767052146000 } })
+		public metadata!: { claimer?: string; channel: string; brewFinish: number };
 
 		@ManyToOne(type => models.Types, type => type.orders, { cascade: ["insert", "update"], eager: true })
 		public type!: models.Types;

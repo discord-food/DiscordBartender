@@ -78,5 +78,6 @@ export const language: Languages = {
 		noOrder: "[ripped] You currently do not have an active order.",
 		noClaimedOrder: "[ripped] You currently do not have a claimed order.",
 		notPreparing: "[ripped] Your claimed order currently isn't pending preparation.",
+		notDelivering: "[ripped] Your claimed order isn't ready for delivery.",
 	},
 };

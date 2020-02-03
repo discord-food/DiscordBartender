@@ -33,6 +33,7 @@ export const constants = {
 	channels: {
 		fatal: "661811790732197928",
 		brewery: "647623591122173952",
+		delivery: "647623683753639936",
 	},
 	emojis: {
 		brick: "609823798031810560",

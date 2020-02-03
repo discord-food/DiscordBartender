@@ -7,7 +7,7 @@ export const command = new Command("unclaim", "Unclaim an order.", [], ["ucl"], 
 		const order = await client.getClaimedOrder(message.author.id);
 		if (!order) return message.channel.send(lang.commands.unclaim.notFound);
 		delete order.metadata.claimer;
-		order.status = client.sql.Status.UNPREPARED;
+		if (order.status === client.sql.Status.PREPARING) order.status = client.sql.Status.UNPREPARED;
 		await order.save();
 		await message.channel.send(lang.commands.unclaim.success.format(order.id));
 	});

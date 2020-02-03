@@ -51,6 +51,14 @@ export const handler = async() => {
 				}
 			}, 20000)
 		);
+		client.intervals.set("orders", client.setInterval(async() => {
+			const orders = await client.models.Orders.find();
+			for (const order of orders.filter(x => x.metadata.brewFinish <= Date.now())) {
+				order.status = client.sql.Status.PENDING_DELIVERY;
+				await order.save();
+				await client.mainChannels.get("delivery")?.send(`Order \`${order.id}\` has finished brewing; it is now available to be delivered.`);
+			}
+		}, 2000));
 	}
 	const globs = await client.getGlobals();
 	const items = await client.models.Item.find({
