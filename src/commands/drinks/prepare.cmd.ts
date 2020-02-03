@@ -21,7 +21,7 @@ export const command = new Command("prepare", "Prepare your current claimed orde
 		}
 		await message.channel.send(embed);
 		if (!preparable.length) return;
-		if (!await client.utils.getConfirmation(message, `The ingredients ${preparable.map(x => `**${x[0].item.name}**`).join(", ")} are currently preparable.\nWould you like to prepare them?`)) return;
+		if (!await client.utils.getConfirmation(message, `The ingredients ${preparable.map(x => `**${x[0].item.name}**`).join(", ")} are currently preparable.\nWould you like to prepare them?`)) return message.channel.send(`The ingredients were not prepared.`);
 		for (const [ingr, item] of preparable) {
 			item.count -= ingr.count;
 			await item.save();
