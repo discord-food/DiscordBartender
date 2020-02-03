@@ -16,7 +16,8 @@ export const command = new Command("deliver", "Deliver an order.", [], ["dv"], [
 			.setDescription(`Information needed to deliver the order \`${order.id}\``)
 			.addField("Channel", `**#${channel?.name ?? "unknown"}** (ID: ${channel.id})`)
 			.addField("Invite", `[Join the guild](${invite.url})`)
-			.addField("Image", order.metadata.image);
+			.addField("Image", order.metadata.image)
+			.addField("User", client.users.get(order.user)?.toString() ?? "Unknown");
 		if (channel) embed.addField("Guild", `**${guild.name}** (ID: ${guild.id})`);
 		await message.author.send(embed);
 		await message.react("[yes]");
