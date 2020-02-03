@@ -3,10 +3,9 @@ import { permissions } from "../../modules/permissions";
 import { Command } from "@db-struct/command.struct";
 import moment = require("moment-timezone");
 import { Status } from "@db-module/sql";
-export const command = new Command("deliver", "Deliver an order.", [], ["pp"], [] as const, permissions.staff)
+export const command = new Command("deliver", "Deliver an order.", [], ["dv"], [{ name: "order", type: Command.ORDER({ available: false, filter: order => order.status === Status.PENDING_DELIVERY }) }] as const, permissions.staff)
 	.setExec(async(client, message, args, lang) => {
-		const order = await client.getClaimedOrder(message.author.id);
-		if (!order) return message.channel.send(lang.errors.noClaimedOrder);
+		const { order } = args;
 		if (order.status !== Status.PENDING_DELIVERY) return message.channel.send(lang.errors.notDelivering);
 		const channel = client.channels.get(order.metadata.channel) as GuildChannel;
 		const guild = channel?.guild;
@@ -16,7 +15,8 @@ export const command = new Command("deliver", "Deliver an order.", [], ["pp"], [
 			.setTitle(`Delivery Info for \`${order.id}\``)
 			.setDescription(`Information needed to deliver the order \`${order.id}\``)
 			.addField("Channel", `**#${channel?.name ?? "unknown"}** (ID: ${channel.id})`)
-			.addField("Invite", `[Join the guild](${invite.url})`);
+			.addField("Invite", `[Join the guild](${invite.url})`)
+			.addField("Image", order.metadata.image);
 		if (channel) embed.addField("Guild", `**${guild.name}** (ID: ${guild.id})`);
 		await message.author.send(embed);
 		await message.react("[yes]");

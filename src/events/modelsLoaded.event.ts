@@ -53,7 +53,7 @@ export const handler = async() => {
 		);
 		client.intervals.set("orders", client.setInterval(async() => {
 			const orders = await client.models.Orders.find();
-			for (const order of orders.filter(x => x.metadata.brewFinish <= Date.now())) {
+			for (const order of orders.filter(x => x.status === client.sql.Status.FERMENTING && x.metadata.brewFinish <= Date.now())) {
 				order.status = client.sql.Status.PENDING_DELIVERY;
 				await order.save();
 				await client.mainChannels.get("delivery")?.send(`Order \`${order.id}\` has finished brewing; it is now available to be delivered.`);

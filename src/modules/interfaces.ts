@@ -72,6 +72,7 @@ declare global {
 			noClaimedOrder: string;
 			notPreparing: string;
 			notDelivering: string;
+			url: string;
 		};
 	}
 
@@ -95,6 +96,9 @@ declare global {
 		order: {
 			exists: string;
 			success: Formattable;
+		};
+		brew: {
+			success: string;
 		};
 		claim: {
 			exists: string;

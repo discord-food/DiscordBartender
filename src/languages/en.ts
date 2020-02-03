@@ -59,6 +59,9 @@ export const language: Languages = {
 			notFound: "[no] You have not claimed any orders.",
 			success: new Formattable("[yes] The order `{}` was successfully unclaimed.")
 		},
+		brew: {
+			success: "[yes] The order has been brewed. It is now fermenting.",
+		},
 	},
 	errors: {
 		codes: {
@@ -79,5 +82,6 @@ export const language: Languages = {
 		noClaimedOrder: "[ripped] You currently do not have a claimed order.",
 		notPreparing: "[ripped] Your claimed order currently isn't pending preparation.",
 		notDelivering: "[ripped] Your claimed order isn't ready for delivery.",
+		url: "🔗 The link you provided was not a url."
 	},
 };

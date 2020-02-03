@@ -43,18 +43,18 @@ export const getText = async(
 	message: Message,
 	display = "Respond with text.",
 	time = 40000,
-	filter: CallableFunction = (m: Message) => m.author.id === message.author.id
+	filter: (m: Message) => boolean = (m: Message) => m.author.id === message.author.id
 ): Promise<string | undefined> => {
 	await message.channel.send(display);
 	const res = await message.channel.awaitMessages(
 		m =>
-			(m.content && similarTo(m.content, "cancel")) ||
-			Boolean(filter(m) && m.author.id === message.author.id),
+			((m.content && similarTo(m.content, "cancel")) ||
+			filter(m)) && m.author.id === message.author.id,
 		{ time, max: 1 }
 	);
 	if (!res.size) return void message.channel.send("No response. Cancelled.");
 	const resm = res.first()!;
-	if (resm.attachments.size) return resm.attachments.first()!.proxyURL;
+	if (resm.attachments.size) return resm.attachments.map(x => x.proxyURL).join(", ");
 	if (similarTo(resm.content, "cancel")) return void message.channel.send("Cancelled.");
 	return resm.content;
 };
@@ -62,7 +62,7 @@ export const getOptionalText = async(
 	message: Message,
 	display = "Respond with text.",
 	time = 40000,
-	filter: CallableFunction = (m: Message) => m.author.id === message.author.id
+	filter: (m: Message) => boolean = (m: Message) => m.author.id === message.author.id
 ): Promise<string | false | undefined> => {
 	const text = await getText(message, display, time, filter);
 	if (!text || similarTo(text, "no")) return false;

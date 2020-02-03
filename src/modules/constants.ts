@@ -83,7 +83,7 @@ export const constants = {
 			id: "661298369507098673"
 		},
 	],
-	statuses: ["Unprepared", new Formattable("Preparing by {}"), "Brewing", "Pending Delivery", "Delivering", "Delivered", "Cancelled By User", "Deleted By Staff", "Failed Preparation"],
+	statuses: ["Unprepared", new Formattable("Preparing by {}"), "Brewing", "Fermenting", "Pending Delivery", "Delivering", "Delivered", "Cancelled By User", "Deleted By Staff", "Failed Preparation"],
 	permissions: 104201409,
 } as const;
 assertType<Constants>(constants)
