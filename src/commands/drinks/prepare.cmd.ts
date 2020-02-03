@@ -11,11 +11,22 @@ export const command = new Command("prepare", "Prepare your current claimed orde
 		const embed = new client.Embed(false)
 			.setTitle(`Ingredient Checklist for \`${order.id}\``)
 			.setDescription(`The ingredients needed to prepare \`${order.id}\``);
+		const preparable: [InstanceType<typeof client.models.RecipeItem>, InstanceType<typeof client.models.InventoryItem>][] = [];
 		for (const ingredient of order.type.recipe) {
 			const item = global.items.find(x => x.item.id === ingredient.item.id);
 			if (!item) return;
 			const status = order.prepared.includes(ingredient.id) ? 2 : item.count >= ingredient.count ? 1 : 0;
+			if (status === 1) preparable.push([ingredient, item]);
 			embed.addField(`[${(["symbolNo", "symbolGrayNo", "symbolYes"] as const)[status]}] **${item.item.name}** - **${["NOT PREPARED", "PREPARABLE", "PREPARED"][status]}**`, `**${item.count}**/${ingredient.count}`);
 		}
 		await message.channel.send(embed);
+		if (!preparable.length) return;
+		if (!await client.utils.getConfirmation(message, `The ingredients ${preparable.map(x => `**${x[0].item.name}**`).join(", ")} are currently preparable.\nWould you like to prepare them?`)) return;
+		for (const [ingr, item] of preparable) {
+			item.count -= ingr.count;
+			await item.save();
+			order.prepared.push(ingr.id);
+		}
+		await order.save();
+		await message.channel.send("All preparable ingredients have been prepared.");
 	});
