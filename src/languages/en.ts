@@ -77,5 +77,6 @@ export const language: Languages = {
 		guildPermission: new Formattable("[no] I do not have enough permissions in this server to run the requested task. I still need the permissions {}."),
 		noOrder: "[ripped] You currently do not have an active order.",
 		noClaimedOrder: "[ripped] You currently do not have a claimed order.",
+		notPreparing: "[ripped] Your claimed order currently isn't pending preparation.",
 	},
 };

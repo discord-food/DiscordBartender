@@ -70,6 +70,7 @@ declare global {
 			guildPermission: Formattable;
 			noOrder: string;
 			noClaimedOrder: string;
+			notPreparing: string;
 		};
 	}
 
