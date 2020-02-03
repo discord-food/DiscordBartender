@@ -77,9 +77,9 @@ interface GetIndexReturnVal<T> {
 const calling: Set<string> = new Set();
 export const getConfirmation = async(message: Message, display = "Are you sure?", invertOrder = false) => {
 	const msg = await message.channel.send(display);
-	await msg.react("[yes]");
-	await msg.react("[no]");
-	const reaction = await msg.awaitReactions((r: MessageReaction, user: User) => user.id === message.author.id && ["no", "yes"].includes(r.emoji.name), { max: 1, time: 15000 });
+	const yes = await msg.react("[yes]");
+	const no = await msg.react("[no]");
+	const reaction = await msg.awaitReactions((r: MessageReaction, user: User) => user.id === message.author.id && [yes.emoji.id, no.emoji.id].includes(r.emoji.id ?? ""), { max: 1, time: 15000 });
 	return reaction.first()?.emoji.name === "yes";
 };
 export const getIndex = async <T>(
