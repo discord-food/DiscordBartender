@@ -3,7 +3,7 @@ import { permissions } from "../../modules/permissions";
 import { Command } from "@db-struct/command.struct";
 import moment = require("moment-timezone");
 import { Status } from "@db-module/sql";
-export const command = new Command("prepare", "Prepare your current claimed order.", [], ["cl"], [] as const, permissions.staff)
+export const command = new Command("prepare", "Prepare your current claimed order.", [], ["pp"], [] as const, permissions.staff)
 	.setExec(async(client, message, args, lang) => {
 		const global = await client.getGlobals();
 		const order = await client.getClaimedOrder(message.author.id);
@@ -15,7 +15,7 @@ export const command = new Command("prepare", "Prepare your current claimed orde
 			const item = global.items.find(x => x.item.id === ingredient.item.id);
 			if (!item) return;
 			const status = order.prepared.includes(ingredient.id) ? 2 : item.count >= ingredient.count ? 1 : 0;
-			embed.addField(`[${(["no", "grayno", "yes"] as const)[status]}] **${item.item.name}** - **${["NOT PREPARED", "PREPARABLE", "PREPARED"][status]}**`, `**${item.count}**/${ingredient.count}`);
+			embed.addField(`[${(["symbolNo", "symbolGrayNo", "symbolYes"] as const)[status]}] **${item.item.name}** - **${["NOT PREPARED", "PREPARABLE", "PREPARED"][status]}**`, `**${item.count}**/${ingredient.count}`);
 		}
 		await message.channel.send(embed);
 	});

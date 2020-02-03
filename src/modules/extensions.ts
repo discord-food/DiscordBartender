@@ -21,7 +21,7 @@ DMChannel.prototype.send = function send(content: any, options?: any) {
 };
 const temp4 = Message.prototype.react;
 Message.prototype.react = function react(emoji: EmojiResolvable | string) {
-	return temp4.bind(this, this.bartender.mainEmojis.get(typeof emoji === "string" ? emoji.match(/(?<=\[)(.+)(?=\])/)?.[0] ?? "" : "")?.id ?? emoji)() as any;
+	return temp4.bind(this, this.bartender.mainEmojis.get(typeof emoji === "string" ? emoji.match(/(?<=\[)(.+)(?=\])/)?.[0] ?? "" : "" as any)?.id ?? emoji)() as any;
 };
 
 declare module "discord.js" {
