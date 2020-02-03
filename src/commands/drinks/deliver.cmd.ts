@@ -10,7 +10,7 @@ export const command = new Command("deliver", "Deliver an order.", [], ["pp"], [
 		if (order.status !== Status.PENDING_DELIVERY) return message.channel.send(lang.errors.notDelivering);
 		const channel = client.channels.get(order.metadata.channel) as GuildChannel;
 		const guild = channel?.guild;
-		const invite = await channel.createInvite({ maxUses: 1, maxAge: 600000, reason: "Drink delivery", unique: true, temporary: true });
+		const invite = await channel.createInvite({ maxUses: 1, maxAge: 86400, reason: "Drink delivery", unique: true, temporary: true });
 		if (!guild || !channel) return message.channel.send("[no]");
 		const embed = new client.Embed()
 			.setTitle(`Delivery Info for \`${order.id}\``)
