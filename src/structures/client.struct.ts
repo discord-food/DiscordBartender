@@ -120,6 +120,13 @@ export class BartenderClient extends Client {
 	public async getDeliveringOrder(id: string): Promise<sql.models.Orders | undefined> {
 		return (await models.Orders.find()).find(x => x.metadata.deliverer === id && x.status === sql.Status.DELIVERING);
 	}
+	public async getWorkerInformation(id: string): Promise<{ preparations: number; deliveries: number }> {
+		const all = await models.Orders.find();
+		return {
+			preparations: all.filter(x => x.metadata.claimer === id && x.metadata.image !== "error").length,
+			deliveries: all.filter(x => x.status === sql.Status.DELIVERED && x.metadata.deliverer === id).length,
+		};
+	}
 	public get version() {
 		return readFileSync(this.db("./version.txt"), { encoding: "utf8" });
 	}
