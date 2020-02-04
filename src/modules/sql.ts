@@ -172,7 +172,7 @@ export namespace models {
 			return embed;
 		}
 		@Column("jsonb", { default: { brewFinish: 157767052146000, image: "error" } })
-		public metadata!: { claimer?: string; channel: string; brewFinish: number; image: string };
+		public metadata!: { claimer?: string; channel: string; brewFinish: number; image: string; deliverer?: string };
 
 		@ManyToOne(type => models.Types, type => type.orders, { cascade: ["insert", "update"], eager: true })
 		public type!: models.Types;

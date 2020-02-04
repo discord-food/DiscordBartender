@@ -62,6 +62,10 @@ export const language: Languages = {
 		brew: {
 			success: "[yes] The order has been brewed. It is now fermenting.",
 		},
+		finishdelivery: {
+			channel: "[no] You are not in the correct delivery channel.",
+			success: "[truck] The delivery was confirmed.",
+		}
 	},
 	errors: {
 		codes: {

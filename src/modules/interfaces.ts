@@ -109,6 +109,10 @@ declare global {
 			success: Formattable;
 			notFound: string;
 		};
+		finishdelivery: {
+			channel: string;
+			success: string;
+		};
 	}
 
 	interface ArgumentObject {

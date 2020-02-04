@@ -117,6 +117,9 @@ export class BartenderClient extends Client {
 	public async getClaimedOrder(id: string): Promise<sql.models.Orders | undefined> {
 		return (await models.Orders.find()).find(x => x.metadata.claimer === id && x.status <= sql.Status.BREWING);
 	}
+	public async getDeliveringOrder(id: string): Promise<sql.models.Orders | undefined> {
+		return (await models.Orders.find()).find(x => x.metadata.deliverer === id && x.status === sql.Status.DELIVERING);
+	}
 	public get version() {
 		return readFileSync(this.db("./version.txt"), { encoding: "utf8" });
 	}
