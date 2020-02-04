@@ -115,7 +115,7 @@ export class BartenderClient extends Client {
 		return await models.Globals.findOne() ?? (await models.Globals.insert({}), await models.Globals.findOne())!;
 	}
 	public async getClaimedOrder(id: string): Promise<sql.models.Orders | undefined> {
-		return (await models.Orders.find()).find(x => x.metadata.claimer === id);
+		return (await models.Orders.find()).find(x => x.metadata.claimer === id && x.status <= sql.Status.BREWING);
 	}
 	public get version() {
 		return readFileSync(this.db("./version.txt"), { encoding: "utf8" });
