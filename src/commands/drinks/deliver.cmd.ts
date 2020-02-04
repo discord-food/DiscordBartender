@@ -21,6 +21,7 @@ export const command = new Command("deliver", "Deliver an order.", [], ["dv"], [
 		if (channel) embed.addField("Guild", `**${guild.name}** (ID: ${guild.id})`);
 		await message.author.send(embed);
 		order.status = Status.DELIVERING;
+		order.metadata.deliverer = message.author.id;
 		await order.save();
 		await message.react("[yes]");
 	});

@@ -6,7 +6,7 @@ import { Status } from "@db-module/sql";
 export const command = new Command("finishdelivery", "Finish your delivery.", ["finishdeliver"], ["fd"], [] as const, permissions.staff)
 	.setExec(async(client, message, args, lang) => {
 		const order = await client.getDeliveringOrder(message.author.id);
-		if (!order) return message.channel.send(lang.errors.noClaimedOrder);
+		if (!order) return message.channel.send(lang.errors.notDelivering);
 		const channel = client.channels.get(order.metadata.channel) as GuildChannel;
 		if (!channel) return;
 		const { guild } = channel;
