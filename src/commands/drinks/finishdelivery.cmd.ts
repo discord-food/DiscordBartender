@@ -10,7 +10,7 @@ export const command = new Command("finishdelivery", "Finish your delivery.", ["
 		const channel = client.channels.get(order.metadata.channel) as GuildChannel;
 		if (!channel) return;
 		const { guild } = channel;
-		if (channel.id !== message.channel.id) return message.channel.send(lang.commands.finishdelivery.channel);
+		if (channel.guild.id !== message.guild?.id) return message.channel.send(lang.commands.finishdelivery.channel);
 		order.status = Status.DELIVERED;
 		await order.save();
 		await message.channel.send(lang.commands.finishdelivery.success);
