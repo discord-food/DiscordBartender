@@ -143,12 +143,12 @@ export const getUser = async(
 			!toParse && !autoself ?
 				null :
 				!isNaN(+id) ?
-					client.users.get(id) ?? null :
+					await client.users.fetch(id) ?? null :
 					null;
 	if (user) return user;
 	if (!toParse) return null;
-	const userlist = client
-		.mainGuild!.members.concat(message.guild!.members)
+	const userlist = (await client
+		.mainGuild.members.fetch()).concat(await message.guild!.members.fetch())
 		.map(x => [x, compareUsers(toParse, x.user)] as [GuildMember, number])
 		.filter(x => filter(x[0]))
 		.filter(x => x[1])
@@ -158,7 +158,7 @@ export const getUser = async(
 				compareUsers(toParse, x[0].user)
 		);
 	if (!userlist.length) return null;
-	if (compareUsers(toParse, userlist[0][0].user) > 0.9) return userlist[0][0].user;
+	if (compareUsers(toParse, userlist[0][0].user) > 0.8) return userlist[0][0].user;
 	const names = userlist
 		.map(x => `${x[0].user.tag.padEnd(37)} - ${(x[1] * 100).toFixed(2)}%`)
 		.slice(0, 5);

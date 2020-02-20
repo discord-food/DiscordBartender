@@ -148,7 +148,7 @@ export namespace models {
 		}
 		public statusStringFull(client: Client): typeof constants.statuses[number] {
 			const status = constants.statuses[this.status ?? 0];
-			return typeof status === "string" ? status : status.format(client.users.get(this.metadata.claimer!)?.tag ?? "an unknown worker");
+			return typeof status === "string" ? status : status.format(client.users.cache.get(this.metadata.claimer!)?.tag ?? "an unknown worker");
 		}
 		public get available(): boolean {
 			return this.status <= 5;
@@ -157,8 +157,8 @@ export namespace models {
 			return (this.type.special === TypeSpecials.CUSTOM ? this.description : this.type.name) ?? "Unknown";
 		}
 		public getEmbed(client: Client): BartenderEmbed {
-			const userify = (id: string) => `**${client.users.get(id)?.tag ?? "Unknown"}**\n**ID**: ${id}`;
-			const channel = client.channels.get(this.metadata.channel) as TextChannel | undefined;
+			const userify = (id: string) => `**${client.users.cache.get(id)?.tag ?? "Unknown"}**\n**ID**: ${id}`;
+			const channel = client.channels.cache.get(this.metadata.channel) as TextChannel | undefined;
 			const embed = new BartenderEmbed()
 				.setTitle(`Order Info for \`${this.id}\``)
 				.setDescription(`Information about the order \`${this.id}\`.`)

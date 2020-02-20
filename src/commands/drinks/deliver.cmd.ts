@@ -7,7 +7,7 @@ export const command = new Command("deliver", "Deliver an order.", [], ["dv"], [
 	.setExec(async(client, message, args, lang) => {
 		const { order } = args;
 		if (order.status !== Status.PENDING_DELIVERY) return message.channel.send(lang.errors.notDelivering);
-		const channel = client.channels.get(order.metadata.channel) as GuildChannel;
+		const channel = (await client.channels.fetch(order.metadata.channel)) as GuildChannel;
 		const guild = channel?.guild;
 		const invite = await channel.createInvite({ maxUses: 1, maxAge: 86400, reason: "Drink delivery", unique: true, temporary: true });
 		if (!guild || !channel) return message.channel.send("[no]");
@@ -17,7 +17,7 @@ export const command = new Command("deliver", "Deliver an order.", [], ["dv"], [
 			.addField("Channel", `**#${channel?.name ?? "unknown"}** (ID: ${channel.id})`)
 			.addField("Invite", `[Join the guild](${invite.url})`)
 			.addField("Image", order.metadata.image)
-			.addField("User", client.users.get(order.user)?.toString() ?? "Unknown");
+			.addField("User", (await client.users.fetch(order.user))?.toString() ?? "Unknown");
 		if (channel) embed.addField("Guild", `**${guild.name}** (ID: ${guild.id})`);
 		await message.author.send(embed);
 		order.status = Status.DELIVERING;

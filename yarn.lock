@@ -520,6 +520,13 @@ big.js@^5.2.2:
   resolved "https://registry.yarnpkg.com/big.js/-/big.js-5.2.2.tgz#65f0af382f578bcdc742bd9c281e9cb2d7768328"
   integrity sha512-vyL2OymJxmarO8gxMr0mhChsO9QGwhynfuu4+MHTAW6czfq9humCB7rKpUjDd9YUiDPU4mzpyupFSvOClAwbmQ==
 
+bindings@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/bindings/-/bindings-1.5.0.tgz#10353c9e945334bc0511a6d90b38fbc7c9c504df"
+  integrity sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==
+  dependencies:
+    file-uri-to-path "1.0.0"
+
 blob@0.0.5:
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/blob/-/blob-0.0.5.tgz#d680eeef25f8cd91ad533f5b01eed48e64caf683"
@@ -583,6 +590,13 @@ buffer@^5.1.0:
   dependencies:
     base64-js "^1.0.2"
     ieee754 "^1.1.4"
+
+bufferutil@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/bufferutil/-/bufferutil-4.0.1.tgz#3a177e8e5819a1243fe16b63a199951a7ad8d4a7"
+  integrity sha512-xowrxvpxojqkagPcWRQVXZl0YXhRhAtBEIq3VoER1NH5Mw1n1o0ojdspp+GS2J//2gCVyrzQDApQ4unGF+QOoA==
+  dependencies:
+    node-gyp-build "~3.7.0"
 
 builtins@^1.0.3:
   version "1.0.3"
@@ -990,7 +1004,7 @@ diff-sequences@^24.9.0:
 
 discord.js@discordjs/discord.js:
   version "12.0.0-dev"
-  resolved "https://codeload.github.com/discordjs/discord.js/tar.gz/97eac663b3e1292cc399c56eb701069301f4637d"
+  resolved "https://codeload.github.com/discordjs/discord.js/tar.gz/e4e977f44779bc602e91a998e9338d7c401eff15"
   dependencies:
     "@discordjs/collection" "^0.1.1"
     abort-controller "^3.0.0"
@@ -1104,6 +1118,13 @@ envinfo@7.3.1:
   version "7.3.1"
   resolved "https://registry.yarnpkg.com/envinfo/-/envinfo-7.3.1.tgz#892e42f7bf858b3446d9414ad240dbaf8da52f09"
   integrity sha512-GvXiDTqLYrORVSCuJCsWHPXF5BFvoWMQA9xX4YVjPT1jyS3aZEHUBwjzxU/6LTPF9ReHgVEbX7IEN5UvSXHw/A==
+
+erlpack@discordapp/erlpack:
+  version "0.1.3"
+  resolved "https://codeload.github.com/discordapp/erlpack/tar.gz/5d0064f9e106841e1eead711a6451f99b0d289fd"
+  dependencies:
+    bindings "^1.5.0"
+    nan "^2.14.0"
 
 es-abstract@^1.5.1:
   version "1.15.0"
@@ -1364,6 +1385,11 @@ file-entry-cache@^5.0.1:
   integrity sha512-bCg29ictuBaKUwwArK4ouCaqDgLZcysCFLmM/Yn/FDoqndh/9vNuQfXRDvTuXKLxfD/JtZQGKFT8MGcJBK644g==
   dependencies:
     flat-cache "^2.0.1"
+
+file-uri-to-path@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/file-uri-to-path/-/file-uri-to-path-1.0.0.tgz#553a7b8446ff6f684359c445f1e37a05dacc33dd"
+  integrity sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==
 
 finalhandler@~1.1.2:
   version "1.1.2"
@@ -2002,6 +2028,18 @@ levn@^0.3.0, levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
+libsodium-wrappers@^0.7.6:
+  version "0.7.6"
+  resolved "https://registry.yarnpkg.com/libsodium-wrappers/-/libsodium-wrappers-0.7.6.tgz#baed4c16d4bf9610104875ad8a8e164d259d48fb"
+  integrity sha512-OUO2CWW5bHdLr6hkKLHIKI4raEkZrf3QHkhXsJ1yCh6MZ3JDA7jFD3kCATNquuGSG6MjjPHQIQms0y0gBDzjQg==
+  dependencies:
+    libsodium "0.7.6"
+
+libsodium@0.7.6:
+  version "0.7.6"
+  resolved "https://registry.yarnpkg.com/libsodium/-/libsodium-0.7.6.tgz#018b80c5728054817845fbffa554274441bda277"
+  integrity sha512-hPb/04sEuLcTRdWDtd+xH3RXBihpmbPCsKW/Jtf4PsvdyKh+D6z2D2gvp/5BfoxseP+0FCOg66kE+0oGUE/loQ==
+
 loader-utils@^1.0.2:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-1.2.3.tgz#1ff5dc6911c9f0a062531a4c04b609406108c2c7"
@@ -2299,6 +2337,11 @@ node-fetch@^2.0.0-alpha.8, node-fetch@^2.3.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.0.tgz#e633456386d4aa55863f676a7ab0daa8fdecb0fd"
   integrity sha512-8dG4H5ujfvFiqDmVu9fQ5bOHUC15JMjMY/Zumv26oOvvVJjM67KF8koCWIabKQ1GJIa9r2mMZscBq/TbdOcmNA==
+
+node-gyp-build@~3.7.0:
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/node-gyp-build/-/node-gyp-build-3.7.0.tgz#daa77a4f547b9aed3e2aac779eaf151afd60ec8d"
+  integrity sha512-L/Eg02Epx6Si2NXmedx+Okg+4UHqmaf3TNcxd50SF9NQGcJaON3AtU++kax69XV7YWz4tUspqZSAsVofhFKG2w==
 
 node-pre-gyp@^0.11.0:
   version "0.11.0"
@@ -2921,10 +2964,9 @@ rimraf@2.6.3:
   dependencies:
     glob "^7.1.3"
 
-rivescript@^2.0.0:
+rivescript@aichaos/rivescript-js:
   version "2.0.0"
-  resolved "https://registry.yarnpkg.com/rivescript/-/rivescript-2.0.0.tgz#c676f3060190d686117e018f5612ec276cf3eea6"
-  integrity sha512-f4tquL3McqFNBrpB4iN6WRk6nPOgdpcxTC5vQjQPB3is5SyJCsQJGtZv65WJpE0osrKxdaetD1sP126wKLj0EA==
+  resolved "https://codeload.github.com/aichaos/rivescript-js/tar.gz/2cfa58e35c79ef3424e0c103a8571c287fbf6d7f"
   dependencies:
     babel-loader "^7.1.5"
     babel-polyfill "^6.26.0"
@@ -3554,6 +3596,13 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
+utf-8-validate@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/utf-8-validate/-/utf-8-validate-5.0.2.tgz#63cfbccd85dc1f2b66cf7a1d0eebc08ed056bfb3"
+  integrity sha512-SwV++i2gTD5qh2XqaPzBnNX88N6HdyhQrNNRykvcS0QKvItV9u3vPEJr+X5Hhfb1JC0r0e1alL0iB09rY8+nmw==
+  dependencies:
+    node-gyp-build "~3.7.0"
+
 util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
@@ -3763,3 +3812,10 @@ zen-observable@^0.8.9:
   version "0.8.15"
   resolved "https://registry.yarnpkg.com/zen-observable/-/zen-observable-0.8.15.tgz#96415c512d8e3ffd920afd3889604e30b9eaac15"
   integrity sha512-PQ2PC7R9rslx84ndNBZB/Dkv8V8fZEpk83RLgXtYd0fwUgEjseMn1Dgajh2x6S8QbZAFa9p2qVCEuYZNgve0dQ==
+
+zlib-sync@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/zlib-sync/-/zlib-sync-0.1.6.tgz#9136ba8b66a75485fefe51aa68f9b49a5ae420eb"
+  integrity sha512-B2XGrhlXs/izEks+705vn/aL+nWyPgnS1glyCeH8wgZdOvztRn3ZEdqclj6GoJSeA/iRSqaTlznG2KO1M/GuWg==
+  dependencies:
+    nan "^2.14.0"

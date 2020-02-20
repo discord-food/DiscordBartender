@@ -29,6 +29,7 @@ export const handler = async(message: Message) => {
 	await account.save();
 	const processedArgs: Args | ArgError = await client.parseArguments(gcommand.syntax, args, message);
 	if ((processedArgs as ArgError).error !== undefined) return message.channel.send(lang.errors.args.format(lang.errors.argsTypes[(processedArgs as ArgError).error.type].format((processedArgs as ArgError).error.obj.name), prefix, gcommand.name, gcommand.syntaxString));
+	await message.channel.startTyping();
 	try {
 		await gcommand.exec(client, message, processedArgs as Args, lang);
 	} catch (err) {
@@ -36,4 +37,5 @@ export const handler = async(message: Message) => {
 		await message.channel.send(lang.errors.codes[err.code] ?? lang.errors.internal.format(err));
 		client.error(err);
 	}
+	message.channel.stopTyping();
 };

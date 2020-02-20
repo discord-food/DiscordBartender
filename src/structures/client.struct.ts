@@ -25,7 +25,7 @@ export class BartenderClient extends Client {
 	 * @property {Guild} mainGuild The main guild.
 	 */
 	public get mainGuild() {
-		return this.guilds.get(constants.guild);
+		return this.guilds.cache.get(constants.guild)!;
 	}
 	/** @property {string} EMPTY A string with an invisible character. */
 	public EMPTY = "​";
@@ -331,7 +331,7 @@ export class BartenderClient extends Client {
 	public async loadMain(): Promise<void> {
 		this.mainChannels = new Collection();
 		for (const [name, id] of Object.entries(constants.channels)) {
-			const channel = this.channels.get(id);
+			const channel = await this.channels.fetch(id);
 			if (!channel) {
 				this.error(`Channel ${chalk.redBright(name)} was not found.`);
 				continue;
@@ -340,7 +340,7 @@ export class BartenderClient extends Client {
 		}
 		this.mainEmojis = new Collection();
 		for (const [name, id] of Object.entries(constants.emojis)) {
-			const emoji = this.emojis.get(id);
+			const emoji = this.emojis.cache.get(id);
 			if (!emoji) {
 				this.error(`Emoji ${chalk.redBright(name)} was not found.`);
 				continue;
@@ -354,7 +354,7 @@ export class BartenderClient extends Client {
 				continue;
 			}
 			const [channelId, messageId] = [(id.match(/(?<=#)\d+/) ?? [])[0], (id.match(/(?<=:)\d+/) ?? [])[0]];
-			const channel = this.channels.get(channelId);
+			const channel = await this.channels.fetch(channelId);
 			if (!channel || channel.type !== "text") {
 				this.error(`The channel for message ${chalk.redBright(name)} was not found.`);
 				continue;
@@ -374,7 +374,7 @@ export class BartenderClient extends Client {
 				continue;
 			}
 			const [guildId, roleId] = [(id.match(/(?<=>)\d+/) ?? [])[0], (id.match(/(?<=:)\d+/) ?? [])[0]];
-			const guild = this.guilds.get(guildId);
+			const guild = this.guilds.cache.get(guildId);
 			if (!guild) {
 				this.error(`The guild for role ${chalk.redBright(name)} was not found.`);
 				continue;
@@ -389,7 +389,7 @@ export class BartenderClient extends Client {
 		}
 		this.milestones = new Collection();
 		for (const milestone of constants.milestones) {
-			const ms = await this.mainGuild!.roles.fetch(milestone.id);
+			const ms = await this.mainGuild.roles.fetch(milestone.id);
 			if (!ms) {
 				this.error(`Milestone ${chalk.redBright(String(milestone.value))} was not found.`);
 				continue;

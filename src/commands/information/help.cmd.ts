@@ -16,7 +16,7 @@ export const command = new Command("help", "Gets the command list.", ["?"], ["hp
 			const embed = new client.Embed()
 				.setTitle(lang.commands.help.title.format(index + 1, chunked.length))
 				.setDescription(lang.commands.help.description);
-			for (const field of embedFields) embed.addField(field.name, field.value);
+			for (const field of embedFields) embed.addField(field.name, field.value, false);
 
 			await message.author.send(embed);
 		}

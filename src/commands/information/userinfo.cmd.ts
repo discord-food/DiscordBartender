@@ -18,7 +18,14 @@ export const command = new Command("userinfo", "Check information about a user."
 			Mobile = "Mobile",
 			desktop = "Desktop"
 		}
-		const member = message.guild?.members.get(user.id);
+		enum PresenceTypes {
+			PLAYING = "PLAYING",
+			STREAMING = "STREAMING",
+			LISTENING = "LISTENING TO",
+			WATCHING = "WATCHING",
+			CUSTOM_STATUS = ""
+		}
+		const member = await message.guild?.members.fetch(user.id);
 		const embed = new client.Embed()
 			.setTitle(`User Info`)
 			.setDescription(`Information for user **${user.tag}**`)
@@ -31,8 +38,6 @@ export const command = new Command("userinfo", "Check information about a user."
 			.map(x => x.proxyURL)
 			.join(", ") ?? "None")
 			.addField("Locale", user.locale ?? "Unknown", true)
-			.addField("Presence", user.presence.activity?.state ?? user.presence.activity?.details ?? "None", true)
-			.addField("Presence Type", user.presence.activity?.type, true)
 			.addField("Status", Statuses[user.presence.status] ?? "Unknown", true)
 			.addField("Device", Object.entries(user.presence.clientStatus ?? {}).map(([x, y]) => `**${Devices[x as keyof typeof Devices]}**: ${Statuses[y as keyof typeof Statuses]}`).join("\n") || "Unknown", true)
 			.addField("Official User", `This user is ${user.system ? "" : "not "}an Official Discord System user.`, true);
@@ -55,5 +60,7 @@ export const command = new Command("userinfo", "Check information about a user."
 			}
 			if (member.premiumSince) embed.addField("Nitro Boost", `Boosting since ${moment(member.premiumSince).calendar()}`, true);
 		}
+		embed.addField("Activities", user.presence.activities.map(x => x.type === "CUSTOM_STATUS" ? `**${x.emoji} ${x.state}**` : `**${PresenceTypes[x.type]}** ${x.type === "STREAMING" ? `[${x.name}](${x.url})` : x.name ?? "Unknown"}${x.state ? `\n - *${x.state}*, ${x.details}` : ""}`).join("\n") || "None", false);
+
 		await message.channel.send(embed);
 	});

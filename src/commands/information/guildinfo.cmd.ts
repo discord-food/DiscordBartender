@@ -36,7 +36,7 @@ export const command = new Command(
 	const nl = { length: 0 };
 	const groupedChannels = Object.assign(
 		{ txt: nl, category: nl, news: nl, voice: nl, store: nl, unknown: nl },
-		_.groupBy(channels.array(), "type")
+		_.groupBy(channels.cache.array(), "type")
 	);
 	const channellength = (name: string) => {
 		const len = groupedChannels[name].length;
@@ -53,7 +53,7 @@ export const command = new Command(
 		embed
 			.addField(
 				"Channels",
-				`**${channels.size}** channels in total.
+				`**${channels.cache.size}** channels in total.
 ${channellength("text")}
 ${channellength("category")}
 ${channellength("news")}
@@ -69,7 +69,7 @@ ${channellength("unknown")}`,
 			)
 			.addField(
 				"Emojis",
-				`${guild.emojis.map(String).join("")}`,
+				`${guild.emojis.cache.map(String).join("")}`,
 				true
 			)
 			.addField("Features", `${guild.features.map(x => Features[x]).join(", ")}`, true)
@@ -83,7 +83,7 @@ ${channellength("unknown")}`,
 			.addField("Boost Tier", BoostTiers[guild.premiumTier], true)
 			.addField("Region", guild.region, true)
 			.addField("Maximum Members", guild.maximumMembers, true)
-			.addField("Roles", `${guild.roles.size} roles in total.`, true)
+			.addField("Roles", `${guild.roles.cache.size} roles in total.`, true)
 			.addField("Shard", `This guild is on **Shard ${guild.shard.id}**.`, true)
 			.addField("System Channel", guild.systemChannel ?? "None", true)
 			.addField("Vanity URL", guild.vanityURLCode ? `discord.gg/${guild.vanityURLCode}` : "None", true)

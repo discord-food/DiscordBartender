@@ -25,9 +25,9 @@ export const command = new Command(
 		.addField("Discord.JS Version", client.Discord.version, true)
 		.addField("V8 Version", versions.v8, true)
 		.addField("OpenSSL Version", versions.openssl, true)
-		.addField("Users", client.users.size, true)
-		.addField("Channels", client.channels.size, true)
-		.addField("Guilds", client.guilds.size, true)
+		.addField("Users", client.users.cache.size, true)
+		.addField("Channels", client.channels.cache.size, true)
+		.addField("Guilds", client.guilds.cache.size, true)
 		.addField("Uptime", prettyms(client.uptime ?? 0, { unitCount: 3, verbose: true }), true);
 	await message.channel.send(embed);
 });
