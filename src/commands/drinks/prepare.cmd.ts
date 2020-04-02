@@ -9,7 +9,7 @@ export const command = new Command("prepare", "Prepare your current claimed orde
 		const order = await client.getClaimedOrder(message.author.id);
 		if (!order) return message.channel.send(lang.errors.noClaimedOrder);
 		if (order.status !== Status.PREPARING) return message.channel.send(lang.errors.notPreparing);
-		const checkPrepared = async() => order.type.recipe.every(x => order.prepared.includes(x.id)) && (order.status = Status.BREWING, await order.save(), message.channel.send("The order is fully prepared! It is now awaiting brew (image)."));
+		const checkPrepared = async() => order.type.recipe.every(x => order.prepared.includes(x.id)) && (order.status = Status.BREWING, await order.save(), message.channel.send("The order is fully prepared! It is now ready to be brewed."));
 		if (await checkPrepared()) return;
 		const embed = new client.Embed(false)
 			.setTitle(`Ingredient Checklist for \`${order.id}\``)
