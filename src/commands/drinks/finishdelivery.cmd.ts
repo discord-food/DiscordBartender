@@ -7,7 +7,7 @@ export const command = new Command("finishdelivery", "Finish your delivery.", ["
 	.setExec(async(client, message, args, lang) => {
 		const order = await client.getDeliveringOrder(message.author.id);
 		if (!order) return message.react("[no]");
-		const channel = await client.channels.fetch(order.metadata.channel) as GuildChannel;
+		const channel = client.channels.cache.get(order.metadata.channel) as GuildChannel;
 		if (!channel) return;
 		const { guild } = channel;
 		if (channel.guild.id !== message.guild?.id) return message.channel.send(lang.commands.finishdelivery.channel);

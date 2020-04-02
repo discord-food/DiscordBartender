@@ -7,7 +7,7 @@ export const command = new Command("deliver", "Deliver an order.", [], ["dv"], [
 	.setExec(async(client, message, args, lang) => {
 		const { order } = args;
 		if (order.status !== Status.PENDING_DELIVERY) return message.channel.send(lang.errors.notDelivering);
-		const channel = (await client.channels.fetch(order.metadata.channel)) as GuildChannel;
+		const channel = client.channels.cache.get(order.metadata.channel) as GuildChannel;
 		const guild = channel?.guild;
 		const invite = await channel.createInvite({ maxUses: 1, maxAge: 86400, reason: "Drink delivery", unique: true, temporary: true });
 		if (!guild || !channel) return message.channel.send("[no]");

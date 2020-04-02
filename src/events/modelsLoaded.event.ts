@@ -59,7 +59,7 @@ export const handler = async() => {
 				await client.mainChannels.get("delivery")?.send(`Order \`${order.id}\` has finished brewing; it is now available to be delivered.`);
 			}
 			// housekeeping
-			for (const order of orders) if (!await client.channels.fetch(order.metadata.channel)) await order.remove();
+			for (const order of orders) if (!client.channels.cache.get(order.metadata.channel)) await order.remove();
 		}, 2000));
 	}
 	const globs = await client.getGlobals();

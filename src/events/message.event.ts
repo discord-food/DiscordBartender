@@ -34,7 +34,7 @@ export const handler = async(message: Message) => {
 	} catch (err) {
 		if (err.code === 50013) await message.channel.send(lang.errors.guildPermission.format(new client.Discord.Permissions(client.constants.permissions - (message.guild.me?.permissions.bitfield ?? 0))));
 		if (err instanceof DiscordAPIError) await message.channel.send(lang.errors.internal.format(`${err.message}: ${err.method.toUpperCase()} ${err.path}`));
-		await message.channel.send(lang.errors.codes[err.code] ?? lang.errors.internal.format(err));
+		else await message.channel.send(lang.errors.codes[err.code] ?? lang.errors.internal.format(err));
 		client.error(err);
 	}
 };
