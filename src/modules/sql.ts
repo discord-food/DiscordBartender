@@ -382,6 +382,6 @@ export const connection = createConnection({
 	username,
 	password,
 	database: name,
-	synchronize: true,
+	synchronize: false,
 	entities: Object.values(models)
 });
