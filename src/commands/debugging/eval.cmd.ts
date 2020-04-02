@@ -12,6 +12,6 @@ export const command = new Command("eval", "Eval code.", [], [], [{ name: "code"
 				return err;
 			}
 		})();
-		const type: string = evaled === undefined || evaled === null ? String(evaled) : evaled.constructor.name;
+		const type: string = evaled === undefined || evaled === null ? String(evaled) : evaled.constructor?.name ?? Object.getPrototypeOf(evaled) === null ? `null prototype object` : "AAAAAAAAAAAAA";
 		for (const text of Util.splitMessage(`**RESULT:**\n\`\`\`js\n${client.inspect(evaled, false)}\n\`\`\`\n**TYPE:**\n\`\`\`js\n${type}\n\`\`\``, { append: "\n```", prepend: "```js\n" }).slice(0, 1)) await message.channel.send(text);
 	});
