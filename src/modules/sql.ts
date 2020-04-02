@@ -37,6 +37,7 @@ export namespace models {
 		OOF = "oof",
 	}
 	type NullableLangCodes = LangCodes | null;
+	const SnowflakeColumn = () => Column("char", { length: SNOWFLAKE_LENGTH });
 	abstract class SetupEntity extends BaseEntity {
 		@CreateDateColumn()
 		public createdAt?: Date;
@@ -112,8 +113,24 @@ export namespace models {
 		@Column("text")
 		public content!: string;
 
-		@Column(SNOWFLAKE_OPTIONS)
+		@SnowflakeColumn()
 		public author!: string;
+	}
+
+	@Entity()
+	export class ShopItem extends SetupEntity {
+		@PrimaryGeneratedColumn()
+		public id!: string;
+
+		@OneToOne(type => models.Item)
+		@JoinColumn()
+		public item!: models.Item;
+
+		@Column()
+		public cost!: number;
+
+		@Column({ default: 1 })
+		public amount!: number;
 	}
 
 	@Entity()
@@ -121,7 +138,7 @@ export namespace models {
 		@Column("text")
 		public reason!: string;
 
-		@Column(SNOWFLAKE_OPTIONS)
+		@SnowflakeColumn()
 		public executor!: string;
 	}
 
@@ -338,6 +355,23 @@ export namespace models {
 
 		@Column()
 		public count!: number;
+	}
+	@Entity()
+	export class Warning extends SetupEntity {
+		@PrimaryGeneratedColumn("uuid")
+		public id!: string;
+
+		@SnowflakeColumn()
+		public userID!: string;
+
+		@SnowflakeColumn()
+		public guildID!: string;
+
+		@Column("text")
+		public reason!: string;
+
+		@SnowflakeColumn()
+		public executor!: string;
 	}
 }
 

@@ -60,7 +60,7 @@ export const command = new Command("userinfo", "Check information about a user."
 			}
 			if (member.premiumSince) embed.addField("Nitro Boost", `Boosting since ${moment(member.premiumSince).calendar()}`, true);
 		}
-		embed.addField("Activities", user.presence.activities.map(x => x.type === "CUSTOM_STATUS" ? `**${x.emoji} ${x.state}**` : `**${PresenceTypes[x.type]}** ${x.type === "STREAMING" ? `[${x.name}](${x.url})` : x.name ?? "Unknown"}${x.state ? `\n - *${x.state}*, ${x.details}` : ""}`).join("\n") || "None", false);
+		embed.addField("Activities", user.presence.activities.map(x => x.type === "CUSTOM_STATUS" ? `**${x.emoji ? `${x.emoji} ` : ""}${x.state}**` : `**${PresenceTypes[x.type]}** ${x.type === "STREAMING" ? `[${x.name}](${x.url})` : x.name ?? "Unknown"}${x.state ? `\n - *${x.state}*, ${x.details}` : ""}`).join("\n") || "None", false);
 
 		await message.channel.send(embed);
 	});

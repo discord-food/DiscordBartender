@@ -9,10 +9,11 @@ export class Permission {
  */
 export const permissions = {
 	everyone: new Permission("PUBLIC", () => true, 0),
-	serverMod: new Permission("SERVER_MOD", (client, member) => member.permissions.has("MANAGE_GUILD"), 1),
+	serverModerator: new Permission("SERVER_MOD", (client, member) => member.permissions.has("MANAGE_GUILD"), 1),
+	serverAdmin: new Permission("SERVER_MOD", (client, member) => member.permissions.has("ADMINISTRATOR"), 1),
 	staff: new Permission("STAFF", (client, member, mainMember) => mainMember?.roles.cache.has(client.mainRoles.get("staff")?.id ?? "") ?? false, 2),
-	moderator: new Permission("MODERATOR", (client, member, mainMember) => mainMember?.roles.cache.has(client.mainRoles.get("moderator")?.id ?? "") ?? false, 3),
-	admin: new Permission("ADMIN", (client, member, mainMember) => mainMember?.hasPermission("ADMINISTRATOR") ?? false, 4),
+	botModerator: new Permission("MODERATOR", (client, member, mainMember) => mainMember?.roles.cache.has(client.mainRoles.get("moderator")?.id ?? "") ?? false, 3),
+	botAdmin: new Permission("SERVER_ADMIN", (client, member, mainMember) => mainMember?.hasPermission("ADMINISTRATOR") ?? false, 4),
 	developer: new Permission("DEVELOPER", (client, member) => client.constants.admins.includes(member.id), 5),
 };
 /**
@@ -23,7 +24,7 @@ export const permissions = {
 export const getPermission = async(member: GuildMember | null): Promise<number> => {
 	if (member === null) return 0;
 	const client = member.bartender;
-	for (const permission of Object.values(permissions).sort((a: Permission, b: Permission) => b.id - a.id)) if (await permission.exec(member.bartender, member, await client.mainGuild.members.fetch(member.id))) return permission.id;
+	for (const permission of Object.values(permissions).sort((a: Permission, b: Permission) => b.id - a.id)) if (await permission.exec(member.bartender, member, client.mainGuild.members.cache.get(member.id))) return permission.id;
 	return 0;
 };
 /**

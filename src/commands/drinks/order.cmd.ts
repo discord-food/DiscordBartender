@@ -25,4 +25,5 @@ export const command = new Command("order", "Orders a drink.", [], ["odr"], [] a
 		account.balance -= type.price;
 		await account.save();
 		await message.channel.send(lang.commands.order.success.format(order.type.name, order.id));
+		await client.mainChannels.get("brewery")?.send(`🎫 A new order with the ID \`${order.id}\` for \`${order.descriptor}\` has been placed by **${message.author.tag}** from **${message.guild?.name}**!`);
 	});

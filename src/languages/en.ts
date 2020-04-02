@@ -5,7 +5,7 @@ export const language: Languages = {
 		help: {
 			title: new Formattable("Commands List: Page {} of {}"),
 			description: "A list of commands for the bot.",
-			sent: "[yes] I have send you the list of commands!",
+			sent: "[yes] I have sent you the list of commands!",
 		},
 		ping: {
 			calculating: "Calculating ping...",

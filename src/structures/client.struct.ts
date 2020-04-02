@@ -1,6 +1,6 @@
 import chalk from "chalk";
 import { execSync, spawnSync } from "child_process";
-import Discord, { Channel, Client, Collection, Emoji, Guild, Message, Role, TextChannel } from "discord.js";
+import Discord, { Channel, Client, Collection, Emoji, Guild, Message, Role, TextChannel, DiscordAPIError } from "discord.js";
 import { sync } from "glob";
 import _ from "lodash";
 import { basename, dirname, join, normalize, resolve, win32 } from "path";
@@ -97,7 +97,7 @@ export class BartenderClient extends Client {
 	 * @returns {BartenderClient} The client.
 	 */
 	public constructor(s: number) {
-		super({ disableEveryone: true, shardCount: s });
+		super({ disableMentions: "everyone", shardCount: s });
 		this.loadEvents();
 		this.loadCommands();
 		this.loadLanguages();
@@ -137,7 +137,7 @@ export class BartenderClient extends Client {
 		return true;
 	}
 	public async loadSite() {
-		return import("../www/server");
+		return 1;
 	}
 	public inspect(text: any, colors = true) {
 		return inspect(text, { showHidden: true, colors });
@@ -169,7 +169,6 @@ export class BartenderClient extends Client {
 		for (const [argObj, arg] of matched) {
 			const typeFunc = func.get(argObj.type);
 			const processed = await (typeFunc ?? argObj.type)(arg, returnVal, argObj);
-			message.bartender.log(processed);
 			if (argObj.required) {
 				if (processed === null && arg) return { error: { obj: argObj, type: 0 } };
 				if (!arg && argObj.required) return { error: { obj: argObj, type: 1 } };
@@ -206,7 +205,7 @@ export class BartenderClient extends Client {
 	 * @returns {void}.
 	 */
 	public error(obj: any): void {
-		this.dryLog("ERR", obj, chalk.redBright, chalk.red, "error");
+		this.dryLog("ERR", obj instanceof DiscordAPIError ? `DiscordAPIError: ${obj.message}\n${obj.method.toUpperCase()} ${obj.path}` : obj instanceof Error ? obj.stack : obj, chalk.redBright, chalk.red, "error");
 	}
 	/**
 	 * @description Warns to the console.
@@ -231,12 +230,12 @@ export class BartenderClient extends Client {
 	public getLanguage(lang: string): Languages | null {
 		return (this.languages.get(lang) ?? this.languages.get(ISO.getCode(lang))) ?? null;
 	}
-	public exec(code: string): Error | any {
+	public exec(code: string): Buffer {
 		return (() => {
 			try {
 				return execSync(code);
 			} catch (err) {
-				return err;
+				return err.message;
 			}
 		})();
 	}
@@ -290,7 +289,7 @@ export class BartenderClient extends Client {
 		});
 		for (const [name, eventPromise] of events) {
 			const event: any = await eventPromise;
-			this.on(name, event.handler);
+			this.on(name as any, event.handler);
 			this.log(`Event ${chalk.yellow(name)} was loaded!`);
 		}
 	}

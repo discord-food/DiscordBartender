@@ -13,7 +13,7 @@ const reader = createInterface({
 	output: process.stdout,
 });
 (process as NodeJS.EventEmitter).on("unhandledRejection", (err: Error, p) => {
-	if (err) client.error(err.stack);
+	if (err) client.error(err);
 });
 // eslint-disable-next-line @typescript-eslint/no-misused-promises
 (process as NodeJS.EventEmitter).on("uncaughtException", async(err: Error, p) => {
