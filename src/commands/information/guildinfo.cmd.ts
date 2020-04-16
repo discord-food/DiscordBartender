@@ -43,7 +43,7 @@ export const command = new Command(
 		return len ? `**${len}** ${name} channel(s)` : "";
 	};
 	const embed = new client.Embed()
-		.setTitle(`${guild.name} [drunkStamp]${guild.premiumTier ? ` [boostL${guild.premiumTier}]` : ""}${guild.features.includes("PARTNERED" as any) ? ` [partnered]` : ""}${guild.verified ? " [verified]" : ""}`)
+		.setTitle(`${guild.name} [drunkStamp]${guild.premiumTier ? ` [boostL${guild.premiumTier}]` : ""}${guild.features.includes("PARTNERED" as const) ? ` [partnered]` : ""}${guild.verified ? " [verified]" : ""}`)
 		.setThumbnail(guild.iconURL()!)
 		.setColor(client.Colors.GRAY)
 		.setImage(guild.bannerURL()!);

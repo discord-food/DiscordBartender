@@ -28,6 +28,7 @@ export const command = new Command(
 		.addField("Users", client.users.cache.size, true)
 		.addField("Channels", client.channels.cache.size, true)
 		.addField("Guilds", client.guilds.cache.size, true)
-		.addField("Uptime", prettyms(client.uptime ?? 0, { unitCount: 3, verbose: true }), true);
+		.addField("Uptime", prettyms(client.uptime ?? 0, { unitCount: 3, verbose: true }), true)
+		.setFooter(`If you would like to request deletion of your data, DM ${client.users.cache.get("413143886702313472")?.tag}`);
 	await message.channel.send(embed);
 });

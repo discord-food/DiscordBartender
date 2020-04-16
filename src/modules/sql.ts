@@ -118,22 +118,6 @@ export namespace models {
 	}
 
 	@Entity()
-	export class ShopItem extends SetupEntity {
-		@PrimaryGeneratedColumn()
-		public id!: string;
-
-		@OneToOne(type => models.Item)
-		@JoinColumn()
-		public item!: models.Item;
-
-		@Column()
-		public cost!: number;
-
-		@Column({ default: 1 })
-		public amount!: number;
-	}
-
-	@Entity()
 	export class Blacklist extends SnowflakedEntity {
 		@Column("text")
 		public reason!: string;

@@ -1,34 +1,45 @@
 import { join } from "path";
 import { Formattable } from "../structures/formattable.struct";
-const assertType = <T>(arg: T) => { "assert"; };
+import { Message } from "discord.js";
+const assertType = <T>(arg: T) => void "assert";
 declare global {
-	interface Constants {
-		readonly prefix: string;
-		readonly channels: StringObject;
-		readonly roles: StringObject;
-		readonly messages: StringObject;
-		readonly guild: string;
-		readonly emojis: StringObject;
-		readonly arguments: readonly (readonly [any, TypeCheck])[];
-		readonly admins: readonly string[];
-		readonly eval: Formattable;
-		readonly port: number;
-		readonly currencySymbol: string;
-		readonly milestones: readonly Readonly<{ value: number; id: string }>[];
-		readonly statuses: readonly (string | Formattable)[];
-		readonly permissions: number;
+	interface ModifiableConstants {
+		prefix: string;
+		channels: StringObject;
+		roles: StringObject;
+		messages: StringObject;
+		guild: string;
+		emojis: StringObject;
+		arguments: readonly Readonly<[any, TypeCheck]>[];
+		admins: readonly string[];
+		eval: Formattable;
+		port: number;
+		currencySymbol: string;
+		milestones: readonly { value: number; id: string }[];
+		statuses: readonly (string | Formattable)[];
+		permissions: number;
+		items: Readonly<{
+			[index: number]: {
+				use: { function: string[]; type: "pick" } | { function: (message: Message) => unknown; type?: "function" };
+			};
+		}>;
 	}
+	type Constants = Readonly<ModifiableConstants>;
 }
 export const constants = {
-	admins: [
-		"413143886702313472",
-		"256392197648154624",
-		"129693097431924736",
-	],
+	admins: ["413143886702313472", "256392197648154624", "129693097431924736"],
 	arguments: [
 		[String, (arg: string) => arg],
 		[Number, (arg: string) => isNaN(Number(arg)) ? null : Number(arg)],
-		[Boolean, (arg: string, args: Args, argObj: ArgumentObject) => ["yes", "true", "y", "on", "t", argObj.name.toLowerCase()].some(x => arg.toLowerCase() === x) ? true : ["no", "false", "n", "off"].some(x => arg.toLowerCase() === x) ? false : null],
+		[
+			Boolean,
+			(arg: string, args: Args, argObj: ArgumentObject) =>
+				["yes", "true", "y", "on", "t", argObj.name.toLowerCase()].some(x => arg.toLowerCase() === x)
+					? true
+					: ["no", "false", "n", "off"].some(x => arg.toLowerCase() === x)
+						? false
+						: null,
+		],
 	],
 	channels: {
 		fatal: "661811790732197928",
@@ -58,9 +69,11 @@ export const constants = {
 		bankrupt: "667040629217427478",
 		symbolNo: "673637779934150681",
 		symbolGrayNo: "673638119463190552",
-		symbolYes: "673637823928074253"
+		symbolYes: "673637823928074253",
 	},
-	eval: new Formattable(`(async () => { const { client } = await import(require("path").join(__rootname, "/modules/client")); {} })()`), // ")
+	eval: new Formattable(
+		`(async () => { const { client } = await import(require("path").join(__rootname, "/modules/client")); {} })()`
+	), // ")
 	guild: "602945093762154507",
 	messages: {
 		verify: "#612737748901560340:662144175269216266",
@@ -76,15 +89,32 @@ export const constants = {
 	milestones: [
 		{
 			value: 0,
-			id: "661298144927285296"
+			id: "661298144927285296",
 		},
 		{
 			value: 50,
-			id: "661298369507098673"
+			id: "661298369507098673",
 		},
 	],
-	statuses: ["Unprepared", new Formattable("Preparing by {}"), "Brewing", "Fermenting", "Pending Delivery", "Delivering", "Delivered", "Cancelled By User", "Deleted By Staff", "Failed Preparation"],
+	statuses: [
+		"Unprepared",
+		new Formattable("Preparing by {}"),
+		"Brewing",
+		"Fermenting",
+		"Pending Delivery",
+		"Delivering",
+		"Delivered",
+		"Cancelled By User",
+		"Deleted By Staff",
+		"Failed Preparation",
+	],
 	permissions: 104201409,
+	items: {
+		1: {
+			use: {
+				function: (message: Message) => 2,
+			},
+		},
+	},
 } as const;
-assertType<Constants>(constants)
-;
+assertType<Constants>(constants);
