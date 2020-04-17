@@ -1,8 +1,20 @@
 import { join } from "path";
 import { Formattable } from "../structures/formattable.struct";
 import { Message } from "discord.js";
-const assertType = <T>(arg: T) => void "assert";
+const assertType = <T>(arg: T) => arg;
 declare global {
+	interface ItemType {
+		use: (
+			| { function: readonly string[]; type: "pick" }
+			| { function: (message: Message) => unknown; type?: "function" }
+		) & { remove?: boolean };
+	}
+	type ItemMap = {
+		[index in number]?: ItemType;
+	} &
+		{
+			[index in "default"]: ItemType;
+		};
 	interface ModifiableConstants {
 		prefix: string;
 		channels: StringObject;
@@ -18,15 +30,11 @@ declare global {
 		milestones: readonly { value: number; id: string }[];
 		statuses: readonly (string | Formattable)[];
 		permissions: number;
-		items: Readonly<{
-			[index: number]: {
-				use: { function: string[]; type: "pick" } | { function: (message: Message) => unknown; type?: "function" };
-			};
-		}>;
+		items: Readonly<ItemMap>;
 	}
 	type Constants = Readonly<ModifiableConstants>;
 }
-export const constants = {
+export const constants: Constants = {
 	admins: ["413143886702313472", "256392197648154624", "129693097431924736"],
 	arguments: [
 		[String, (arg: string) => arg],
@@ -110,11 +118,18 @@ export const constants = {
 	],
 	permissions: 104201409,
 	items: {
-		1: {
+		0: {
 			use: {
-				function: (message: Message) => 2,
+				function: ["e"],
+				type: "pick",
+			},
+		},
+		default: {
+			use: {
+				function: ["This item is not usable."],
+				type: "pick",
+				remove: false,
 			},
 		},
 	},
-} as const;
-assertType<Constants>(constants);
+};

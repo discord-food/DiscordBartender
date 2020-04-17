@@ -5,9 +5,9 @@ import { Permission } from "../modules/permissions";
 import { getArgType, getUser, limit, similarTo, getOrder } from "../modules/utils";
 import { BartenderClient } from "./client.struct";
 import { models } from "@db-module/sql";
-type ReturnOneExec<T extends ArgumentObject | any> = {
-	[index in T[][number]["name"]]: GetType<T[][number]["type"]>
-};
+type ReturnOneExec<T> = T extends ArgumentObject ? {
+	[index in T["name"]]: GetType<T["type"]>
+} : Args;
 type ReturnManyExec<T extends readonly ArgumentObject[]> = { [K in keyof T]: ReturnOneExec<T[K]> };
 type ReturnExec<T extends readonly ArgumentObject[]> = UnionToIntersection<ReturnManyExec<T>[number]>;
 type FlatConstruct<T> = T extends typeof String | typeof Number | typeof Boolean ? ReturnType<T> : T extends Constructable<any> ? InstanceType<T> : T;

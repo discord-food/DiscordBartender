@@ -3,12 +3,31 @@ import { constants } from "@db-module/constants";
 import { sync } from "glob";
 import { basename, join } from "path";
 const { host, name, username, password } = database;
-import { createConnection, Connection, Entity, PrimaryGeneratedColumn, Column, PrimaryColumn, BaseEntity,
-	 OneToMany, ManyToOne, OneToOne, Generated, CreateDateColumn, UpdateDateColumn, BeforeInsert, JoinColumn, JoinTable, ManyToMany, Unique } from "typeorm";
+import {
+	createConnection,
+	Connection,
+	Entity,
+	PrimaryGeneratedColumn,
+	Column,
+	PrimaryColumn,
+	BaseEntity,
+	OneToMany,
+	ManyToOne,
+	OneToOne,
+	Generated,
+	CreateDateColumn,
+	UpdateDateColumn,
+	BeforeInsert,
+	JoinColumn,
+	JoinTable,
+	ManyToMany,
+	Unique,
+} from "typeorm";
 export { Connection, BaseEntity } from "typeorm";
 import { pickString } from "randomify";
 import { BartenderEmbed } from "@db-struct/embed.struct";
-import { Client, User, TextChannel } from "discord.js";
+import { Client, User, TextChannel, Message } from "discord.js";
+import _ from "lodash";
 export enum TypeSpecials {
 	NONE = "",
 	CUSTOM = "custom",
@@ -27,7 +46,7 @@ export enum Status {
 	DELIVERED,
 	CANCELLED,
 	DELETED,
-	FAILED
+	FAILED,
 }
 export namespace models {
 	const SNOWFLAKE_LENGTH = 18;
@@ -62,7 +81,10 @@ export namespace models {
 		@PrimaryGeneratedColumn()
 		public id!: string;
 
-		@OneToMany(type => models.InventoryItem, inventoryItem => inventoryItem.globals, { cascade: ["insert", "update"], eager: true })
+		@OneToMany(type => models.InventoryItem, inventoryItem => inventoryItem.globals, {
+			cascade: ["insert", "update"],
+			eager: true,
+		})
 		public items!: models.InventoryItem[];
 	}
 	@Entity()
@@ -85,7 +107,10 @@ export namespace models {
 		@Column({ default: {}, type: "jsonb" })
 		public cooldowns!: { [index: string]: number };
 
-		@OneToMany(type => models.InventoryItem, inventoryItem => inventoryItem.user, { cascade: ["insert", "update"], eager: true })
+		@OneToMany(type => models.InventoryItem, inventoryItem => inventoryItem.user, {
+			cascade: ["insert", "update"],
+			eager: true,
+		})
 		public items!: models.InventoryItem[];
 
 		@OneToOne(type => models.Farm, { eager: true })
@@ -140,7 +165,7 @@ export namespace models {
 		@Column({
 			type: "enum",
 			enum: Status,
-			default: Status.UNPREPARED
+			default: Status.UNPREPARED,
 		})
 		public status!: Status;
 		public get statusString(): typeof constants.statuses[number] {
@@ -149,7 +174,9 @@ export namespace models {
 		}
 		public statusStringFull(client: Client): typeof constants.statuses[number] {
 			const status = constants.statuses[this.status ?? 0];
-			return typeof status === "string" ? status : status.format(client.users.cache.get(this.metadata.claimer!)?.tag ?? "an unknown worker");
+			return typeof status === "string"
+				? status
+				: status.format(client.users.cache.get(this.metadata.claimer!)?.tag ?? "an unknown worker");
 		}
 		public get available(): boolean {
 			return this.status <= 5;
@@ -173,7 +200,13 @@ export namespace models {
 			return embed;
 		}
 		@Column("jsonb", { default: { brewFinish: 157767052146000, image: "error" } })
-		public metadata!: { claimer?: string; channel: string; brewFinish: number; image: string; deliverer?: string };
+		public metadata!: {
+			claimer?: string;
+			channel: string;
+			brewFinish: number;
+			image: string;
+			deliverer?: string;
+		};
 
 		@ManyToOne(type => models.Types, type => type.orders, { cascade: ["insert", "update"], eager: true })
 		public type!: models.Types;
@@ -188,7 +221,7 @@ export namespace models {
 
 	@Entity()
 	export class Types extends BaseEntity {
-		@PrimaryGeneratedColumn()
+		@PrimaryGeneratedColumn("uuid")
 		public id!: number;
 
 		@OneToMany(type => Orders, order => order.type, { cascade: ["insert", "update"] })
@@ -209,7 +242,7 @@ export namespace models {
 		@Column({
 			type: "enum",
 			enum: TypeSpecials,
-			default: TypeSpecials.NONE
+			default: TypeSpecials.NONE,
 		})
 		public special!: TypeSpecials;
 
@@ -219,7 +252,7 @@ export namespace models {
 	}
 	@Entity()
 	export class CropType extends BaseEntity {
-		@PrimaryGeneratedColumn()
+		@PrimaryGeneratedColumn("uuid")
 		public id!: number;
 
 		@OneToMany(type => models.Crop, crop => crop.type, { cascade: ["insert", "update"] })
@@ -231,7 +264,7 @@ export namespace models {
 		@Column({
 			type: "enum",
 			enum: TypeSpecials,
-			default: TypeSpecials.NONE
+			default: TypeSpecials.NONE,
 		})
 		public special!: TypeSpecials;
 
@@ -245,7 +278,7 @@ export namespace models {
 	@Entity()
 	@Unique(["identifier"])
 	export class Item extends BaseEntity {
-		@PrimaryGeneratedColumn()
+		@PrimaryGeneratedColumn("uuid")
 		public id!: number;
 
 		@Column("text")
@@ -260,19 +293,36 @@ export namespace models {
 		@Column()
 		public identifier!: string;
 
-		@ManyToOne(type => models.Category, category => category.items, { cascade: ["insert", "update"], eager: true })
+		@ManyToOne(type => models.Category, category => category.items, {
+			cascade: ["insert", "update"],
+			eager: true,
+		})
 		public category!: models.Category;
 
-		@OneToMany(type => models.InventoryItem, inventoryItem => inventoryItem.item, { cascade: ["insert", "update"] })
+		@OneToMany(type => models.InventoryItem, inventoryItem => inventoryItem.item, {
+			cascade: ["insert", "update"],
+		})
 		public inventoryItems!: models.InventoryItem[];
 
 		@OneToMany(type => models.RecipeItem, recipeItem => recipeItem.item, { cascade: ["insert", "update"] })
 		public recipes!: models.RecipeItem[];
+
+		public get config() {
+			return constants.items[this.id];
+		}
+
+		public get use(): (message: Message) => unknown {
+			const useConfig = (config: ItemType) =>
+				config.use.type === "pick"
+					? (message: Message) => message.channel.send(_.sample(config.use.function))
+					: config.use.function;
+			return useConfig(this.config ?? constants.items.default);
+		}
 	}
 
 	@Entity()
 	export class Category extends BaseEntity {
-		@PrimaryGeneratedColumn()
+		@PrimaryGeneratedColumn("uuid")
 		public id!: number;
 
 		@Column("text")
@@ -287,13 +337,13 @@ export namespace models {
 		@Column({
 			type: "enum",
 			enum: CategorySpecials,
-			default: CategorySpecials.NONE
+			default: CategorySpecials.NONE,
 		})
 		public special!: CategorySpecials;
 	}
 	@Entity()
 	export class InventoryItem extends BaseEntity {
-		@PrimaryGeneratedColumn()
+		@PrimaryGeneratedColumn("uuid")
 		public id!: number;
 
 		@ManyToOne(type => Item, item => item.inventoryItems, { cascade: ["insert", "update"], eager: true })
@@ -316,7 +366,7 @@ export namespace models {
 
 	@Entity()
 	export class Crop extends BaseEntity {
-		@PrimaryGeneratedColumn()
+		@PrimaryGeneratedColumn("uuid")
 		public id!: number;
 
 		@ManyToOne(type => CropType, cropType => cropType.crops, { cascade: ["insert", "update"], eager: true })
@@ -331,7 +381,7 @@ export namespace models {
 
 	@Entity()
 	export class RecipeItem extends BaseEntity {
-		@PrimaryGeneratedColumn()
+		@PrimaryGeneratedColumn("uuid")
 		public id!: number;
 
 		@ManyToOne(type => Item, item => item.recipes, { cascade: ["insert", "update"], eager: true })
@@ -357,6 +407,21 @@ export namespace models {
 		@SnowflakeColumn()
 		public executor!: string;
 	}
+	@Entity()
+	export class ShopItem extends SetupEntity {
+		@PrimaryGeneratedColumn("uuid")
+		public id!: string;
+
+		@OneToOne(type => Item, { eager: true })
+		@JoinColumn()
+		public item!: Item;
+
+		@Column()
+		public price!: number;
+
+		@Column({ default: 0, nullable: true })
+		public discount!: number;
+	}
 }
 
 export const connection = createConnection({
@@ -367,5 +432,8 @@ export const connection = createConnection({
 	password,
 	database: name,
 	synchronize: true,
-	entities: Object.values(models)
+	entities: Object.values(models),
+});
+connection.then(con => {
+	if (con === undefined) process.exit(1);
 });

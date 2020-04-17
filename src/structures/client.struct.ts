@@ -1,6 +1,16 @@
 import chalk from "chalk";
 import { execSync, spawnSync } from "child_process";
-import Discord, { Channel, Client, Collection, Emoji, Guild, Message, Role, TextChannel, DiscordAPIError } from "discord.js";
+import Discord, {
+	Channel,
+	Client,
+	Collection,
+	Emoji,
+	Guild,
+	Message,
+	Role,
+	TextChannel,
+	DiscordAPIError,
+} from "discord.js";
 import { sync } from "glob";
 import _ from "lodash";
 import { basename, dirname, join, normalize, resolve, win32 } from "path";
@@ -9,7 +19,7 @@ import { inspect } from "util";
 import * as auth from "../auth.json";
 import { readFileSync } from "fs";
 import { constants } from "../modules/constants";
-import { } from "../modules/extensions";
+import {} from "../modules/extensions";
 import * as sql from "../modules/sql";
 const { BaseEntity, models, connection } = sql;
 import * as utils from "../modules/utils";
@@ -28,7 +38,7 @@ export class BartenderClient extends Client {
 		return this.guilds.cache.get(constants.guild)!;
 	}
 	/** @property {string} EMPTY A string with an invisible character. */
-	public EMPTY = "​";
+	public EMPTY = "\uFEFF"; // "\u{E00AA}";
 	/**
 	 * @property {typeof BartenderEmbed} embed BartenderEmbed.
 	 */
@@ -44,7 +54,7 @@ export class BartenderClient extends Client {
 	/**
 	 * @property {any} cached Cached models.
 	 */
-	public cached: {[index in keyof typeof sql.models]?: (InstanceType<(typeof sql.models)[index]>)[]} = {};
+	public cached: { [index in keyof typeof sql.models]?: InstanceType<typeof sql.models[index]>[] } = {};
 	/**
 	 * @property {typeof sql} sql SQL module.
 	 */
@@ -60,22 +70,22 @@ export class BartenderClient extends Client {
 	/**
 	 * @property {Collection<string, TextChannel>} mainChannels The commands for the bot.
 	 */
-	public mainChannels: Collection<keyof (typeof constants)["channels"], TextChannel> = new Collection();
+	public mainChannels: Collection<keyof typeof constants["channels"], TextChannel> = new Collection();
 	/**
 	 * @property {Collection<string, Emoji>} mainEmojis The commands for the bot.
 	 */
-	public mainEmojis: Collection<keyof (typeof constants)["emojis"], Emoji> = new Collection();
+	public mainEmojis: Collection<keyof typeof constants["emojis"], Emoji> = new Collection();
 	/**
 	 * @property {Collection<string, Message>} mainMessages The commands for the bot.
 	 */
-	public mainMessages: Collection<keyof (typeof constants)["messages"], Message> = new Collection();
+	public mainMessages: Collection<keyof typeof constants["messages"], Message> = new Collection();
 
-	public mainRoles: Collection<keyof (typeof constants)["roles"], Role> = new Collection();
+	public mainRoles: Collection<keyof typeof constants["roles"], Role> = new Collection();
 	public intervals: Collection<string, NodeJS.Timeout> = new Collection();
 	/**
 	 * @property {Collection<number, Role>} milestones The milestone roles.
 	 */
-	public milestones: Collection<(typeof constants)["milestones"][number]["value"], Role> = new Collection();
+	public milestones: Collection<typeof constants["milestones"][number]["value"], Role> = new Collection();
 	/**
 	 * @property {Auth} auth The auth.json file.
 	 */
@@ -118,7 +128,9 @@ export class BartenderClient extends Client {
 		return (await models.Orders.find()).find(x => x.metadata.claimer === id && x.status <= sql.Status.BREWING);
 	}
 	public async getDeliveringOrder(id: string): Promise<sql.models.Orders | undefined> {
-		return (await models.Orders.find()).find(x => x.metadata.deliverer === id && x.status === sql.Status.DELIVERING);
+		return (await models.Orders.find()).find(
+			x => x.metadata.deliverer === id && x.status === sql.Status.DELIVERING
+		);
 	}
 	public async getWorkerInformation(id: string): Promise<{ preparations: number; deliveries: number }> {
 		const all = await models.Orders.find();
@@ -145,14 +157,27 @@ export class BartenderClient extends Client {
 	public db(path: string) {
 		return join(__dirname, "../../db/", path);
 	}
-	public async parseArguments3(argObject: readonly ArgumentObject[], args: string[], message: Message): Promise<Args | ArgError> {
-		const matched: Array<[ArgumentObject, string]> = argObject.map((x, i) => [x, i === argObject.length - 1 ? args.slice(i).join(" ") : args[i]]);
+	public async parseArguments3(
+		argObject: readonly ArgumentObject[],
+		args: string[],
+		message: Message
+	): Promise<Args | ArgError> {
+		const matched: Array<[ArgumentObject, string]> = argObject.map((x, i) => [
+			x,
+			i === argObject.length - 1 ? args.slice(i).join(" ") : args[i],
+		]);
 		const func = new Collection(this.constants.arguments);
 		const returnVal: Args & { [index: string]: any } = { _list: args, _message: message };
 		for (const [argObj, arg] of matched) {
 			if (!arg && argObj.required) return { error: { obj: argObj, type: 1 } };
 			const typeFunc = func.get(argObj.type);
-			const processed = arg ? typeFunc ? await typeFunc(arg, returnVal, argObj) : await argObj.type(arg, returnVal, argObj) : argObj.type.allowNone ? await argObj.type(arg, returnVal, argObj) : undefined;
+			const processed = arg
+				? typeFunc
+					? await typeFunc(arg, returnVal, argObj)
+					: await argObj.type(arg, returnVal, argObj)
+				: argObj.type.allowNone
+					? await argObj.type(arg, returnVal, argObj)
+					: undefined;
 			if (processed === null && arg) return { error: { obj: argObj, type: 0 } };
 			returnVal[argObj.name] = [undefined, ""].some(x => x === arg) ? argObj.default : processed;
 		}
@@ -162,8 +187,15 @@ export class BartenderClient extends Client {
 		}
 		return returnVal;
 	}
-	public async parseArguments(argObject: readonly ArgumentObject[], args: string[], message: Message): Promise<Args | ArgError> {
-		const matched: Array<[ArgumentObject, string]> = argObject.map((x, i) => [x, i === argObject.length - 1 ? args.slice(i).join(" ") : args[i]]);
+	public async parseArguments(
+		argObject: readonly ArgumentObject[],
+		args: string[],
+		message: Message
+	): Promise<Args | ArgError> {
+		const matched: Array<[ArgumentObject, string]> = argObject.map((x, i) => [
+			x,
+			i === argObject.length - 1 ? args.slice(i).join(" ") : args[i],
+		]);
 		const func = new Collection(this.constants.arguments);
 		const returnVal: Args & { [index: string]: any } = { _list: args, _message: message };
 		for (const [argObj, arg] of matched) {
@@ -205,7 +237,17 @@ export class BartenderClient extends Client {
 	 * @returns {void}.
 	 */
 	public error(obj: any): void {
-		this.dryLog("ERR", obj instanceof DiscordAPIError ? `DiscordAPIError: ${obj.message}\n${obj.method.toUpperCase()} ${obj.path}` : obj instanceof Error ? obj.stack : obj, chalk.redBright, chalk.red, "error");
+		this.dryLog(
+			"ERR",
+			obj instanceof DiscordAPIError
+				? `DiscordAPIError: ${obj.message}\n${obj.method.toUpperCase()} ${obj.path}`
+				: obj instanceof Error
+					? obj.stack
+					: obj,
+			chalk.redBright,
+			chalk.red,
+			"error"
+		);
 	}
 	/**
 	 * @description Warns to the console.
@@ -228,7 +270,7 @@ export class BartenderClient extends Client {
 		this.dryLog(name, obj, chalk.cyanBright, chalk.cyan);
 	}
 	public getLanguage(lang: string): Languages | null {
-		return (this.languages.get(lang) ?? this.languages.get(ISO.getCode(lang))) ?? null;
+		return this.languages.get(lang) ?? this.languages.get(ISO.getCode(lang)) ?? null;
 	}
 	public exec(code: string): Buffer {
 		return (() => {
@@ -245,33 +287,48 @@ export class BartenderClient extends Client {
 	 */
 	public async loadCommands(): Promise<void> {
 		this.commands = new Collection();
-		const commandFiles: Array<[string, Promise<Command<any>>]> = sync(join(__dirname, "../commands/**/*.js")).map((file: string) => {
-			delete require.cache[resolve(file)];
-			return [file, import(file)];
-		});
+		const commandFiles: Array<[string, Promise<Command<any>>]> = sync(join(__dirname, "../commands/**/*.js")).map(
+			(file: string) => {
+				delete require.cache[resolve(file)];
+				return [file, import(file)];
+			}
+		);
 		for (const [path, promiseCommand] of commandFiles) {
 			const command: Command<any> | any = ((await promiseCommand) as any).command;
 			if (!(command instanceof Command)) {
 				this.error(
-					`Attempted to load command ${basename(path)}, but it was not a command. Path: ${chalk.yellowBright(path)}`,
+					`Attempted to load command ${basename(
+						path
+					)}, but it was not a command. Path: ${chalk.yellowBright(path)}`
 				);
 				continue;
 			}
 			if (this.commands.has(command.name)) {
 				this.error(
-					`Attempted to load command ${chalk.redBright(command.name)}, but the command already exists. Path: ${chalk.yellowBright(path)}`,
+					`Attempted to load command ${chalk.redBright(
+						command.name
+					)}, but the command already exists. Path: ${chalk.yellowBright(path)}`
 				);
 				continue;
 			}
 			const filename = basename(path).split(".")[0];
 			if (filename !== command.name) {
 				this.error(
-					`Attempted to load command ${chalk.redBright(filename)}, but the command exported was ${chalk.redBright(command.name)}. Path: ${chalk.yellowBright(path)}`,
+					`Attempted to load command ${chalk.redBright(
+						filename
+					)}, but the command exported was ${chalk.redBright(command.name)}. Path: ${chalk.yellowBright(
+						path
+					)}`
 				);
 				continue;
 			}
 			const dirs = win32.normalize(dirname(path)).split("\\");
-			command.category = dirs.includes("commands") ? dirs.slice(dirs.indexOf("commands") + 1).join(":").toUpperCase() : "NO_CATEGORY";
+			command.category = dirs.includes("commands")
+				? dirs
+					.slice(dirs.indexOf("commands") + 1)
+					.join(":")
+					.toUpperCase()
+				: "NO_CATEGORY";
 			this.commands.set(command.name, command);
 			this.emit("commandLoad", command); // * LOADS EVENT onCommandLoad
 		}
@@ -283,10 +340,12 @@ export class BartenderClient extends Client {
 	 */
 	public async loadEvents(): Promise<void> {
 		await import("../modules/extensions");
-		const events: Array<[string, Promise<CallableFunction>]> = sync(join(__dirname, "../events/**/*.js")).map((file: string) => {
-			delete require.cache[resolve(file)];
-			return [basename(file).split(".")[0], import(file)];
-		});
+		const events: Array<[string, Promise<CallableFunction>]> = sync(join(__dirname, "../events/**/*.js")).map(
+			(file: string) => {
+				delete require.cache[resolve(file)];
+				return [basename(file).split(".")[0], import(file)];
+			}
+		);
 		for (const [name, eventPromise] of events) {
 			const event: any = await eventPromise;
 			this.on(name as any, event.handler);
@@ -302,10 +361,12 @@ export class BartenderClient extends Client {
 			language: Languages;
 		}
 		this.languages = new Collection();
-		const languages: Array<[string, Promise<LanguageModule>]> = sync(join(__dirname, "../languages/**/*.js")).map((file: string) => {
-			delete require.cache[resolve(file)];
-			return [basename(file).split(".")[0], import(file)];
-		});
+		const languages: Array<[string, Promise<LanguageModule>]> = sync(join(__dirname, "../languages/**/*.js")).map(
+			(file: string) => {
+				delete require.cache[resolve(file)];
+				return [basename(file).split(".")[0], import(file)];
+			}
+		);
 		for (const [name, langPromise] of languages) {
 			const language: LanguageModule = await langPromise;
 			this.languages.set(name, language.language);
@@ -321,7 +382,10 @@ export class BartenderClient extends Client {
 		this.emit("modelsLoaded");
 	}
 	public async loadBotlists(): Promise<void> {
-		// const dbl = new DBL(auth.botlists.dbl, this);
+		const dbl = new DBL(auth.botlists.dbl, this);
+		setInterval(() => {
+			dbl.postStats(this.guilds.cache.size);
+		}, 1800000);
 	}
 	/**
 	 * @description Loads channels, messages and emojis.
@@ -401,11 +465,13 @@ export class BartenderClient extends Client {
 		commandResolvable = commandResolvable.toLowerCase();
 		return (
 			this.commands.get(commandResolvable) ??
-			this.commands.find(command => [...command.aliases, ...command.shortcuts].some(str => str === commandResolvable)) ??
+			this.commands.find(command =>
+				[...command.aliases, ...command.shortcuts].some(str => str === commandResolvable)
+			) ??
 			this.commands.find(command =>
 				[...command.aliases, ...command.shortcuts, command.name].some(
-					str => str === commandResolvable || compareTwoStrings(str, commandResolvable) > 0.85,
-				),
+					str => str === commandResolvable || compareTwoStrings(str, commandResolvable) > 0.82
+				)
 			) ??
 			null
 		);
@@ -416,7 +482,13 @@ export class BartenderClient extends Client {
 	 * @param {any} obj The object to be logged.
 	 * @returns {void}.
 	 */
-	private dryLog(prefix: string, obj: any, labelColor: CallableFunction = chalk.whiteBright, color: CallableFunction = chalk.white, consoleProp: keyof Console = "log"): void {
+	private dryLog(
+		prefix: string,
+		obj: any,
+		labelColor: CallableFunction = chalk.whiteBright,
+		color: CallableFunction = chalk.white,
+		consoleProp: keyof Console = "log"
+	): void {
 		if (obj instanceof Object) obj = inspect(obj, true, 2, true);
 		console[consoleProp](`[${labelColor(prefix)}] ${color(obj)}`);
 	}
