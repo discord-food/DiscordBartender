@@ -12,7 +12,7 @@ export const command = new Command("shop", "Opens the shop.", ["store"], ["shp"]
 		if (args.page > chunks.length || args.page < 1) return message.channel.send("[no] Invalid page.");
 		const page = chunks[args.page - 1];
 		const embed = new client.Embed()
-			.setTitle(`Shop Page ${args.page}`)
+			.setTitle(`Shop | Page ${args.page}`)
 			.setDescription("Buy one for double the price, and get the second one free!")
 			.setFooter(`Shop Page ${args.page}/${chunks.length}`);
 		for (const item of page) embed.addField(`${item.item.symbol} ${item.item.name}${item.discount ? `~~$${item.price}~~ [**${item.discount * 100}% OFF**] - ${item.price * (1 - item.discount)}` : `$${item.price}`}`, `${item.item.description}`);
