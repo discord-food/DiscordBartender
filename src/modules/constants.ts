@@ -78,6 +78,7 @@ export const constants: Constants = {
 		symbolNo: "673637779934150681",
 		symbolGrayNo: "673638119463190552",
 		symbolYes: "673637823928074253",
+		wood: "701132600856543494"
 	},
 	eval: new Formattable(
 		`(async () => { const { client } = await import(require("path").join(__rootname, "/modules/client")); {} })()`
