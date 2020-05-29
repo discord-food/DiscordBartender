@@ -7,15 +7,6 @@ export const handler = async() => {
 	client.success(`Models were successfully loaded!`);
 	await client.user?.setActivity("Recently started.");
 
-	if (!client.intervals.has("caching")) {
-		client.intervals.set(
-			"caching",
-			client.setInterval(async() => {
-				for (const [name, model] of entries(models)) client.cached[name] = (await model.find()) as any;
-			}, 2000)
-		);
-	}
-
 	if (!client.intervals.has("ingredientDelivery")) {
 		client.intervals.set(
 			"ingredientDelivery",

@@ -52,10 +52,6 @@ export class BartenderClient extends Client {
 	 */
 	public utils: typeof utils = utils;
 	/**
-	 * @property {any} cached Cached models.
-	 */
-	public cached: { [index in keyof typeof sql.models]?: InstanceType<typeof sql.models[index]>[] } = {};
-	/**
 	 * @property {typeof sql} sql SQL module.
 	 */
 	public sql: typeof sql = sql;
