@@ -7,5 +7,6 @@ export const command = new Command("list", "List all available orders.", [], ["l
 		const orders = (await client.models.Orders.find({ order: { createdAt: "ASC" } })).filter(x => x.available).sort((x, y) => (x.status ?? 0) - (y.status ?? 0));
 		if (!orders) return message.channel.send(lang.commands.list.noOrders);
 		await message.channel.send(`>>> **__Current Orders__**:
-${orders.map(x => `\`${x.id}\`: **${x.statusStringFull(client)}** - \`${x.descriptor}\` - *${moment(x.createdAt).fromNow()}*${x.metadata.claimer ? "" : " - **NO CLAIMER**"}`).join("\n")}`);
+${orders.map(x => `\`${x.id}\`: **${x.statusStringFull(client)}** - \`${x.descriptor}\` - *${moment(x.createdAt).fromNow()}*${x.metadata.claimer ? "" : " - **NO CLAIMER**"}`).join("\n")}`
+		, { split: true });
 	});
