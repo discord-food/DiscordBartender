@@ -45,7 +45,7 @@ export const getText = async(
 	time = 40000,
 	filter: (m: Message) => boolean = (m: Message) => m.author.id === message.author.id
 ): Promise<string | undefined> => {
-	await message.channel.send(display);
+	await message.channel.send(display.slice(0, 1999));
 	const res = await message.channel.awaitMessages(
 		m =>
 			((m.content && similarTo(m.content, "cancel")) ||
@@ -104,7 +104,7 @@ export const getIndex = async <T>(
 			display.replace("{}", mapped.join("\n")) :
 			`Please reply with the index of the ${display}.
 \`\`\`ini
-${mapped.join("\n")}
+${mapped.slice(0, 10).join("\n")}
 \`\`\`
 	`,
 		40000,

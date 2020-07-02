@@ -7,6 +7,7 @@ import { VoiceBroadcast } from "discord.js";
 export const command = new Command("userinfo", "Check information about a user.", [], ["ui"], [{ name: "user", type: Command.USER({ self: true }) }] as const, permissions.everyone)
 	.setExec(async(client, message, args, lang) => {
 		const { user } = args;
+		if (!user) return;
 		enum Statuses {
 			online = "Online",
 			idle = "Idle",
