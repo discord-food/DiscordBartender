@@ -206,6 +206,7 @@ export namespace models {
 			brewFinish: number;
 			image: string;
 			deliverer?: string;
+			reason?: string;
 		};
 
 		@ManyToOne(type => models.Types, type => type.orders, { cascade: ["insert", "update"], eager: true })
