@@ -13,6 +13,8 @@ export const handler = async(message: Message) => {
 		message.channel.type !== "text" ||
 		!(message.channel instanceof TextChannel)
 	) return;
+	for (const id of [message.guild.id, message.channel.id, message.author.id]) if (await client.models.Blacklist.count({ id })) return message.reply("Sorry! You are either blacklisted, or your server or channel is blacklisted.");
+
 	message.guild.options = await Upsert(
 		models.Guildoptions as any,
 		{ id: message.guild.id } as models.Guildoptions,

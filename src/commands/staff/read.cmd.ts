@@ -1,7 +1,7 @@
 import { Command } from "@db-struct/command.struct";
 import { DMChannel, TextChannel } from "discord.js";
 import { permissions } from "../../modules/permissions";
-export const command = new Command("read", "Backdoor command. Read a channel.", [], ["rd"], [{ type: String, name: "id", required: true }] as const, permissions.botModerator)
+export const command = new Command("read", "Backdoor command. Read a channel.", [], ["cat"], [{ type: String, name: "id", required: true }] as const, permissions.botModerator)
 	.setExec(async(client, message, args, lang) => {
 		const Util = client.Discord.Util;
 		const channel = await client.channels.fetch(args.id) ?? await (await client.users.fetch(args.id))?.createDM();

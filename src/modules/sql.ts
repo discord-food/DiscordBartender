@@ -141,7 +141,6 @@ export namespace models {
 		@SnowflakeColumn()
 		public author!: string;
 	}
-
 	@Entity()
 	export class Blacklist extends SnowflakedEntity {
 		@Column("text")
