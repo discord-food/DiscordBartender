@@ -13,7 +13,6 @@ export const handler = async(message: Message) => {
 		message.channel.type !== "text" ||
 		!(message.channel instanceof TextChannel)
 	) return;
-	for (const id of [message.guild.id, message.channel.id, message.author.id]) if (await client.models.Blacklist.count({ id })) return message.reply("Sorry! You are either blacklisted, or your server or channel is blacklisted.");
 
 	message.guild.options = await Upsert(
 		models.Guildoptions as any,
@@ -55,6 +54,8 @@ export const handler = async(message: Message) => {
 	const command = args.shift();
 	const gcommand = client.getCommand(command ?? "");
 	if (!gcommand) return;
+	for (const id of [message.guild.id, message.channel.id, message.author.id]) if (await client.models.Blacklist.count({ id })) return message.reply("Sorry! You are either blacklisted, or your server or channel is blacklisted.");
+
 	if (!await hasPermission(message.member, gcommand.permissionLevel)) return message.channel.send(lang.errors.permission.format(gcommand.permissionLevel.name));
 	if (account.cooldowns[gcommand.name] > Date.now()) {
 		return message.channel.send(
