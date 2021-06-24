@@ -52,44 +52,54 @@ export const command = new Command(
 		const creationDate = moment(guild.createdAt);
 		embed
 			.addField(
-				"Channels",
-				`**${channels.cache.size}** channels in total.
-${channellength("text")}
-${channellength("category")}
-${channellength("news")}
-${channellength("voice")}
-${channellength("store")}
-${channellength("unknown")}`,
-				true
-			)
-			.addField(
 				"Creation Date",
 				`Created at **${creationDate.calendar()}**\n(${creationDate.fromNow()})`,
 				true
 			)
 			.addField(
-				"Emojis",
-				`${guild.emojis.cache.map(String).join("")}`,
+				"Channels",
+				`**${channels.cache.size}** channels in total.
+		${channellength("text")}
+		${channellength("category")}
+		${channellength("news")}
+		${channellength("voice")}
+		${channellength("store")}
+		${channellength("unknown")}`,
 				true
 			)
-			.addField("Features", `${guild.features.map(x => Features[x]).join(", ")}`, true)
-			.addField("ID", guild.id, true)
 			.addField("Bot Joined", `${moment(guild.joinedAt).format("LLL Z")} (${prettyms(Date.now() - +guild.joinedAt, { unitCount: 3 })} ago)`, true)
 			.addField("User Joined", `${moment(message.member!.joinedAt!).format("LLL Z")} (${prettyms(Date.now() - +message.member!.joinedAt!, { unitCount: 3 })} ago)`, true)
 			.addField("Member Count", guild.memberCount, true)
 			.addField("MFA Level", guild.mfaLevel, true)
-			.addField("Owner", guild.owner, true)
+			.addField("Owner", `<@${guild.ownerID}>`, true)
 			.addField("Boosts", guild.premiumSubscriptionCount, true)
 			.addField("Boost Tier", BoostTiers[guild.premiumTier], true)
 			.addField("Region", guild.region, true)
 			.addField("Maximum Members", guild.maximumMembers, true)
 			.addField("Roles", `${guild.roles.cache.size} roles in total.`, true)
 			.addField("Shard", `This guild is on **Shard ${guild.shard.id}**.`, true)
+			.addField("Verification Level", guild.verificationLevel, true)
+			.addField("Widget Channel", guild.widgetEnabled ? guild.widgetChannel : "Off", true)
+			.addField("Roles", `${guild.roles.cache.size} roles in total.`, true)
+			.addField("Shard", `This guild is on **Shard ${guild.shard.id}**.`, true)
 			.addField("System Channel", guild.systemChannel ?? "None", true)
 			.addField("Vanity URL", guild.vanityURLCode ? `discord.gg/${guild.vanityURLCode}` : "None", true)
-			.addField("Verification Level", guild.verificationLevel, true)
-			.addField("Widget Channel", guild.widgetEnabled ? guild.widgetChannel : "Off", true);
-		if (guild.description) embed.addField("Description", guild.description, true);
+			.addField("Features", `${guild.features.map(x => Features[x]).join(", ")}`, true)
+			.addField("ID", guild.id, true)
+			.addField("Verification Level", guild.verificationLevel, true).addField("Widget Channel", guild.widgetEnabled ? guild.widgetChannel : "Off", true);
 	})();
 	await message.channel.send(embed);
+	/*
+
+	.addField(
+				"Emojis",
+				`${guild.emojis.cache.map(String).join("")}`,
+				true
+			)
+			.addField("Features", `${guild.features.map(x => Features[x]).join(", ")}`, true)
+			.addField("ID", guild.id, true)
+
+	*/
+
+
 });

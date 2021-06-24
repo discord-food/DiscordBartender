@@ -12,4 +12,14 @@ export const command = new Command("cancel", "Cancel your order.", ["refund"], [
 		account.balance = +account.balance + refund;
 		await account.save();
 		await message.channel.send(`[yes] Your order was cancelled, and you have been refunded \`$${refund}\`.`);
+		client.channels.cache.get('647623591122173952').send(new client.Embed()
+		.setTitle(":sob: Ordered canceled!")
+		.setColor("RED")
+		.addField("Order id:", `${order.id}`)
+		.addField("Description:", `${order.description}`)
+		.addField("Order owner:", `${message.author} (\`${message.author.id}\`)`)
+		.addField("Guild Name:", `${message.guild.name} (\`${message.guild.id}\`)`)
+		.addField("Guild Channel:", `${message.channel.name} (\`${message.channel.id}\`)`)
+		);
+
 	});

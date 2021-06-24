@@ -1,4 +1,4 @@
-import { EmbedField, GuildMember } from "discord.js";
+import { ClientDataResolver, EmbedField, GuildMember } from "discord.js";
 import { permissions } from "../../modules/permissions";
 import { Command } from "@db-struct/command.struct";
 import moment = require("moment-timezone");
@@ -11,4 +11,5 @@ export const command = new Command("delorder", "Delete an order.", [], ["dl"], [
 		order.metadata.reason = await client.utils.getText(message, "Please enter the reason.") ?? "No reason specified.";
 		await order.save();
 		await message.channel.send(`[yes] The order was successfully deleted.`);
+		await client.users.cache.get(order.user).send(`Hey there, Your order was deleted due to: ${order.metadata.reason}`);
 	});

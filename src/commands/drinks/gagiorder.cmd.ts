@@ -1,7 +1,7 @@
-import { EmbedField, GuildMember } from "discord.js";
+﻿import { EmbedField, GuildMember } from "discord.js";
 import { permissions } from "../../modules/permissions";
 import { Command } from "@db-struct/command.struct";
-export const command = new Command("order", "Orders a drink.", [], ["odr"], [] as const, permissions.everyone)
+export const command = new Command("gagiorder", "Orders a drink.", [], ["hehehehehe"], [] as const, permissions.everyone)
 	.setExec(async(client, message, args, lang) => {
 		const account = await client.getAccount(message.author.id);
 		if (await client.getActiveOrder(message.author.id)) return message.channel.send(lang.commands.order.exists);
@@ -15,7 +15,7 @@ export const command = new Command("order", "Orders a drink.", [], ["odr"], [] a
 		if (!typeIndex) return;
 		const type = typeIndex.item;
 		if (account.balance < type.price) return message.channel.send(`[bankrupt] Sorry, you do not have enough money to purchase this drink. This drink costs $${type.price}, while you only have $${account.balance}`);
-		let description: string | undefined;
+		let description: string | name;
 		if (type.special === client.sql.TypeSpecials.CUSTOM) {
 			description = await client.utils.getText(message, "What would you like to order? (custom order)");
 			if (!description) return;

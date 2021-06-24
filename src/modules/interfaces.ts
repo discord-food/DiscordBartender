@@ -268,6 +268,9 @@ declare global {
 		work: {
 			responses: Formattable[];
 		};
+		crime: {
+			responses: Formattable[];
+		}
 		list: {
 			noOrders: string;
 		};

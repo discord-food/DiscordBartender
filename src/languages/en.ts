@@ -17,7 +17,7 @@ export const language: Languages = {
 				"Wow! Amazingly fast!",
 				"~~Discord Bartender is a time traveler.~~",
 			],
-			pong: new Formattable("🏓 Pong! Took `{}`, {}"),
+			pong: new Formattable("?? Pong! Took `{}`, {}"),
 		},
 		list: {
 			noOrders: "[no] There are currently no orders."
@@ -46,6 +46,31 @@ export const language: Languages = {
 				"You attempt to summon a demon, but all that appears are piles of cash. You got {}."
 			])
 		},
+		crime: {
+			responses: FA([
+				"You robbed a bank and got {}.",
+				"You stole from an old person and got {}.",
+				"You robbed an armored truck and got {}.",
+				"You robbed a grocery store and got {}.",
+				"You decided to steal some rocks and sold them for {}.",
+				"You decided to steal a brick and managed to sell it for {}.",
+				"You managed to steal a donut from Donut Delivery and sold it for {}.",
+				"You found a giant yatch and decided to rob it and got {}.",
+				"You managed to steal a plane and found {}."
+			]),
+			failure: FA([
+				"You tried to rob a bank and lost {}.",
+				"You tried to steal from an old lady and got hit by a purse and lost {}.",
+				"You tried to rob an armored truck and got ran over by it and resuilting in a {} medical bill.",
+				"You tried to rob a grocery store but got convinced to buy alcohol instead {}.",
+				"You tried stealing some rocks from a construction site and ended up being sued for {}.",
+				"You thought trying to steal a brick was a good idea but ended up dropping it on your foot and needing to pay {} in medical bills.",
+				"You tried to steal from an old lady and got hit by a purse and had the old lady rob you and you lost {}.",
+				"<:DonutPolice:832053147001290754>Sergant Mustard of the Donut Police caught you trying to steal a legendary donut! and you lost {}.",
+				"You spotted a giant yatch and decided to board it then it departed and you stuck aboard then you got caught by Sergant Mustard and got sued for {}.",
+				"You attempted to steal a plane then ended up crashing it and needing to pay {} in medical bills and damages."
+			])
+		},
 		order: {
 			success: new Formattable("[yes] Your order for **{}** has been placed! The order ID is `{}`."),
 			exists: "[no] You already have an active order."
@@ -72,7 +97,7 @@ export const language: Languages = {
 			10004: "[no] Error: Unknown guild.",
 			50013: "[no] Error: Missing permissions. The bot does not have enough permissions to run the requested task.",
 		},
-		internal: new Formattable("🔌 Sorry, there was an internal error.\n```js\n{}\n```"),
+		internal: new Formattable("?? Sorry, there was an internal error.\n```js\n{}\n```"),
 		args: new Formattable("{}\n**Correct Syntax**: `{}{} {}`"),
 		argsTypes: [
 			new Formattable("Argument `{}` was of incorrect type."),
@@ -86,6 +111,6 @@ export const language: Languages = {
 		noClaimedOrder: "[ripped] You currently do not have a claimed order.",
 		notPreparing: "[ripped] Your claimed order currently isn't pending preparation.",
 		notDelivering: "[ripped] The specified order isn't ready for delivery.",
-		url: "🔗 The link you provided was not a url."
+		url: "?? The link you provided was not a url."
 	},
 };

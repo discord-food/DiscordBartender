@@ -54,6 +54,8 @@ export namespace models {
 	enum LangCodes {
 		ENGLISH = "en",
 		OOF = "oof",
+		ICELANDIC = "is",
+		MALAY = "bm",
 	}
 	type NullableLangCodes = LangCodes | null;
 	const SnowflakeColumn = () => Column("char", { length: SNOWFLAKE_LENGTH });
@@ -149,7 +151,14 @@ export namespace models {
 		@SnowflakeColumn()
 		public executor!: string;
 	}
+	@Entity()
+	export class suggestion extends SnowflakedEntity {
+		@Column("text")
+		public reason!: string;
 
+		@SnowflakeColumn()
+		public suggester!: string;
+	}
 	@Entity()
 	export class Orders extends SetupEntity {
 		@PrimaryColumn("varchar")
@@ -202,6 +211,7 @@ export namespace models {
 		public metadata!: {
 			claimer?: string;
 			channel: string;
+			gagi: string;
 			brewFinish: number;
 			image: string;
 			deliverer?: string;

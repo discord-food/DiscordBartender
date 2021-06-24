@@ -5,7 +5,7 @@ import { models } from "../modules/sql";
 const entries = <T>(obj: T): Entries<T>[] => Object.entries(obj) as any;
 export const handler = async() => {
 	client.success(`Models were successfully loaded!`);
-	await client.user?.setActivity("Recently started.");
+	await client.user?.setActivity("Are you not getting your order? then do b:server and get help there || b:help");
 
 	if (!client.intervals.has("ingredientDelivery")) {
 		client.intervals.set(
@@ -47,7 +47,8 @@ export const handler = async() => {
 			for (const order of orders.filter(x => x.status === client.sql.Status.FERMENTING && x.metadata.brewFinish <= Date.now())) {
 				order.status = client.sql.Status.PENDING_DELIVERY;
 				await order.save();
-				await client.mainChannels.get("delivery")?.send(`Order \`${order.id}\` has finished brewing; it is now available to be delivered.`);
+				await client.mainChannels.get("delivery")?.send(`<@${order.metadata.claimer}> Order \`${order.id}\` has finished brewing; it is now available to be delivered.`);
+				await client.channels.cache.get(order.metadata.channel).send(`Hi <@${order.user}> Your order is arriving as quickly as we can bring it to you!`)
 			}
 			// housekeeping
 			for (const order of orders) if (!client.channels.cache.get(order.metadata.channel)) await order.remove();
