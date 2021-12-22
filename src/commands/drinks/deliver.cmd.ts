@@ -24,7 +24,7 @@ export const command = new Command("deliver", "Deliver an order.", [], ["dv"], [
 			.addField("User", (await client.users.fetch(order.user))?.toString() ?? "Unknown")
 			.addField("Guild", `**${guild.name}** (ID: ${guild.id})`)
 		);
-		await message.author.send('```\n' + `Heya <@!${order.user}>, I’m ${message.author.tag} a bartender.\nHere is your ${order.descriptor} \nPleasure to be of service  \nHave a nice day \nYou can send us a message by “b:feedback <msg>”!\nAnd feel free to “b:tip ${order.id}” \nCheers!\n\n Order ID: ${order.id}\n Order info: ${order.descriptor} \nP.S: U can be part of our growing community! b:server for an invite\n${order.metadata.image}` + '\n```')
+		await message.author.send('```\n' + `Heya !${order.metadata.gagi}, I’m ${message.author.tag} a bartender.\nHere is your ${order.descriptor} \nPleasure to be of service  \nHave a nice day \nYou can send us a message by “b:feedback <msg>”!\nAnd feel free to “b:tip ${order.id}” \nCheers!\n\n Order ID: ${order.id}\n Order info: ${order.descriptor} \nP.S: U can be part of our growing community! b:server for an invite\n${order.metadata.image}` + '\n```')
 		order.status = Status.DELIVERING;
 		order.metadata.deliverer = message.author.id;
 		await order.save();
@@ -54,4 +54,25 @@ Order ID:
 Order info:
 P.S: U can be part of our growing community! :<server link>
 <pic/order link>
+*/
+/*
+*Hm- Lemmie see who ordered.. Oh! [username], you here?*
+*There you are! There's your order* : 
+
+╭ ₊˚ʚ [user] ♡
+
+︰ ・ʚ:champagne_glass:ɞ﹕[id]
+
+︰ ・ʚ:beers:ɞ﹕[description]
+
+︰ ・ʚ:beverage_box:ɞ﹕[username]
+
+×---×---×---×---×---×---×
+
+・┊Tip﹕`b:tip [id]`
+・┊Feedback﹕`b:feedback <msg>`
+・┊Server info﹕`b:server`
+・┊Brewer﹕[cook]
+
+╰ ₊˚ʚ *if i got ur order wrong deal with it* ♡
 */
