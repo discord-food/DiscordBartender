@@ -56,6 +56,7 @@ export namespace models {
 		OOF = "oof",
 		ICELANDIC = "is",
 		MALAY = "bm",
+		HALLOWEEN = "hw",
 	}
 	type NullableLangCodes = LangCodes | null;
 	const SnowflakeColumn = () => Column("char", { length: SNOWFLAKE_LENGTH });
@@ -73,7 +74,7 @@ export namespace models {
 	@Entity()
 	export class Guildoptions extends SnowflakedEntity {
 		@Column("text", { nullable: true, default: constants.prefix })
-		public prefix!: string;
+		public prefix!: text;
 
 		@Column({ nullable: true, type: "enum", enum: LangCodes, default: LangCodes.ENGLISH })
 		public language!: LangCodes;
@@ -297,9 +298,7 @@ export namespace models {
 		@Column("text")
 		public description!: string;
 
-		@Column("text")
-		public symbol!: string;
-
+		
 		@Column()
 		public identifier!: string;
 

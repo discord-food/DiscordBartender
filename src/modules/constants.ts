@@ -35,7 +35,7 @@ declare global {
 	type Constants = Readonly<ModifiableConstants>;
 }
 export const constants: Constants = {
-	admins: ["413143886702313472", "256392197648154624", "129693097431924736"],
+	admins: ["413143886702313472", "256392197648154624", "129693097431924736", "603093049731579916"],
 	arguments: [
 		[String, (arg: string) => arg],
 		[Number, (arg: string) => isNaN(Number(arg)) ? null : Number(arg)],

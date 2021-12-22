@@ -67,7 +67,7 @@ export const language: Languages = {
 				"Anda telah mencuba untuk mencuri beberapa batu dari tapak pembinaan dan akhirnya disaman sebanyak {}.",
 				"Anda fikir mencuri batu-bata adalah idea yang baik tetapi akhirnya batu-bata itu dijatuhkan ke kaki anda dan perlu membayar sebanyak {} dalam bil perubatan.",
 				"Anda cuba untuk meragut dari seorang wanita tua.Malang sekali, anda dipukul oleh wanita tua itu dan wanita tua itu meragut anda dan anda kehilangan sebanyak {}.",
-				"<:DonutPolice:832053147001290754> Sergant Mustard dari Polis Donut menangkap anda kerana anda cuba mencuri donat legenda! dan anda kehilangan sebanyak {}.",
+				"<:DonutPolice:893269415771144193> Sergant Mustard dari Polis Donut menangkap anda kerana anda cuba mencuri donat legenda! dan anda kehilangan sebanyak {}.",
 				"Anda melihat kapal layar gergasi dan membuat keputusan untuk menaikinya. Kemudian ia berlepas dan anda tersekat di atasnya kemudian anda ditahan oleh Sergant Mustard dan anda disaman kerana {}.",
 				"Anda cuba untuk mencuri kapal terbang. Malang sekali, kapal yang anda curi itu terhempas. Anda perlu membayar {} untuk kos perubatan dan ganti rugi."
 			])

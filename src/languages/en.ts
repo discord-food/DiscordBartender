@@ -46,6 +46,12 @@ export const language: Languages = {
 				"You attempt to summon a demon, but all that appears are piles of cash. You got {}."
 			])
 		},
+		pay: {
+			responses: FA([
+				"You paid off your debts of {}.",
+				"You bribed Elon Musk for the hit-and-run you caused. You gave him {}."
+			])
+		},		
 		crime: {
 			responses: FA([
 				"You robbed a bank and got {}.",
@@ -66,9 +72,21 @@ export const language: Languages = {
 				"You tried stealing some rocks from a construction site and ended up being sued for {}.",
 				"You thought trying to steal a brick was a good idea but ended up dropping it on your foot and needing to pay {} in medical bills.",
 				"You tried to steal from an old lady and got hit by a purse and had the old lady rob you and you lost {}.",
-				"<:DonutPolice:832053147001290754>Sergant Mustard of the Donut Police caught you trying to steal a legendary donut! and you lost {}.",
+				"<:DonutPolice:893269415771144193>Sergant Mustard of the Donut Police caught you trying to steal a legendary donut! and you lost {}.",
 				"You spotted a giant yatch and decided to board it then it departed and you stuck aboard then you got caught by Sergant Mustard and got sued for {}.",
 				"You attempted to steal a plane then ended up crashing it and needing to pay {} in medical bills and damages."
+			])
+		},
+		eightball: {
+			res: FA([
+				"Yes definetly",
+				"Maybe",
+				"Let me think about that",
+				"Possibly",
+				"Never going to happen",
+				"No!",
+				"Rethink it.",
+				":skull:"
 			])
 		},
 		order: {
