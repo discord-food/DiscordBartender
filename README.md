@@ -2,10 +2,13 @@
 Is the one bot that will never go anywhere
 and has been worked on since 2019 and recieves updates
 and is loved and cherrished by many.
+
+
+
 Commands & Menu list
 ----
 | Command name   | Description  |  Public | Requires a ping |
-| ------------- | ------------------------------ |
+| ------------- | ------------------------------ | ------------------------------| ------------------------------ |
 | `b:help`      |    *Sends you a list of commands*    |Yes|No|
 | `b:order`    |    *Will give you a prompt to which you can select an item you want to drink*. |Yes|No|
 | `b:work`   |  Which does give you money |Yes|No|
@@ -13,12 +16,12 @@ Commands & Menu list
 | `b:steal` | Based on luck if you manage to rob another person | Yes |Yes |
 | `b:flex` | Lets you flex your money | Yes| No|
 | `b:8ball` | Requires you to ask the magic 8ball a question |Yes | No|
-| `b:meme`| Sends funny memes ***Kinda*** | Yes |No|
+| `b:meme`| Sends funny memes Kinda| Yes |No|
 | `b:policy`| Sends you our policy. |Yes|No|
 | `b:rules`| Sends our order rules.|Yes|No|
-|`b:setprefix`| Allows you to change the prefix. (Requires being a Moderator)| No| No|
-|`b:suggestion`| Allows you to share your ideas which may get accepted or turned down.|Yes|No|
-|`b:feedback`| Lets you tell us on how you feel about our service. | Yes| No|
+| `b:setprefix`| Allows you to change the prefix. (Requires being a Moderator)| No| No|
+| `b:suggestion`| Allows you to share your ideas which may get accepted or turned down.|Yes|No|
+| `b:feedback`| Lets you tell us on how you feel about our service. | Yes| No|
 
 | Menu    | Value | ID |
 | --------- | -----:| -----:|
@@ -31,9 +34,10 @@ Commands & Menu list
 | Coca-Cola | $10 |7|
 | Custom Order | $80 | 8|
 
-
 License:
 ----
+
+
                                  Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
@@ -210,12 +214,6 @@ License:
       of your accepting any such warranty or additional liability.
 
    Copyright 2019-2022 William Yan
-
-
-
-
-
-
-
+   
 ### Created by unexpected william#4061 (413143886702313472)
 Then worked on by gagi12#9698
