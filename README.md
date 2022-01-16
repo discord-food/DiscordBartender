@@ -1,5 +1,7 @@
 # Drunk Bartender: Order drinks, make beer.
-
+Is the one bot that will never go anywhere
+and has been worked on since 2019 and recieves updates
+and is loved and cherrished by many.
 Commands & Menu list
 ----
 | Command name   | Description  |  Public | Requires a ping |
