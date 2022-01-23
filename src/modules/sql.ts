@@ -208,6 +208,7 @@ export namespace models {
 			if (this.metadata.claimer) embed.addField(`🎟️ Claimer`, userify(this.metadata.claimer));
 			return embed;
 		}
+		
 		@Column("jsonb", { default: { brewFinish: 157767052146000, image: "error" } })
 		public metadata!: {
 			claimer?: string;
@@ -232,6 +233,37 @@ export namespace models {
 
 	@Entity()
 	export class Types extends BaseEntity {
+		@PrimaryGeneratedColumn("uuid")
+		public id!: number;
+
+		@OneToMany(type => Orders, order => order.type, { cascade: ["insert", "update"] })
+		public orders!: Orders[];
+
+		@Column("text")
+		public name!: string;
+
+		@Column()
+		public identifier!: string;
+
+		@Column("text", { default: "No description provided." })
+		public description!: string;
+
+		@Column({ default: 5 })
+		public price!: number;
+
+		@Column({
+			type: "enum",
+			enum: TypeSpecials,
+			default: TypeSpecials.NONE,
+		})
+		public special!: TypeSpecials;
+
+		@ManyToMany(type => models.RecipeItem, { eager: true })
+		@JoinTable()
+		public recipe!: models.RecipeItem[];
+	}
+	@Entity()
+	export class Types_f extends BaseEntity {
 		@PrimaryGeneratedColumn("uuid")
 		public id!: number;
 
